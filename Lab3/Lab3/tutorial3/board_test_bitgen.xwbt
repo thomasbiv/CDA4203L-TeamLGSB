@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\thomasbivins\Desktop\Lab3\tutorial3\board_test.ncd
+OUTFILE=C:\Users\thomasbivins\Desktop\Lab3\tutorial3\board_test.bit
+FAMILY=Spartan6
+PART=xc6slx45-3csg484
+WORKINGDIR=C:\Users\thomasbivins\Desktop\Lab3\tutorial3
+LICENSE=ISE
+USER_INFO=179783150_1777509441_210720177_842

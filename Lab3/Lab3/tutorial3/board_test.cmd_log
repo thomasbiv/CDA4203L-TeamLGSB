@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/Users/thomasbivins/Desktop/Lab3/tutorial3/board_test.xst" -ofn "C:/Users/thomasbivins/Desktop/Lab3/tutorial3/board_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PIN_MAP.ucf -p xc6slx45-csg484-3 board_test.ngc board_test.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o board_test_map.ncd board_test.ngd board_test.pcf 
+par -w -intstyle ise -ol high -mt off board_test_map.ncd board_test.ncd board_test.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml board_test.twx board_test.ncd -o board_test.twr board_test.pcf -ucf PIN_MAP.ucf 
+bitgen -intstyle ise -f board_test.ut board_test.ncd 
