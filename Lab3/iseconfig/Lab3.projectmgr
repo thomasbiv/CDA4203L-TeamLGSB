@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>bcd_converter - binary_bcd_2 (C:/Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/binary_bcd(1).v)</SelectedItem>
+         <SelectedItem>lab_board (C:/Users/patri/Downloads/lab_board(1)_corrected.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000163000000020000000000000000000000000200000064ffffffff000000810000000300000002000001630000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>bcd_converter - binary_bcd_2 (C:/Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/binary_bcd(1).v)</CurrentItem>
+      <CurrentItem>lab_board (C:/Users/patri/Downloads/lab_board(1)_corrected.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -38,7 +38,7 @@
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000002e3000000040101000100000000000000000000000064ffffffff0000008100000000000000040000003d00000001000000000000002100000001000000000000005d0000000100000000000002280000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>binary_bcd(1).v</CurrentItem>
    </ItemView>
    <ItemView guiview="Library" >
       <ClosedNodes>
