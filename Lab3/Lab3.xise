@@ -17,15 +17,15 @@
   <files>
     <file xil_pn:name="C:/Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/prog_counter(1).v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="1"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="1"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
     </file>
     <file xil_pn:name="C:/Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/binary_bcd(1).v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="2"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="3"/>
     </file>
     <file xil_pn:name="C:/Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/counter(1).v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="3"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="3"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="1"/>
     </file>
     <file xil_pn:name="C:/Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/final_bcd_counter(1).v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="4"/>
@@ -33,7 +33,7 @@
     </file>
     <file xil_pn:name="C:/Users/patri/Downloads/lab_board(1)_corrected.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="6"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="6"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="5"/>
     </file>
   </files>
 
