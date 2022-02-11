@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=C:\Xilinx\CDA 4203L\Lab3\impact.xsl
+OUTFILE=C:\Xilinx\CDA 4203L\Lab3\impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=C:\Xilinx\CDA 4203L\Lab3
+LICENSE=iMPACT
+USER_INFO=iMPACT
