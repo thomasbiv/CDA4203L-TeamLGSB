@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2022-02-11T22:56:59</DateModified>
+  <DateModified>2022-02-12T19:06:56</DateModified>
   <ModuleName>lab_board</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Xilinx/CDA 4203L/Lab3/iseconfig/lab_board.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Xilinx/CDA 4203L/Lab3\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/iseconfig/lab_board.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3\</ImplementationReportsDirectory>
   <DateInitialized>2022-02-09T11:30:32</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

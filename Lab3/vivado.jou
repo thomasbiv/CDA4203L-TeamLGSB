@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2021.2.1 (64-bit)
+# SW Build 3414424 on Sun Dec 19 10:57:22 MST 2021
+# IP Build 3405791 on Sun Dec 19 15:54:35 MST 2021
+# Start of session at: Sat Feb 12 17:05:21 2022
+# Process ID: 13204
+# Current directory: C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12032 C:\Users\Josue\Documents\GitHub\CDA4203L-TeamLGSB\Lab3\bcd_count_tb_example_isim_beh.wdb
+# Log file: C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/vivado.log
+# Journal file: C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3\vivado.jou
+# Running On: LAPTOP-PF2BM3HT, OS: Windows, CPU Frequency: 2904 MHz, CPU Physical cores: 2, Host memory: 17024 MB
+#-----------------------------------------------------------
+start_gui
+open_wave_database {C:\Users\Josue\Documents\GitHub\CDA4203L-TeamLGSB\Lab3\bcd_count_tb_example_isim_beh.wdb}

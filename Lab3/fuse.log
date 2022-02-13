@@ -1,13 +1,13 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Xilinx/CDA 4203L/Lab3/bcd_count_tb_example_isim_beh.exe -prj C:/Xilinx/CDA 4203L/Lab3/bcd_count_tb_example_beh.prj work.bcd_count_tb_example work.glbl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/bcd_count_tb_example_isim_beh.exe -prj C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/bcd_count_tb_example_beh.prj work.bcd_count_tb_example work.glbl 
 ISim P.20131013 (signature 0x7708f090)
-Number of CPUs detected in this system: 8
-Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab3/../../../Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/counter(1).v" into library work
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab3/../../../Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/prog_counter(1).v" into library work
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab3/../../../Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/binary_bcd(1).v" into library work
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab3/../../../Users/patri/Desktop/CDA 4203L/Lab 3/Code Templates/final_bcd_counter(1).v" into library work
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab3/../../../Users/patri/Downloads/example_bcd_count_tb.v" into library work
+Analyzing Verilog file "C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/Code Files/counter(1).v" into library work
+Analyzing Verilog file "C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/Code Files/prog_counter(1).v" into library work
+Analyzing Verilog file "C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/Code Files/binary_bcd(1).v" into library work
+Analyzing Verilog file "C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/Code Files/final_bcd_counter(1).v" into library work
+Analyzing Verilog file "C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/Code Files/example_bcd_count_tb.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
@@ -18,7 +18,8 @@ Compiling module bcd_count_7
 Compiling module bcd_count_tb_example
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 6 Verilog Units
-Built simulation executable C:/Xilinx/CDA 4203L/Lab3/bcd_count_tb_example_isim_beh.exe
-Fuse Memory Usage: 28020 KB
-Fuse CPU Usage: 624 ms
+Built simulation executable C:/Users/Josue/Documents/GitHub/CDA4203L-TeamLGSB/Lab3/bcd_count_tb_example_isim_beh.exe
+Fuse Memory Usage: 27864 KB
+Fuse CPU Usage: 484 ms
