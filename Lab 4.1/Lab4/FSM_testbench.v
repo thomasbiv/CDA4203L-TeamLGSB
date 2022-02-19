@@ -141,9 +141,32 @@ module FSM_testbench;
 		diet = 1;
 		#20;
 		diet = 0;
-		
-        
-		// Add stimulus here
+		#103;
+		qu = 1;
+		#20;
+		qu = 0;
+		#20;
+		qu = 1;
+		#20;
+		qu = 0;
+		soda = 1;
+		#20;
+		soda = 0;
+      #103;
+		qu = 1;
+		#20;
+		qu = 0;
+		#20;
+		di = 1;
+		#20;
+		di = 0;
+		#20;
+		qu = 1;
+		#20;
+		qu = 0;
+		soda = 1;
+		#20;
+		soda = 0;
 
 	end
       
