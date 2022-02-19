@@ -5,14 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Xilinx/CDA 4203L/Lab4/vending_machine.v" Line 61: Target &lt;<arg fmt="%s" index="1">giveSoda</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Xilinx/CDA 4203L/Lab4/vending_machine.v" Line 62: Target &lt;<arg fmt="%s" index="1">giveDiet</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Xilinx/CDA 4203L/Lab4/vending_machine.v" Line 63: Target &lt;<arg fmt="%s" index="1">change</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
 </messages>
 

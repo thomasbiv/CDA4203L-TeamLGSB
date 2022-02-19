@@ -24,7 +24,7 @@ module vending_machine(ni, di, qu, soda, diet, change, CLK, rst, giveSoda, giveD
 	output giveSoda, giveDiet;
 	output change;
 
-	wire clk_D, deb_qu, deb_ni, deb_di;
+	wire clk_D, deb_qu, deb_ni, deb_di, deb_soda, deb_diet;
 
 	clock_divider clk_divider(
 			.clk(CLK),
@@ -67,7 +67,7 @@ module vending_machine(ni, di, qu, soda, diet, change, CLK, rst, giveSoda, giveD
 			.out(deb_diet)
 	);
 
-	FSM  Moore(
+	FSM Moore(
 			.ni(deb_ni), 
 			.di(deb_di), 
 			.qu(deb_qu),
