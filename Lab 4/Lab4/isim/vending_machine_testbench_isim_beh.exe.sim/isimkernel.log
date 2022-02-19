@@ -1,0 +1,29 @@
+Command line:
+   vending_machine_testbench_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  64909
+
+Fri Feb 18 21:59:47 2022
+
+
+ Elaboration Time: 0.15625 sec
+
+ Current Memory Usage: 5804.34 Meg
+
+ Total Signals          : 56
+ Total Nets             : 29
+ Total Signal Drivers   : 21
+ Total Blocks           : 10
+ Total Primitive Blocks : 8
+ Total Processes        : 33
+ Total Traceable Variables  : 82
+ Total Scalar Nets and Variables : 307
+Total Line Count : 248
+
+ Total Simulation Time: 0.171875 sec
+
+ Current Memory Usage: 4860.62 Meg
+
+Fri Feb 18 22:05:06 2022
+
