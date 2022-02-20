@@ -127,7 +127,7 @@ always @(posedge CLK) begin
 			end
 			state_30 : begin
 				if (qu == 1) begin
-					curr_state = state_65;
+					curr_state = state_55;
 					end
 				else if (di == 1) begin
 					curr_state = state_40;
@@ -159,15 +159,17 @@ always @(posedge CLK) begin
 					end
 			end
 			state_45 : begin
-					if (soda == 1) begin
+				if (soda == 1) begin
 					giveSoda = 1;
+					#1000
 					curr_state = init_state;
 				end
 				else if (diet == 1) begin
 					giveDiet = 1;
+					#1000
 					curr_state = init_state;
 				end
-				else begin
+				else if (giveDiet == 1 || giveSoda == 1) begin
 					curr_state = init_state;
 				end
 			end

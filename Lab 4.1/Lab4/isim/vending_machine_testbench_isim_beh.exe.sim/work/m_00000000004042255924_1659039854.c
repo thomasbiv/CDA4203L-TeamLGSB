@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Xilinx/CDA 4203L/Lab4/vending_machine_testbench.v";
+static const char *ng0 = "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 4.1/Lab4/vending_machine_testbench.v";
 static int ng1[] = {0, 0};
 static int ng2[] = {1, 0};
 
@@ -210,7 +210,7 @@ LAB8:    xsi_set_current_line(79, ng0);
 
 LAB9:    xsi_set_current_line(81, ng0);
     t2 = ((char*)((ng2)));
-    t3 = (t0 + 1768);
+    t3 = (t0 + 1928);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(82, ng0);
     t2 = (t0 + 3704);
@@ -220,7 +220,7 @@ LAB9:    xsi_set_current_line(81, ng0);
 
 LAB10:    xsi_set_current_line(83, ng0);
     t2 = ((char*)((ng1)));
-    t3 = (t0 + 1768);
+    t3 = (t0 + 1928);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(84, ng0);
     t2 = (t0 + 3704);
@@ -230,7 +230,7 @@ LAB10:    xsi_set_current_line(83, ng0);
 
 LAB11:    xsi_set_current_line(85, ng0);
     t2 = ((char*)((ng2)));
-    t3 = (t0 + 2088);
+    t3 = (t0 + 1928);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(86, ng0);
     t2 = (t0 + 3704);
@@ -240,7 +240,7 @@ LAB11:    xsi_set_current_line(85, ng0);
 
 LAB12:    xsi_set_current_line(87, ng0);
     t2 = ((char*)((ng1)));
-    t3 = (t0 + 2088);
+    t3 = (t0 + 1928);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(88, ng0);
     t2 = (t0 + 3704);

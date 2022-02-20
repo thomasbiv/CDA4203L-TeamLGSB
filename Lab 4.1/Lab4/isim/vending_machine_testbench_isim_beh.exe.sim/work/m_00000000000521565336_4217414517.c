@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/patri/Documents/GitHub/CDA4203L-TeamLGSB/Lab 4/Sample divider and debouncer/clock_divider.v";
+static const char *ng0 = "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 4.1/Lab4/clock_divider.v";
 static unsigned int ng1[] = {0U, 0U};
 static unsigned int ng2[] = {1U, 0U};
 static unsigned int ng3[] = {25U, 0U};
