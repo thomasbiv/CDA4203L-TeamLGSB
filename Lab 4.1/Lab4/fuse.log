@@ -21,5 +21,5 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 6 Verilog Units
 Built simulation executable C:/Xilinx/CDA 4203L/Lab4/vending_machine_testbench_isim_beh.exe
-Fuse Memory Usage: 28808 KB
+Fuse Memory Usage: 28660 KB
 Fuse CPU Usage: 421 ms

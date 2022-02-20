@@ -127,7 +127,7 @@ always @(posedge CLK) begin
 			end
 			state_30 : begin
 				if (qu == 1) begin
-					curr_state = state_55;
+					curr_state = state_65;
 					end
 				else if (di == 1) begin
 					curr_state = state_40;
@@ -176,8 +176,9 @@ always @(posedge CLK) begin
 					giveSoda = 1;
 					#1000;
 					change = 1;
-					#5;
+					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_45;
 				end
 				else if (diet == 1) begin
@@ -186,12 +187,14 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_45;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_45;
 				 end
 			end
@@ -202,6 +205,7 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_50;
 				end
 				else if (diet == 1) begin
@@ -210,12 +214,14 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_50;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_50;
 				end
 			end
@@ -226,6 +232,7 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_55;
 				end
 				else if (diet == 1) begin
@@ -234,12 +241,14 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_55;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_55;
 				end
 			end
@@ -250,6 +259,7 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_60;
 				end
 				else if (diet == 1) begin
@@ -258,6 +268,7 @@ always @(posedge CLK) begin
 					change = 1;
 					#1000;
 					change = 0;
+					#1000;
 					curr_state = state_60;
 				end
 			end
