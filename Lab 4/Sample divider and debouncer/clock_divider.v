@@ -7,7 +7,7 @@ input clk;
 input rst;
 output reg clk_div;
 
-localparam constantNumber = 26'd25000000;
+localparam constantNumber = 26'd25;
 
 reg [25:0] count;
 
@@ -18,22 +18,28 @@ end
  
 always @ (posedge(clk), posedge(rst))
 begin
-    if (rst == 1'b1)
-        count <= 26'b0;
-    else if (count == constantNumber - 1)
-        count <= 26'b0;
-    else
-        count <= count + 26'd1;
+    if (rst == 1'b1) begin
+        count = 26'b0;
+	 end
+    else if (count == constantNumber - 1) begin
+        count = 26'b0;
+	 end
+    else begin
+        count = count + 26'd1;
+	 end
 end
 
 always @ (posedge(clk), posedge(rst))
 begin
-    if (rst == 1'b1)
-        clk_div <= 1'b0;
-    else if (count == constantNumber - 1)
-        clk_div <= ~clk_div;
-    else
-        clk_div <= clk_div;
+    if (rst == 1'b1) begin
+        clk_div = 1'b0;
+	 end
+    else if (count == constantNumber - 1) begin
+        clk_div = ~clk_div;
+	 end
+    else begin
+        clk_div = clk_div;
+	 end
 end
 
 endmodule

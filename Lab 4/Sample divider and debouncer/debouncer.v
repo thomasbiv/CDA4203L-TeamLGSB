@@ -26,7 +26,8 @@ module debouncer(clk, clock_div, in, out);
 		//output is set high when a pulse just happened, or
 		//the previous pulse was high, and the clock_div is on a rising edge, or
 		// the previous pulse was high and now low before a rising edge
-		out <= (!sync3 && sync2) || (out && (!(clock_div && !clock_div_prev) || !out_prev));
+		out <= (!sync3 && sync2) || (out && (!(!clock_div && clock_div_prev) || !out_prev));
+
 	end
 endmodule
 
