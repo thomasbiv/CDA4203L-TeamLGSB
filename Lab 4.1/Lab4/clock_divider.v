@@ -7,7 +7,7 @@ input clk;
 input rst;
 output reg clk_div;
 
-localparam constantNumber = 26'd25;
+localparam constantNumber = 26'd250000000;
 
 reg [25:0] count;
 

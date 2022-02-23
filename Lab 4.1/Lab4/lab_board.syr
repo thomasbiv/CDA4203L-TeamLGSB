@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: lab_board.prj
 
@@ -107,12 +107,11 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\FSM.v" into library work
 Parsing module <FSM>.
-Analyzing Verilog file "C:\Users\patri\Documents\GitHub\CDA4203L-TeamLGSB\Lab 4\Sample divider and debouncer\debouncer.v" into library work
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\debouncer.v" into library work
 Parsing module <debouncer>.
-Analyzing Verilog file "C:\Users\patri\Documents\GitHub\CDA4203L-TeamLGSB\Lab 4\Sample divider and debouncer\clock_divider.v" into library work
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\clock_divider.v" into library work
 Parsing module <clock_divider>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\vending_machine.v" into library work
-Parsing module <vending_machine>.
+WARNING:HDLCompiler:568 - "C:\Xilinx\CDA 4203L\Lab4\clock_divider.v" Line 10: Constant value is truncated to fit in <26> bits.
 Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\lab_board.v" into library work
 Parsing module <lab_board>.
 
@@ -121,8 +120,6 @@ Parsing module <lab_board>.
 =========================================================================
 
 Elaborating module <lab_board>.
-
-Elaborating module <vending_machine>.
 
 Elaborating module <clock_divider>.
 
@@ -140,17 +137,11 @@ Synthesizing Unit <lab_board>.
 	no macro.
 Unit <lab_board> synthesized.
 
-Synthesizing Unit <vending_machine>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab4\vending_machine.v".
-    Summary:
-	no macro.
-Unit <vending_machine> synthesized.
-
 Synthesizing Unit <clock_divider>.
-    Related source file is "C:\Users\patri\Documents\GitHub\CDA4203L-TeamLGSB\Lab 4\Sample divider and debouncer\clock_divider.v".
+    Related source file is "C:\Xilinx\CDA 4203L\Lab4\clock_divider.v".
     Found 26-bit register for signal <count>.
     Found 1-bit register for signal <clk_div>.
-    Found 26-bit adder for signal <count[25]_GND_3_o_add_2_OUT> created at line 26.
+    Found 26-bit adder for signal <count[25]_GND_2_o_add_2_OUT> created at line 28.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  27 D-type flip-flop(s).
@@ -158,7 +149,7 @@ Synthesizing Unit <clock_divider>.
 Unit <clock_divider> synthesized.
 
 Synthesizing Unit <debouncer>.
-    Related source file is "C:\Users\patri\Documents\GitHub\CDA4203L-TeamLGSB\Lab 4\Sample divider and debouncer\debouncer.v".
+    Related source file is "C:\Xilinx\CDA 4203L\Lab4\debouncer.v".
     Found 1-bit register for signal <sync2>.
     Found 1-bit register for signal <sync3>.
     Found 1-bit register for signal <clock_div_prev>.
@@ -175,10 +166,23 @@ Synthesizing Unit <FSM>.
     Found 1-bit register for signal <giveSoda>.
     Found 1-bit register for signal <giveDiet>.
     Found 5-bit register for signal <curr_state>.
-    Found 5-bit 15-to-1 multiplexer for signal <_n0138> created at line 64.
+    Found finite state machine <FSM_0> for signal <curr_state>.
+    -----------------------------------------------------------------------
+    | States             | 18                                             |
+    | Transitions        | 59                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 8                                              |
+    | Clock              | CLK (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00000                                          |
+    | Power Up State     | 00000                                          |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
     Summary:
-	inferred   8 D-type flip-flop(s).
-	inferred  36 Multiplexer(s).
+	inferred   3 D-type flip-flop(s).
+	inferred   1 Finite State Machine(s).
 Unit <FSM> synthesized.
 
 =========================================================================
@@ -187,15 +191,12 @@ HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  26-bit adder                                          : 1
-# Registers                                            : 36
- 1-bit register                                        : 34
+# Registers                                            : 23
+ 1-bit register                                        : 22
  26-bit register                                       : 1
- 5-bit register                                        : 1
-# Multiplexers                                         : 37
- 1-bit 2-to-1 multiplexer                              : 4
+# Multiplexers                                         : 1
  26-bit 2-to-1 multiplexer                             : 1
- 5-bit 15-to-1 multiplexer                             : 1
- 5-bit 2-to-1 multiplexer                              : 31
+# FSMs                                                 : 1
 
 =========================================================================
 
@@ -214,27 +215,44 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # Counters                                             : 1
  26-bit up counter                                     : 1
-# Registers                                            : 39
- Flip-Flops                                            : 39
-# Multiplexers                                         : 36
- 1-bit 2-to-1 multiplexer                              : 4
- 5-bit 15-to-1 multiplexer                             : 1
- 5-bit 2-to-1 multiplexer                              : 31
+# Registers                                            : 22
+ Flip-Flops                                            : 22
+# FSMs                                                 : 1
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <vending_machine/deb_d/clock_div_prev> in Unit <lab_board> is equivalent to the following 4 FFs/Latches, which will be removed : <vending_machine/deb_s/clock_div_prev> <vending_machine/deb_quarter/clock_div_prev> <vending_machine/deb_dime/clock_div_prev> <vending_machine/deb_nickel/clock_div_prev> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Moore/FSM_0> on signal <curr_state[1:5]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00000 | 00000
+ 00001 | 00001
+ 00010 | 00010
+ 00101 | 00101
+ 00011 | 00011
+ 00110 | 00110
+ 00100 | 00100
+ 00111 | 00111
+ 01000 | 01000
+ 01001 | 01001
+ 01010 | 01010
+ 01011 | 01011
+ 01100 | 01100
+ 01101 | 01101
+ 10011 | 10011
+ 10010 | 10010
+ 10001 | 10001
+ 10000 | 10000
+-------------------
+INFO:Xst:2261 - The FF/Latch <deb_dime/clock_div_prev> in Unit <lab_board> is equivalent to the following 2 FFs/Latches, which will be removed : <deb_nickel/clock_div_prev> <deb_quarter/clock_div_prev> 
 
 Optimizing unit <lab_board> ...
 
 Optimizing unit <FSM> ...
-WARNING:Xst:1710 - FF/Latch <change> (without init value) has a constant value of 0 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <change> (without init value) has a constant value of 0 in block <FSM>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vending_machine/Moore/curr_state_4> has a constant value of 0 in block <lab_board>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vending_machine/clk_divider/count_25> has a constant value of 0 in block <lab_board>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -243,21 +261,19 @@ Found area constraint ratio of 100 (+ 5) on block lab_board, actual ratio is 0.
 Final Macro Processing ...
 
 Processing Unit <lab_board> :
-	Found 2-bit shift register for signal <vending_machine/deb_d/sync2>.
-	Found 2-bit shift register for signal <vending_machine/deb_s/sync2>.
-	Found 2-bit shift register for signal <vending_machine/deb_quarter/sync2>.
-	Found 2-bit shift register for signal <vending_machine/deb_dime/sync2>.
-	Found 2-bit shift register for signal <vending_machine/deb_nickel/sync2>.
+	Found 2-bit shift register for signal <deb_dime/sync2>.
+	Found 2-bit shift register for signal <deb_nickel/sync2>.
+	Found 2-bit shift register for signal <deb_quarter/sync2>.
 Unit <lab_board> processed.
 
 =========================================================================
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 48
- Flip-Flops                                            : 48
-# Shift Registers                                      : 5
- 2-bit shift register                                  : 5
+# Registers                                            : 45
+ Flip-Flops                                            : 45
+# Shift Registers                                      : 3
+ 2-bit shift register                                  : 3
 
 =========================================================================
 
@@ -280,26 +296,25 @@ Top Level Output File Name         : lab_board.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 135
+# BELS                             : 147
 #      GND                         : 1
 #      INV                         : 1
-#      LUT1                        : 24
-#      LUT2                        : 33
+#      LUT1                        : 25
+#      LUT2                        : 29
 #      LUT3                        : 3
-#      LUT4                        : 1
-#      LUT5                        : 3
-#      LUT6                        : 17
-#      MUXCY                       : 24
-#      MUXF7                       : 2
+#      LUT4                        : 2
+#      LUT5                        : 11
+#      LUT6                        : 23
+#      MUXCY                       : 25
 #      VCC                         : 1
-#      XORCY                       : 25
-# FlipFlops/Latches                : 53
-#      FD                          : 20
-#      FDC                         : 26
-#      FDE                         : 5
-#      FDR                         : 2
-# Shift Registers                  : 5
-#      SRLC16E                     : 5
+#      XORCY                       : 26
+# FlipFlops/Latches                : 48
+#      FD                          : 14
+#      FDC                         : 27
+#      FDE                         : 3
+#      FDR                         : 4
+# Shift Registers                  : 3
+#      SRLC16E                     : 3
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 9
@@ -313,17 +328,17 @@ Selected Device : 6slx45csg484-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              53  out of  54576     0%  
- Number of Slice LUTs:                   87  out of  27288     0%  
-    Number used as Logic:                82  out of  27288     0%  
-    Number used as Memory:                5  out of   6408     0%  
-       Number used as SRL:                5
+ Number of Slice Registers:              48  out of  54576     0%  
+ Number of Slice LUTs:                   97  out of  27288     0%  
+    Number used as Logic:                94  out of  27288     0%  
+    Number used as Memory:                3  out of   6408     0%  
+       Number used as SRL:                3
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     97
-   Number with an unused Flip Flop:      44  out of     97    45%  
-   Number with an unused LUT:            10  out of     97    10%  
-   Number of fully used LUT-FF pairs:    43  out of     97    44%  
+ Number of LUT Flip Flop pairs used:    102
+   Number with an unused Flip Flop:      54  out of    102    52%  
+   Number with an unused LUT:             5  out of    102     4%  
+   Number of fully used LUT-FF pairs:    43  out of    102    42%  
    Number of unique control sets:         5
 
 IO Utilization: 
@@ -351,12 +366,12 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+-----------------------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)                   | Load  |
------------------------------------+-----------------------------------------+-------+
-CLK                                | BUFGP                                   | 52    |
-vending_machine/clk_divider/clk_div| NONE(vending_machine/Moore/curr_state_3)| 6     |
------------------------------------+-----------------------------------------+-------+
+-----------------------------------+--------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)          | Load  |
+-----------------------------------+--------------------------------+-------+
+CLK                                | BUFGP                          | 43    |
+clk_divider/clk_div                | NONE(Moore/curr_state_FSM_FFd2)| 8     |
+-----------------------------------+--------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -367,9 +382,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.947ns (Maximum Frequency: 253.383MHz)
-   Minimum input arrival time before clock: 4.910ns
-   Maximum output required time after clock: 3.597ns
+   Minimum period: 3.964ns (Maximum Frequency: 252.296MHz)
+   Minimum input arrival time before clock: 4.321ns
+   Maximum output required time after clock: 3.732ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -378,111 +393,111 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 3.947ns (frequency: 253.383MHz)
-  Total number of paths / destination ports: 1022 / 47
+  Clock period: 3.964ns (frequency: 252.296MHz)
+  Total number of paths / destination ports: 1082 / 40
 -------------------------------------------------------------------------
-Delay:               3.947ns (Levels of Logic = 3)
-  Source:            vending_machine/clk_divider/count_9 (FF)
-  Destination:       vending_machine/clk_divider/count_0 (FF)
+Delay:               3.964ns (Levels of Logic = 3)
+  Source:            clk_divider/count_22 (FF)
+  Destination:       clk_divider/count_0 (FF)
   Source Clock:      CLK rising
   Destination Clock: CLK rising
 
-  Data Path: vending_machine/clk_divider/count_9 to vending_machine/clk_divider/count_0
+  Data Path: clk_divider/count_22 to clk_divider/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.447   0.981  vending_machine/clk_divider/count_9 (vending_machine/clk_divider/count_9)
-     LUT6:I0->O            2   0.203   0.845  vending_machine/clk_divider/GND_3_o_GND_3_o_equal_7_o<25>4 (vending_machine/clk_divider/GND_3_o_GND_3_o_equal_7_o<25>3)
-     LUT6:I3->O           14   0.205   0.958  vending_machine/clk_divider/GND_3_o_GND_3_o_equal_7_o<25>5 (vending_machine/clk_divider/GND_3_o_GND_3_o_equal_7_o)
-     LUT2:I1->O            1   0.205   0.000  vending_machine/clk_divider/Mcount_count_eqn_01 (vending_machine/clk_divider/Mcount_count_eqn_0)
-     FDC:D                     0.102          vending_machine/clk_divider/count_0
+     FDC:C->Q              2   0.447   0.981  clk_divider/count_22 (clk_divider/count_22)
+     LUT6:I0->O            2   0.203   0.864  clk_divider/GND_2_o_GND_2_o_equal_7_o<25>6_SW0 (N15)
+     LUT6:I2->O           14   0.203   0.958  clk_divider/GND_2_o_GND_2_o_equal_7_o<25>6 (clk_divider/GND_2_o_GND_2_o_equal_7_o)
+     LUT2:I1->O            1   0.205   0.000  clk_divider/Mcount_count_eqn_01 (clk_divider/Mcount_count_eqn_0)
+     FDC:D                     0.102          clk_divider/count_0
     ----------------------------------------
-    Total                      3.947ns (1.162ns logic, 2.785ns route)
-                                       (29.4% logic, 70.6% route)
+    Total                      3.964ns (1.160ns logic, 2.804ns route)
+                                       (29.3% logic, 70.7% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'vending_machine/clk_divider/clk_div'
-  Clock period: 3.307ns (frequency: 302.421MHz)
-  Total number of paths / destination ports: 36 / 6
+Timing constraint: Default period analysis for Clock 'clk_divider/clk_div'
+  Clock period: 3.488ns (frequency: 286.668MHz)
+  Total number of paths / destination ports: 106 / 8
 -------------------------------------------------------------------------
-Delay:               3.307ns (Levels of Logic = 3)
-  Source:            vending_machine/Moore/curr_state_2 (FF)
-  Destination:       vending_machine/Moore/curr_state_0 (FF)
-  Source Clock:      vending_machine/clk_divider/clk_div rising
-  Destination Clock: vending_machine/clk_divider/clk_div rising
+Delay:               3.488ns (Levels of Logic = 3)
+  Source:            Moore/curr_state_FSM_FFd2 (FF)
+  Destination:       Moore/curr_state_FSM_FFd3 (FF)
+  Source Clock:      clk_divider/clk_div rising
+  Destination Clock: clk_divider/clk_div rising
 
-  Data Path: vending_machine/Moore/curr_state_2 to vending_machine/Moore/curr_state_0
+  Data Path: Moore/curr_state_FSM_FFd2 to Moore/curr_state_FSM_FFd3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.447   0.651  vending_machine/Moore/curr_state_2 (vending_machine/Moore/curr_state_2)
-     LUT2:I1->O            4   0.205   0.912  vending_machine/Moore/Mmux_curr_state[4]_GND_5_o_mux_2_OUT31 (vending_machine/Moore/curr_state[4]_GND_5_o_mux_2_OUT<2>)
-     LUT6:I3->O            1   0.205   0.580  vending_machine/Moore/Mmux_curr_state[4]_curr_state[4]_select_93_OUT1_SW0 (N3)
-     LUT4:I3->O            1   0.205   0.000  vending_machine/Moore/Mmux_curr_state[4]_curr_state[4]_select_93_OUT1 (vending_machine/Moore/curr_state[4]_curr_state[4]_select_93_OUT<0>)
-     FD:D                      0.102          vending_machine/Moore/curr_state_0
+     FDR:C->Q             20   0.447   1.093  Moore/curr_state_FSM_FFd2 (Moore/curr_state_FSM_FFd2)
+     LUT5:I4->O            3   0.205   0.651  Moore/curr_state_FSM_FFd5-In42 (Moore/curr_state_FSM_FFd5-In4)
+     LUT6:I5->O            1   0.205   0.580  Moore/curr_state_FSM_FFd3-In3_SW0_F (N21)
+     LUT6:I5->O            1   0.205   0.000  Moore/curr_state_FSM_FFd3-In5 (Moore/curr_state_FSM_FFd3-In)
+     FDR:D                     0.102          Moore/curr_state_FSM_FFd3
     ----------------------------------------
-    Total                      3.307ns (1.164ns logic, 2.143ns route)
-                                       (35.2% logic, 64.8% route)
+    Total                      3.488ns (1.164ns logic, 2.324ns route)
+                                       (33.4% logic, 66.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 31 / 31
+  Total number of paths / destination ports: 30 / 30
 -------------------------------------------------------------------------
-Offset:              3.028ns (Levels of Logic = 1)
-  Source:            SW<5> (PAD)
-  Destination:       vending_machine/clk_divider/count_0 (FF)
+Offset:              2.986ns (Levels of Logic = 1)
+  Source:            SW<0> (PAD)
+  Destination:       clk_divider/count_0 (FF)
   Destination Clock: CLK rising
 
-  Data Path: SW<5> to vending_machine/clk_divider/count_0
+  Data Path: SW<0> to clk_divider/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            38   1.222   1.376  SW_5_IBUF (SW_5_IBUF)
-     FDC:CLR                   0.430          vending_machine/clk_divider/count_0
+     IBUF:I->O            35   1.222   1.334  SW_0_IBUF (SW_0_IBUF)
+     FDC:CLR                   0.430          clk_divider/count_0
     ----------------------------------------
-    Total                      3.028ns (1.652ns logic, 1.376ns route)
-                                       (54.5% logic, 45.5% route)
+    Total                      2.986ns (1.652ns logic, 1.334ns route)
+                                       (55.3% logic, 44.7% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'vending_machine/clk_divider/clk_div'
-  Total number of paths / destination ports: 21 / 6
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_divider/clk_div'
+  Total number of paths / destination ports: 36 / 11
 -------------------------------------------------------------------------
-Offset:              4.910ns (Levels of Logic = 4)
-  Source:            SW<5> (PAD)
-  Destination:       vending_machine/Moore/curr_state_0 (FF)
-  Destination Clock: vending_machine/clk_divider/clk_div rising
+Offset:              4.321ns (Levels of Logic = 4)
+  Source:            SW<2> (PAD)
+  Destination:       Moore/curr_state_FSM_FFd5 (FF)
+  Destination Clock: clk_divider/clk_div rising
 
-  Data Path: SW<5> to vending_machine/Moore/curr_state_0
+  Data Path: SW<2> to Moore/curr_state_FSM_FFd5
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            38   1.222   1.481  SW_5_IBUF (SW_5_IBUF)
-     LUT2:I0->O            4   0.203   0.912  vending_machine/Moore/Mmux_curr_state[4]_GND_5_o_mux_2_OUT31 (vending_machine/Moore/curr_state[4]_GND_5_o_mux_2_OUT<2>)
-     LUT6:I3->O            1   0.205   0.580  vending_machine/Moore/Mmux_curr_state[4]_curr_state[4]_select_93_OUT1_SW0 (N3)
-     LUT4:I3->O            1   0.205   0.000  vending_machine/Moore/Mmux_curr_state[4]_curr_state[4]_select_93_OUT1 (vending_machine/Moore/curr_state[4]_curr_state[4]_select_93_OUT<0>)
-     FD:D                      0.102          vending_machine/Moore/curr_state_0
+     IBUF:I->O             7   1.222   0.878  SW_2_IBUF (SW_2_IBUF)
+     LUT2:I0->O            1   0.203   0.684  Moore/curr_state_FSM_FFd5-In411_SW0 (N19)
+     LUT6:I4->O            1   0.203   0.827  Moore/curr_state_FSM_FFd5-In7_SW0 (N13)
+     LUT6:I2->O            1   0.203   0.000  Moore/curr_state_FSM_FFd5-In7 (Moore/curr_state_FSM_FFd5-In)
+     FDR:D                     0.102          Moore/curr_state_FSM_FFd5
     ----------------------------------------
-    Total                      4.910ns (1.937ns logic, 2.973ns route)
-                                       (39.5% logic, 60.5% route)
+    Total                      4.321ns (1.933ns logic, 2.388ns route)
+                                       (44.7% logic, 55.3% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'vending_machine/clk_divider/clk_div'
-  Total number of paths / destination ports: 2 / 2
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_divider/clk_div'
+  Total number of paths / destination ports: 3 / 3
 -------------------------------------------------------------------------
-Offset:              3.597ns (Levels of Logic = 1)
-  Source:            vending_machine/Moore/giveDiet (FF)
-  Destination:       LED<2> (PAD)
-  Source Clock:      vending_machine/clk_divider/clk_div rising
+Offset:              3.732ns (Levels of Logic = 1)
+  Source:            Moore/giveDiet (FF)
+  Destination:       LED<1> (PAD)
+  Source Clock:      clk_divider/clk_div rising
 
-  Data Path: vending_machine/Moore/giveDiet to LED<2>
+  Data Path: Moore/giveDiet to LED<1>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              1   0.447   0.579  vending_machine/Moore/giveDiet (vending_machine/Moore/giveDiet)
-     OBUF:I->O                 2.571          LED_2_OBUF (LED<2>)
+     FD:C->Q               5   0.447   0.714  Moore/giveDiet (Moore/giveDiet)
+     OBUF:I->O                 2.571          LED_1_OBUF (LED<1>)
     ----------------------------------------
-    Total                      3.597ns (3.018ns logic, 0.579ns route)
-                                       (83.9% logic, 16.1% route)
+    Total                      3.732ns (3.018ns logic, 0.714ns route)
+                                       (80.9% logic, 19.1% route)
 
 =========================================================================
 
@@ -494,29 +509,29 @@ Clock to Setup on destination clock CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK            |    3.947|         |         |         |
+CLK            |    3.964|         |         |         |
 ---------------+---------+---------+---------+---------+
 
-Clock to Setup on destination clock vending_machine/clk_divider/clk_div
------------------------------------+---------+---------+---------+---------+
-                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock                       |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
------------------------------------+---------+---------+---------+---------+
-CLK                                |    3.771|         |         |         |
-vending_machine/clk_divider/clk_div|    3.307|         |         |         |
------------------------------------+---------+---------+---------+---------+
+Clock to Setup on destination clock clk_divider/clk_div
+-------------------+---------+---------+---------+---------+
+                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock       |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-------------------+---------+---------+---------+---------+
+CLK                |    4.000|         |         |         |
+clk_divider/clk_div|    3.488|         |         |         |
+-------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.31 secs
+Total CPU time to Xst completion: 3.99 secs
  
 --> 
 
 Total memory usage is 4486144 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    4 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

@@ -161,12 +161,10 @@ always @(posedge CLK) begin
 			state_45 : begin
 				if (soda == 1) begin
 					giveSoda = 1;
-					#1000
 					curr_state = init_state;
 				end
 				else if (diet == 1) begin
 					giveDiet = 1;
-					#1000
 					curr_state = init_state;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
@@ -176,103 +174,78 @@ always @(posedge CLK) begin
 			state_50 : begin
 				if (soda == 1) begin
 					giveSoda = 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_45;
+					curr_state = state_45inter;
 				end
 				else if (diet == 1) begin
 					giveDiet= 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_45;
+					curr_state = state_45inter;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_45;
+					curr_state = state_45inter;
 				 end
 			end
 			state_55 : begin
 				if (soda == 1) begin
 					giveSoda = 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_50;
+					curr_state = state_50inter;
 				end
 				else if (diet == 1) begin
 					giveDiet= 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_50;
+					curr_state = state_50inter;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_50;
+					curr_state = state_50inter;
 				end
 			end
 			state_60 : begin
 				if (soda == 1) begin
 					giveSoda = 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_55;
+					curr_state = state_55inter;
 				end
 				else if (diet == 1) begin
 					giveDiet= 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_55;
+					curr_state = state_55inter;
 				end
 				else if (giveDiet == 1 || giveSoda == 1) begin
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_55;
+					curr_state = state_55inter;
 				end
 			end
 			state_65 : begin
 				if (soda == 1) begin
 					giveSoda = 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_60;
+					curr_state = state_60inter;
 				end
 				else if (diet == 1) begin
 					giveDiet= 1;
-					#1000;
 					change = 1;
-					#1000;
-					change = 0;
-					#1000;
-					curr_state = state_60;
+					curr_state = state_60inter;
 				end
+			end
+			state_60inter : begin
+				change = 0;
+				curr_state = state_60;
+			end
+			state_55inter : begin
+				change = 0;
+				curr_state = state_55;
+			end
+			state_50inter : begin
+				change = 0;
+				curr_state = state_50;
+			end
+			state_45inter : begin
+				change = 0;
+				curr_state = state_45;
 			end
 		endcase
 	end

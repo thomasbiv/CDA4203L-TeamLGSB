@@ -93,7 +93,7 @@ module vending_machine_testbench;
 		soda = 1;
 		#2500;
 		soda = 0;
-		/*#10300;
+		/*#1030;
 		qu = 1;
 		#2000;
 		qu = 0;

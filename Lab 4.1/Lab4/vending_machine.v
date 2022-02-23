@@ -53,7 +53,7 @@ module vending_machine(ni, di, qu, soda, diet, change, CLK, rst, giveSoda, giveD
 			.out(deb_di)
 	);
 	
-	/*debouncer deb_s(
+	debouncer deb_s(
 			.clk(CLK),
 			.clock_div(clk_D),
 			.in(soda),
@@ -65,7 +65,7 @@ module vending_machine(ni, di, qu, soda, diet, change, CLK, rst, giveSoda, giveD
 			.clock_div(clk_D),
 			.in(diet),
 			.out(deb_diet)
-	);*/
+	);
 
 	FSM Moore(
 			.ni(deb_ni), 
@@ -76,8 +76,8 @@ module vending_machine(ni, di, qu, soda, diet, change, CLK, rst, giveSoda, giveD
 			.giveDiet(giveDiet), 
 			.change(change), 
 			.CLK(clk_D),
-			.soda(soda),
-			.diet(diet)
+			.soda(deb_soda),
+			.diet(deb_diet)
 	);
 	
 endmodule
