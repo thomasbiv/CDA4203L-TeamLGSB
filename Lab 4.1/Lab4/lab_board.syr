@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: lab_board.prj
 
@@ -111,7 +111,6 @@ Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\debouncer.v" into library work
 Parsing module <debouncer>.
 Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\clock_divider.v" into library work
 Parsing module <clock_divider>.
-WARNING:HDLCompiler:568 - "C:\Xilinx\CDA 4203L\Lab4\clock_divider.v" Line 10: Constant value is truncated to fit in <26> bits.
 Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab4\lab_board.v" into library work
 Parsing module <lab_board>.
 
@@ -253,6 +252,7 @@ INFO:Xst:2261 - The FF/Latch <deb_dime/clock_div_prev> in Unit <lab_board> is eq
 Optimizing unit <lab_board> ...
 
 Optimizing unit <FSM> ...
+WARNING:Xst:1293 - FF/Latch <clk_divider/count_25> has a constant value of 0 in block <lab_board>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -270,8 +270,8 @@ Unit <lab_board> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 45
- Flip-Flops                                            : 45
+# Registers                                            : 44
+ Flip-Flops                                            : 44
 # Shift Registers                                      : 3
  2-bit shift register                                  : 3
 
@@ -296,21 +296,21 @@ Top Level Output File Name         : lab_board.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 147
+# BELS                             : 143
 #      GND                         : 1
 #      INV                         : 1
-#      LUT1                        : 25
-#      LUT2                        : 29
+#      LUT1                        : 24
+#      LUT2                        : 28
 #      LUT3                        : 3
 #      LUT4                        : 2
-#      LUT5                        : 11
-#      LUT6                        : 23
-#      MUXCY                       : 25
+#      LUT5                        : 12
+#      LUT6                        : 22
+#      MUXCY                       : 24
 #      VCC                         : 1
-#      XORCY                       : 26
-# FlipFlops/Latches                : 48
+#      XORCY                       : 25
+# FlipFlops/Latches                : 47
 #      FD                          : 14
-#      FDC                         : 27
+#      FDC                         : 26
 #      FDE                         : 3
 #      FDR                         : 4
 # Shift Registers                  : 3
@@ -328,17 +328,17 @@ Selected Device : 6slx45csg484-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              48  out of  54576     0%  
- Number of Slice LUTs:                   97  out of  27288     0%  
-    Number used as Logic:                94  out of  27288     0%  
+ Number of Slice Registers:              47  out of  54576     0%  
+ Number of Slice LUTs:                   95  out of  27288     0%  
+    Number used as Logic:                92  out of  27288     0%  
     Number used as Memory:                3  out of   6408     0%  
        Number used as SRL:                3
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    102
-   Number with an unused Flip Flop:      54  out of    102    52%  
-   Number with an unused LUT:             5  out of    102     4%  
-   Number of fully used LUT-FF pairs:    43  out of    102    42%  
+ Number of LUT Flip Flop pairs used:    100
+   Number with an unused Flip Flop:      53  out of    100    53%  
+   Number with an unused LUT:             5  out of    100     5%  
+   Number of fully used LUT-FF pairs:    42  out of    100    42%  
    Number of unique control sets:         5
 
 IO Utilization: 
@@ -369,7 +369,7 @@ Clock Information:
 -----------------------------------+--------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)          | Load  |
 -----------------------------------+--------------------------------+-------+
-CLK                                | BUFGP                          | 43    |
+CLK                                | BUFGP                          | 42    |
 clk_divider/clk_div                | NONE(Moore/curr_state_FSM_FFd2)| 8     |
 -----------------------------------+--------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -382,7 +382,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.964ns (Maximum Frequency: 252.296MHz)
+   Minimum period: 3.947ns (Maximum Frequency: 253.383MHz)
    Minimum input arrival time before clock: 4.321ns
    Maximum output required time after clock: 3.732ns
    Maximum combinational path delay: No path found
@@ -393,27 +393,27 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 3.964ns (frequency: 252.296MHz)
-  Total number of paths / destination ports: 1082 / 40
+  Clock period: 3.947ns (frequency: 253.383MHz)
+  Total number of paths / destination ports: 1004 / 39
 -------------------------------------------------------------------------
-Delay:               3.964ns (Levels of Logic = 3)
-  Source:            clk_divider/count_22 (FF)
+Delay:               3.947ns (Levels of Logic = 3)
+  Source:            clk_divider/count_9 (FF)
   Destination:       clk_divider/count_0 (FF)
   Source Clock:      CLK rising
   Destination Clock: CLK rising
 
-  Data Path: clk_divider/count_22 to clk_divider/count_0
+  Data Path: clk_divider/count_9 to clk_divider/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.447   0.981  clk_divider/count_22 (clk_divider/count_22)
-     LUT6:I0->O            2   0.203   0.864  clk_divider/GND_2_o_GND_2_o_equal_7_o<25>6_SW0 (N15)
-     LUT6:I2->O           14   0.203   0.958  clk_divider/GND_2_o_GND_2_o_equal_7_o<25>6 (clk_divider/GND_2_o_GND_2_o_equal_7_o)
+     FDC:C->Q              2   0.447   0.981  clk_divider/count_9 (clk_divider/count_9)
+     LUT6:I0->O            2   0.203   0.845  clk_divider/GND_2_o_GND_2_o_equal_7_o<25>4 (clk_divider/GND_2_o_GND_2_o_equal_7_o<25>3)
+     LUT6:I3->O           14   0.205   0.958  clk_divider/GND_2_o_GND_2_o_equal_7_o<25>5 (clk_divider/GND_2_o_GND_2_o_equal_7_o)
      LUT2:I1->O            1   0.205   0.000  clk_divider/Mcount_count_eqn_01 (clk_divider/Mcount_count_eqn_0)
      FDC:D                     0.102          clk_divider/count_0
     ----------------------------------------
-    Total                      3.964ns (1.160ns logic, 2.804ns route)
-                                       (29.3% logic, 70.7% route)
+    Total                      3.947ns (1.162ns logic, 2.785ns route)
+                                       (29.4% logic, 70.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_divider/clk_div'
@@ -432,7 +432,7 @@ Delay:               3.488ns (Levels of Logic = 3)
     ----------------------------------------  ------------
      FDR:C->Q             20   0.447   1.093  Moore/curr_state_FSM_FFd2 (Moore/curr_state_FSM_FFd2)
      LUT5:I4->O            3   0.205   0.651  Moore/curr_state_FSM_FFd5-In42 (Moore/curr_state_FSM_FFd5-In4)
-     LUT6:I5->O            1   0.205   0.580  Moore/curr_state_FSM_FFd3-In3_SW0_F (N21)
+     LUT6:I5->O            1   0.205   0.580  Moore/curr_state_FSM_FFd3-In3_SW0_F (N19)
      LUT6:I5->O            1   0.205   0.000  Moore/curr_state_FSM_FFd3-In5 (Moore/curr_state_FSM_FFd3-In)
      FDR:D                     0.102          Moore/curr_state_FSM_FFd3
     ----------------------------------------
@@ -441,9 +441,9 @@ Delay:               3.488ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 30 / 30
+  Total number of paths / destination ports: 29 / 29
 -------------------------------------------------------------------------
-Offset:              2.986ns (Levels of Logic = 1)
+Offset:              2.972ns (Levels of Logic = 1)
   Source:            SW<0> (PAD)
   Destination:       clk_divider/count_0 (FF)
   Destination Clock: CLK rising
@@ -452,11 +452,11 @@ Offset:              2.986ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            35   1.222   1.334  SW_0_IBUF (SW_0_IBUF)
+     IBUF:I->O            34   1.222   1.320  SW_0_IBUF (SW_0_IBUF)
      FDC:CLR                   0.430          clk_divider/count_0
     ----------------------------------------
-    Total                      2.986ns (1.652ns logic, 1.334ns route)
-                                       (55.3% logic, 44.7% route)
+    Total                      2.972ns (1.652ns logic, 1.320ns route)
+                                       (55.6% logic, 44.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_divider/clk_div'
@@ -472,7 +472,7 @@ Offset:              4.321ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             7   1.222   0.878  SW_2_IBUF (SW_2_IBUF)
-     LUT2:I0->O            1   0.203   0.684  Moore/curr_state_FSM_FFd5-In411_SW0 (N19)
+     LUT2:I0->O            1   0.203   0.684  Moore/curr_state_FSM_FFd5-In411_SW0 (N17)
      LUT6:I4->O            1   0.203   0.827  Moore/curr_state_FSM_FFd5-In7_SW0 (N13)
      LUT6:I2->O            1   0.203   0.000  Moore/curr_state_FSM_FFd5-In7 (Moore/curr_state_FSM_FFd5-In)
      FDR:D                     0.102          Moore/curr_state_FSM_FFd5
@@ -509,7 +509,7 @@ Clock to Setup on destination clock CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK            |    3.964|         |         |         |
+CLK            |    3.947|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clk_divider/clk_div
@@ -524,8 +524,8 @@ clk_divider/clk_div|    3.488|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.99 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.39 secs
  
 --> 
 

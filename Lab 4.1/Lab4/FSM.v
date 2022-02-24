@@ -1,17 +1,17 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Deez
+// Engineer: Nuts
 // 
 // Create Date:    15:38:27 02/15/2022 
-// Design Name: 
+// Design Name: Vending Machine
 // Module Name:    FSM 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
+// Project Name: Vend dis stuff
+// Target Devices: All of them
+// Tool versions: None
+// Description: It just works.
 //
-// Dependencies: 
+// Dependencies: Your mom
 //
 // Revision: 
 // Revision 0.01 - File Created
