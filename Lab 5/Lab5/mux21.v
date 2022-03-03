@@ -20,12 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 module mux21(mux_in_a, mux_in_b, mux_out, mux_sel);
 
-input [3:0]mux_in_a;
-input [3:0]mux_in_b;
+input [7:0]mux_in_a;
+input [7:0]mux_in_b;
 input mux_sel;
-output [3:0]mux_out;
+output [7:0]mux_out;
 
-reg [3:0]mux_out;
+reg [7:0]mux_out;
 
 always @(mux_sel or mux_in_a or mux_in_b)
 begin

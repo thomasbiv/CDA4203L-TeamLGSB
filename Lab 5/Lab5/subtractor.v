@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 module subtractor(X, Y, result);
 
-input [3:0] X;
-input [3:0] Y;
+input [7:0] X;
+input [7:0] Y;
 
-output [3:0] result;
+output [7:0] result;
 
 assign result = X - Y;
 

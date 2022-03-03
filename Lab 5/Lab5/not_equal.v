@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module not_equal(X, Y, x_neq_y);
 
-input [3:0] X;
-input [3:0] Y;
+input [7:0] X;
+input [7:0] Y;
 output x_neq_y;
 
 assign x_neq_y = (X != Y) ? 1'b1:1'b0;

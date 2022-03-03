@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 // Wrapper for the entire datapath of the GCD module.
-module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, x_i, y_i, d_o, clk, reset);
+module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, clk, reset);
 
 // Inputs and outputs.
 input x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset;
@@ -28,11 +28,12 @@ input [3:0] x_i;
 input [3:0] y_i;
 
 output [3:0] d_o;
+output x_lt_y, x_neq_y;
 
 // Wiring for each module in the datapath.
 wire x_mux_wire, y_mux_wire, d_mux_wire;
 wire x_dff_wire, y_dff_wire, d_o_dff_wire;
-wire x_lt_y_wire, x_neq_y_wire, x_sub_y, y_sub_x;
+wire x_sub_y, y_sub_x;
 
 	dff x_reg(
 		.clk(clk),
@@ -61,13 +62,13 @@ wire x_lt_y_wire, x_neq_y_wire, x_sub_y, y_sub_x;
 	less_than lt(
 		.X(x_dff_wire),
 		.Y(y_dff_wire),
-		.x_lt_y(x_lt_y_wire)
+		.x_lt_y(x_lt_y)
 	);
 	
 	not_equal neq(
 		.X(x_dff_wire),
 		.Y(y_dff_wire),
-		.x_neq_y(x_neq_y_wire)
+		.x_neq_y(x_neq_y)
 	);
 	
 	subtractor sub_x_y(
@@ -89,7 +90,7 @@ wire x_lt_y_wire, x_neq_y_wire, x_sub_y, y_sub_x;
 		.mux_sel(x_sel)
 	);
 	
-	mux21 x_mux(
+	mux21 y_mux(
 		.mux_in_a(y_i),
 		.mux_in_b(y_sub_x),
 		.mux_out(y_mux_wire),
