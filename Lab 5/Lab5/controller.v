@@ -47,7 +47,7 @@ state_16 = 4'b1111;
 always @(posedge clk) begin
 
 	if (reset == 1) begin
-		curr_state = state_1;
+		curr_state = state_2;
 		x_ld = 0;
 		y_ld = 0;
 		x_sel = 0;
@@ -55,7 +55,7 @@ always @(posedge clk) begin
 		d_o_ld = 0;
 		done = 0;
 	end
-	else if (enable == 1)
+	else
 		case (curr_state)
 			state_1 : begin
 				done = 0;
@@ -81,7 +81,14 @@ always @(posedge clk) begin
 				x_ld = 0;
 				y_ld = 1;
 				y_sel = 0;
-				curr_state = state_5;
+				curr_state = state_15;
+			end
+			state_15 : begin
+				if (x_neq_y == 0) begin
+					curr_state = state_9;
+				end
+				else 
+					curr_state = state_5;
 			end
 			state_5 : begin
 				if (x_neq_y == 0) begin
@@ -90,6 +97,8 @@ always @(posedge clk) begin
 				else if (x_neq_y == 1) begin
 					curr_state = state_6;
 				end
+				else 
+					curr_state = state_5J;
 			end
 			state_6 : begin
 				if (x_lt_y == 0) begin
@@ -97,6 +106,9 @@ always @(posedge clk) begin
 				end
 				else if (x_lt_y == 1) begin
 					curr_state = state_7;
+				end
+				else if (x_neq_y == 1) begin
+					curr_state = state_6J;
 				end
 			end
 			state_7 : begin
@@ -112,6 +124,7 @@ always @(posedge clk) begin
 			state_6J : begin
 				x_ld = 0;
 				y_ld = 0;
+				curr_state = state_5J;
 			end
 			state_5J : begin
 				curr_state = state_5;

@@ -30,24 +30,36 @@
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="controller_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="controller_testbench_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="controller_testbench_stx_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="datapath_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="datapath_stx_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="datapath_testbench_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="dff_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="dff_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="less_than_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="less_than_testbench_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="not_equal_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="not_equal_testbench_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="subtractor_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="subtractor_testbench_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1646529515" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646534522" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1646534522">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1646529515" xil_pn:in_ck="3950407254918467381" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646536832" xil_pn:in_ck="6414938459326090800" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1646536832">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="GCD_module.v"/>
       <outfile xil_pn:name="GCD_module_testbench.v"/>
       <outfile xil_pn:name="clock_divider.v"/>
@@ -58,25 +70,33 @@
       <outfile xil_pn:name="debouncer.v"/>
       <outfile xil_pn:name="dff.v"/>
       <outfile xil_pn:name="less_than.v"/>
+      <outfile xil_pn:name="less_than_testbench.v"/>
       <outfile xil_pn:name="mux21.v"/>
       <outfile xil_pn:name="not_equal.v"/>
+      <outfile xil_pn:name="not_equal_testbench.v"/>
       <outfile xil_pn:name="subtractor.v"/>
+      <outfile xil_pn:name="subtractor_testbench.v"/>
     </transform>
-    <transform xil_pn:end_ts="1646529515" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-2363598113931546327" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646536832" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-2363598113931546327" xil_pn:start_ts="1646536832">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1646529515" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-2698307954218304793" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646536832" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-2698307954218304793" xil_pn:start_ts="1646536832">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1646529515" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6981900361844918240" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646534523" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6981900361844918240" xil_pn:start_ts="1646534523">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1646529515" xil_pn:in_ck="3950407254918467381" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646536832" xil_pn:in_ck="6414938459326090800" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1646536832">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="GCD_module.v"/>
       <outfile xil_pn:name="GCD_module_testbench.v"/>
       <outfile xil_pn:name="clock_divider.v"/>
@@ -87,13 +107,22 @@
       <outfile xil_pn:name="debouncer.v"/>
       <outfile xil_pn:name="dff.v"/>
       <outfile xil_pn:name="less_than.v"/>
+      <outfile xil_pn:name="less_than_testbench.v"/>
       <outfile xil_pn:name="mux21.v"/>
       <outfile xil_pn:name="not_equal.v"/>
+      <outfile xil_pn:name="not_equal_testbench.v"/>
       <outfile xil_pn:name="subtractor.v"/>
+      <outfile xil_pn:name="subtractor_testbench.v"/>
     </transform>
-    <transform xil_pn:end_ts="1646529517" xil_pn:in_ck="3950407254918467381" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="1011850863963273489" xil_pn:start_ts="1646529515">
+    <transform xil_pn:end_ts="1646536835" xil_pn:in_ck="6414938459326090800" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="1011850863963273489" xil_pn:start_ts="1646536832">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="GCD_module_testbench_beh.prj"/>
       <outfile xil_pn:name="GCD_module_testbench_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -101,9 +130,13 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1646529517" xil_pn:in_ck="2797738484148057189" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="5218009323383541972" xil_pn:start_ts="1646529517">
+    <transform xil_pn:end_ts="1646536835" xil_pn:in_ck="3862177225868446603" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="5218009323383541972" xil_pn:start_ts="1646536835">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="GCD_module_testbench_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>

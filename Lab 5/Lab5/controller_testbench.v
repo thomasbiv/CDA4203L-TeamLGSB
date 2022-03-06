@@ -54,6 +54,11 @@ module controller_testbench;
 		.x_lt_y(x_lt_y)
 	);
 
+	always begin
+		clk = ~clk;
+		#10;
+	end
+
 	initial begin
 		// Initialize Inputs
 		enable = 0;
@@ -65,7 +70,7 @@ module controller_testbench;
 
 		// Wait 100 ns for global reset to finish
 		#100;
-        
+      reset = 1;
 		// Add stimulus here
 
 	end

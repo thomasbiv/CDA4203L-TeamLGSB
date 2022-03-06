@@ -38,6 +38,7 @@ module datapath_testbench;
 
 	// Outputs
 	wire [7:0] d_o;
+	wire [7:0] x_i_o;
 
 	// Instantiate the Unit Under Test (UUT)
 	datapath uut (
@@ -54,7 +55,7 @@ module datapath_testbench;
 		.d_o(d_o), 
 		.clk(clk), 
 		.reset(reset)
-	);
+		);
 
 	initial begin
 		// Initialize Inputs
@@ -71,6 +72,10 @@ module datapath_testbench;
 
 		// Wait 100 ns for global reset to finish
 		#100;
+		reset = 1;
+		#10;
+		reset = 0;
+		#10;
         
 		// Add stimulus here
 

@@ -56,23 +56,11 @@ module GCD_module_testbench;
 		DIP = 0;
 
 		// Wait 100 ns for global reset to finish
-		#100;
-		
-		BTN = 1;
-		
-		#100;
-		
-		BTN = 0;
-		
-		#100;
-		
 		SW = 10;
 		DIP = 5;
-		
-		#100;
-		
-		SW = 12;
-		DIP = 8;
+		BTN = 8;
+		#50;
+		BTN = 1;
 		
 		#100;
         

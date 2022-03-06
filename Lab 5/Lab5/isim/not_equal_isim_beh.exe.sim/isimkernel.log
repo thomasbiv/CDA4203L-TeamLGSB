@@ -1,0 +1,29 @@
+Command line:
+   not_equal_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  64136
+
+Sat Mar 05 22:18:06 2022
+
+
+ Elaboration Time: 0.21875 sec
+
+ Current Memory Usage: 5804.97 Meg
+
+ Total Signals          : 16
+ Total Nets             : 30
+ Total Signal Drivers   : 6
+ Total Blocks           : 2
+ Total Primitive Blocks : 2
+ Total Processes        : 7
+ Total Traceable Variables  : 18
+ Total Scalar Nets and Variables : 110
+Total Line Count : 15
+
+ Total Simulation Time: 0.21875 sec
+
+ Current Memory Usage: 5804.97 Meg
+
+Sat Mar 05 22:18:09 2022
+
