@@ -18,15 +18,16 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module GCD_module(LED, SW, clk, BTN);
+module GCD_module(LED, SW, clk, BTN, DIP);
 
-input [7:0] SW;
-input [7:0] DIP;
-input [3:0] BTN;
+	input [7:0] SW;
+	input [7:0] DIP;
+	input [3:0] BTN;
+	input clk;
 
-output [9:0] LED;
+	output [9:0] LED;
 
-wire x_ld, y_ld, x_sel, y_sel, d_o_ld, x_neq_y, x_lt_y, deb_rst, deb_st, clk_D;
+	wire x_ld, y_ld, x_sel, y_sel, d_o_ld, x_neq_y, x_lt_y, deb_rst, deb_st, clk_D;
 
 	clock_divider clk_divider(
 			.clk(clk),

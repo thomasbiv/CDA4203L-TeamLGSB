@@ -19,13 +19,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module controller(x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset, x_neq_y, x_lt_y, done);
+module controller(x_i, y_i, x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset, x_neq_y, x_lt_y, done);
 
 input enable, clk, reset, x_lt_y, x_neq_y;
 
-output [3:0] x_i;
-output [3:0] y_i;
-output x_ld, y_ld, x_sel, y_sel, d_o_ld, done;
+output reg [3:0] x_i;
+output reg [3:0] y_i;
+output reg x_ld, y_ld, x_sel, y_sel, d_o_ld, done;
 
 reg [3:0] curr_state = 4'b0000;
 
@@ -119,7 +119,7 @@ always @(posedge clk) begin
 				curr_state = state_5;
 			end
 			state_9 : begin
-				d_ld = 1;
+				d_o_ld = 1;
 				curr_state = state_done;
 			end
 			state_done : begin 

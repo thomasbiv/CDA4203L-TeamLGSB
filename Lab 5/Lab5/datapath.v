@@ -20,20 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 // Wrapper for the entire datapath of the GCD module.
-module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, clk, reset);
+module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, x_lt_y, x_neq_y, clk, reset, enable);
 
-// Inputs and outputs.
-input x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset;
-input [3:0] x_i;
-input [3:0] y_i;
+	// Inputs and outputs.
+	input x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset;
+	input [7:0] x_i;
+	input [7:0] y_i;
 
-output [3:0] d_o;
-output x_lt_y, x_neq_y;
+	output [7:0] d_o;
+	output x_lt_y, x_neq_y;
 
-// Wiring for each module in the datapath.
-wire x_mux_wire, y_mux_wire, d_mux_wire;
-wire x_dff_wire, y_dff_wire, d_o_dff_wire;
-wire x_sub_y, y_sub_x;
+	// Wiring for each module in the datapath.
+	wire x_mux_wire, y_mux_wire, d_mux_wire;
+	wire x_dff_wire, y_dff_wire, d_o_dff_wire;
+	wire x_sub_y, y_sub_x;
 
 	dff x_reg(
 		.clk(clk),
