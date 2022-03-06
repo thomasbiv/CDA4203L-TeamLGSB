@@ -1,50 +1,17 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_isim_beh.exe -prj C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_beh.prj work.GCD_module_testbench work.glbl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Xilinx/CDA 4203L/Lab5/dff_isim_beh.exe -prj C:/Xilinx/CDA 4203L/Lab5/dff_beh.prj work.dff work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/subtractor.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/not_equal.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/mux21.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/less_than.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/dff.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/debouncer.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/controller.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/clock_divider.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module.v" into library work
-Analyzing Verilog file "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench.v" into library work
+Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/dff.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:267 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 86: Cannot find port mux_sel on this module
-WARNING:HDLCompiler:267 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 93: Cannot find port mux_sel on this module
-WARNING:HDLCompiler:1016 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module.v" Line 52: Port x_lt_y is not connected to this instance
-WARNING:HDLCompiler:1016 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module.v" Line 65: Port x_i is not connected to this instance
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 87: Module <mux21> does not have a port named <mux_in_a>.
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 88: Module <mux21> does not have a port named <mux_in_b>.
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 89: Module <mux21> does not have a port named <mux_out>.
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 90: Module <mux21> does not have a port named <mux_sel>.
-WARNING:HDLCompiler:1016 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 86: Port q is not connected to this instance
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 94: Module <mux21> does not have a port named <mux_in_a>.
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 95: Module <mux21> does not have a port named <mux_in_b>.
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 96: Module <mux21> does not have a port named <mux_out>.
-ERROR:HDLCompiler:25 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 97: Module <mux21> does not have a port named <mux_sel>.
-WARNING:HDLCompiler:1016 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 93: Port q is not connected to this instance
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 48: Size mismatch in connection of port <d>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 49: Size mismatch in connection of port <q>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 56: Size mismatch in connection of port <d>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 57: Size mismatch in connection of port <q>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 81: Size mismatch in connection of port <X>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 82: Size mismatch in connection of port <Y>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 83: Size mismatch in connection of port <result>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module.v" Line 60: Size mismatch in connection of port <d_o>. Formal port size is 8-bit while actual signal size is 10-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 40: Size mismatch in connection of port <d>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 41: Size mismatch in connection of port <q>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 63: Size mismatch in connection of port <X>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 64: Size mismatch in connection of port <Y>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 69: Size mismatch in connection of port <X>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 70: Size mismatch in connection of port <Y>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 75: Size mismatch in connection of port <X>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 76: Size mismatch in connection of port <Y>. Formal port size is 8-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" Line 77: Size mismatch in connection of port <result>. Formal port size is 8-bit while actual signal size is 1-bit.
-ERROR:Simulator:778 - Static elaboration of top level Verilog design unit(s) in library work failed
+Completed static elaboration
+Compiling module dff
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: The system cannot find the path specified, "isim\dff_isim_beh.exe.sim\libPortability.dll".
+Compiled 2 Verilog Units
+Built simulation executable C:/Xilinx/CDA 4203L/Lab5/dff_isim_beh.exe
+Fuse Memory Usage: 27644 KB
+Fuse CPU Usage: 452 ms

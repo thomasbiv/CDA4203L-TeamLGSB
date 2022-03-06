@@ -31,9 +31,14 @@ module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, x_lt_y, x_neq_y
 	output x_lt_y, x_neq_y;
 
 	// Wiring for each module in the datapath.
-	wire x_mux_wire, y_mux_wire, d_mux_wire;
-	wire x_dff_wire, y_dff_wire, d_o_dff_wire;
-	wire x_sub_y, y_sub_x;
+	wire [7:0] x_mux_wire;
+	wire [7:0] y_mux_wire;
+	wire [7:0] d_mux_wire;
+	wire [7:0] x_dff_wire;
+	wire [7:0] y_dff_wire;
+	wire [7:0] d_o_dff_wire;
+	wire [7:0] x_sub_y;
+	wire [7:0]y_sub_x;
 
 	dff x_reg(
 		.clk(clk),

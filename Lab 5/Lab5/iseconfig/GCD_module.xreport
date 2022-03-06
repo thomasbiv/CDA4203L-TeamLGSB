@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2022-03-05T19:24:53</DateModified>
+  <DateModified>2022-03-05T19:34:43</DateModified>
   <ModuleName>GCD_module</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5/iseconfig/GCD_module.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/pc/Desktop/Other Projects/CDA4203L-TeamLGSB/Lab 5/Lab5\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Xilinx/CDA 4203L/Lab5/iseconfig/GCD_module.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Xilinx/CDA 4203L/Lab5\</ImplementationReportsDirectory>
   <DateInitialized>2022-03-05T10:29:22</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
