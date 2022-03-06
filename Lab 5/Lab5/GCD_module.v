@@ -56,8 +56,11 @@ module GCD_module(LED, SW, clk, BTN, DIP);
 		.y_sel(y_sel), 
 		.d_o_ld(d_o_ld), 
 		.x_i(SW), 
+		.x_lt_y(x_lt_y),
+		.x_neq_y(x_neq_y),
+		.enable(enable),
 		.y_i(DIP), 
-		.d_o(LED), 
+		.d_o(LED[7:0]), 
 		.clk(clk), 
 		.reset(BTN[3])
 	);

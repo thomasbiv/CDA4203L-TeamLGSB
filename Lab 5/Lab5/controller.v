@@ -19,12 +19,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module controller(x_i, y_i, x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset, x_neq_y, x_lt_y, done);
+module controller(x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset, x_neq_y, x_lt_y, done);
 
 input enable, clk, reset, x_lt_y, x_neq_y;
 
-output reg [3:0] x_i;
-output reg [3:0] y_i;
 output reg x_ld, y_ld, x_sel, y_sel, d_o_ld, done;
 
 reg [3:0] curr_state = 4'b0000;

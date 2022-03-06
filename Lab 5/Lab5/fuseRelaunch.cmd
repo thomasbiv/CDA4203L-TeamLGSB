@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Xilinx/CDA 4203L/Lab5/dff_isim_beh.exe" -prj "C:/Xilinx/CDA 4203L/Lab5/dff_beh.prj" "work.dff" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_isim_beh.exe" -prj "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_beh.prj" "GCD_module_testbench" "work.glbl" 

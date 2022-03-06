@@ -38,8 +38,6 @@ module controller_testbench;
 	wire x_sel;
 	wire y_sel;
 	wire d_o_ld;
-	wire [3:0] x_i;
-	wire [3:0] y_i;
 
 	// Instantiate the Unit Under Test (UUT)
 	controller uut (
@@ -49,9 +47,7 @@ module controller_testbench;
 		.y_sel(y_sel), 
 		.d_o_ld(d_o_ld), 
 		.enable(enable), 
-		.x_i(x_i), 
-		.y_i(y_i), 
-		.d_o(d_o), 
+		.done(done), 
 		.clk(clk), 
 		.reset(reset), 
 		.x_neq_y(x_neq_y), 

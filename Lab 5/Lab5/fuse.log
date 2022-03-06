@@ -1,17 +1,37 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Xilinx/CDA 4203L/Lab5/dff_isim_beh.exe -prj C:/Xilinx/CDA 4203L/Lab5/dff_beh.prj work.dff work.glbl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_isim_beh.exe -prj C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_beh.prj GCD_module_testbench work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/dff.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/subtractor.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/not_equal.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/mux21.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/less_than.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/dff.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/debouncer.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/datapath.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/controller.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/clock_divider.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module.v" into library work
+Analyzing Verilog file "C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
+Compiling module clock_divider
+Compiling module debouncer
 Compiling module dff
+Compiling module less_than
+Compiling module not_equal
+Compiling module subtractor
+Compiling module mux211
+Compiling module datapath
+Compiling module controller
+Compiling module GCD_module
+Compiling module GCD_module_testbench
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: The system cannot find the path specified, "isim\dff_isim_beh.exe.sim\libPortability.dll".
-Compiled 2 Verilog Units
-Built simulation executable C:/Xilinx/CDA 4203L/Lab5/dff_isim_beh.exe
-Fuse Memory Usage: 27644 KB
-Fuse CPU Usage: 452 ms
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 12 Verilog Units
+Built simulation executable C:/Users/J/Documents/GitHub/CDA4203L-TeamLGSB/Lab 5/Lab5/GCD_module_testbench_isim_beh.exe
+Fuse Memory Usage: 28220 KB
+Fuse CPU Usage: 358 ms

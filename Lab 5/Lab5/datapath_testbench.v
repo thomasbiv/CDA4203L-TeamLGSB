@@ -31,18 +31,20 @@ module datapath_testbench;
 	reg y_sel;
 	reg d_o_ld;
 	reg enable;
-	reg [3:0] x_i;
-	reg [3:0] y_i;
+	reg [7:0] x_i;
+	reg [7:0] y_i;
 	reg clk;
 	reg reset;
 
 	// Outputs
-	wire [3:0] d_o;
+	wire [7:0] d_o;
 
 	// Instantiate the Unit Under Test (UUT)
 	datapath uut (
 		.x_ld(x_ld), 
 		.y_ld(y_ld), 
+		.x_lt_y(x_lt_y),
+		.x_neq_y(x_neq_y),
 		.x_sel(x_sel), 
 		.y_sel(y_sel), 
 		.d_o_ld(d_o_ld), 

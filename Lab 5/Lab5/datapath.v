@@ -38,7 +38,7 @@ module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, x_lt_y, x_neq_y
 	wire [7:0] y_dff_wire;
 	wire [7:0] d_o_dff_wire;
 	wire [7:0] x_sub_y;
-	wire [7:0]y_sub_x;
+	wire [7:0] y_sub_x;
 
 	dff x_reg(
 		.clk(clk),
@@ -88,14 +88,14 @@ module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, x_lt_y, x_neq_y
 		.result(y_sub_x) 
 	);
 	
-	mux21 x_mux(
+	mux211 x_mux(
 		.mux_in_a(x_i),
 		.mux_in_b(x_sub_y),
 		.mux_out(x_mux_wire), 
 		.mux_sel(x_sel)
 	);
 	
-	mux21 y_mux(
+	mux211 y_mux(
 		.mux_in_a(y_i),
 		.mux_in_b(y_sub_x),
 		.mux_out(y_mux_wire),

@@ -1,0 +1,8 @@
+verilog work "subtractor.v"
+verilog work "not_equal.v"
+verilog work "mux21.v"
+verilog work "less_than.v"
+verilog work "dff.v"
+verilog work "datapath.v"
+verilog work "datapath_testbench.v"
+verilog work "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
