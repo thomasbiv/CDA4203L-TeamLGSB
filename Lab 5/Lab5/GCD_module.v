@@ -71,9 +71,9 @@ module GCD_module(LED, SW, clk, BTN, DIP);
 		.x_sel(x_sel), 
 		.y_sel(y_sel), 
 		.d_o_ld(d_o_ld), 
-		.enable(BTN[0]),  
+		.enable(deb_st),  
 		.clk(clk), 
-		.reset(BTN[3]), 
+		.reset(deb_rst), 
 		.x_neq_y(x_neq_y), 
 		.x_lt_y(x_lt_y),
 		.done(LED[9])
