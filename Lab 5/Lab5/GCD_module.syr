@@ -1,0 +1,517 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: GCD_module.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "GCD_module.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "GCD_module"
+Output Format                      : NGC
+Target Device                      : xc6slx45-3-csg484
+
+---- Source Options
+Top Module Name                    : GCD_module
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\subtractor.v" into library work
+Parsing module <subtractor>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\not_equal.v" into library work
+Parsing module <not_equal>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\mux21.v" into library work
+Parsing module <mux211>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\less_than.v" into library work
+Parsing module <less_than>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\dff.v" into library work
+Parsing module <dff>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\debouncer.v" into library work
+Parsing module <debouncer>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\datapath.v" into library work
+Parsing module <datapath>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\controller.v" into library work
+Parsing module <controller>.
+Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" into library work
+Parsing module <GCD_module>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <GCD_module>.
+
+Elaborating module <debouncer>.
+WARNING:HDLCompiler:1127 - "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" Line 37: Assignment to deb_rst ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" Line 44: Assignment to deb_st ignored, since the identifier is never used
+
+Elaborating module <datapath>.
+
+Elaborating module <dff>.
+
+Elaborating module <less_than>.
+
+Elaborating module <not_equal>.
+
+Elaborating module <subtractor>.
+
+Elaborating module <mux211>.
+
+Elaborating module <controller>.
+WARNING:Xst:2972 - "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" line 33. All outputs of instance <deb_reset> of block <debouncer> are unconnected in block <GCD_module>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" line 40. All outputs of instance <deb_start> of block <debouncer> are unconnected in block <GCD_module>. Underlying logic will be removed.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <GCD_module>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v".
+WARNING:Xst:647 - Input <BTN<2:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" line 33: Output port <out> of the instance <deb_reset> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab5\GCD_module.v" line 40: Output port <out> of the instance <deb_start> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <GCD_module> synthesized.
+
+Synthesizing Unit <datapath>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\datapath.v".
+WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <datapath> synthesized.
+
+Synthesizing Unit <dff>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\dff.v".
+    Found 8-bit register for signal <q>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+Unit <dff> synthesized.
+
+Synthesizing Unit <less_than>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\less_than.v".
+    Found 8-bit comparator greater for signal <x_lt_y> created at line 28
+    Summary:
+	inferred   1 Comparator(s).
+Unit <less_than> synthesized.
+
+Synthesizing Unit <not_equal>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\not_equal.v".
+    Found 8-bit comparator not equal for signal <n0000> created at line 27
+    Summary:
+	inferred   1 Comparator(s).
+Unit <not_equal> synthesized.
+
+Synthesizing Unit <subtractor>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\subtractor.v".
+    Found 8-bit subtractor for signal <result> created at line 28.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <subtractor> synthesized.
+
+Synthesizing Unit <mux211>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\mux21.v".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux211> synthesized.
+
+Synthesizing Unit <controller>.
+    Related source file is "C:\Xilinx\CDA 4203L\Lab5\controller.v".
+    Found 1-bit register for signal <x_ld>.
+    Found 1-bit register for signal <y_ld>.
+    Found 1-bit register for signal <x_sel>.
+    Found 1-bit register for signal <y_sel>.
+    Found 1-bit register for signal <d_o_ld>.
+    Found 1-bit register for signal <done>.
+    Found 4-bit register for signal <curr_state>.
+    Found finite state machine <FSM_0> for signal <curr_state>.
+    -----------------------------------------------------------------------
+    | States             | 14                                             |
+    | Transitions        | 18                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 9                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (positive)                               |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 0001                                           |
+    | Power Up State     | 0000                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   6 D-type flip-flop(s).
+	inferred   1 Finite State Machine(s).
+Unit <controller> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 8-bit subtractor                                      : 2
+# Registers                                            : 9
+ 1-bit register                                        : 6
+ 8-bit register                                        : 3
+# Comparators                                          : 2
+ 8-bit comparator greater                              : 1
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 2
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <datapath>.
+The following registers are absorbed into accumulator <x_reg/q>: 1 register on signal <x_reg/q>.
+The following registers are absorbed into accumulator <y_reg/q>: 1 register on signal <y_reg/q>.
+Unit <datapath> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Accumulators                                         : 2
+ 8-bit down loadable accumulator                       : 2
+# Registers                                            : 14
+ Flip-Flops                                            : 14
+# Comparators                                          : 2
+ 8-bit comparator greater                              : 1
+ 8-bit comparator not equal                            : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <controls/FSM_0> on signal <curr_state[1:4]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0001  | 0001
+ 0000  | 0000
+ 0010  | 0010
+ 0011  | 0011
+ 0100  | 0100
+ 1110  | 1110
+ 1010  | 1010
+ 0110  | 0110
+ 1011  | 1011
+ 1001  | 1001
+ 0111  | 0111
+ 1000  | 1000
+ 0101  | 0101
+ 1101  | 1101
+-------------------
+
+Optimizing unit <GCD_module> ...
+
+Optimizing unit <datapath> ...
+
+Optimizing unit <controller> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block GCD_module, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 34
+ Flip-Flops                                            : 34
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : GCD_module.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 99
+#      INV                         : 1
+#      LUT2                        : 21
+#      LUT3                        : 6
+#      LUT4                        : 23
+#      LUT5                        : 7
+#      LUT6                        : 11
+#      MUXCY                       : 14
+#      XORCY                       : 16
+# FlipFlops/Latches                : 34
+#      FD                          : 1
+#      FDR                         : 9
+#      FDRE                        : 24
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 27
+#      IBUF                        : 18
+#      OBUF                        : 9
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx45csg484-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              34  out of  54576     0%  
+ Number of Slice LUTs:                   69  out of  27288     0%  
+    Number used as Logic:                69  out of  27288     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     74
+   Number with an unused Flip Flop:      40  out of     74    54%  
+   Number with an unused LUT:             5  out of     74     6%  
+   Number of fully used LUT-FF pairs:    29  out of     74    39%  
+   Number of unique control sets:         5
+
+IO Utilization: 
+ Number of IOs:                          30
+ Number of bonded IOBs:                  28  out of    320     8%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 34    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 3.849ns (Maximum Frequency: 259.791MHz)
+   Minimum input arrival time before clock: 4.090ns
+   Maximum output required time after clock: 3.634ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 3.849ns (frequency: 259.791MHz)
+  Total number of paths / destination ports: 650 / 82
+-------------------------------------------------------------------------
+Delay:               3.849ns (Levels of Logic = 3)
+  Source:            data/x_reg/q_1 (FF)
+  Destination:       controls/curr_state_FSM_FFd1 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: data/x_reg/q_1 to controls/curr_state_FSM_FFd1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             6   0.447   1.089  data/x_reg/q_1 (data/x_reg/q_1)
+     LUT6:I1->O            2   0.203   0.845  data/x_neq_y3 (data/x_neq_y2)
+     LUT5:I2->O            3   0.205   0.755  data/x_neq_y5 (x_neq_y)
+     LUT6:I4->O            1   0.203   0.000  controls/curr_state_FSM_FFd3-In1 (controls/curr_state_FSM_FFd3-In)
+     FDR:D                     0.102          controls/curr_state_FSM_FFd3
+    ----------------------------------------
+    Total                      3.849ns (1.160ns logic, 2.689ns route)
+                                       (30.1% logic, 69.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 134 / 74
+-------------------------------------------------------------------------
+Offset:              4.090ns (Levels of Logic = 3)
+  Source:            BTN<3> (PAD)
+  Destination:       controls/curr_state_FSM_FFd4 (FF)
+  Destination Clock: clk rising
+
+  Data Path: BTN<3> to controls/curr_state_FSM_FFd4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            19   1.222   1.416  BTN_3_IBUF (BTN_3_IBUF)
+     LUT5:I0->O            1   0.203   0.944  controls/curr_state_FSM_FFd4-In_SW1 (N12)
+     LUT6:I0->O            1   0.203   0.000  controls/curr_state_FSM_FFd4_glue_set (controls/curr_state_FSM_FFd4_glue_set)
+     FD:D                      0.102          controls/curr_state_FSM_FFd4
+    ----------------------------------------
+    Total                      4.090ns (1.730ns logic, 2.360ns route)
+                                       (42.3% logic, 57.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 9 / 9
+-------------------------------------------------------------------------
+Offset:              3.634ns (Levels of Logic = 1)
+  Source:            controls/done (FF)
+  Destination:       LDT1G (PAD)
+  Source Clock:      clk rising
+
+  Data Path: controls/done to LDT1G
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.447   0.616  controls/done (controls/done)
+     OBUF:I->O                 2.571          LDT1G_OBUF (LDT1G)
+    ----------------------------------------
+    Total                      3.634ns (3.018ns logic, 0.616ns route)
+                                       (83.0% logic, 17.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    3.849|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 3.86 secs
+ 
+--> 
+
+Total memory usage is 4486144 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

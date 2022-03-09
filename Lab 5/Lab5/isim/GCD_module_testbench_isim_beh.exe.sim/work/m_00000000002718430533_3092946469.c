@@ -23,9 +23,9 @@
 #endif
 static const char *ng0 = "C:/Xilinx/CDA 4203L/Lab5/controller.v";
 static int ng1[] = {1, 0};
-static unsigned int ng2[] = {1U, 0U};
+static unsigned int ng2[] = {0U, 0U};
 static int ng3[] = {0, 0};
-static unsigned int ng4[] = {0U, 0U};
+static unsigned int ng4[] = {1U, 0U};
 static unsigned int ng5[] = {3U, 0U};
 static unsigned int ng6[] = {2U, 0U};
 static unsigned int ng7[] = {4U, 0U};
@@ -132,12 +132,12 @@ LAB11:    xsi_set_current_line(59, ng0);
     t3 = (t2 + 56U);
     t4 = *((char **)t3);
 
-LAB14:    t5 = ((char*)((ng4)));
+LAB14:    t5 = ((char*)((ng2)));
     t30 = xsi_vlog_unsigned_case_compare(t4, 4, t5, 4);
     if (t30 == 1)
         goto LAB15;
 
-LAB16:    t2 = ((char*)((ng2)));
+LAB16:    t2 = ((char*)((ng4)));
     t30 = xsi_vlog_unsigned_case_compare(t4, 4, t2, 4);
     if (t30 == 1)
         goto LAB17;
@@ -250,7 +250,7 @@ LAB44:    xsi_set_current_line(61, ng0);
     t8 = (t0 + 5064);
     xsi_vlogvar_assign_value(t8, t7, 0, 0, 1);
     xsi_set_current_line(62, ng0);
-    t2 = ((char*)((ng2)));
+    t2 = ((char*)((ng4)));
     t3 = (t0 + 5224);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 4);
     goto LAB43;

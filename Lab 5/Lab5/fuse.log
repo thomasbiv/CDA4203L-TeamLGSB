@@ -1,4 +1,4 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Xilinx/CDA 4203L/Lab5/GCD_module_testbench_isim_beh.exe" -prj "C:/Xilinx/CDA 4203L/Lab5/GCD_module_testbench_beh.prj" "work.GCD_module_testbench" "work.glbl" 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Xilinx/CDA 4203L/Lab5/GCD_module_testbench_isim_beh.exe -prj C:/Xilinx/CDA 4203L/Lab5/GCD_module_testbench_beh.prj work.GCD_module_testbench work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -11,13 +11,11 @@ Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/dff.v" into library work
 Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/debouncer.v" into library work
 Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/datapath.v" into library work
 Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/controller.v" into library work
-Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/clock_divider.v" into library work
 Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/GCD_module.v" into library work
 Analyzing Verilog file "C:/Xilinx/CDA 4203L/Lab5/GCD_module_testbench.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Compiling module clock_divider
 Compiling module debouncer
 Compiling module dff
 Compiling module less_than
@@ -32,7 +30,7 @@ Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: The system cannot find the path specified, "isim\GCD_module_testbench_isim_beh.exe.sim\libPortability.dll".
-Compiled 12 Verilog Units
+Compiled 11 Verilog Units
 Built simulation executable C:/Xilinx/CDA 4203L/Lab5/GCD_module_testbench_isim_beh.exe
-Fuse Memory Usage: 27500 KB
-Fuse CPU Usage: 453 ms
+Fuse Memory Usage: 28228 KB
+Fuse CPU Usage: 343 ms

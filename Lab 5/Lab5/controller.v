@@ -47,7 +47,7 @@ state_16 = 4'b1111;
 always @(posedge clk) begin
 
 	if (reset == 1) begin
-		curr_state = state_2;
+		curr_state = state_1;
 		x_ld = 0;
 		y_ld = 0;
 		x_sel = 0;

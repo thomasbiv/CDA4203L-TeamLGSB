@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 // Wrapper for the entire datapath of the GCD module.
-module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, x_lt_y, x_neq_y, clk, reset, enable);
+module datapath(x_ld, y_ld, x_sel, y_sel, d_o_ld, x_i, y_i, d_o, x_lt_y, x_neq_y, clk, reset);
 
 	// Inputs and outputs.
-	input x_ld, y_ld, x_sel, y_sel, d_o_ld, enable, clk, reset;
+	input x_ld, y_ld, x_sel, y_sel, d_o_ld, clk, reset;
 	input [7:0] x_i;
 	input [7:0] y_i;
 

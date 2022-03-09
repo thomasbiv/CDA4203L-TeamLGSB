@@ -25,48 +25,62 @@
 module GCD_module_testbench;
 
 	// Inputs
-	reg [7:0] SW;
+	reg [7:0] x;
 	reg clk;
-	reg [3:0] BTN;
-	reg [7:0] DIP;
+	reg start, reset;
+	reg [7:0] y;
 
 	// Outputs
-	wire [9:0] LED;
+	wire [7:0] out;
+	wire done;
 
 	// Instantiate the Unit Under Test (UUT)
 	GCD_module uut (
-		.LED(LED), 
-		.SW(SW), 
-		.clk(clk), 
-		.BTN(BTN), 
-		.DIP(DIP)
+		.out(out), 
+		.x(x), 
+		.CLK(clk), 
+		.start(start),
+		.reset(reset),
+		.y(y),
+		.done(done)
 	);
 	
 	// Clock generator.
 	always begin
 		clk = ~clk;
-		#10;
+		#1;
 	end
 
 	initial begin
 		// Initialize Inputs
-		SW = 0;
+		x = 0;
 		clk = 0;
-		BTN = 0;
-		DIP = 0;
+		start = 0;
+		reset = 0;
+		y = 0;
 
 		// Wait 100 ns for global reset to finish
-		SW = 10;
-		DIP = 5;
-		BTN = 8;
+
+		reset = 1;;
 		#50;
-		BTN = 1;
+		reset = 0;
 		
+		x = 10;
+		y = 5;
+		
+		
+		start = 1;
+		#200;
+		start = 0;
 		#100;
+		
+		reset = 1;;
+		#50;
+		reset = 0;
         
 		// Add stimulus here
 
 	end
-      
+       
 endmodule
 

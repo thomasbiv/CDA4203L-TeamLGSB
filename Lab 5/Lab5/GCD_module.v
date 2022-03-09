@@ -18,35 +18,22 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module GCD_module(LED, SW, clk, BTN, DIP);
+module GCD_module(out, x, CLK, start, reset, y, done);
 
-	input [7:0] SW;
-	input [7:0] DIP;
-	input [3:0] BTN;
-	input clk;
+	input [7:0] x;
+	input [7:0] y;
+	input start, reset;
+	input CLK;
 
-	output [9:0] LED;
+	output [7:0] out;
+	output done;
 
-	wire x_ld, y_ld, x_sel, y_sel, d_o_ld, x_neq_y, x_lt_y, deb_rst, deb_st, clk_D;
-
-	clock_divider clk_divider(
-			.clk(clk),
-			.rst(BTN[3]),
-			.clk_div(clk_D)
-	);
-
-	debouncer deb_reset(
-			.clk(clk),
-			.clock_div(clk_D),
-			.in(BTN[3]),
-			.out(deb_rst)
-	);
+	wire x_ld, y_ld, x_sel, y_sel, d_o_ld, x_neq_y, x_lt_y, deb;
 	
 	debouncer deb_start(
-			.clk(clk),
-			.clock_div(clk_D),
-			.in(BTN[0]),
-			.out(deb_st)
+			.clk(CLK),
+			.in(start),
+			.out(deb)
 	);
 
 	datapath data(
@@ -55,14 +42,13 @@ module GCD_module(LED, SW, clk, BTN, DIP);
 		.x_sel(x_sel), 
 		.y_sel(y_sel), 
 		.d_o_ld(d_o_ld), 
-		.x_i(SW), 
+		.x_i(x), 
 		.x_lt_y(x_lt_y),
 		.x_neq_y(x_neq_y),
-		.enable(enable),
-		.y_i(DIP), 
-		.d_o(LED[7:0]), 
-		.clk(clk), 
-		.reset(BTN[3])
+		.y_i(y), 
+		.d_o(out), 
+		.clk(CLK), 
+		.reset(reset)
 	);
 	
 	controller controls(
@@ -71,12 +57,12 @@ module GCD_module(LED, SW, clk, BTN, DIP);
 		.x_sel(x_sel), 
 		.y_sel(y_sel), 
 		.d_o_ld(d_o_ld), 
-		.enable(deb_st),  
-		.clk(clk), 
-		.reset(deb_rst), 
+		.enable(deb),  
+		.clk(CLK), 
+		.reset(reset), 
 		.x_neq_y(x_neq_y), 
 		.x_lt_y(x_lt_y),
-		.done(LED[9])
+		.done(done)
 	);
 
 endmodule

@@ -1,0 +1,43 @@
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o GCD_module_map.ncd GCD_module.ngd GCD_module.pcf 
+par -w -intstyle ise -ol high -mt off GCD_module_map.ncd GCD_module.ncd GCD_module.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml GCD_module.twx GCD_module.ncd -o GCD_module.twr GCD_module.pcf 
+bitgen -intstyle ise -f GCD_module.ut GCD_module.ncd 
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o GCD_module_map.ncd GCD_module.ngd GCD_module.pcf 
+par -w -intstyle ise -ol high -mt off GCD_module_map.ncd GCD_module.ncd GCD_module.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml GCD_module.twx GCD_module.ncd -o GCD_module.twr GCD_module.pcf -ucf Anvyl_Master.ucf 
+bitgen -intstyle ise -f GCD_module.ut GCD_module.ncd 
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o GCD_module_map.ncd GCD_module.ngd GCD_module.pcf 
+par -w -intstyle ise -ol high -mt off GCD_module_map.ncd GCD_module.ncd GCD_module.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml GCD_module.twx GCD_module.ncd -o GCD_module.twr GCD_module.pcf -ucf Anvyl_Master.ucf 
+bitgen -intstyle ise -f GCD_module.ut GCD_module.ncd 
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o GCD_module_map.ncd GCD_module.ngd GCD_module.pcf 
+par -w -intstyle ise -ol high -mt off GCD_module_map.ncd GCD_module.ncd GCD_module.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml GCD_module.twx GCD_module.ncd -o GCD_module.twr GCD_module.pcf -ucf Anvyl_Master.ucf 
+bitgen -intstyle ise -f GCD_module.ut GCD_module.ncd 
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o GCD_module_map.ncd GCD_module.ngd GCD_module.pcf 
+par -w -intstyle ise -ol high -mt off GCD_module_map.ncd GCD_module.ncd GCD_module.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml GCD_module.twx GCD_module.ncd -o GCD_module.twr GCD_module.pcf -ucf Anvyl_Master.ucf 
+bitgen -intstyle ise -f GCD_module.ut GCD_module.ncd 
+xst -intstyle ise -ifn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.xst" -ofn "C:/Xilinx/CDA 4203L/Lab5/GCD_module.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Anvyl_Master.ucf -p xc6slx45-csg484-3 "GCD_module.ngc" GCD_module.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o GCD_module_map.ncd GCD_module.ngd GCD_module.pcf 
+par -w -intstyle ise -ol high -mt off GCD_module_map.ncd GCD_module.ncd GCD_module.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml GCD_module.twx GCD_module.ncd -o GCD_module.twr GCD_module.pcf -ucf Anvyl_Master.ucf 
+bitgen -intstyle ise -f GCD_module.ut GCD_module.ncd 
