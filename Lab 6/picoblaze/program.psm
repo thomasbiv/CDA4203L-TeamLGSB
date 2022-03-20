@@ -211,6 +211,11 @@ led_echo:       LOAD     s0, s0            ; (nop)
                 ; Code 2
                 ; Write code to read the switch state and
                 ; write it, inverted, to the LED output port.
+INPUT s0, switches
+DISABLE INTERRUPT
+XOR s0, FF
+OUTPUT s0, leds
+ENABLE INTERRUPT
 
 rs232_echo:     LOAD     s0, s0            ; (nop)
 
@@ -218,7 +223,16 @@ rs232_echo:     LOAD     s0, s0            ; (nop)
                 ; Write code to check if a byte has been
                 ; received by the uart.  If so, write it
                 ; back to the uart transmit port.  Then...
-
+NAMEREG sF, dr
+NAMEREG sE, Data
+BEGIN1:
+INPUT dr, data_present
+TEST dr, 01
+CALL C, SEND
+JUMP BEGIN1
+SEND:
+INPUT Data, uart_data_rx
+OUTPUT Data, uart_data_tx
                 JUMP     led_echo          ; endless loop
 
 ;================================================================
