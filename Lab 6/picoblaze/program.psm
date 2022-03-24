@@ -3,7 +3,7 @@
 ;================================================================
 
 CONSTANT switches         , 00    ; Switch read port
-CONSTANT leds	        , 01    ; LED write port
+CONSTANT leds	          , 01    ; LED write port
 CONSTANT uart_data_rx     , 02    ; UART receive read port
 CONSTANT uart_data_tx     , 03    ; UART transmit write port
 CONSTANT data_present     , 04    ; UART stat read port, lsb
@@ -165,57 +165,124 @@ cold_start:     LOAD     s0, s0            ; (nop)
                 ; Write code to output a message to the
                 ; serial port.  The message must be longer
                 ; than 25 characters.
-		LOAD s0, ascii_W ;W
-		STORE s0, 00
-		LOAD s0, ascii_e ;e
-		STORE s0, 00
-		LOAD s0, ascii_l ;l
-		STORE s0, 00
-		LOAD s0, ascii_c ;c
-		STORE s0, 00
-		LOAD s0, ascii_o ;o
-		STORE s0, 00
-		LOAD s0, ascii_m ;m
-		STORE s0, 00
-		LOAD s0, ascii_e ;e
-		STORE s0, 00
-		LOAD s0, ascii_SPACE ;
-		STORE s0, 00
-		LOAD s0, ascii_t ;t
-		STORE s0, 00
-		LOAD s0, ascii_o ;o
-		STORE s0, 00
-		LOAD s0, ascii_SPACE ;
-		STORE s0, 00
-		LOAD s0, ascii_L ;L
-		STORE s0, 00
-		LOAD s0, ascii_o ;o
-		STORE s0, 00
-		LOAD s0, ascii_o ;o
-		STORE s0, 00
-		LOAD s0, ascii_p ;p
-		STORE s0, 00
-		LOAD s0, ascii_b ;b
-		STORE s0, 00
-		LOAD s0, ascii_a ;a
-		STORE s0, 00
-		LOAD s0, ascii_c ;c
-		STORE s0, 00
-		LOAD s0, ascii_k ;k
-		STORE s0, 00
-		LOAD s0, ascii_EXCLAIM ;!
-		STORE s0, 00
+		NAMEREG s3, i
+		LOOP:
+		
+		LOAD i, i
+		LOAD i, ascii_W
+		OUTPUT i, uart_data_tx
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_e
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_l
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_c
+		OUTPUT i, uart_data_tx	
+		STORE i, 00	
+
+		LOAD i, i
+		LOAD i, ascii_o
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_m
+		OUTPUT i, uart_data_tx	
+		STORE i, 00	
+
+		LOAD i, i
+		LOAD i, ascii_e
+		OUTPUT i, uart_data_tx	
+		STORE i, 00	
+
+		LOAD i, i
+		LOAD i, ascii_SPACE
+		OUTPUT i, uart_data_tx	
+		STORE i, 00		
+
+		LOAD i, i
+		LOAD i, ascii_t
+		OUTPUT i, uart_data_tx	
+		STORE i, 00	
+
+		LOAD i, i
+		LOAD i, ascii_o
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_SPACE
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_L
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_o
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_o
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_p
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_b
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_a
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_c
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_k
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		LOAD i, i
+		LOAD i, ascii_EXCLAIM
+		OUTPUT i, uart_data_tx	
+		STORE i, 00
+
+		;ADD i, 01
+		;STORE s3, 
+		
 
 led_echo:       LOAD     s0, s0            ; (nop)
 
                 ; Code 2
                 ; Write code to read the switch state and
                 ; write it, inverted, to the LED output port.
-INPUT s0, switches
-DISABLE INTERRUPT
-XOR s0, FF
-OUTPUT s0, leds
-ENABLE INTERRUPT
+		INPUT s0, switches
+		DISABLE INTERRUPT
+		XOR s0, FF
+		OUTPUT s0, leds
+		ENABLE INTERRUPT
+		JUMP rs232_echo
 
 rs232_echo:     LOAD     s0, s0            ; (nop)
 
@@ -223,17 +290,18 @@ rs232_echo:     LOAD     s0, s0            ; (nop)
                 ; Write code to check if a byte has been
                 ; received by the uart.  If so, write it
                 ; back to the uart transmit port.  Then...
-NAMEREG sF, dr
-NAMEREG sE, Data
-BEGIN1:
-INPUT dr, data_present
-TEST dr, 01
-CALL C, SEND
-JUMP BEGIN1
-SEND:
-INPUT Data, uart_data_rx
-OUTPUT Data, uart_data_tx
-                JUMP     led_echo          ; endless loop
+		NAMEREG sF, dr
+		NAMEREG sE, Data
+		BEGIN1:
+		INPUT dr, data_present
+		TEST dr, 01
+		CALL C, SEND
+		JUMP BEGIN1
+		SEND:
+		INPUT Data, uart_data_rx
+		COMPARE s0, buffer_full
+		OUTPUT Data, uart_data_tx
+		JUMP     led_echo          ; endless loop
 
 ;================================================================
 ;

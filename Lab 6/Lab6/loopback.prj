@@ -1,0 +1,8 @@
+verilog work "uart_tx6.v"
+verilog work "uart_rx6.v"
+verilog work "program.v"
+verilog work "kcpsm6.v"
+verilog work "rs232_uart.v"
+verilog work "picoblaze.v"
+verilog work "led_driver.v"
+verilog work "loopback.v"

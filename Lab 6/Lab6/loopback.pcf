@@ -1,0 +1,27 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Thu Mar 24 14:54:40 2022
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk" LOCATE = SITE "D11" LEVEL 1;
+COMP "switches<0>" LOCATE = SITE "V5" LEVEL 1;
+COMP "switches<1>" LOCATE = SITE "U4" LEVEL 1;
+COMP "switches<2>" LOCATE = SITE "V3" LEVEL 1;
+COMP "switches<3>" LOCATE = SITE "P4" LEVEL 1;
+COMP "switches<4>" LOCATE = SITE "R4" LEVEL 1;
+COMP "switches<5>" LOCATE = SITE "P6" LEVEL 1;
+COMP "switches<6>" LOCATE = SITE "P5" LEVEL 1;
+COMP "switches<7>" LOCATE = SITE "P8" LEVEL 1;
+COMP "leds<0>" LOCATE = SITE "W3" LEVEL 1;
+COMP "leds<1>" LOCATE = SITE "Y4" LEVEL 1;
+COMP "leds<2>" LOCATE = SITE "Y1" LEVEL 1;
+COMP "leds<3>" LOCATE = SITE "Y3" LEVEL 1;
+COMP "leds<4>" LOCATE = SITE "AB4" LEVEL 1;
+COMP "leds<5>" LOCATE = SITE "W1" LEVEL 1;
+COMP "leds<6>" LOCATE = SITE "AB3" LEVEL 1;
+COMP "leds<7>" LOCATE = SITE "AA4" LEVEL 1;
+COMP "reset" LOCATE = SITE "E6" LEVEL 1;
+COMP "rs232_rx" LOCATE = SITE "T19" LEVEL 1;
+COMP "rs232_tx" LOCATE = SITE "T20" LEVEL 1;
+SCHEMATIC END;
+

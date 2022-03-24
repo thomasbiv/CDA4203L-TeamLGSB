@@ -54,9 +54,9 @@ module rs232_uart(
 	// and generate a en_16_x_baud pulse.
 	//
 	// Baud Clock registers/parameters.
-	reg 	[9:0] 	baud_count;
+	reg 	[12:0] 	baud_count;
 	reg				en_16_x_baud;
-	parameter		MAX_BAUD_COUNT = 652;
+	parameter		MAX_BAUD_COUNT = 651;
 
 	// Baud Clock Process
 	always @(posedge clk)

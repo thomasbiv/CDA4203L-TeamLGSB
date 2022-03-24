@@ -151,46 +151,86 @@ cold_start: LOAD s0, s0                 ; (nop)
             ; Write code to output a message to the
             ; serial port.  The message must be longer
             ; than 25 characters.
-            LOAD s0, ascii_W            ;W
-            STORE s0, 00
-            LOAD s0, ascii_e            ;e
-            STORE s0, 00
-            LOAD s0, ascii_l            ;l
-            STORE s0, 00
-            LOAD s0, ascii_c            ;c
-            STORE s0, 00
-            LOAD s0, ascii_o            ;o
-            STORE s0, 00
-            LOAD s0, ascii_m            ;m
-            STORE s0, 00
-            LOAD s0, ascii_e            ;e
-            STORE s0, 00
-            LOAD s0, ascii_SPACE        ;
-            STORE s0, 00
-            LOAD s0, ascii_t            ;t
-            STORE s0, 00
-            LOAD s0, ascii_o            ;o
-            STORE s0, 00
-            LOAD s0, ascii_SPACE        ;
-            STORE s0, 00
-            LOAD s0, ascii_L            ;L
-            STORE s0, 00
-            LOAD s0, ascii_o            ;o
-            STORE s0, 00
-            LOAD s0, ascii_o            ;o
-            STORE s0, 00
-            LOAD s0, ascii_p            ;p
-            STORE s0, 00
-            LOAD s0, ascii_b            ;b
-            STORE s0, 00
-            LOAD s0, ascii_a            ;a
-            STORE s0, 00
-            LOAD s0, ascii_c            ;c
-            STORE s0, 00
-            LOAD s0, ascii_k            ;k
-            STORE s0, 00
-            LOAD s0, ascii_EXCLAIM      ;!
-            STORE s0, 00
+            NAMEREG s3, i
+      LOOP: 
+            LOAD i, i
+            LOAD i, ascii_W
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_e
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_l
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_c
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_o
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_m
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_e
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_SPACE
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_t
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_o
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_SPACE
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_L
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_o
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_o
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_b
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_a
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_c
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_k
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            LOAD i, i
+            LOAD i, ascii_EXCLAIM
+            OUTPUT i, uart_data_tx
+            STORE i, 00
+            ;ADD i, 01
+            ;STORE s3,
   led_echo: LOAD s0, s0                 ; (nop)
             ; Code 2
             ; Write code to read the switch state and
@@ -200,6 +240,7 @@ cold_start: LOAD s0, s0                 ; (nop)
             XOR s0, FF
             OUTPUT s0, leds
             ENABLE INTERRUPT
+            JUMP rs232_echo
 rs232_echo: LOAD s0, s0                 ; (nop)
             ; Code 3
             ; Write code to check if a byte has been
@@ -214,6 +255,7 @@ rs232_echo: LOAD s0, s0                 ; (nop)
             JUMP BEGIN1
       SEND: 
             INPUT Data, uart_data_rx
+            COMPARE s0, buffer_full
             OUTPUT Data, uart_data_tx
             JUMP led_echo               ; endless loop
             ;================================================================

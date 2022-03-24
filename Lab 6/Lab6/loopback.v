@@ -150,7 +150,7 @@ module loopback( switches, leds, rs232_tx, rs232_rx, reset, clk );
 			// Set pb input port to appropriate value
 			case(pb_port_id)
 				8'h00: pb_in_port <= switches;
-				8'h02: pb_in_port <= uart_data_rx;
+				8'h02: pb_in_port <= uart_rx_data;
 				8'h04: pb_in_port <= {7'b0000000,uart_data_present};
 				8'h05: pb_in_port <= {7'b0000000,uart_buffer_full};
 				default: pb_in_port <= 8'h00;

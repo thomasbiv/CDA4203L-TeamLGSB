@@ -17,7 +17,7 @@ NET "leds[2]" LOC=Y1;
 NET "leds[1]" LOC=Y4;
 NET "leds[0]" LOC=W3;
 
-NET "rs232_tx" LOC=T19;
-NET "rs232_rx" LOC=T20;
+NET "rs232_tx" LOC=T20;
+NET "rs232_rx" LOC=T19;
 NET "reset" LOC=E6;
 NET "clk" LOC=D11;

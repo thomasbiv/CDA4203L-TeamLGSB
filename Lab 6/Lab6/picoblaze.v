@@ -62,7 +62,7 @@ module picoblaze(
 	 // Address Length: Must be wide enough to address 4k lines.
 	 wire		[11:0]	address;
 	 // Instruction: Must be as wide as a PicoBlaze instruction.
-	 wire		[11:0]	instruction;
+	 wire		[17:0]	instruction;
 	 wire				bram_enable;
 
 	kcpsm6 pblaze_cpu (

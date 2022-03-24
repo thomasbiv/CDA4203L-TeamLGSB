@@ -118,7 +118,7 @@ The next line is used to determine where the template actually starts.
 //
 // Assembler used ROM_form template: 26th November 2012
 //
-module pblaze_rom (
+module {name} (
 input  [11:0] address,
 output [17:0] instruction,
 input         enable,
