@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Xilinx\CDA 4203L\Lab6\loopback.ncd
-OUTFILE=C:\Xilinx\CDA 4203L\Lab6\loopback.bit
+INFILE=C:\Users\J\Desktop\Lab 6\Lab6\loopback.ncd
+OUTFILE=C:\Users\J\Desktop\Lab 6\Lab6\loopback.bit
 FAMILY=Spartan6
 PART=xc6slx45-3csg484
-WORKINGDIR=C:\Xilinx\CDA 4203L\Lab6
+WORKINGDIR=C:\Users\J\Desktop\Lab 6\Lab6
 LICENSE=WebPack
-USER_INFO=212379019_0_0_777
+USER_INFO=212386040_0_0_555

@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: loopback.prj
 
@@ -105,21 +105,21 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\uart_tx6.v" into library work
-Parsing module <uart_tx6>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\uart_rx6.v" into library work
-Parsing module <uart_rx6>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\program.v" into library work
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\picoblaze\program.v" into library work
 Parsing module <program>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\kcpsm6.v" into library work
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\uart_tx6.v" into library work
+Parsing module <uart_tx6>.
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\uart_rx6.v" into library work
+Parsing module <uart_rx6>.
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\kcpsm6.v" into library work
 Parsing module <kcpsm6>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" into library work
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v" into library work
 Parsing module <rs232_uart>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\picoblaze.v" into library work
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\picoblaze.v" into library work
 Parsing module <picoblaze>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\led_driver.v" into library work
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\led_driver.v" into library work
 Parsing module <led_driver_wrapper>.
-Analyzing Verilog file "C:\Xilinx\CDA 4203L\Lab6\loopback.v" into library work
+Analyzing Verilog file "C:\Users\J\Desktop\Lab 6\Lab6\loopback.v" into library work
 Parsing module <loopback>.
 
 =========================================================================
@@ -131,7 +131,7 @@ Elaborating module <loopback>.
 Elaborating module <led_driver_wrapper>.
 
 Elaborating module <rs232_uart>.
-WARNING:HDLCompiler:413 - "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" Line 72: Result of 14-bit expression is truncated to fit in 13-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v" Line 72: Result of 14-bit expression is truncated to fit in 13-bit target.
 
 Elaborating module <uart_tx6>.
 
@@ -272,14 +272,14 @@ Elaborating module <RAM64M(INIT_A=64'b0,INIT_B=64'b0,INIT_C=64'b0,INIT_D=64'b0)>
 Elaborating module <program>.
 
 Elaborating module
-<RAMB16BWER(DATA_WIDTH_A=9,DOA_REG=0,EN_RSTRAM_A="FALSE",INIT_A=32'b0,RST_PRIORITY_A="CE",SRVAL_A=32'b0,WRITE_MODE_A="WRITE_FIRST",DATA_WIDTH_B=9,DOB_REG=0,EN_RSTRAM_B="FALSE",INIT_B=32'b0,RST_PRIORITY_B="CE",SRVAL_B=32'b0,WRITE_MODE_B="WRITE_FIRST",RSTTYPE="SYNC",INIT_FILE="NONE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",INIT_00=256'b01100100000001100000000000000000011011001010011000000000000000000110110110100110000000000000000001101101111001100000000000000000011011000110011000000000000000000110110110000110000000000000000001101100101001100000000000000000011010101110011000000000000,INIT_01=256'b01101100001001100000000000000000011011000100011000000000000000000110110111100110000000000000000001101101111001100000000000000000011010011000011000000000000000000110010000000110000000000000000001101101111001100000000000000000011011101000011000000000000,INIT_02=256'b0100110100000011000001010000001001010101010110010000000100000100000000000101010000000001000000011111111100000000000000000000000000000000000000110010000
-100110000000000000000001101101011001100000000000000000011011000110011000000000000,INIT_03=256'b0,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT_16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,INIT_3B=256'b0,INIT_3C=256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INITP_00=256'b0110000000011
-111111111111111111111111111111111111111111111111111111111111111111111111110,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0)>.
+<RAMB16BWER(DATA_WIDTH_A=9,DOA_REG=0,EN_RSTRAM_A="FALSE",INIT_A=32'b0,RST_PRIORITY_A="CE",SRVAL_A=32'b0,WRITE_MODE_A="WRITE_FIRST",DATA_WIDTH_B=9,DOB_REG=0,EN_RSTRAM_B="FALSE",INIT_B=32'b0,RST_PRIORITY_B="CE",SRVAL_B=32'b0,WRITE_MODE_B="WRITE_FIRST",RSTTYPE="SYNC",INIT_FILE="NONE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",INIT_00=256'b0100100000011011011110000100000000011011101000000011100000011001000000000011000000011011001010000010100000011011011010000010000000011011011110000001100000011011000110000000000000010000000110110110000000001000000110110010100000000000000110101011100000000,INIT_01=256'b0100110000001100100001000100100000001101101011000100010000001101100011000100000000001101100001000011110000001101100010000011100000001101110000000011010000001101101111000011000000001101101111000010110000001101001100000010100000001100100000,INIT_02=256'b011000001010000001001011001010111010000000100000100000000000101100000000001000000011111111100000000000000000000000001000000111100000101000101000000000101000000001
+10000000100000000010011110000000100000101010000000000000101010001000101000101000001000000,INIT_03=256'b010100010000001101010001011001110000000100000100000000100010000000010000,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT_16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,INIT_3B=256'b0,INIT_3C=
+256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INITP_00=256'b010000101000001100000000010001010110000010000000000000000000000000000000000000000000000000000000000000000,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0)>.
 
 Elaborating module
-<RAMB16BWER(DATA_WIDTH_A=9,DOA_REG=0,EN_RSTRAM_A="FALSE",INIT_A=32'b0,RST_PRIORITY_A="CE",SRVAL_A=32'b0,WRITE_MODE_A="WRITE_FIRST",DATA_WIDTH_B=9,DOB_REG=0,EN_RSTRAM_B="FALSE",INIT_B=32'b0,RST_PRIORITY_B="CE",SRVAL_B=32'b0,WRITE_MODE_B="WRITE_FIRST",RSTTYPE="SYNC",INIT_FILE="NONE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",INIT_00=256'b0110100100001001000000010111100101101001000010010000000101111001011010010000100100000001011110010110100100001001000000010111100101101001000010010000000101111001011010010000100100000001011110010110100100001001000000010111100101101001000010010000000100000000,INIT_01=256'b0110100100001001000000010111100101101001000010010000000101111001011010010000100100000001011110010110100100001001000000010111100101101001000010010000000101111001011010010000100100000001011110010110100100001001000000010111100101101001000010010000000101111001,INIT_02=256'b010000011011111110100001001111000100001100000001101111010011110000000000010000010000000110100000111000010000000100100000000000011110010110100
-10000100100000001011110010110100100001001000000010111100101101001000010010000000101111001,INIT_03=256'b0,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT_16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,INIT_3B=256'b0,INIT_3C=256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INITP_00=256'b01100
-11000111010011001100110011001100110011001100110011001100110011001100110011001100110011000,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0)>.
+<RAMB16BWER(DATA_WIDTH_A=9,DOA_REG=0,EN_RSTRAM_A="FALSE",INIT_A=32'b0,RST_PRIORITY_A="CE",SRVAL_A=32'b0,WRITE_MODE_A="WRITE_FIRST",DATA_WIDTH_B=9,DOB_REG=0,EN_RSTRAM_B="FALSE",INIT_B=32'b0,RST_PRIORITY_B="CE",SRVAL_B=32'b0,WRITE_MODE_B="WRITE_FIRST",RSTTYPE="SYNC",INIT_FILE="NONE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",INIT_00=256'b0111100001101000000010000111100001101000000010000111100001101000000010000111100001101000000010000111100001101000000010000111100001101000000010000111100001101000000010000000000001111000011010000000100001111000011010000000100001111000011010000000100000000000,INIT_01=256'b011000000000000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000011110000110100000001000,INIT_02=256'b0110111111101000010011110001000011000000011011110100111100000000000100000100000001101000001110000100000001001000000000000001000000000111000100
+001011000011101000011010001000100001010001100100001110100101001001011110101000101000010000111010100101001000001010,INIT_03=256'b0100000110100000010000100100001110100101001001010010000011000100110000,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT_16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,
+INIT_3B=256'b0,INIT_3C=256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INITP_00=256'b0111100000100110001110100101101001001010000011011011011011011011011011011011011011011011011011001101101100,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0)>.
 
 Elaborating module
 <RAMB16BWER(DATA_WIDTH_A=9,DOA_REG=0,EN_RSTRAM_A="FALSE",INIT_A=32'b0,RST_PRIORITY_A="CE",SRVAL_A=32'b0,WRITE_MODE_A="WRITE_FIRST",DATA_WIDTH_B=9,DOB_REG=0,EN_RSTRAM_B="FALSE",INIT_B=32'b0,RST_PRIORITY_B="CE",SRVAL_B=32'b0,WRITE_MODE_B="WRITE_FIRST",RSTTYPE="SYNC",INIT_FILE="NONE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",INIT_00=256'b0,INIT_01=256'b0,INIT_02=256'b0,INIT_03=256'b0,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT_16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT
@@ -290,8 +290,8 @@ _2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=2
 =========================================================================
 
 Synthesizing Unit <loopback>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\loopback.v".
-INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\loopback.v" line 110: Output port <interrupt_ack> of the instance <CPU> is unconnected or connected to loadless signal.
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\loopback.v".
+INFO:Xst:3210 - "C:\Users\J\Desktop\Lab 6\Lab6\loopback.v" line 110: Output port <interrupt_ack> of the instance <CPU> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <read_from_uart>.
     Found 8-bit register for signal <pb_in_port>.
     Summary:
@@ -299,19 +299,19 @@ INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\loopback.v" line 110: Output port <int
 Unit <loopback> synthesized.
 
 Synthesizing Unit <led_driver_wrapper>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\led_driver.v".
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\led_driver.v".
     Found 8-bit register for signal <leds>.
     Summary:
 	inferred   8 D-type flip-flop(s).
 Unit <led_driver_wrapper> synthesized.
 
 Synthesizing Unit <rs232_uart>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v".
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v".
         MAX_BAUD_COUNT = 651
-INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" line 79: Output port <buffer_data_present> of the instance <transmitter> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" line 79: Output port <buffer_half_full> of the instance <transmitter> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" line 92: Output port <buffer_half_full> of the instance <receiver> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" line 92: Output port <buffer_full> of the instance <receiver> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v" line 79: Output port <buffer_data_present> of the instance <transmitter> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v" line 79: Output port <buffer_half_full> of the instance <transmitter> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v" line 92: Output port <buffer_half_full> of the instance <receiver> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\J\Desktop\Lab 6\Lab6\rs232_uart.v" line 92: Output port <buffer_full> of the instance <receiver> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <en_16_x_baud>.
     Found 13-bit register for signal <baud_count>.
     Found 13-bit adder for signal <baud_count[12]_GND_3_o_add_2_OUT> created at line 72.
@@ -321,7 +321,7 @@ INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\rs232_uart.v" line 92: Output port <bu
 Unit <rs232_uart> synthesized.
 
 Synthesizing Unit <uart_tx6>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\uart_tx6.v".
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\uart_tx6.v".
     Set property "HBLKNM = UART_TX6_5" for instance <data_width_loop[0].storage_srl>.
     Set property "HBLKNM = UART_TX6_5" for instance <data_width_loop[0].storage_flop>.
     Set property "HBLKNM = UART_TX6_5" for instance <data_width_loop[1].storage_srl>.
@@ -374,7 +374,7 @@ Synthesizing Unit <uart_tx6>.
 Unit <uart_tx6> synthesized.
 
 Synthesizing Unit <uart_rx6>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\uart_rx6.v".
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\uart_rx6.v".
     Set property "HBLKNM = UART_RX6_5" for instance <data_width_loop[0].storage_srl>.
     Set property "HBLKNM = UART_RX6_5" for instance <data_width_loop[1].storage_srl>.
     Set property "HBLKNM = UART_RX6_5" for instance <data_width_loop[2].storage_srl>.
@@ -428,14 +428,14 @@ Synthesizing Unit <uart_rx6>.
 Unit <uart_rx6> synthesized.
 
 Synthesizing Unit <picoblaze>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\picoblaze.v".
-INFO:Xst:3210 - "C:\Xilinx\CDA 4203L\Lab6\picoblaze.v" line 68: Output port <k_write_strobe> of the instance <pblaze_cpu> is unconnected or connected to loadless signal.
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\picoblaze.v".
+INFO:Xst:3210 - "C:\Users\J\Desktop\Lab 6\Lab6\picoblaze.v" line 68: Output port <k_write_strobe> of the instance <pblaze_cpu> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <picoblaze> synthesized.
 
 Synthesizing Unit <kcpsm6>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\kcpsm6.v".
+    Related source file is "C:\Users\J\Desktop\Lab 6\Lab6\kcpsm6.v".
         hwbuild = 8'b00000000
         interrupt_vector = 12'b001111111111
         scratch_pad_memory_size = 64
@@ -665,7 +665,7 @@ Synthesizing Unit <kcpsm6>.
 Unit <kcpsm6> synthesized.
 
 Synthesizing Unit <program>.
-    Related source file is "C:\Xilinx\CDA 4203L\Lab6\program.v".
+    Related source file is "C:\Users\J\Desktop\Lab 6\picoblaze\program.v".
     Summary:
 	no macro.
 Unit <program> synthesized.
@@ -997,8 +997,8 @@ clk            |    9.672|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.28 secs
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.23 secs
  
 --> 
 

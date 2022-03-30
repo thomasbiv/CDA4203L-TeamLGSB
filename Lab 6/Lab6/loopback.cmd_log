@@ -164,3 +164,75 @@ map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
 bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 
+xst -intstyle ise -ifn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.xst" -ofn "C:/Users/J/Desktop/Lab 6/Lab6/loopback.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc loopback.ucf -p xc6slx45-csg484-3 "loopback.ngc" loopback.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o loopback_map.ncd loopback.ngd loopback.pcf 
+par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd loopback.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml loopback.twx loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf 
+bitgen -intstyle ise -f loopback.ut loopback.ncd 

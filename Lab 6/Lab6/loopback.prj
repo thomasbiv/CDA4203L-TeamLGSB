@@ -1,6 +1,6 @@
+verilog work "../picoblaze/program.v"
 verilog work "uart_tx6.v"
 verilog work "uart_rx6.v"
-verilog work "program.v"
 verilog work "kcpsm6.v"
 verilog work "rs232_uart.v"
 verilog work "picoblaze.v"
