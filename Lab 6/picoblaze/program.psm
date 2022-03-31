@@ -159,100 +159,189 @@ CONSTANT ascii_DEL        , 7F    ; ascii code
 ;       Old documentation says it is 1024. This is now incorrect.
 ;================================================================
 
+		JUMP cold_start
+
+wait:
+		INPUT s3, buffer_full
+		COMPARE s3, 01
+		jump Z, wait
+		return
+
 cold_start:     LOAD s0, s0  ; (nop)
 
                 ; Code 1
                 ; Write code to output a message to the
                 ; serial port.  The message must be longer
                 ; than 25 characters.
+
 		LOAD s0, ascii_W ;W
 		OUTPUT s0, uart_data_tx
 		STORE s0, 00
+		call wait
+		
 		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		STORE s0, 01
+		call wait
+
 		LOAD s0, ascii_l ;l
 		OUTPUT s0, uart_data_tx
 		STORE s0, 02
-		LOAD s0, s0
+		call wait
+
 		LOAD s0, ascii_c ;c
 		OUTPUT s0, uart_data_tx
 		STORE s0, 03
+		call wait
+
 		LOAD s0, ascii_o ;o
 		OUTPUT s0, uart_data_tx
 		STORE s0, 04
+		call wait
+
 		LOAD s0, ascii_m ;m
 		OUTPUT s0, uart_data_tx
 		STORE s0, 05
+		call wait
+
 		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		STORE s0, 06
+		call wait
+
 		LOAD s0, ascii_SPACE ;
 		OUTPUT s0, uart_data_tx
 		STORE s0, 07
+		call wait
+
 		LOAD s0, ascii_t ;t
 		OUTPUT s0, uart_data_tx
 		STORE s0, 08
+		call wait
+
 		LOAD s0, ascii_o ;o
 		OUTPUT s0, uart_data_tx
 		STORE s0, 09
+		call wait
+
 		LOAD s0, ascii_SPACE ;
 		OUTPUT s0, uart_data_tx
 		STORE s0, 0A
+		call wait
+
 		LOAD s0, ascii_L ;L
 		OUTPUT s0, uart_data_tx
 		STORE s0, 0B
+		call wait
+
 		LOAD s0, ascii_o ;o
 		OUTPUT s0, uart_data_tx
 		STORE s0, 0C
+		call wait
+
 		LOAD s0, ascii_o ;o
 		OUTPUT s0, uart_data_tx
 		STORE s0, 0D
+		call wait
+
 		LOAD s0, ascii_p ;p
 		OUTPUT s0, uart_data_tx
 		STORE s0, 0E
+		call wait
+
 		LOAD s0, ascii_b ;b
 		OUTPUT s0, uart_data_tx
 		STORE s0, 0F
+		call wait
+
 		LOAD s0, ascii_a ;a
 		OUTPUT s0, uart_data_tx
 		STORE s0, 10
+		call wait
+
 		LOAD s0, ascii_c ;c
 		OUTPUT s0, uart_data_tx
 		STORE s0, 11
+		call wait
+
 		LOAD s0, ascii_k ;k
 		OUTPUT s0, uart_data_tx
 		STORE s0, 12
+		call wait
+
 		LOAD s0, ascii_EXCLAIM ;!
 		OUTPUT s0, uart_data_tx
 		STORE s0, 13
-		LOAD s0, s0		
+		call wait	
 
-main:
-	xor s0, s0
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
 
-next_letter:
-	load s5, 40
-	fetch s4, (s5)
-	compare s4, 14
-	jump led_echo
-	add s4, 01
-	store s4, 40
-	input s3, buffer_full
-	compare s3, 01
-	jump z, buffer_full_call
-	fetch s3, (s0)
-	add s0, 01
+		LOAD s0, ascii_I ;I
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
 
-ready_buffer:
-	output s1, uart_data_tx
-	compare s0, 14
-	jump nz, next_letter
-	jump led_echo
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait	
 
-buffer_full_call:
-	load sF, sF
-	jump next_letter
+		LOAD s0, ascii_W ;W
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_n ;n
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_t ;t
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_t ;t
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_K ;K
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
 
 led_echo:       LOAD     s0, s0            ; (nop)
 
@@ -268,39 +357,22 @@ led_echo:       LOAD     s0, s0            ; (nop)
 
 rs232_echo:     LOAD     s0, s0            ; (nop)
 
-        ; Code 3
-        ; Write code to check if a byte has been
-        ; received by the uart.  If so, write it
-        ; back to the uart transmit port.  Then...
-	NAMEREG sF, dr
-	NAMEREG sE, Data
-	BEGIN1:
-	INPUT dr, data_present
-	TEST dr, 01
-	CALL C, SEND
-	JUMP BEGIN1
-	SEND:
-	INPUT Data, uart_data_rx
-	COMPARE s0, buffer_full
-	OUTPUT Data, uart_data_tx
-	xor s1, s1
-	xor s2, s2
-	input s1, uart_data_rx
-	input s2, data_present
-	compare s2, 01
-	jump z, send_back
-        JUMP     led_echo          ; endless loop
-	xor s1, s1
-	xor s2, s2
-	input s1, uart_data_rx
-	input s2, data_present
-	compare s2, 01
-	jump z, send_back
-	jump led_echo
-
-send_back:
-	output s1, uart_data_tx
-	jump led_echo
+                ; Code 3
+                ; Write code to check if a byte has been
+                ; received by the uart.  If so, write it
+                ; back to the uart transmit port.  Then...
+		NAMEREG sF, dr
+		NAMEREG sE, Data
+		BEGIN1:
+		INPUT dr, data_present
+		TEST dr, 01
+		CALL C, SEND
+		JUMP BEGIN1
+		SEND:
+		INPUT Data, uart_data_rx		
+		COMPARE s0, buffer_full
+		OUTPUT Data, uart_data_tx
+		JUMP     led_echo          ; endless loop
 ;================================================================
 ;
 ;================================================================

@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DESKTOP-QTVT23F::  Thu Mar 24 16:45:01 2022
+DESKTOP-QTVT23F::  Thu Mar 31 15:42:04 2022
 
 par -w -intstyle ise -ol high -mt off loopback_map.ncd loopback.ncd
 loopback.pcf 
@@ -171,7 +171,7 @@ Generating Pad Report.
 All signals are completely routed.
 
 Total REAL time to PAR completion: 5 secs 
-Total CPU time to PAR completion: 5 secs 
+Total CPU time to PAR completion: 4 secs 
 
 Peak Memory Usage:  4525 MB
 
