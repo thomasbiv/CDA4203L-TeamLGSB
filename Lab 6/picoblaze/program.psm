@@ -174,6 +174,11 @@ cold_start:     LOAD s0, s0  ; (nop)
                 ; serial port.  The message must be longer
                 ; than 25 characters.
 
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
 		LOAD s0, ascii_W ;W
 		OUTPUT s0, uart_data_tx
 		STORE s0, 00
@@ -274,10 +279,93 @@ cold_start:     LOAD s0, s0  ; (nop)
 		STORE s0, 13
 		call wait	
 
-		LOAD s0, ascii_SPACE ;
+		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		STORE s0, 13
 		call wait
+
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_BS ;
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
 
 		LOAD s0, ascii_I ;I
 		OUTPUT s0, uart_data_tx
@@ -342,6 +430,199 @@ cold_start:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_S ;S
 		OUTPUT s0, uart_data_tx
 		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		STORE s0, 13
+		call wait
+
+
 
 led_echo:       LOAD     s0, s0            ; (nop)
 
