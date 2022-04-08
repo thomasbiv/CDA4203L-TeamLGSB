@@ -174,39 +174,28 @@ cold_start:     LOAD s0, s0  ; (nop)
                 ; serial port.  The message must be longer
                 ; than 25 characters.
 
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		STORE s0, 13
-		call wait
-
 		LOAD s0, ascii_W ;W
 		OUTPUT s0, uart_data_tx
-		STORE s0, 00
 		call wait
 		
 		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
-		STORE s0, 01
 		call wait
 
 		LOAD s0, ascii_l ;l
 		OUTPUT s0, uart_data_tx
-		STORE s0, 02
 		call wait
 
 		LOAD s0, ascii_c ;c
 		OUTPUT s0, uart_data_tx
-		STORE s0, 03
 		call wait
 
 		LOAD s0, ascii_o ;o
 		OUTPUT s0, uart_data_tx
-		STORE s0, 04
 		call wait
 
 		LOAD s0, ascii_m ;m
 		OUTPUT s0, uart_data_tx
-		STORE s0, 05
 		call wait
 
 		LOAD s0, ascii_e ;e
