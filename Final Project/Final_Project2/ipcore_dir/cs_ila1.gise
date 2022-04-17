@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="cs_ila1.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_ASY" xil_pn:name="cs_ila1.asy" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="cs_ila1.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="cs_ila1.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="cs_ila1.ngd"/>
+    <file xil_pn:fileType="FILE_VEO" xil_pn:name="cs_ila1.veo" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="cs_ila1_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="cs_ila1_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="cs_ila1_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="cs_ila1_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-7103836076920454127" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-3716210855566101374" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-2332139268446556717" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="8977612015756273942" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="5286550456386312268" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:in_ck="144262504441888" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-159823271271100399" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591773" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="1262981262417589246" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591778" xil_pn:in_ck="157101867337210818" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-5469366767078804093" xil_pn:start_ts="1524591773">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="cs_ila1.bld"/>
+      <outfile xil_pn:name="cs_ila1.ngd"/>
+      <outfile xil_pn:name="cs_ila1_ngdbuild.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1524591782" xil_pn:in_ck="157101867337210819" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="4245753365082497697" xil_pn:start_ts="1524591778">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+      <outfile xil_pn:name="cs_ila1_map.map"/>
+      <outfile xil_pn:name="cs_ila1_map.mrp"/>
+      <outfile xil_pn:name="cs_ila1_map.ngm"/>
+    </transform>
+  </transforms>
+
+</generated_project>

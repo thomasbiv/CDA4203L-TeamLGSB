@@ -1,0 +1,23 @@
+
+NET "switches[7]" LOC=P8;
+NET "switches[6]" LOC=P5;
+NET "switches[5]" LOC=P6;
+NET "switches[4]" LOC=R4;
+NET "switches[3]" LOC=P4;
+NET "switches[2]" LOC=V3;
+NET "switches[1]" LOC=U4;
+NET "switches[0]" LOC=V5;
+
+NET "leds[7]" LOC=AA4;
+NET "leds[6]" LOC=AB3;
+NET "leds[5]" LOC=W1;
+NET "leds[4]" LOC=AB4;
+NET "leds[3]" LOC=Y3;
+NET "leds[2]" LOC=Y1;
+NET "leds[1]" LOC=Y4;
+NET "leds[0]" LOC=W3;
+
+NET "rs232_tx" LOC=T20;
+NET "rs232_rx" LOC=T19;
+NET "reset" LOC=E6;
+NET "clk" LOC=D11;

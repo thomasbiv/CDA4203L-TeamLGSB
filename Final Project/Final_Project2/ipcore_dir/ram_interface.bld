@@ -1,0 +1,77 @@
+Release 13.4 ngdbuild O.87xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
+-intstyle ise -dd _ngo -nt timestamp -uc
+ram_interface/user_design/par/ram_interface.ucf -p xc6slx45-csg324-3
+ram_interface.ngc ram_interface.ngd
+
+Reading NGO file
+"C:/Users/challa1/Documents/Talkboy_original_old_board/Talkboy/ipcore_dir/ram_in
+terface.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file
+"ram_interface/user_design/par/ram_interface.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+INFO:ConstraintSystem:178 - TNM 'SYS_CLK3', used in period specification
+   'TS_SYS_CLK3', was traced into PLL_ADV instance
+   memc3_infrastructure_inst/u_pll_adv. The following new TNM groups and period
+   specifications were generated at the PLL_ADV output(s): 
+   CLKOUT3: <TIMESPEC TS_memc3_infrastructure_inst_mcb_drp_clk_bufg_in = PERIOD
+   "memc3_infrastructure_inst_mcb_drp_clk_bufg_in" TS_SYS_CLK3 / 0.75 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'SYS_CLK3', used in period specification
+   'TS_SYS_CLK3', was traced into PLL_ADV instance
+   memc3_infrastructure_inst/u_pll_adv. The following new TNM groups and period
+   specifications were generated at the PLL_ADV output(s): 
+   CLKOUT1: <TIMESPEC TS_memc3_infrastructure_inst_clk_2x_180 = PERIOD
+   "memc3_infrastructure_inst_clk_2x_180" TS_SYS_CLK3 / 6 PHASE 0.2775 ns HIGH
+   50%>
+
+INFO:ConstraintSystem:178 - TNM 'SYS_CLK3', used in period specification
+   'TS_SYS_CLK3', was traced into PLL_ADV instance
+   memc3_infrastructure_inst/u_pll_adv. The following new TNM groups and period
+   specifications were generated at the PLL_ADV output(s): 
+   CLKOUT0: <TIMESPEC TS_memc3_infrastructure_inst_clk_2x_0 = PERIOD
+   "memc3_infrastructure_inst_clk_2x_0" TS_SYS_CLK3 / 6 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'SYS_CLK3', used in period specification
+   'TS_SYS_CLK3', was traced into PLL_ADV instance
+   memc3_infrastructure_inst/u_pll_adv. The following new TNM groups and period
+   specifications were generated at the PLL_ADV output(s): 
+   CLKOUT2: <TIMESPEC TS_memc3_infrastructure_inst_clk0_bufg_in = PERIOD
+   "memc3_infrastructure_inst_clk0_bufg_in" TS_SYS_CLK3 / 0.375 HIGH 50%>
+
+Done...
+
+WARNING:NgdBuild:1440 - User specified non-default attribute value (9.999) was
+   detected for the CLKIN1_PERIOD attribute on PLL
+   "memc3_infrastructure_inst/u_pll_adv".  This does not match the PERIOD
+   constraint value (3.33 ns.).  The uncertainty calculation will use the PERIOD
+   constraint value.  This could result in incorrect uncertainty calculated for
+   PLL output clocks.
+Checking expanded design ...
+WARNING:NgdBuild:452 - logical net 'N365' has no driver
+WARNING:NgdBuild:452 - logical net 'N369' has no driver
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   3
+
+Total memory usage is 164892 kilobytes
+
+Writing NGD file "ram_interface.ngd" ...
+Total REAL time to NGDBUILD completion:  2 sec
+Total CPU time to NGDBUILD completion:   2 sec
+
+Writing NGDBUILD log file "ram_interface.bld"...
