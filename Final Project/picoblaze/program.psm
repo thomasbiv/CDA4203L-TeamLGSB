@@ -161,16 +161,6 @@ CONSTANT ascii_DEL        , 7F    ; ascii code
 ;Make sure to clear the menu after each submenu is finished doing its thing.
 
 		NAMEREG s9, i
-		NAMEREG sA, one
-		NAMEREG sB, two
-		NAMEREG sC, three
-		NAMEREG sD, four
-		NAMEREG sE, five
-		LOAD one, ascii_1
-		LOAD two, ascii_2
-		LOAD three, ascii_3
-		LOAD four, ascii_4
-		LOAD five, ascii_5
 		LOAD i, 00
 		JUMP main_menu
 
@@ -494,52 +484,106 @@ volume_control_menu:
 ;Once the user presses the select button, picoblaze should transition here.
 selection_comparison:
 		LOAD s0, s0
-		LOAD s0, ascii_FF ;
+		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
 		call wait
-		LOAD s0, ascii_ESC ;
+		LOAD s0, ascii_ESC 
 		OUTPUT s0, uart_data_tx
 		call wait
 		LOAD s0, i
 		COMPARE s0, 00
-		JUMP play_message_menu
+		JUMP Z, play_message_menu
 		COMPARE s0, 01
-		JUMP record_message_menu
+		JUMP Z, record_message_menu
 		COMPARE s0, 02
-		JUMP delete_message_menu
+		JUMP Z, delete_message_menu
 		COMPARE s0, 03
-		JUMP delete_all_messages_confirm
+		JUMP Z, delete_all_messages_confirm
 		COMPARE s0, 04
-		JUMP volume_control_menu
+		JUMP Z, volume_control_menu
+
+
+btn_down:
+		LOAD s0, s0
+		ADD i, 01
+		RETURN
+		
+btn_down_roll:
+		LOAD s0, s0
+		LOAD i, 04
+		JUMP main_menu
+
+btn_up:
+		LOAD s0, s0
+		SUB i, 01
+		RETURN
+
+btn_up_roll:
+		LOAD s0, s0
+		LOAD i, 00
+		JUMP main_menu
 
 ;Wait for input from the user.
 await_input:
 		LOAD s0, s0
 		INPUT s0, buttons
 		COMPARE s0, 01
-		ADD i, 01
+		CALL Z, btn_down
 		COMPARE i, 05
-		LOAD i, 00
+		JUMP Z, btn_down_roll
 		COMPARE s0, 02
-		SUB i, 01
+		CALL Z, btn_up
 		COMPARE i, FF
-		LOAD i, 04
+		JUMP Z, btn_down_roll
 		COMPARE s0, 04
-		CALL selection_comparison
-		jump await_input
+		JUMP Z, selection_comparison
+		JUMP await_input
 		
 
 ;Wait for uart buffer to empty
 wait:		LOAD s0, s0
 		INPUT s3, buffer_full
 		COMPARE s3, 01
-		jump Z, wait
-		return
+		JUMP Z, wait
+		RETURN
+
+out_one:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_two:
+		LOAD s0, ascii_2
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_three:
+		LOAD s0, ascii_3
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_four:
+		LOAD s0, ascii_4
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_five:
+		LOAD s0, ascii_5
+		OUTPUT s0, uart_data_tx
+		RETURN
+
 
 ;Outputs the main menu
 main_menu:     LOAD s0, s0  ; (nop)
 
                 ; Code for main menu options
+
+		LOAD s0, ascii_FF 
+		OUTPUT s0, uart_data_tx
+		call wait
+		;LOAD s0, ascii_ESC 
+		;OUTPUT s0, uart_data_tx
+		;call wait
 
 		LOAD s0, ascii_W ;W
 		OUTPUT s0, uart_data_tx
@@ -1704,18 +1748,18 @@ main_menu:     LOAD s0, s0  ; (nop)
 		call wait
 
 		COMPARE i, 00
-		OUTPUT one, uart_data_tx
+		CALL Z, out_one
 		COMPARE i, 01
-		OUTPUT two, uart_data_tx
+		CALL Z, out_two
 		COMPARE i, 02
-		OUTPUT three, uart_data_tx
+		CALL Z, out_three
 		COMPARE i, 03
-		OUTPUT four, uart_data_tx
+		CALL Z, out_four
 		COMPARE i, 04
-		OUTPUT five, uart_data_tx
+		CALL Z, out_five
 		call wait
 		
-		;jump await_input
+		jump await_input
 
 ;================================================================
 ;
