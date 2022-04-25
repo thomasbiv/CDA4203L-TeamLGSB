@@ -154,34 +154,389 @@ CONSTANT ascii_TILDE      , 7E    ; ascii code
 CONSTANT ascii_DEL        , 7F    ; ascii code
 
 ;================================================================
-; Actual assembly program goes here...
-;
 ; NOTE: size limit is 4096 lines of actual assembly code
 ;       Old documentation says it is 1024. This is now incorrect.
 ;================================================================
 
-		NAMEREG sD, i
+;Make sure to clear the menu after each submenu is finished doing its thing.
+
+		NAMEREG s9, i
+		NAMEREG sA, one
+		NAMEREG sB, two
+		NAMEREG sC, three
+		NAMEREG sD, four
+		NAMEREG sE, five
+		LOAD one, ascii_1
+		LOAD two, ascii_2
+		LOAD three, ascii_3
+		LOAD four, ascii_4
+		LOAD five, ascii_5
+		LOAD i, 00
 		JUMP main_menu
 
+;Actaul logic for playing a message
 play_message:
 
+
+;Actual logic for recording messages
 record_message:
 
-delete_all:messages:
-
+;Subroutine for deleting messages
 delete_message:
 
+;Confirmation for deleting all messages
+delete_all:
+
+;Subroutine for volume control
 volume_control:
 
-selection_comparison:
-		COMPARE 
+;Play message menu
+play_message_menu:
 
-wait:
+		LOAD s0, ascii_P ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_y ;y
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_g ;g
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_COLON ;:
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+;Record message menu
+record_message_menu:
+
+		LOAD s0, ascii_R ;R
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_c ;c
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_r ;r
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_d ;d
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_g ;g
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_QUESTION ;?
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		;Call to actual submenu here
+
+;Delete all message confirmation
+delete_all_messages_confirm:
+
+		LOAD s0, ascii_D ;D
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_t ;t
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_A ;A
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_QUESTION ;?
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		;Call to actual submenu here
+
+;Delete message menu
+delete_message_menu:
+		LOAD s0, s0
+
+		LOAD s0, ascii_D ;D
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;t
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_t ;t
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_g ;g
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_QUESTION ;?
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		;Call to actual submenu here
+
+;Volume control menu
+volume_control_menu:
+		LOAD s0, s0
+
+		LOAD s0, ascii_V ;V
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_u ;u
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_m ;m
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_COLON ;:
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+		
+		;Call to actual submenu here
+
+;Once the user presses the select button, picoblaze should transition here.
+selection_comparison:
+		LOAD s0, s0
+		LOAD s0, ascii_FF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_ESC ;
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, i
+		COMPARE s0, 00
+		JUMP play_message_menu
+		COMPARE s0, 01
+		JUMP record_message_menu
+		COMPARE s0, 02
+		JUMP delete_message_menu
+		COMPARE s0, 03
+		JUMP delete_all_messages_confirm
+		COMPARE s0, 04
+		JUMP volume_control_menu
+
+;Wait for input from the user.
+await_input:
+		LOAD s0, s0
+		INPUT s0, buttons
+		COMPARE s0, 01
+		ADD i, 01
+		COMPARE i, 05
+		LOAD i, 00
+		COMPARE s0, 02
+		SUB i, 01
+		COMPARE i, FF
+		LOAD i, 04
+		COMPARE s0, 04
+		CALL selection_comparison
+		jump await_input
+		
+
+;Wait for uart buffer to empty
+wait:		LOAD s0, s0
 		INPUT s3, buffer_full
 		COMPARE s3, 01
 		jump Z, wait
 		return
 
+;Outputs the main menu
 main_menu:     LOAD s0, s0  ; (nop)
 
                 ; Code for main menu options
@@ -556,14 +911,6 @@ main_menu:     LOAD s0, s0  ; (nop)
 		OUTPUT s0, uart_data_tx
 		call wait
 		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_MINUS ;1
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_MINUS ;1
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -1356,49 +1703,20 @@ main_menu:     LOAD s0, s0  ; (nop)
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s1, i
-		OUTPUT s0, uart_data_tx
+		COMPARE i, 00
+		OUTPUT one, uart_data_tx
+		COMPARE i, 01
+		OUTPUT two, uart_data_tx
+		COMPARE i, 02
+		OUTPUT three, uart_data_tx
+		COMPARE i, 03
+		OUTPUT four, uart_data_tx
+		COMPARE i, 04
+		OUTPUT five, uart_data_tx
 		call wait
+		
+		;jump await_input
 
-		INPUT s0, buttons
-		COMPARE s0, 01
-		ADD i, 01
-		COMPARE s0, 02
-		SUBTRACT i, 01
-		COMPARE s0, 03
-		JUMP selection_comparison
-		JUMP main_menu
-
-led_echo:       LOAD     s0, s0            ; (nop)
-
-                ; Code 2
-                ; Write code to read the switch state and
-                ; write it, inverted, to the LED output port.
-		INPUT s0, switches
-		DISABLE INTERRUPT
-		XOR s0, FF
-		OUTPUT s0, leds
-		ENABLE INTERRUPT
-		JUMP rs232_echo
-
-rs232_echo:     LOAD     s0, s0            ; (nop)
-
-                ; Code 3
-                ; Write code to check if a byte has been
-                ; received by the uart.  If so, write it
-                ; back to the uart transmit port.  Then...
-		NAMEREG sF, dr
-		NAMEREG sE, Data
-		BEGIN1:
-		INPUT dr, data_present
-		TEST dr, 01
-		CALL C, SEND
-		JUMP BEGIN1
-		SEND:
-		INPUT Data, uart_data_rx		
-		COMPARE s0, buffer_full
-		OUTPUT Data, uart_data_tx
-		JUMP     led_echo          ; endless loop
 ;================================================================
 ;
 ;================================================================
