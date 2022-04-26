@@ -10,7 +10,7 @@ NET "switches[2]"	LOC= P4	|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L21P_
 NET "switches[3]"	LOC= R4	|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L21N_3,	Sch name = SW4
 NET "switches[4]"	LOC= P6	|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L22P_3,	Sch name = SW5
 NET "switches[5]"	LOC= P5	|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L22N_3,	Sch name = SW6
-NET "switches[6]"	LOC= P8	|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L23P_3,	Sch name = SW7
+NET "pause_play"	LOC= P8	|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L23P_3,	Sch name = SW7
 
 NET "leds[0]"	LOC=W3 ;
 NET "leds[1]"	LOC=Y4 ;
@@ -25,10 +25,10 @@ NET "rs232_tx" LOC=T20;
 NET "rs232_rx" LOC=T19;
 
 ## Buttons
-	NET "buttons[0]"	LOC = E6;		#Bank = 3, pin name = IO_L82P_3,	Sch name = BTN0
-	NET "buttons[1]"	LOC = D5		|	IOSTANDARD=LVCMOS18; 		#Bank = 3, pin name = IO_L82N_3,	Sch name = BTN1
-	NET "buttons[2]"	LOC = A3		|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L83P_3,	Sch name = BTN2
-	NET "buttons[3]"	LOC = AB9;
+	NET "scroll_down"	LOC = E6;		#Bank = 3, pin name = IO_L82P_3,	Sch name = BTN0
+	NET "scroll_up"	LOC = D5		|	IOSTANDARD=LVCMOS18; 		#Bank = 3, pin name = IO_L82N_3,	Sch name = BTN1
+	NET "select"	LOC = A3		|	IOSTANDARD=LVCMOS18;		#Bank = 3, pin name = IO_L83P_3,	Sch name = BTN2
+	NET "back"	LOC = AB9;
 	
 #Please uncomment the below TIG if used in a design which enables self-refresh mode
 #NET "memc?_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/SELFREFRESH_MCB_REQ" TIG;

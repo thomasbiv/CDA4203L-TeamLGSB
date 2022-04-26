@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon Apr 25 15:11:45 2022
+Tue Apr 26 13:07:00 2022
 
 
 # NOTE: This file is designed to be imported into a spreadsheet program
@@ -21,7 +21,7 @@ Pinout by Pin Number:
 Pin Number|Signal Name|Pin Usage|Pin Name|Direction|IO Standard|IO Bank Number|Drive (mA)|Slew Rate|Termination|IOB Delay|Voltage|Constraint|IO Register|Signal Integrity|
 A1|||GND||||||||||||
 A2||IOBS|IO_L83N_VREF_3|UNUSED||3|||||||||
-A3|buttons<2>|IOB|IO_L83P_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
+A3|select|IOB|IO_L83P_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
 A4||IOBS|IO_L1N_VREF_0|UNUSED||0|||||||||
 A5||IOBS|IO_L2N_0|UNUSED||0|||||||||
 A6||IOBS|IO_L4N_0|UNUSED||0|||||||||
@@ -71,7 +71,7 @@ AB5||IOBS|IO_L65N_CSO_B_2|UNUSED||2|||||||||
 AB6||IOBS|IO_L64N_D9_2|UNUSED||2|||||||||
 AB7||IOBS|IO_L63N_2|UNUSED||2|||||||||
 AB8||IOBS|IO_L49N_D4_2|UNUSED||2|||||||||
-AB9|buttons<3>|IOB|IO_L48N_RDWR_B_VREF_2|INPUT|LVCMOS25*|2||||NONE||LOCATED|NO|NONE|
+AB9|back|IOB|IO_L48N_RDWR_B_VREF_2|INPUT|LVCMOS25*|2||||NONE||LOCATED|NO|NONE|
 AB10||IOBS|IO_L32N_GCLK28_2|UNUSED||2|||||||||
 AB11||IOBS|IO_L31N_GCLK30_D15_2|UNUSED||2|||||||||
 AB12||IOBS|IO_L30N_GCLK0_USERCCLK_2|UNUSED||2|||||||||
@@ -133,7 +133,7 @@ D1||IOBS|IO_L50N_M3BA2_3|UNUSED||3|||||||||
 D2||IOBM|IO_L50P_M3WE_3|UNUSED||3|||||||||
 D3||IOBS|IO_L81N_3|UNUSED||3|||||||||
 D4|||GND||||||||||||
-D5|buttons<1>|IOB|IO_L82N_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
+D5|scroll_up|IOB|IO_L82N_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
 D6||IOBM|IO_L3P_0|UNUSED||0|||||||||
 D7||IOBM|IO_L7P_0|UNUSED||0|||||||||
 D8||IOBS|IO_L32N_0|UNUSED||0|||||||||
@@ -156,7 +156,7 @@ E2|||GND||||||||||||
 E3||IOBM|IO_L48P_M3BA0_3|UNUSED||3|||||||||
 E4||IOBM|IO_L60P_3|UNUSED||3|||||||||
 E5||IOBS|IO_L75N_3|UNUSED||3|||||||||
-E6|buttons<0>|IOB|IO_L82P_3|INPUT|LVCMOS25*|3||||NONE||LOCATED|NO|NONE|
+E6|scroll_down|IOB|IO_L82P_3|INPUT|LVCMOS25*|3||||NONE||LOCATED|NO|NONE|
 E7|||GND||||||||||||
 E8|||NC||||||||||||
 E9|||VCCO_0|||0|||||any******||||
@@ -356,7 +356,7 @@ P4|switches<2>|IOB|IO_L21P_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
 P5|switches<5>|IOB|IO_L22N_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
 P6|switches<4>|IOB|IO_L22P_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
 P7||IOBS|IO_L23N_3|UNUSED||3|||||||||
-P8|switches<6>|IOB|IO_L23P_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
+P8|pause_play|IOB|IO_L23P_3|INPUT|LVCMOS18|3||||NONE||LOCATED|NO|NONE|
 P9|||VCCINT||||||||1.2||||
 P10|||GND||||||||||||
 P11|||VCCINT||||||||1.2||||

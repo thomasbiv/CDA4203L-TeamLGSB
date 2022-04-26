@@ -30,19 +30,19 @@ Timing constraint: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH
 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 24314 paths analyzed, 1338 endpoints analyzed, 0 failing endpoints
+ 24422 paths analyzed, 1342 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   8.971ns.
+ Minimum period is   9.358ns.
 --------------------------------------------------------------------------------
 
-Paths for end point UART/transmitter/pointer1_flop (SLICE_X12Y33.C4), 171 paths
+Paths for end point UART/transmitter/pointer1_flop (SLICE_X2Y30.C4), 171 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     1.029ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     0.642ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
   Destination:          UART/transmitter/pointer1_flop (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.930ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.006ns (0.243 - 0.249)
+  Data Path Delay:      9.310ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.013ns (0.485 - 0.498)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -57,90 +57,41 @@ Slack (setup path):     1.029ns (requirement - (data path - clock path skew + un
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+    RAMB16_X0Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
                                                        CPU/pblaze_rom/kcpsm6_rom_ll
-    SLICE_X17Y38.A1      net (fanout=1)        1.104   CPU/pblaze_rom/n0013<4>
-    SLICE_X17Y38.AMUX    Tilo                  0.313   CPU/instruction<5>
+    SLICE_X3Y34.A2       net (fanout=1)        0.967   CPU/pblaze_rom/n0013<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
                                                        CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
-    SLICE_X10Y38.A1      net (fanout=7)        0.961   CPU/instruction<4>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
+    SLICE_X2Y32.A1       net (fanout=7)        1.620   CPU/instruction<4>
+    SLICE_X2Y32.A        Tilo                  0.203   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA_D1
+    SLICE_X3Y32.B3       net (fanout=2)        1.478   CPU/pblaze_cpu/sy<5>
+    SLICE_X3Y32.B        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y31.A3       net (fanout=12)       0.473   pb_port_id<5>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.B6       net (fanout=8)        0.136   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.B        Tilo                  0.259   led_driver/leds<7>
                                                        write_to_uart1
-    SLICE_X12Y33.D3      net (fanout=5)        0.510   write_to_uart
-    SLICE_X12Y33.DMUX    Tilo                  0.251   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.D2       net (fanout=5)        0.648   write_to_uart
+    SLICE_X2Y30.DMUX     Tilo                  0.261   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/data_present_lut/LUT5
-    SLICE_X12Y33.C4      net (fanout=1)        0.374   UART/transmitter/en_pointer
-    SLICE_X12Y33.CLK     Tas                   0.341   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.C4       net (fanout=1)        0.295   UART/transmitter/en_pointer
+    SLICE_X2Y30.CLK      Tas                   0.289   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/pointer01_lut/LUT6
                                                        UART/transmitter/pointer1_flop
     -------------------------------------------------  ---------------------------
-    Total                                      8.930ns (3.847ns logic, 5.083ns route)
-                                                       (43.1% logic, 56.9% route)
+    Total                                      9.310ns (3.693ns logic, 5.617ns route)
+                                                       (39.7% logic, 60.3% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     1.284ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
-  Destination:          UART/transmitter/pointer1_flop (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      8.675ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.006ns (0.243 - 0.249)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to UART/transmitter/pointer1_flop
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    RAMB16_X1Y18.DOA5    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
-                                                       CPU/pblaze_rom/kcpsm6_rom_ll
-    SLICE_X17Y38.A3      net (fanout=1)        0.826   CPU/pblaze_rom/n0013<5>
-    SLICE_X17Y38.A       Tilo                  0.259   CPU/instruction<5>
-                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT6
-    SLICE_X10Y38.A2      net (fanout=7)        1.038   CPU/instruction<5>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
-                                                       write_to_uart1
-    SLICE_X12Y33.D3      net (fanout=5)        0.510   write_to_uart
-    SLICE_X12Y33.DMUX    Tilo                  0.251   UART/transmitter/UART_TX6_1
-                                                       UART/transmitter/data_present_lut/LUT5
-    SLICE_X12Y33.C4      net (fanout=1)        0.374   UART/transmitter/en_pointer
-    SLICE_X12Y33.CLK     Tas                   0.341   UART/transmitter/UART_TX6_1
-                                                       UART/transmitter/pointer01_lut/LUT6
-                                                       UART/transmitter/pointer1_flop
-    -------------------------------------------------  ---------------------------
-    Total                                      8.675ns (3.793ns logic, 4.882ns route)
-                                                       (43.7% logic, 56.3% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     1.288ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     0.841ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
   Destination:          UART/transmitter/pointer1_flop (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.673ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.004ns (0.243 - 0.247)
+  Data Path Delay:      9.104ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.020ns (0.485 - 0.505)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -155,44 +106,41 @@ Slack (setup path):     1.288ns (requirement - (data path - clock path skew + un
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y20.DOA5    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+    RAMB16_X0Y16.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
                                                        CPU/pblaze_rom/kcpsm6_rom_hl
-    SLICE_X17Y38.A4      net (fanout=1)        0.824   CPU/pblaze_rom/n0017<5>
-    SLICE_X17Y38.A       Tilo                  0.259   CPU/instruction<5>
-                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT6
-    SLICE_X10Y38.A2      net (fanout=7)        1.038   CPU/instruction<5>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
+    SLICE_X3Y34.A5       net (fanout=1)        0.761   CPU/pblaze_rom/n0017<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y32.A1       net (fanout=7)        1.620   CPU/instruction<4>
+    SLICE_X2Y32.A        Tilo                  0.203   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA_D1
+    SLICE_X3Y32.B3       net (fanout=2)        1.478   CPU/pblaze_cpu/sy<5>
+    SLICE_X3Y32.B        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y31.A3       net (fanout=12)       0.473   pb_port_id<5>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.B6       net (fanout=8)        0.136   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.B        Tilo                  0.259   led_driver/leds<7>
                                                        write_to_uart1
-    SLICE_X12Y33.D3      net (fanout=5)        0.510   write_to_uart
-    SLICE_X12Y33.DMUX    Tilo                  0.251   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.D2       net (fanout=5)        0.648   write_to_uart
+    SLICE_X2Y30.DMUX     Tilo                  0.261   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/data_present_lut/LUT5
-    SLICE_X12Y33.C4      net (fanout=1)        0.374   UART/transmitter/en_pointer
-    SLICE_X12Y33.CLK     Tas                   0.341   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.C4       net (fanout=1)        0.295   UART/transmitter/en_pointer
+    SLICE_X2Y30.CLK      Tas                   0.289   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/pointer01_lut/LUT6
                                                        UART/transmitter/pointer1_flop
     -------------------------------------------------  ---------------------------
-    Total                                      8.673ns (3.793ns logic, 4.880ns route)
-                                                       (43.7% logic, 56.3% route)
+    Total                                      9.104ns (3.693ns logic, 5.411ns route)
+                                                       (40.6% logic, 59.4% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point UART/transmitter/pointer0_flop (SLICE_X12Y33.C4), 171 paths
---------------------------------------------------------------------------------
-Slack (setup path):     1.157ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     0.990ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
-  Destination:          UART/transmitter/pointer0_flop (FF)
+  Destination:          UART/transmitter/pointer1_flop (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.802ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.006ns (0.243 - 0.249)
+  Data Path Delay:      8.962ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.013ns (0.485 - 0.498)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -203,45 +151,48 @@ Slack (setup path):     1.157ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to UART/transmitter/pointer0_flop
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to UART/transmitter/pointer1_flop
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+    RAMB16_X0Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
                                                        CPU/pblaze_rom/kcpsm6_rom_ll
-    SLICE_X17Y38.A1      net (fanout=1)        1.104   CPU/pblaze_rom/n0013<4>
-    SLICE_X17Y38.AMUX    Tilo                  0.313   CPU/instruction<5>
+    SLICE_X3Y34.A2       net (fanout=1)        0.967   CPU/pblaze_rom/n0013<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
                                                        CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
-    SLICE_X10Y38.A1      net (fanout=7)        0.961   CPU/instruction<4>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
+    SLICE_X2Y32.C1       net (fanout=7)        1.646   CPU/instruction<4>
+    SLICE_X2Y32.CMUX     Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC
+    SLICE_X3Y32.A5       net (fanout=2)        0.388   CPU/pblaze_cpu/sy<6>
+    SLICE_X3Y32.AMUX     Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT5
+    SLICE_X3Y31.A2       net (fanout=4)        1.077   pb_port_id<6>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.B6       net (fanout=8)        0.136   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.B        Tilo                  0.259   led_driver/leds<7>
                                                        write_to_uart1
-    SLICE_X12Y33.D3      net (fanout=5)        0.510   write_to_uart
-    SLICE_X12Y33.DMUX    Tilo                  0.251   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.D2       net (fanout=5)        0.648   write_to_uart
+    SLICE_X2Y30.DMUX     Tilo                  0.261   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/data_present_lut/LUT5
-    SLICE_X12Y33.C4      net (fanout=1)        0.374   UART/transmitter/en_pointer
-    SLICE_X12Y33.CLK     Tas                   0.213   UART/transmitter/UART_TX6_1
-                                                       UART/transmitter/pointer01_lut/LUT5
-                                                       UART/transmitter/pointer0_flop
+    SLICE_X2Y30.C4       net (fanout=1)        0.295   UART/transmitter/en_pointer
+    SLICE_X2Y30.CLK      Tas                   0.289   UART/transmitter/UART_TX6_1
+                                                       UART/transmitter/pointer01_lut/LUT6
+                                                       UART/transmitter/pointer1_flop
     -------------------------------------------------  ---------------------------
-    Total                                      8.802ns (3.719ns logic, 5.083ns route)
-                                                       (42.3% logic, 57.7% route)
+    Total                                      8.962ns (3.805ns logic, 5.157ns route)
+                                                       (42.5% logic, 57.5% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     1.412ns (requirement - (data path - clock path skew + uncertainty))
+
+Paths for end point UART/transmitter/pointer0_flop (SLICE_X2Y30.C4), 171 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     0.777ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
   Destination:          UART/transmitter/pointer0_flop (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.547ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.006ns (0.243 - 0.249)
+  Data Path Delay:      9.175ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.013ns (0.485 - 0.498)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -256,41 +207,41 @@ Slack (setup path):     1.412ns (requirement - (data path - clock path skew + un
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y18.DOA5    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+    RAMB16_X0Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
                                                        CPU/pblaze_rom/kcpsm6_rom_ll
-    SLICE_X17Y38.A3      net (fanout=1)        0.826   CPU/pblaze_rom/n0013<5>
-    SLICE_X17Y38.A       Tilo                  0.259   CPU/instruction<5>
-                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT6
-    SLICE_X10Y38.A2      net (fanout=7)        1.038   CPU/instruction<5>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
+    SLICE_X3Y34.A2       net (fanout=1)        0.967   CPU/pblaze_rom/n0013<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y32.A1       net (fanout=7)        1.620   CPU/instruction<4>
+    SLICE_X2Y32.A        Tilo                  0.203   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA_D1
+    SLICE_X3Y32.B3       net (fanout=2)        1.478   CPU/pblaze_cpu/sy<5>
+    SLICE_X3Y32.B        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y31.A3       net (fanout=12)       0.473   pb_port_id<5>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.B6       net (fanout=8)        0.136   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.B        Tilo                  0.259   led_driver/leds<7>
                                                        write_to_uart1
-    SLICE_X12Y33.D3      net (fanout=5)        0.510   write_to_uart
-    SLICE_X12Y33.DMUX    Tilo                  0.251   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.D2       net (fanout=5)        0.648   write_to_uart
+    SLICE_X2Y30.DMUX     Tilo                  0.261   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/data_present_lut/LUT5
-    SLICE_X12Y33.C4      net (fanout=1)        0.374   UART/transmitter/en_pointer
-    SLICE_X12Y33.CLK     Tas                   0.213   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.C4       net (fanout=1)        0.295   UART/transmitter/en_pointer
+    SLICE_X2Y30.CLK      Tas                   0.154   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/pointer01_lut/LUT5
                                                        UART/transmitter/pointer0_flop
     -------------------------------------------------  ---------------------------
-    Total                                      8.547ns (3.665ns logic, 4.882ns route)
-                                                       (42.9% logic, 57.1% route)
+    Total                                      9.175ns (3.558ns logic, 5.617ns route)
+                                                       (38.8% logic, 61.2% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     1.416ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     0.976ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
   Destination:          UART/transmitter/pointer0_flop (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.545ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.004ns (0.243 - 0.247)
+  Data Path Delay:      8.969ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.020ns (0.485 - 0.505)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -305,44 +256,41 @@ Slack (setup path):     1.416ns (requirement - (data path - clock path skew + un
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y20.DOA5    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+    RAMB16_X0Y16.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
                                                        CPU/pblaze_rom/kcpsm6_rom_hl
-    SLICE_X17Y38.A4      net (fanout=1)        0.824   CPU/pblaze_rom/n0017<5>
-    SLICE_X17Y38.A       Tilo                  0.259   CPU/instruction<5>
-                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT6
-    SLICE_X10Y38.A2      net (fanout=7)        1.038   CPU/instruction<5>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
+    SLICE_X3Y34.A5       net (fanout=1)        0.761   CPU/pblaze_rom/n0017<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y32.A1       net (fanout=7)        1.620   CPU/instruction<4>
+    SLICE_X2Y32.A        Tilo                  0.203   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA_D1
+    SLICE_X3Y32.B3       net (fanout=2)        1.478   CPU/pblaze_cpu/sy<5>
+    SLICE_X3Y32.B        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y31.A3       net (fanout=12)       0.473   pb_port_id<5>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.B6       net (fanout=8)        0.136   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.B        Tilo                  0.259   led_driver/leds<7>
                                                        write_to_uart1
-    SLICE_X12Y33.D3      net (fanout=5)        0.510   write_to_uart
-    SLICE_X12Y33.DMUX    Tilo                  0.251   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.D2       net (fanout=5)        0.648   write_to_uart
+    SLICE_X2Y30.DMUX     Tilo                  0.261   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/data_present_lut/LUT5
-    SLICE_X12Y33.C4      net (fanout=1)        0.374   UART/transmitter/en_pointer
-    SLICE_X12Y33.CLK     Tas                   0.213   UART/transmitter/UART_TX6_1
+    SLICE_X2Y30.C4       net (fanout=1)        0.295   UART/transmitter/en_pointer
+    SLICE_X2Y30.CLK      Tas                   0.154   UART/transmitter/UART_TX6_1
                                                        UART/transmitter/pointer01_lut/LUT5
                                                        UART/transmitter/pointer0_flop
     -------------------------------------------------  ---------------------------
-    Total                                      8.545ns (3.665ns logic, 4.880ns route)
-                                                       (42.9% logic, 57.1% route)
+    Total                                      8.969ns (3.558ns logic, 5.411ns route)
+                                                       (39.7% logic, 60.3% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point UART/transmitter/data_width_loop[3].storage_srl (SLICE_X14Y32.CE), 161 paths
---------------------------------------------------------------------------------
-Slack (setup path):     1.574ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     1.125ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
-  Destination:          UART/transmitter/data_width_loop[3].storage_srl (FF)
+  Destination:          UART/transmitter/pointer0_flop (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.387ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.004ns (0.245 - 0.249)
+  Data Path Delay:      8.827ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.013ns (0.485 - 0.498)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -353,41 +301,48 @@ Slack (setup path):     1.574ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to UART/transmitter/data_width_loop[3].storage_srl
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to UART/transmitter/pointer0_flop
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+    RAMB16_X0Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
                                                        CPU/pblaze_rom/kcpsm6_rom_ll
-    SLICE_X17Y38.A1      net (fanout=1)        1.104   CPU/pblaze_rom/n0013<4>
-    SLICE_X17Y38.AMUX    Tilo                  0.313   CPU/instruction<5>
+    SLICE_X3Y34.A2       net (fanout=1)        0.967   CPU/pblaze_rom/n0013<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
                                                        CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
-    SLICE_X10Y38.A1      net (fanout=7)        0.961   CPU/instruction<4>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
+    SLICE_X2Y32.C1       net (fanout=7)        1.646   CPU/instruction<4>
+    SLICE_X2Y32.CMUX     Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC
+    SLICE_X3Y32.A5       net (fanout=2)        0.388   CPU/pblaze_cpu/sy<6>
+    SLICE_X3Y32.AMUX     Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT5
+    SLICE_X3Y31.A2       net (fanout=4)        1.077   pb_port_id<6>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.B6       net (fanout=8)        0.136   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.B        Tilo                  0.259   led_driver/leds<7>
                                                        write_to_uart1
-    SLICE_X14Y32.CE      net (fanout=5)        0.742   write_to_uart
-    SLICE_X14Y32.CLK     Tceck                 0.191   UART/transmitter/UART_TX6_5
-                                                       UART/transmitter/data_width_loop[3].storage_srl
+    SLICE_X2Y30.D2       net (fanout=5)        0.648   write_to_uart
+    SLICE_X2Y30.DMUX     Tilo                  0.261   UART/transmitter/UART_TX6_1
+                                                       UART/transmitter/data_present_lut/LUT5
+    SLICE_X2Y30.C4       net (fanout=1)        0.295   UART/transmitter/en_pointer
+    SLICE_X2Y30.CLK      Tas                   0.154   UART/transmitter/UART_TX6_1
+                                                       UART/transmitter/pointer01_lut/LUT5
+                                                       UART/transmitter/pointer0_flop
     -------------------------------------------------  ---------------------------
-    Total                                      8.387ns (3.446ns logic, 4.941ns route)
-                                                       (41.1% logic, 58.9% route)
+    Total                                      8.827ns (3.670ns logic, 5.157ns route)
+                                                       (41.6% logic, 58.4% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     1.829ns (requirement - (data path - clock path skew + uncertainty))
+
+Paths for end point led_driver/leds_0 (SLICE_X2Y31.CE), 161 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     1.125ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
-  Destination:          UART/transmitter/data_width_loop[3].storage_srl (FF)
+  Destination:          led_driver/leds_0 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.132ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.004ns (0.245 - 0.249)
+  Data Path Delay:      8.828ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.012ns (0.486 - 0.498)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -398,41 +353,41 @@ Slack (setup path):     1.829ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to UART/transmitter/data_width_loop[3].storage_srl
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to led_driver/leds_0
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y18.DOA5    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+    RAMB16_X0Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
                                                        CPU/pblaze_rom/kcpsm6_rom_ll
-    SLICE_X17Y38.A3      net (fanout=1)        0.826   CPU/pblaze_rom/n0013<5>
-    SLICE_X17Y38.A       Tilo                  0.259   CPU/instruction<5>
-                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT6
-    SLICE_X10Y38.A2      net (fanout=7)        1.038   CPU/instruction<5>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
-                                                       write_to_uart1
-    SLICE_X14Y32.CE      net (fanout=5)        0.742   write_to_uart
-    SLICE_X14Y32.CLK     Tceck                 0.191   UART/transmitter/UART_TX6_5
-                                                       UART/transmitter/data_width_loop[3].storage_srl
+    SLICE_X3Y34.A2       net (fanout=1)        0.967   CPU/pblaze_rom/n0013<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y32.A1       net (fanout=7)        1.620   CPU/instruction<4>
+    SLICE_X2Y32.A        Tilo                  0.203   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA_D1
+    SLICE_X3Y32.B3       net (fanout=2)        1.478   CPU/pblaze_cpu/sy<5>
+    SLICE_X3Y32.B        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y31.A3       net (fanout=12)       0.473   pb_port_id<5>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.C2       net (fanout=8)        0.445   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.C        Tilo                  0.259   led_driver/leds<7>
+                                                       write_to_leds1
+    SLICE_X2Y31.CE       net (fanout=2)        0.371   write_to_leds
+    SLICE_X2Y31.CLK      Tceck                 0.331   CPU/pblaze_cpu/KCPSM6_OUT_PORT
+                                                       led_driver/leds_0
     -------------------------------------------------  ---------------------------
-    Total                                      8.132ns (3.392ns logic, 4.740ns route)
-                                                       (41.7% logic, 58.3% route)
+    Total                                      8.828ns (3.474ns logic, 5.354ns route)
+                                                       (39.4% logic, 60.6% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     1.833ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     1.324ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
-  Destination:          UART/transmitter/data_width_loop[3].storage_srl (FF)
+  Destination:          led_driver/leds_0 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      8.130ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.002ns (0.245 - 0.247)
+  Data Path Delay:      8.622ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.019ns (0.486 - 0.505)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -443,40 +398,85 @@ Slack (setup path):     1.833ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to UART/transmitter/data_width_loop[3].storage_srl
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to led_driver/leds_0
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X1Y20.DOA5    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+    RAMB16_X0Y16.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
                                                        CPU/pblaze_rom/kcpsm6_rom_hl
-    SLICE_X17Y38.A4      net (fanout=1)        0.824   CPU/pblaze_rom/n0017<5>
-    SLICE_X17Y38.A       Tilo                  0.259   CPU/instruction<5>
-                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT6
-    SLICE_X10Y38.A2      net (fanout=7)        1.038   CPU/instruction<5>
-    SLICE_X10Y38.AMUX    Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
-                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
-    SLICE_X11Y36.B4      net (fanout=2)        0.783   CPU/pblaze_cpu/sy<4>
-    SLICE_X11Y36.BMUX    Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
-                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
-    SLICE_X11Y34.B3      net (fanout=10)       1.126   pb_port_id<4>
-    SLICE_X11Y34.B       Tilo                  0.259   led_driver/leds<7>
-                                                       _n0041<7>1
-    SLICE_X11Y34.A5      net (fanout=11)       0.225   _n0041
-    SLICE_X11Y34.A       Tilo                  0.259   led_driver/leds<7>
-                                                       write_to_uart1
-    SLICE_X14Y32.CE      net (fanout=5)        0.742   write_to_uart
-    SLICE_X14Y32.CLK     Tceck                 0.191   UART/transmitter/UART_TX6_5
-                                                       UART/transmitter/data_width_loop[3].storage_srl
+    SLICE_X3Y34.A5       net (fanout=1)        0.761   CPU/pblaze_rom/n0017<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y32.A1       net (fanout=7)        1.620   CPU/instruction<4>
+    SLICE_X2Y32.A        Tilo                  0.203   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA_D1
+    SLICE_X3Y32.B3       net (fanout=2)        1.478   CPU/pblaze_cpu/sy<5>
+    SLICE_X3Y32.B        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y31.A3       net (fanout=12)       0.473   pb_port_id<5>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.C2       net (fanout=8)        0.445   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.C        Tilo                  0.259   led_driver/leds<7>
+                                                       write_to_leds1
+    SLICE_X2Y31.CE       net (fanout=2)        0.371   write_to_leds
+    SLICE_X2Y31.CLK      Tceck                 0.331   CPU/pblaze_cpu/KCPSM6_OUT_PORT
+                                                       led_driver/leds_0
     -------------------------------------------------  ---------------------------
-    Total                                      8.130ns (3.392ns logic, 4.738ns route)
-                                                       (41.7% logic, 58.3% route)
+    Total                                      8.622ns (3.474ns logic, 5.148ns route)
+                                                       (40.3% logic, 59.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.473ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
+  Destination:          led_driver/leds_0 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.480ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.012ns (0.486 - 0.498)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to led_driver/leds_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y18.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+                                                       CPU/pblaze_rom/kcpsm6_rom_ll
+    SLICE_X3Y34.A2       net (fanout=1)        0.967   CPU/pblaze_rom/n0013<4>
+    SLICE_X3Y34.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y32.C1       net (fanout=7)        1.646   CPU/instruction<4>
+    SLICE_X2Y32.CMUX     Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC
+    SLICE_X3Y32.A5       net (fanout=2)        0.388   CPU/pblaze_cpu/sy<6>
+    SLICE_X3Y32.AMUX     Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT5
+    SLICE_X3Y31.A2       net (fanout=4)        1.077   pb_port_id<6>
+    SLICE_X3Y31.A        Tilo                  0.259   led_driver/leds<7>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X3Y31.C2       net (fanout=8)        0.445   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X3Y31.C        Tilo                  0.259   led_driver/leds<7>
+                                                       write_to_leds1
+    SLICE_X2Y31.CE       net (fanout=2)        0.371   write_to_leds
+    SLICE_X2Y31.CLK      Tceck                 0.331   CPU/pblaze_cpu/KCPSM6_OUT_PORT
+                                                       led_driver/leds_0
+    -------------------------------------------------  ---------------------------
+    Total                                      8.480ns (3.586ns logic, 4.894ns route)
+                                                       (42.3% logic, 57.7% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 --------------------------------------------------------------------------------
 
-Paths for end point UART/receiver/data_width_loop[1].storage_srl (SLICE_X14Y33.DI), 1 path
+Paths for end point UART/receiver/data_width_loop[1].storage_srl (SLICE_X18Y31.DI), 1 path
 --------------------------------------------------------------------------------
 Slack (hold path):      0.246ns (requirement - (clock path skew + uncertainty - data path))
   Source:               UART/receiver/data1_flop (FF)
@@ -492,10 +492,10 @@ Slack (hold path):      0.246ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y33.DQ      Tcko                  0.198   UART/receiver/UART_RX6_2
+    SLICE_X19Y31.DQ      Tcko                  0.198   UART/receiver/UART_RX6_2
                                                        UART/receiver/data1_flop
-    SLICE_X14Y33.DI      net (fanout=2)        0.017   UART/receiver/data<1>
-    SLICE_X14Y33.CLK     Tdh         (-Th)    -0.033   UART/receiver/UART_RX6_5
+    SLICE_X18Y31.DI      net (fanout=2)        0.017   UART/receiver/data<1>
+    SLICE_X18Y31.CLK     Tdh         (-Th)    -0.033   UART/receiver/UART_RX6_5
                                                        UART/receiver/data_width_loop[1].storage_srl
     -------------------------------------------------  ---------------------------
     Total                                      0.248ns (0.231ns logic, 0.017ns route)
@@ -503,13 +503,13 @@ Slack (hold path):      0.246ns (requirement - (clock path skew + uncertainty - 
 
 --------------------------------------------------------------------------------
 
-Paths for end point UART/receiver/data_width_loop[7].storage_srl (SLICE_X14Y33.AI), 1 path
+Paths for end point UART/receiver/data_width_loop[7].storage_srl (SLICE_X18Y31.AI), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.252ns (requirement - (clock path skew + uncertainty - data path))
+Slack (hold path):      0.249ns (requirement - (clock path skew + uncertainty - data path))
   Source:               UART/receiver/data7_flop (FF)
   Destination:          UART/receiver/data_width_loop[7].storage_srl (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.254ns (Levels of Logic = 0)
+  Data Path Delay:      0.251ns (Levels of Logic = 0)
   Clock Path Skew:      0.002ns (0.044 - 0.042)
   Source Clock:         clk_BUFGP rising at 10.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
@@ -519,41 +519,41 @@ Slack (hold path):      0.252ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y33.AQ      Tcko                  0.198   UART/receiver/UART_RX6_2
+    SLICE_X19Y31.AQ      Tcko                  0.198   UART/receiver/UART_RX6_2
                                                        UART/receiver/data7_flop
-    SLICE_X14Y33.AI      net (fanout=2)        0.026   UART/receiver/data<7>
-    SLICE_X14Y33.CLK     Tdh         (-Th)    -0.030   UART/receiver/UART_RX6_5
+    SLICE_X18Y31.AI      net (fanout=2)        0.023   UART/receiver/data<7>
+    SLICE_X18Y31.CLK     Tdh         (-Th)    -0.030   UART/receiver/UART_RX6_5
                                                        UART/receiver/data_width_loop[7].storage_srl
     -------------------------------------------------  ---------------------------
-    Total                                      0.254ns (0.228ns logic, 0.026ns route)
-                                                       (89.8% logic, 10.2% route)
+    Total                                      0.251ns (0.228ns logic, 0.023ns route)
+                                                       (90.8% logic, 9.2% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point CPU/pblaze_cpu/address_loop[3].pc_flop (SLICE_X14Y41.CE), 1 path
+Paths for end point CPU/pblaze_cpu/stack_ram_high_RAMA (SLICE_X2Y37.D4), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.281ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               CPU/pblaze_cpu/t_state1_flop (FF)
-  Destination:          CPU/pblaze_cpu/address_loop[3].pc_flop (FF)
+Slack (hold path):      0.304ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               CPU/pblaze_cpu/stack_loop[3].upper_stack.pointer_flop (FF)
+  Destination:          CPU/pblaze_cpu/stack_ram_high_RAMA (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.285ns (Levels of Logic = 0)
-  Clock Path Skew:      0.004ns (0.067 - 0.063)
+  Data Path Delay:      0.308ns (Levels of Logic = 0)
+  Clock Path Skew:      0.004ns (0.071 - 0.067)
   Source Clock:         clk_BUFGP rising at 10.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: CPU/pblaze_cpu/t_state1_flop to CPU/pblaze_cpu/address_loop[3].pc_flop
+  Minimum Data Path at Fast Process Corner: CPU/pblaze_cpu/stack_loop[3].upper_stack.pointer_flop to CPU/pblaze_cpu/stack_ram_high_RAMA
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y41.CMUX    Tshcko                0.238   CPU/pblaze_cpu/KCPSM6_CONTROL
-                                                       CPU/pblaze_cpu/t_state1_flop
-    SLICE_X14Y41.CE      net (fanout=16)       0.155   CPU/pblaze_cpu/t_state<1>
-    SLICE_X14Y41.CLK     Tckce       (-Th)     0.108   CPU/pblaze_cpu/KCPSM6_PC0
-                                                       CPU/pblaze_cpu/address_loop[3].pc_flop
+    SLICE_X0Y37.DQ       Tcko                  0.200   CPU/pblaze_cpu/KCPSM6_STACK0
+                                                       CPU/pblaze_cpu/stack_loop[3].upper_stack.pointer_flop
+    SLICE_X2Y37.D4       net (fanout=9)        0.236   CPU/pblaze_cpu/stack_pointer<3>
+    SLICE_X2Y37.CLK      Tah         (-Th)     0.128   CPU/pblaze_cpu/KCPSM6_STACK_RAM1
+                                                       CPU/pblaze_cpu/stack_ram_high_RAMA
     -------------------------------------------------  ---------------------------
-    Total                                      0.285ns (0.130ns logic, 0.155ns route)
-                                                       (45.6% logic, 54.4% route)
+    Total                                      0.308ns (0.072ns logic, 0.236ns route)
+                                                       (23.4% logic, 76.6% route)
 
 --------------------------------------------------------------------------------
 
@@ -564,7 +564,7 @@ Slack: 6.876ns (period - min period limit)
   Min period limit: 3.124ns (320.102MHz) (Trper_CLKA(Fmax))
   Physical resource: CPU/pblaze_rom/kcpsm6_rom_hh/CLKA
   Logical resource: CPU/pblaze_rom/kcpsm6_rom_hh/CLKA
-  Location pin: RAMB16_X1Y22.CLKA
+  Location pin: RAMB16_X0Y12.CLKA
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 6.876ns (period - min period limit)
@@ -572,7 +572,7 @@ Slack: 6.876ns (period - min period limit)
   Min period limit: 3.124ns (320.102MHz) (Trper_CLKA(Fmax))
   Physical resource: CPU/pblaze_rom/kcpsm6_rom_hl/CLKA
   Logical resource: CPU/pblaze_rom/kcpsm6_rom_hl/CLKA
-  Location pin: RAMB16_X1Y20.CLKA
+  Location pin: RAMB16_X0Y16.CLKA
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 6.876ns (period - min period limit)
@@ -580,7 +580,7 @@ Slack: 6.876ns (period - min period limit)
   Min period limit: 3.124ns (320.102MHz) (Trper_CLKA(Fmax))
   Physical resource: CPU/pblaze_rom/kcpsm6_rom_lh/CLKA
   Logical resource: CPU/pblaze_rom/kcpsm6_rom_lh/CLKA
-  Location pin: RAMB16_X0Y20.CLKA
+  Location pin: RAMB16_X0Y14.CLKA
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 
@@ -597,7 +597,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    8.971|         |         |         |
+clk            |    9.358|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -606,23 +606,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 24314 paths, 0 nets, and 1054 connections
+Constraints cover 24422 paths, 0 nets, and 1061 connections
 
 Design statistics:
-   Minimum period:   8.971ns{1}   (Maximum frequency: 111.470MHz)
+   Minimum period:   9.358ns{1}   (Maximum frequency: 106.860MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Mon Apr 25 15:11:56 2022 
+Analysis completed Tue Apr 26 13:07:09 2022 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 4628 MB
+Peak Memory Usage: 4629 MB
 
 
 

@@ -7,7 +7,11 @@
                              CONSTANT uart_data_tx, 03           ; UART transmit write port
                              CONSTANT data_present, 04           ; UART stat read port, lsb
                              CONSTANT buffer_full, 05            ; UART stat read port, lsb
-                             CONSTANT buttons, 06                ; Button read port
+                             CONSTANT scroll_up, 06              ; Scroll up port
+                             CONSTANT scroll_down, 07            ; Scroll down port
+                             CONSTANT select, 08                 ; Select port
+                             CONSTANT back, 09                   ; Back port
+                             CONSTANT pause_play, 0A             ; Pause/Play port
                              ;================================================================
                              ; Useful constant declarations...
                              ;================================================================
@@ -406,7 +410,7 @@ delete_all_messages_confirm:
                              LOAD s0, s0
                              ADD i, 01
                              COMPARE i, ascii_1
-                             RETURN NZ
+                             JUMP NZ, main_menu
               btn_down_roll: 
                              LOAD s0, s0
                              LOAD i, 00
@@ -416,7 +420,7 @@ delete_all_messages_confirm:
                              LOAD s0, s0
                              SUB i, 01
                              COMPARE i, ascii_1
-                             RETURN NZ
+                             JUMP NZ, main_menu
                 btn_up_roll: 
                              LOAD s0, s0
                              LOAD i, 04
@@ -425,20 +429,22 @@ delete_all_messages_confirm:
                              ;Wait for input from the user.
                 await_input: 
                              LOAD s0, s0
-                             INPUT s0, buttons
-                             COMPARE s0, 01
+                             INPUT s0, scroll_up
+                             INPUT s1, scroll_down
+                             INPUT s2, select
+                             COMPARE s1, 01
                              CALL Z, btn_down
                              LOAD s0, s0
-                             COMPARE i, 05
-                             JUMP Z, btn_down_roll
+                             ;COMPARE i, 05
+                             ;JUMP Z, btn_down_roll
                              LOAD s0, s0
-                             COMPARE s0, 02
+                             COMPARE s0, 01
                              CALL Z, btn_up
                              LOAD s0, s0
-                             COMPARE i, FF
-                             JUMP Z, btn_up_roll
+                             ;COMPARE i, FF
+                             ;JUMP Z, btn_up_roll
                              LOAD s0, s0
-                             COMPARE s0, 04
+                             COMPARE s2, 01
                              JUMP Z, selection_comparison
                              JUMP await_input
                              ;Wait for uart buffer to empty

@@ -1,16 +1,17 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Mon Apr 25 15:11:29 2022
+// Written by: Map P.20131013 on Tue Apr 26 13:06:48 2022
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "clk" LOCATE = SITE "D11" LEVEL 1;
+COMP "pause_play" LOCATE = SITE "P8" LEVEL 1;
+COMP "back" LOCATE = SITE "AB9" LEVEL 1;
 COMP "switches<0>" LOCATE = SITE "U4" LEVEL 1;
 COMP "switches<1>" LOCATE = SITE "V3" LEVEL 1;
 COMP "switches<2>" LOCATE = SITE "P4" LEVEL 1;
 COMP "switches<3>" LOCATE = SITE "R4" LEVEL 1;
 COMP "switches<4>" LOCATE = SITE "P6" LEVEL 1;
 COMP "switches<5>" LOCATE = SITE "P5" LEVEL 1;
-COMP "switches<6>" LOCATE = SITE "P8" LEVEL 1;
 COMP "leds<0>" LOCATE = SITE "W3" LEVEL 1;
 COMP "leds<1>" LOCATE = SITE "Y4" LEVEL 1;
 COMP "leds<2>" LOCATE = SITE "Y1" LEVEL 1;
@@ -20,12 +21,11 @@ COMP "leds<5>" LOCATE = SITE "W1" LEVEL 1;
 COMP "leds<6>" LOCATE = SITE "AB3" LEVEL 1;
 COMP "leds<7>" LOCATE = SITE "AA4" LEVEL 1;
 COMP "reset" LOCATE = SITE "V5" LEVEL 1;
+COMP "scroll_down" LOCATE = SITE "E6" LEVEL 1;
 COMP "rs232_rx" LOCATE = SITE "T19" LEVEL 1;
 COMP "rs232_tx" LOCATE = SITE "T20" LEVEL 1;
-COMP "buttons<0>" LOCATE = SITE "E6" LEVEL 1;
-COMP "buttons<1>" LOCATE = SITE "D5" LEVEL 1;
-COMP "buttons<2>" LOCATE = SITE "A3" LEVEL 1;
-COMP "buttons<3>" LOCATE = SITE "AB9" LEVEL 1;
+COMP "scroll_up" LOCATE = SITE "D5" LEVEL 1;
+COMP "select" LOCATE = SITE "A3" LEVEL 1;
 PIN CPU/pblaze_rom/kcpsm6_rom_hh_pins<28> = BEL "CPU/pblaze_rom/kcpsm6_rom_hh"
         PINNAME CLKA;
 PIN CPU/pblaze_rom/kcpsm6_rom_hl_pins<28> = BEL "CPU/pblaze_rom/kcpsm6_rom_hl"
@@ -40,8 +40,9 @@ TIMEGRP sys_clk_pin = BEL "read_from_uart" BEL "pb_in_port_0" BEL
         "pb_in_port_7" BEL "UART/en_16_x_baud" BEL "UART/baud_count_0" BEL
         "UART/baud_count_1" BEL "UART/baud_count_2" BEL "UART/baud_count_5"
         BEL "UART/baud_count_3" BEL "UART/baud_count_4" BEL
-        "UART/baud_count_6" BEL "UART/baud_count_7" BEL "UART/baud_count_8"
-        BEL "UART/baud_count_9" BEL
+        "UART/baud_count_6" BEL "UART/baud_count_7" BEL "UART/baud_count_10"
+        BEL "UART/baud_count_8" BEL "UART/baud_count_9" BEL
+        "UART/baud_count_11" BEL "UART/baud_count_12" BEL
         "UART/transmitter/data_width_loop[7].storage_srl" BEL
         "UART/transmitter/data_width_loop[6].storage_srl" BEL
         "UART/transmitter/data_width_loop[5].storage_srl" BEL

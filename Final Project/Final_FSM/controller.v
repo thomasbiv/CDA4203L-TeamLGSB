@@ -19,7 +19,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module controller( buttons, switches, leds, rs232_tx, rs232_rx, reset, clk );
+module controller( pause_play, scroll_up, scroll_down, select, back, switches, leds, rs232_tx, rs232_rx, reset, clk );
 
 	// Top-level Inputs and Outputs
 	// These connect directly to FPGA pins via the pin map
@@ -28,8 +28,12 @@ module controller( buttons, switches, leds, rs232_tx, rs232_rx, reset, clk );
 	input			reset;			// Remember: ACTIVE LOW!!!
 	input			clk;			// 100 MHz
 	// GPIO
-	input	[6:0]	switches;
-	input [3:0] buttons;
+	input	[5:0]	switches;
+	input scroll_up;
+	input scroll_down;
+	input select;
+	input back;
+	input pause_play;
 	output	[7:0]	leds;
 	// RS232 Lines
 	input			rs232_rx;
@@ -150,8 +154,12 @@ module controller( buttons, switches, leds, rs232_tx, rs232_rx, reset, clk );
 		end else begin
 			// Set pb input port to appropriate value
 			case(pb_port_id)
-				8'h06: pb_in_port <= buttons;
+				8'h06: pb_in_port <= scroll_up;
 				8'h00: pb_in_port <= switches;
+				8'h07: pb_in_port <= scroll_down;
+				8'h08: pb_in_port <= select;
+				8'h09: pb_in_port <= back;
+				8'h0A: pb_in_port <= pause_play;
 				8'h02: pb_in_port <= uart_rx_data;
 				8'h04: pb_in_port <= {7'b0000000,uart_data_present};
 				8'h05: pb_in_port <= {7'b0000000,uart_buffer_full};

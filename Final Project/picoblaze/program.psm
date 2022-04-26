@@ -8,7 +8,11 @@ CONSTANT uart_data_rx     , 02    ; UART receive read port
 CONSTANT uart_data_tx     , 03    ; UART transmit write port
 CONSTANT data_present     , 04    ; UART stat read port, lsb
 CONSTANT buffer_full      , 05    ; UART stat read port, lsb
-CONSTANT buttons	  , 06	  ; Button read port
+CONSTANT scroll_up	  , 06	  ; Scroll up port
+CONSTANT scroll_down	  , 07	  ; Scroll down port
+CONSTANT select		  , 08	  ; Select port
+CONSTANT back		  , 09 	  ; Back port
+CONSTANT pause_play	  , 0A	  ; Pause/Play port
 
 ;================================================================
 ; Useful constant declarations...
@@ -161,6 +165,7 @@ CONSTANT ascii_DEL        , 7F    ; ascii code
 ;Make sure to clear the menu after each submenu is finished doing its thing.
 
 		NAMEREG s9, i
+		NAMEREG sA, j
 		LOAD i, 00
 		JUMP main_menu
 
@@ -178,6 +183,9 @@ delete_all:
 
 ;Subroutine for volume control
 volume_control:
+
+		LOAD s0, s0
+		
 
 ;Play message menu
 play_message_menu:
@@ -245,6 +253,16 @@ play_message_menu:
 		LOAD s0, ascii_SPACE ;
 		OUTPUT s0, uart_data_tx
 		call wait
+
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		JUMP play_message
 
 ;Record message menu
 record_message_menu:
@@ -317,7 +335,16 @@ record_message_menu:
 		OUTPUT s0, uart_data_tx
 		call wait
 
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
 		;Call to actual submenu here
+		JUMP record_message
 
 ;Delete all message confirmation
 delete_all_messages_confirm:
@@ -366,7 +393,16 @@ delete_all_messages_confirm:
 		OUTPUT s0, uart_data_tx
 		call wait
 
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
 		;Call to actual submenu here
+		JUMP delete_all
 
 ;Delete message menu
 delete_message_menu:
@@ -440,7 +476,16 @@ delete_message_menu:
 		OUTPUT s0, uart_data_tx
 		call wait
 
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
 		;Call to actual submenu here
+		JUMP delete_message
 
 ;Volume control menu
 volume_control_menu:
@@ -477,8 +522,17 @@ volume_control_menu:
 		LOAD s0, ascii_SPACE ;
 		OUTPUT s0, uart_data_tx
 		call wait
+
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
 		
 		;Call to actual submenu here
+		JUMP volume_control
 
 ;Once the user presses the select button, picoblaze should transition here.
 selection_comparison:
@@ -490,6 +544,7 @@ selection_comparison:
 		OUTPUT s0, uart_data_tx
 		call wait
 		LOAD s0, i
+		LOAD i, 00
 		COMPARE s0, 00
 		JUMP Z, play_message_menu
 		COMPARE s0, 01
@@ -506,7 +561,7 @@ btn_down:
 		LOAD s0, s0
 		ADD i, 01
 		COMPARE i, ascii_1
-		RETURN NZ
+		JUMP NZ, main_menu
 		
 btn_down_roll:
 		LOAD s0, s0
@@ -518,7 +573,7 @@ btn_up:
 		LOAD s0, s0
 		SUB i, 01
 		COMPARE i, ascii_1
-		RETURN NZ
+		JUMP NZ, main_menu
 
 btn_up_roll:
 		LOAD s0, s0
@@ -529,20 +584,22 @@ btn_up_roll:
 ;Wait for input from the user.
 await_input:
 		LOAD s0, s0
-		INPUT s0, buttons
-		COMPARE s0, 01
+		INPUT s0, scroll_up
+		INPUT s1, scroll_down
+		INPUT s2, select
+		COMPARE s1, 01
 		CALL Z, btn_down
 		LOAD s0, s0
-		COMPARE i, 05
-		JUMP Z, btn_down_roll
+		;COMPARE i, 05
+		;JUMP Z, btn_down_roll
 		LOAD s0, s0
-		COMPARE s0, 02
+		COMPARE s0, 01
 		CALL Z, btn_up
 		LOAD s0, s0
-		COMPARE i, FF
-		JUMP Z, btn_up_roll
+		;COMPARE i, FF
+		;JUMP Z, btn_up_roll
 		LOAD s0, s0
-		COMPARE s0, 04
+		COMPARE s2, 01
 		JUMP Z, selection_comparison
 		JUMP await_input
 		
@@ -575,6 +632,79 @@ out_four:
 		RETURN
 
 out_five:
+		LOAD s0, ascii_5
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_six:
+		LOAD s0, ascii_6
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_seven:
+		LOAD s0, ascii_7
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_eight:
+		LOAD s0, ascii_8
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_nine:
+		LOAD s0, ascii_9
+		OUTPUT s0, uart_data_tx
+		RETURN
+out_ten:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_0
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_eleven:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_twelve:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_2
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_thirteen:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_3
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_fourteen:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_4
+		OUTPUT s0, uart_data_tx
+		RETURN
+
+out_fifteen:
+		LOAD s0, ascii_1
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
 		LOAD s0, ascii_5
 		OUTPUT s0, uart_data_tx
 		RETURN
