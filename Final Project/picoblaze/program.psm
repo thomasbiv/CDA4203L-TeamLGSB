@@ -13,6 +13,7 @@ CONSTANT scroll_down	  , 07	  ; Scroll down port
 CONSTANT select		  , 08	  ; Select port
 CONSTANT back		  , 09 	  ; Back port
 CONSTANT pause_play	  , 0A	  ; Pause/Play port
+CONSTANT write_to_fsm	  , 0B	  ; Write strobe for fsm
 
 ;================================================================
 ; Useful constant declarations...
@@ -185,7 +186,7 @@ delete_all:
 		INPUT s1, scroll_down
 		INPUT s2, back
 		COMPARE s1, 01
-		CALL Z, vol_down
+		JUMP Z, main_menu
 		COMPARE s0, 01
 		CALL Z, vol_up
 		LOAD s0, s0

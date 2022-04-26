@@ -139,14 +139,16 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	//
 	// Handle PicoBlaze Output Port Logic
 	// Output Ports:
-	// * leds_out : port 01
 	// * uart_data_tx : port 03
-	//
-	// These signals are effectively "write enable" lines for the UART and LED
-	// Driver modules. They must be asserted when PB is outputting to the
+	//	* write_to_state_reg : port 0B
+	// These signals are effectively "write enable" lines for the UART
+	// Driver module. They must be asserted when PB is outputting to the
 	// corresponding port
-	assign write_to_leds = pb_write_strobe & (pb_port_id == 8'h01);
+	assign pb_reset = ~reset;
+	assign uart_reset =  ~reset;
+	assign pb_interrupt = 1'b0;
 	assign write_to_uart = pb_write_strobe & (pb_port_id == 8'h03);
+	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h06);
 	//
 	// Handle PicoBlaze Input Port Logic
 	// Input Ports:
