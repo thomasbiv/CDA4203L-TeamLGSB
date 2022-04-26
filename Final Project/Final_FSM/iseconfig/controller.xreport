@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2022-04-25T12:17:56</DateModified>
+  <DateModified>2022-04-26T14:58:06</DateModified>
   <ModuleName>controller</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Xilinx/CDA 4203L/Final_FSM/iseconfig/controller.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Xilinx/CDA 4203L/Final_FSM</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/iseconfig/controller.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM\</ImplementationReportsDirectory>
   <DateInitialized>2022-04-25T12:17:56</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
