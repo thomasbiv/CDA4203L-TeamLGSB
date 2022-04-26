@@ -405,31 +405,39 @@ delete_all_messages_confirm:
                    btn_down: 
                              LOAD s0, s0
                              ADD i, 01
-                             RETURN 
+                             COMPARE i, ascii_1
+                             RETURN NZ
               btn_down_roll: 
                              LOAD s0, s0
-                             LOAD i, 04
-                             JUMP main_menu
+                             LOAD i, 00
+                             COMPARE i, ascii_1
+                             JUMP NZ, main_menu
                      btn_up: 
                              LOAD s0, s0
                              SUB i, 01
-                             RETURN 
+                             COMPARE i, ascii_1
+                             RETURN NZ
                 btn_up_roll: 
                              LOAD s0, s0
-                             LOAD i, 00
-                             JUMP main_menu
+                             LOAD i, 04
+                             COMPARE i, ascii_1
+                             JUMP NZ, main_menu
                              ;Wait for input from the user.
                 await_input: 
                              LOAD s0, s0
                              INPUT s0, buttons
                              COMPARE s0, 01
                              CALL Z, btn_down
+                             LOAD s0, s0
                              COMPARE i, 05
                              JUMP Z, btn_down_roll
+                             LOAD s0, s0
                              COMPARE s0, 02
                              CALL Z, btn_up
+                             LOAD s0, s0
                              COMPARE i, FF
-                             JUMP Z, btn_down_roll
+                             JUMP Z, btn_up_roll
+                             LOAD s0, s0
                              COMPARE s0, 04
                              JUMP Z, selection_comparison
                              JUMP await_input
