@@ -123,6 +123,18 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.reset(pb_reset),
 		.clk(clk)
 	);	
+	
+	
+	//WORKING ON INSTANTIATION HERE
+	//address, data_in, write_enable, read_request, read_ack, data_out, reset, clk, hw_ram_rasn, hw_ram_casn,
+	//hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt,
+	//hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, clkout, sys_clk, rdy, rd_data_pres,
+	//max_ram_address, ledRAM
+	
+	ram_interface_wrapper RAME_INTERFACE (
+		.
+	
+	);
 	// PB I/O selection/routing
 	//
 	// Handle PicoBlaze Output Port Logic
@@ -165,6 +177,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				8'h05: pb_in_port <= {7'b0000000,uart_buffer_full};
 				default: pb_in_port <= 8'h00;
 			endcase
+	
+	
 			// Set up acknowledge/enable signals.
 			//
 			// Some modules, such as the UART, need confirmation that the data
