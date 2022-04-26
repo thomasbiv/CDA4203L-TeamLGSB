@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2022-04-17T13:43:59</DateModified>
+  <DateModified>2022-04-26T16:39:06</DateModified>
   <ModuleName>ddr2_mem_test</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Xilinx/CDA 4203L/Final_Project2/iseconfig/ddr2_mem_test.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Xilinx/CDA 4203L/Final_Project2\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_Project2/iseconfig/ddr2_mem_test.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_Project2\</ImplementationReportsDirectory>
   <DateInitialized>2022-04-13T16:14:18</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

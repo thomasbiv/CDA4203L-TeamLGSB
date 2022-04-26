@@ -39,6 +39,28 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	input			rs232_rx;
 	output			rs232_tx;
 	
+	//Sockit Top
+	input  OSC_100MHz;
+
+   inout  AUD_ADCLRCK;
+   input  AUD_ADCDAT;
+
+   inout  AUD_DACLRCK;
+   output AUD_DACDAT;
+
+   output AUD_XCK;
+   inout  AUD_BCLK;
+
+   output AUD_I2C_SCLK;
+   inout  AUD_I2C_SDAT;
+
+   output AUD_MUTE;
+	output PLL_LOCKE;
+	 
+   input  [3:0] KEY; 
+   input  [3:0] SW;
+   output [3:0] LED;
+
 	// Wires and Register Declarations
 	//
 	// PicoBlaze Data Lines
@@ -65,6 +87,17 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	// LED wires
 	wire write_to_leds;
 	wire led_reset;
+	
+	//Register the current state.
+	reg [3:0] curr_state = 3'b0000;
+
+	//Parameters for each state.
+	localparam init_state = 3'd0;
+	localparam state_play = 3'd1;
+	localparam state_record = 3'd2;
+	localparam state_delone = 3'd3;
+	localparam state_delall = 3'd4;
+	localparam state_vol = 3'd5;
 	
 
 	// LED Driver and control logic
@@ -131,10 +164,57 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	//hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, clkout, sys_clk, rdy, rd_data_pres,
 	//max_ram_address, ledRAM
 	
-	ram_interface_wrapper RAME_INTERFACE (
-		.
-	
+	ram_interface_wrapper RAMWrapper (
+					.address(address),				// input 
+					.data_in(RAMin), 					// input
+					.write_enable(enableWrite), 	//	input
+					.read_request(reqRead), 		//	input
+					.read_ack(ackRead), 
+					.data_out(RAMout), 				// output from ram to wire
+					.reset(reset), 
+					.clk(CLK), 
+					.hw_ram_rasn(hw_ram_rasn), 
+					.hw_ram_casn(hw_ram_casn),
+					.hw_ram_wen(hw_ram_wen), 
+					.hw_ram_ba(hw_ram_ba), 
+					.hw_ram_udqs_p(hw_ram_udqs_p), 
+					.hw_ram_udqs_n(hw_ram_udqs_n), 
+					.hw_ram_ldqs_p(hw_ram_ldqs_p), 
+					.hw_ram_ldqs_n(hw_ram_ldqs_n), 
+					.hw_ram_udm(hw_ram_udm), 
+					.hw_ram_ldm(hw_ram_ldm), 
+					.hw_ram_ck(hw_ram_ck), 
+					.hw_ram_ckn(hw_ram_ckn), 
+					.hw_ram_cke(hw_ram_cke), 
+					.hw_ram_odt(hw_ram_odt),
+					.hw_ram_ad(hw_ram_ad), 
+					.hw_ram_dq(hw_ram_dq), 
+					.hw_rzq_pin(hw_rzq_pin), 
+					.hw_zio_pin(hw_zio_pin), 
+					.clkout(systemCLK), //
+					.sys_clk(clk), 
+					.rdy(rdy), 
+					.rd_data_pres(dataPresent),
+					.max_ram_address(max_ram_address)
 	);
+	
+	
+	sockit_top what(
+		.AUD_ADCLRCK(AUD_ADCLRCK),
+		.AUD_ADCDAT(AUD_ADCDAT),
+		.AUD_DACLRCK(AUD_DACLRCK),
+		.AUD_DACDAT(AUD_DACDAT),
+		.AUD_XCK(AUD_XCK),
+		.AUD_BCLK(AUD_BCLK),
+		.AUD_I2C_SCLK(AUD_I2C_SCLK),
+		.AUD_I2C_SDAT(AUD_I2C_SDAT),
+		.AUD_MUTE(AUD_MUTE),
+		.PLL_LOCKED(PLL_LOCKED),
+		.KEY(KEY),
+		.SW(SW),
+		.LED(LED)
+	);
+	
 	// PB I/O selection/routing
 	//
 	// Handle PicoBlaze Output Port Logic
@@ -179,6 +259,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				8'h05: pb_in_port <= {7'b0000000,uart_buffer_full};
 				default: pb_in_port <= 8'h00;
 			endcase
+			
 	
 	
 			// Set up acknowledge/enable signals.
@@ -191,5 +272,44 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			read_from_uart <= pb_read_strobe & (pb_port_id == 8'h04);
 		end
 	end
+		
+	always @(posedge clk or posedge pb_reset) begin
+		if (~pb_reset) begin
+			curr_state = main_state;
+		end
+		else
+			case (curr_state)
+				main_state : begin
+					//check val of write_to_state_reg
+					//Main menu state
+				end
+				state_play : begin
+					//check val of write_to_state_reg
+					//some shit would go here from picoblaze maybe idfk
+					//nested FSM of some kind from another file?
+				end
+				state_record : begin
+					//check val of write_to_state_reg
+					//some shit would go here from picoblaze maybe idfk
+					//nested FSM of some kind from another file?
+				end
+				state_delone : begin
+					//check val of write_to_state_reg
+					//some shit would go here from picoblaze maybe idfk
+					//nested FSM of some kind from another file?
+				end
+				state_delall : begin
+					//check val of write_to_state_reg
+					//some shit would go here from picoblaze maybe idfk
+					//nested FSM of some kind from another file?
+				end
+				state_vol : begin
+					//check val of write_to_state_reg
+					//some shit would go here from picoblaze maybe idfk
+					//nested FSM of some kind from another file?
+				end
+			endcase
+		end
+			
 	
 endmodule
