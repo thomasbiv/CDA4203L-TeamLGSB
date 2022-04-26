@@ -180,11 +180,46 @@ delete_message:
 
 ;Confirmation for deleting all messages
 delete_all:
+		LOAD s0, s0
+		INPUT s0, scroll_up
+		INPUT s1, scroll_down
+		INPUT s2, back
+		COMPARE s1, 01
+		CALL Z, vol_down
+		COMPARE s0, 01
+		CALL Z, vol_up
+		LOAD s0, s0
+		COMPARE s2, 01
+		JUMP Z, main_menu
+		JUMP volume_control
+
+vol_down:
+		LOAD s0, s0
+		SUB j, 01
+		COMPARE i, ascii_1
+		JUMP NZ, main_menu
+
+vol_up:
+		LOAD s0, s0
+		ADD j, 01
+		COMPARE i, ascii_1
+		JUMP NZ, main_menu
 
 ;Subroutine for volume control
 volume_control:
 
 		LOAD s0, s0
+		INPUT s0, scroll_up
+		INPUT s1, scroll_down
+		INPUT s2, back
+		COMPARE s1, 01
+		CALL Z, vol_down
+		COMPARE s0, 01
+		CALL Z, vol_up
+		LOAD s0, s0
+		COMPARE s2, 01
+		JUMP Z, main_menu
+		JUMP volume_control
 		
 
 ;Play message menu
@@ -521,6 +556,38 @@ volume_control_menu:
 
 		LOAD s0, ascii_SPACE ;
 		OUTPUT s0, uart_data_tx
+		call wait
+
+		COMPARE j, 00
+		CALL Z, out_one
+		COMPARE j, 01
+		CALL Z, out_two
+		COMPARE j, 02
+		CALL Z, out_three
+		COMPARE j, 03
+		CALL Z, out_four
+		COMPARE j, 04
+		CALL Z, out_five
+		COMPARE j, 05
+		CALL Z, out_six
+		COMPARE j, 06
+		CALL Z, out_seven
+		COMPARE j, 07
+		CALL Z, out_eight
+		COMPARE j, 08
+		CALL Z, out_nine
+		COMPARE j, 09
+		CALL Z, out_ten
+		COMPARE j, 0A
+		CALL Z, out_eleven
+		COMPARE j, 0B
+		CALL Z, out_twelve
+		COMPARE j, 0C
+		CALL Z, out_thriteen
+		COMPARE j, 0D
+		CALL Z, out_fourteen
+		COMPARE j, 0E
+		CALL Z, out_fifteen
 		call wait
 
 		LOAD s0, ascii_LF ;
