@@ -60,6 +60,40 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
    input  [3:0] KEY; 
    input  [3:0] SW;
    output [3:0] LED;
+	
+	// Memory Module Wires
+	output 		hw_ram_rasn;
+	output 		hw_ram_casn;
+	output 		hw_ram_wen;
+	output[2:0] hw_ram_ba;
+	inout 		hw_ram_udqs_p;
+	inout 		hw_ram_udqs_n;
+	inout 		hw_ram_ldqs_p;
+	inout 		hw_ram_ldqs_n;
+	output 		hw_ram_udm;
+	output 		hw_ram_ldm;
+	output 		hw_ram_ck;
+	output 		hw_ram_ckn;
+	output 		hw_ram_cke;
+	output 		hw_ram_odt;
+	output[12:0]hw_ram_ad;
+	inout [15:0]hw_ram_dq;
+	inout 		hw_rzq_pin;
+	inout 		hw_zio_pin;
+	input [3:0]	switches; 		// address
+	output 		status;
+	reg [15:0] RAMin;
+	wire 	[15:0]	RAMout;
+	reg [25:0] address;
+	reg enableWrite;
+	reg reqRead;
+	reg ackRead;
+	wire dataPresent;
+	wire [25:0]max_ram_address;
+	reg rdy;
+	reg [15:0] mem_in;
+	reg [15:0] mem_out;
+	reg [15:0] count;
 
 	// Wires and Register Declarations
 	//
@@ -92,12 +126,23 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg [3:0] curr_state = 3'b0000;
 
 	//Parameters for each state.
-	localparam init_state = 3'd0;
-	localparam state_play = 3'd1;
-	localparam state_record = 3'd2;
-	localparam state_delone = 3'd3;
-	localparam state_delall = 3'd4;
-	localparam state_vol = 3'd5;
+	reg main;
+	reg play;
+	reg record;
+	reg delone;
+	reg delall;
+	reg vol;
+	
+	
+	// Initialize registers
+	initial begin
+		main <= 0;
+		play <= 0;
+		record <= 0;
+		delone <= 0;
+		delall <= 0;
+		vol <= 0;
+	end
 	
 
 	// LED Driver and control logic
@@ -228,7 +273,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	assign uart_reset =  ~reset;
 	assign pb_interrupt = 1'b0;
 	assign write_to_uart = pb_write_strobe & (pb_port_id == 8'h03);
-	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h06);
+	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h0b);
+	assign file_selection = pb_write_strobe & (pb_port_id == 8'h0c);
 	//
 	// Handle PicoBlaze Input Port Logic
 	// Input Ports:
@@ -248,9 +294,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		end else begin
 			// Set pb input port to appropriate value
 			case(pb_port_id)
-				8'h06: pb_in_port <= scroll_up;
 				8'h00: pb_in_port <= switches;
-				8'h07: pb_in_port <= scroll_down;
 				8'h08: pb_in_port <= select;
 				8'h09: pb_in_port <= back;
 				8'h0A: pb_in_port <= pause_play;
@@ -270,8 +314,29 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			// signal high for corresponding ports, as needed. Most input
 			// ports will not need this.
 			read_from_uart <= pb_read_strobe & (pb_port_id == 8'h04);
+			if (write_to_state_reg) begin
+				main <= (pb_out_port == 8'h00);
+				play <= (pb_out_port == 8'h01);
+				record <= (pb_out_port == 8'h02);
+				delone <= (pb_out_port == 8'h03);
+				delall <= (pb_out_port == 8'h04);
+				vol <= (pb_out_port == 8'h05);
+			end
 		end
 	end
+		
+		
+		
+	
+	// Initialize state
+	localparam main_state = 8'h00;
+	localparam play_state = 8'h01;
+	localparam record_state = 8'h02;
+	localparam delone_state = 8'h03;
+	localparam delall_state = 8'h04;
+	localparam vol_state = 8'h05;
+		
+		
 		
 	always @(posedge clk or posedge pb_reset) begin
 		if (~pb_reset) begin
@@ -280,30 +345,41 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		else
 			case (curr_state)
 				main_state : begin
+					if (play)
+						curr_state <= play_state;
+					else if (record)
+						curr_state <= record_state;
+					else if (delone)
+						curr_state <= delone_state;
+					else if (delall)
+						curr_state <= delall_state;
+					else if (vol)
+						curr_state <= vol_state;
 					//check val of write_to_state_reg
 					//Main menu state
 				end
-				state_play : begin
+				play_state : begin
+					reqRead <= 1;
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
 				end
-				state_record : begin
+				record_state : begin
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
 				end
-				state_delone : begin
+				delone_state : begin
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
 				end
-				state_delall : begin
+				delall_state : begin
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
 				end
-				state_vol : begin
+				vol_state : begin
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
