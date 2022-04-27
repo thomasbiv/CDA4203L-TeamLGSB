@@ -132,6 +132,18 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg delone;
 	reg delall;
 	reg vol;
+	reg play_1;
+	reg play_2;
+	reg play_3;
+	reg play_4;
+	reg play_5;
+	reg delone_1;
+	reg delone_2;
+	reg delone_3;
+	reg delone_4;
+	reg delone_5;
+	
+	
 	
 	
 	// Initialize registers
@@ -142,6 +154,16 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		delone <= 0;
 		delall <= 0;
 		vol <= 0;
+		play_1 <= 0;
+		play_2 <= 0;
+		play_3 <= 0;
+		play_4 <= 0;
+		play_5 <= 0;
+		delone_1 <= 0;
+		delone_2 <= 0;
+		delone_3 <= 0;
+		delone_4 <= 0;
+		delone_5 <= 0;
 	end
 	
 
@@ -322,6 +344,22 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				delall <= (pb_out_port == 8'h04);
 				vol <= (pb_out_port == 8'h05);
 			end
+			if (file_selection) begin
+				if (play) begin
+					play_1 <= (pb_out_port == 8'h06);
+					play_2 <= (pb_out_port == 8'h07);
+					play_3 <= (pb_out_port == 8'h08);
+					play_4 <= (pb_out_port == 8'h09);
+					play_5 <= (pb_out_port == 8'h0A);
+				end
+				else if (delone) begin
+					delone_1 <= (pb_out_port == 8'h0B);
+					delone_2 <= (pb_out_port == 8'h0C);
+					delone_3 <= (pb_out_port == 8'h0D);
+					delone_4 <= (pb_out_port == 8'h0E);
+					delone_5 <= (pb_out_port == 8'h0F);
+				end
+			end
 		end
 	end
 		
@@ -359,7 +397,17 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					//Main menu state
 				end
 				play_state : begin
-					reqRead <= 1;
+					if (play_1)
+						//some stuff with the memory locale of the first file
+					else if (play_2)
+						//some stuff with the memory locale of the second file
+					else if (play_3)
+						//some stuff with the memory locale of the third file
+					else if (play_4)
+						//some stuff with the memory locale of the fourth file
+					else if (play_5)
+						
+					//reqRead <= 1;
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
@@ -370,6 +418,16 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					//nested FSM of some kind from another file?
 				end
 				delone_state : begin
+					if (delone_1)
+						//some stuff with the memory locale of the first file
+					else if (delone_2)
+						//some stuff with the memory locale of the first file
+					else if (delone_3)
+						//some stuff with the memory locale of the first file
+					else if (delone_4)
+						//some stuff with the memory locale of the first file
+					else if (delone_5)
+						//some stuff with the memory locale of the first file
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
