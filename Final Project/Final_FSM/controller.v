@@ -60,6 +60,43 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
    input  [3:0] KEY; 
    input  [3:0] SW;
    output [3:0] LED;
+	
+	reg [1:0] volume_control;
+	
+	// Memory Module Wires
+	output 		hw_ram_rasn;
+	output 		hw_ram_casn;
+	output 		hw_ram_wen;
+	output[2:0] hw_ram_ba;
+	inout 		hw_ram_udqs_p;
+	inout 		hw_ram_udqs_n;
+	inout 		hw_ram_ldqs_p;
+	inout 		hw_ram_ldqs_n;
+	output 		hw_ram_udm;
+	output 		hw_ram_ldm;
+	output 		hw_ram_ck;
+	output 		hw_ram_ckn;
+	output 		hw_ram_cke;
+	output 		hw_ram_odt;
+	output[12:0]hw_ram_ad;
+	inout [15:0]hw_ram_dq;
+	inout 		hw_rzq_pin;
+	inout 		hw_zio_pin;
+	input [3:0]	switches; 		// address
+	output 		status;
+	reg [15:0] RAMin;
+	wire 	[15:0]	RAMout;
+	reg [25:0] address;
+	reg enableWrite;
+	reg reqRead;
+	reg ackRead;
+	wire dataPresent;
+	wire [25:0]max_ram_address;
+	reg rdy;
+	reg [15:0] mem_in;
+	reg [15:0] mem_out;
+	reg [15:0] count;
+	wire message_exists;
 
 	// Wires and Register Declarations
 	//
@@ -78,7 +115,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	wire			write_to_uart;
 	wire			uart_buffer_full;
 	wire			uart_data_present;
-	reg				read_from_uart;
+	reg			read_from_uart;
 	wire			uart_reset;
 	// UART Data Lines
 	// TX does not need a wire, as it is fed directly by pb_out_port
@@ -89,15 +126,73 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	wire led_reset;
 	
 	//Register the current state.
-	reg [3:0] curr_state = 3'b0000;
+	reg [7:0] curr_state = 8'h00;
 
 	//Parameters for each state.
-	localparam init_state = 3'd0;
-	localparam state_play = 3'd1;
-	localparam state_record = 3'd2;
-	localparam state_delone = 3'd3;
-	localparam state_delall = 3'd4;
-	localparam state_vol = 3'd5;
+	reg main;
+	reg play;
+	reg record;
+	reg delone;
+	reg delall;
+	reg vol;
+	reg play_1;
+	reg play_2;
+	reg play_3;
+	reg play_4;
+	reg play_5;
+	reg record_1;
+	reg record_2;
+	reg record_3;
+	reg record_4;
+	reg record_5;
+	reg delone_1;
+	reg delone_2;
+	reg delone_3;
+	reg delone_4;
+	reg delone_5;
+	reg [3:0] volume_control;
+	wire [15:0] audio_out;
+	reg volume_up;
+	reg volume_down;
+	
+	
+	
+	
+	// Initialize registers
+	initial begin
+		main <= 0;
+		play <= 0;
+		record <= 0;
+		delone <= 0;
+		delall <= 0;
+		vol <= 0;
+		play_1 <= 0;
+		play_2 <= 0;
+		play_3 <= 0;
+		play_4 <= 0;
+		play_5 <= 0;
+		record_1 <= 0;
+		record_2 <= 0;
+		record_3 <= 0;
+		record_4 <= 0;
+		record_5 <= 0;
+		delone_1 <= 0;
+		delone_2 <= 0;
+		delone_3 <= 0;
+		delone_4 <= 0;
+		delone_5 <= 0;
+		volume_control <= 1;
+		volume_up <= 0;
+		volume_down <= 0;
+		enableWrite <= 0;
+		are_recording <= 0;
+		address <= 0;
+		max_ram_address <= 0;
+		reqRead <= 0;
+		dataPresent <= 0;
+		mem_out <= 0;
+		ackRead <= 0;
+	end
 	
 
 	// LED Driver and control logic
@@ -200,6 +295,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	
 	
 	sockit_top what(
+		.clk(clk),
+			.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
 		.AUD_ADCDAT(AUD_ADCDAT),
 		.AUD_DACLRCK(AUD_DACLRCK),
@@ -212,6 +309,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.PLL_LOCKED(PLL_LOCKED),
 		.KEY(KEY),
 		.SW(SW),
+			.audio_in(audio_in),
+			.audio_out(audio_out),
+			.audio_clk(audio_clk),
 		.LED(LED)
 	);
 	
@@ -228,7 +328,10 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	assign uart_reset =  ~reset;
 	assign pb_interrupt = 1'b0;
 	assign write_to_uart = pb_write_strobe & (pb_port_id == 8'h03);
-	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h06);
+	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h0b);
+	assign file_selection = pb_write_strobe & (pb_port_id == 8'h0c);
+	assign vol_sel = pb_write_strobe & (pb_port_id == 8'h04);
+	assign recording = pb_write_strobe & (pb_port_id == 8'h05);
 	//
 	// Handle PicoBlaze Input Port Logic
 	// Input Ports:
@@ -248,15 +351,14 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		end else begin
 			// Set pb input port to appropriate value
 			case(pb_port_id)
-				8'h06: pb_in_port <= scroll_up;
 				8'h00: pb_in_port <= switches;
-				8'h07: pb_in_port <= scroll_down;
 				8'h08: pb_in_port <= select;
 				8'h09: pb_in_port <= back;
 				8'h0A: pb_in_port <= pause_play;
 				8'h02: pb_in_port <= uart_rx_data;
 				8'h04: pb_in_port <= {7'b0000000,uart_data_present};
 				8'h05: pb_in_port <= {7'b0000000,uart_buffer_full};
+				8'h0B: pb_in_port <= message_exists;
 				default: pb_in_port <= 8'h00;
 			endcase
 			
@@ -270,8 +372,69 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			// signal high for corresponding ports, as needed. Most input
 			// ports will not need this.
 			read_from_uart <= pb_read_strobe & (pb_port_id == 8'h04);
+			if (write_to_state_reg) begin
+				main <= (pb_out_port == 8'h00);
+				play <= (pb_out_port == 8'h01);
+				record <= (pb_out_port == 8'h02);
+				delone <= (pb_out_port == 8'h03);
+				delall <= (pb_out_port == 8'h04);
+				vol <= (pb_out_port == 8'h05);
+			end
+			if (file_selection) begin
+				if (play) begin
+					play_1 <= (pb_out_port == 8'h00);
+					play_2 <= (pb_out_port == 8'h01);
+					play_3 <= (pb_out_port == 8'h02);
+					play_4 <= (pb_out_port == 8'h03);
+					play_5 <= (pb_out_port == 8'h04);
+				end
+				else if (delone) begin
+					delone_1 <= (pb_out_port == 8'h00);
+					delone_2 <= (pb_out_port == 8'h01);
+					delone_3 <= (pb_out_port == 8'h02);
+					delone_4 <= (pb_out_port == 8'h03);
+					delone_5 <= (pb_out_port == 8'h04);
+				end
+			end
+			if (vol_sel) begin
+				if (vol) begin
+					volume_up <= (pb_out_port == 8'h01);
+					volume_down <= (pb_out_port == 8'h02);
+				end
+			end
+			if (recording) begin
+				if (record) begin
+					are_recording <= (pb_out_port == 8'h01);
+					record_1 <= (pb_out_port == 8'h02);
+					record_2 <= (pb_out_port == 8'h03);
+					record_3 <= (pb_out_port == 8'h04);
+					record_4 <= (pb_out_port == 8'h05);  
+					record_5 <= (pb_out_port == 8'h06);
+				end
+			end
 		end
 	end
+		
+		
+		
+	
+	// Initialize state
+	localparam main_state = 8'h00;
+	localparam play_state = 8'h01;
+	localparam record_state = 8'h02;
+	localparam delone_state = 8'h03;
+	localparam delall_state = 8'h04;
+	localparam vol_state = 8'h05;
+	localparam raise_write_record = 8'h06;
+	localparam lower_write_record = 8'h07;
+	localparam raise_read_play = 8'h08;
+	localparam play_audio = 8'h09;
+	localparam lower_ack_read = 8'h0A;
+	localparam raise_read_record = 8'h0B;
+	localparam record_audio = 8'h0C;
+	
+		
+		
 		
 	always @(posedge clk or posedge pb_reset) begin
 		if (~pb_reset) begin
@@ -280,36 +443,188 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		else
 			case (curr_state)
 				main_state : begin
+					if (play) begin
+						if (play_1) begin
+							address <= 0;
+							max_ram_address <= 26'hCCCCCD;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the first file
+						end
+						else if (play_2) begin
+							address <= 26'hCCCCCE;
+							max_ram_address <= 26'h199999A;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the second file
+						end
+						else if (play_3) begin
+							address <= 26'h199999B;
+							max_ram_address <= 26'h2666666;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the third file
+						end
+						else if (play_4) begin
+							address <= 26'h2666667;
+							max_ram_address <= 26'h3333333;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the fourth file
+						end
+						else if (play_5) begin
+							address <= 26'h3333334;
+							max_ram_address <= 26'h4000000;
+							curr_state <= play_state;
+						end
+					end
+					else if (record)
+						if (record_1) begin
+							address <= 0;
+							max_ram_address <= 26'hCCCCCD;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the first file
+						end
+						else if (record_2) begin
+							address <= 26'hCCCCCE;
+							max_ram_address <= 26'h199999A;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the second file
+						end
+						else if (record_3) begin
+							address <= 26'h199999B;
+							max_ram_address <= 26'h2666666;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the third file
+						end
+						else if (record_4) begin
+							address <= 26'h2666667;
+							max_ram_address <= 26'h3333333;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the fourth file
+						end
+						else if (record_5) begin
+							address <= 26'h3333334;
+							max_ram_address <= 26'h4000000;
+							curr_state <= record_state;
+						end
+					else if (delone)
+						curr_state <= delone_state;
+					else if (delall)
+						curr_state <= delall_state;
+					else if (vol)
+						curr_state <= vol_state;
 					//check val of write_to_state_reg
 					//Main menu state
 				end
-				state_play : begin
+				play_state : begin
+					if (play_1) begin
+						curr_state <= raise_read_play;
+						//some stuff with the memory locale of the first file
+					end
+					else if (play_2) begin
+						curr_state <= raise_read_play;
+						//some stuff with the memory locale of the second file
+					end
+					else if (play_3) begin
+						curr_state <= raise_read_play;
+						//some stuff with the memory locale of the third file
+					end
+					else if (play_4) begin
+						curr_state <= raise_read_play;
+						//some stuff with the memory locale of the fourth file
+					end
+					else if (play_5) begin
+						curr_state <= raise_read_play;
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					end
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
-				state_record : begin
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
+				raise_read_play : begin
+					enableWrite <= 0;
+					reqRead <= 1;
+					curr_state <= play_audio;
 				end
-				state_delone : begin
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
+				play_audio : begin
+					reqRead <= 0;
+					if (dataPresent) begin
+						mem_out <= RAMout;
+						ackRead <= 1;
+						curr_state = lower_ack_read;
+					end
 				end
-				state_delall : begin
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
+				lower_ack_read : begin
+					ackRead <= 0;
+					address <= address + 1;
+					if (address >= max_address)
+						curr_state <= main_state;
+					else
+						curr_state <= play_state;
 				end
-				state_vol : begin
+				record_state : begin
+					if (are_recording)
+						curr_state <= raise_read_record;
+						//AMin <= audio_out; 
+						//curr_state = raise_write_record;
+						
+						//check val of write_to_state_reg
+						//some shit would go here from picoblaze maybe idfk
+						//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
+				raise_write_record : begin 
+					enableWrite <= 1;
+					curr_state = lower_write_record;
+				end
+				raise_read_record : begin
+					enableWrite <= 0;
+					reqRead <= 1;
+					curr_state <= record_audio;
+				end
+				record_audio : begin
+					reqRead <= 0;
+					if (dataPresent)
+						message_exists <= 1;
+					else
+						curr_state <= raise_write_record;
+				end
+				lower_write_record : begin
+					enableWrite <= 0;
+					are_recording <= 0;
+					curr_state = record_state;
+				end
+				delone_state : begin
+					if (delone_1)
+						//some stuff with the memory locale of the first file
+					else if (delone_2)
+						//some stuff with the memory locale of the first file
+					else if (delone_3)
+						//some stuff with the memory locale of the first file
+					else if (delone_4)
+						//some stuff with the memory locale of the first file
+					else if (delone_5)
+						//some stuff with the memory locale of the first file
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
+				end
+				delall_state : begin
+					//check val of write_to_state_reg
+					//some shit would go here from picoblaze maybe idfk
+					//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
+				end
+				vol_state : begin
+					if (volume_up && (volume_control < 15))
+						volume_control = volume_control + 1;
+					else if (volume_down && (volume_control > 1))
+						volume_control = volume_control - 1;
+					
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
 			endcase
 		end
-			
-	
 endmodule
