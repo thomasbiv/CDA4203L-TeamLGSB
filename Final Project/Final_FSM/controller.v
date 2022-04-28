@@ -126,7 +126,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	wire led_reset;
 	
 	//Register the current state.
-	reg [3:0] curr_state = 3'b0000;
+	reg [7:0] curr_state = 8'h00;
 
 	//Parameters for each state.
 	reg main;
@@ -140,12 +140,18 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg play_3;
 	reg play_4;
 	reg play_5;
+	reg record_1;
+	reg record_2;
+	reg record_3;
+	reg record_4;
+	reg record_5;
 	reg delone_1;
 	reg delone_2;
 	reg delone_3;
 	reg delone_4;
 	reg delone_5;
 	reg [3:0] volume_control;
+	wire [15:0] audio_out;
 	reg volume_up;
 	reg volume_down;
 	
@@ -165,6 +171,11 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		play_3 <= 0;
 		play_4 <= 0;
 		play_5 <= 0;
+		record_1 <= 0;
+		record_2 <= 0;
+		record_3 <= 0;
+		record_4 <= 0;
+		record_5 <= 0;
 		delone_1 <= 0;
 		delone_2 <= 0;
 		delone_3 <= 0;
@@ -173,6 +184,14 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		volume_control <= 1;
 		volume_up <= 0;
 		volume_down <= 0;
+		enableWrite <= 0;
+		are_recording <= 0;
+		address <= 0;
+		max_ram_address <= 0;
+		reqRead <= 0;
+		dataPresent <= 0;
+		mem_out <= 0;
+		ackRead <= 0;
 	end
 	
 
@@ -277,7 +296,6 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	
 	sockit_top what(
 		.clk(clk),
-			.playback(playback),
 			.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
 		.AUD_ADCDAT(AUD_ADCDAT),
@@ -291,6 +309,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.PLL_LOCKED(PLL_LOCKED),
 		.KEY(KEY),
 		.SW(SW),
+			.audio_in(audio_in),
+			.audio_out(audio_out),
+			.audio_clk(audio_clk),
 		.LED(LED)
 	);
 	
@@ -310,6 +331,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h0b);
 	assign file_selection = pb_write_strobe & (pb_port_id == 8'h0c);
 	assign vol_sel = pb_write_strobe & (pb_port_id == 8'h04);
+	assign recording = pb_write_strobe & (pb_port_id == 8'h05);
 	//
 	// Handle PicoBlaze Input Port Logic
 	// Input Ports:
@@ -380,6 +402,16 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					volume_down <= (pb_out_port == 8'h02);
 				end
 			end
+			if (recording) begin
+				if (record) begin
+					are_recording <= (pb_out_port == 8'h01);
+					record_1 <= (pb_out_port == 8'h02);
+					record_2 <= (pb_out_port == 8'h03);
+					record_3 <= (pb_out_port == 8'h04);
+					record_4 <= (pb_out_port == 8'h05);  
+					record_5 <= (pb_out_port == 8'h06);
+				end
+			end
 		end
 	end
 		
@@ -393,6 +425,14 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	localparam delone_state = 8'h03;
 	localparam delall_state = 8'h04;
 	localparam vol_state = 8'h05;
+	localparam raise_write_record = 8'h06;
+	localparam lower_write_record = 8'h07;
+	localparam raise_read_play = 8'h08;
+	localparam play_audio = 8'h09;
+	localparam lower_ack_read = 8'h0A;
+	localparam raise_read_record = 8'h0B;
+	localparam record_audio = 8'h0C;
+	
 		
 		
 		
@@ -403,10 +443,67 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		else
 			case (curr_state)
 				main_state : begin
-					if (play)
-						curr_state <= play_state;
+					if (play) begin
+						if (play_1) begin
+							address <= 0;
+							max_ram_address <= 26'hCCCCCD;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the first file
+						end
+						else if (play_2) begin
+							address <= 26'hCCCCCE;
+							max_ram_address <= 26'h199999A;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the second file
+						end
+						else if (play_3) begin
+							address <= 26'h199999B;
+							max_ram_address <= 26'h2666666;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the third file
+						end
+						else if (play_4) begin
+							address <= 26'h2666667;
+							max_ram_address <= 26'h3333333;
+							curr_state <= play_state;
+							//some stuff with the memory locale of the fourth file
+						end
+						else if (play_5) begin
+							address <= 26'h3333334;
+							max_ram_address <= 26'h4000000;
+							curr_state <= play_state;
+						end
+					end
 					else if (record)
-						curr_state <= record_state;
+						if (record_1) begin
+							address <= 0;
+							max_ram_address <= 26'hCCCCCD;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the first file
+						end
+						else if (record_2) begin
+							address <= 26'hCCCCCE;
+							max_ram_address <= 26'h199999A;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the second file
+						end
+						else if (record_3) begin
+							address <= 26'h199999B;
+							max_ram_address <= 26'h2666666;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the third file
+						end
+						else if (record_4) begin
+							address <= 26'h2666667;
+							max_ram_address <= 26'h3333333;
+							curr_state <= record_state;
+							//some stuff with the memory locale of the fourth file
+						end
+						else if (record_5) begin
+							address <= 26'h3333334;
+							max_ram_address <= 26'h4000000;
+							curr_state <= record_state;
+						end
 					else if (delone)
 						curr_state <= delone_state;
 					else if (delall)
@@ -417,29 +514,83 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					//Main menu state
 				end
 				play_state : begin
-					if (play_1)
+					if (play_1) begin
+						curr_state <= raise_read_play;
 						//some stuff with the memory locale of the first file
-					else if (play_2)
+					end
+					else if (play_2) begin
+						curr_state <= raise_read_play;
 						//some stuff with the memory locale of the second file
-					else if (play_3)
+					end
+					else if (play_3) begin
+						curr_state <= raise_read_play;
 						//some stuff with the memory locale of the third file
-					else if (play_4)
+					end
+					else if (play_4) begin
+						curr_state <= raise_read_play;
 						//some stuff with the memory locale of the fourth file
-					else if (play_5)
-						
-					//reqRead <= 1;
+					end
+					else if (play_5) begin
+						curr_state <= raise_read_play;
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					end
 					if (write_to_state_reg)
 						curr_state = main_state;
 				end
+				raise_read_play : begin
+					enableWrite <= 0;
+					reqRead <= 1;
+					curr_state <= play_audio;
+				end
+				play_audio : begin
+					reqRead <= 0;
+					if (dataPresent) begin
+						mem_out <= RAMout;
+						ackRead <= 1;
+						curr_state = lower_ack_read;
+					end
+				end
+				lower_ack_read : begin
+					ackRead <= 0;
+					address <= address + 1;
+					if (address >= max_address)
+						curr_state <= main_state;
+					else
+						curr_state <= play_state;
+				end
 				record_state : begin
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
+					if (are_recording)
+						curr_state <= raise_read_record;
+						//AMin <= audio_out; 
+						//curr_state = raise_write_record;
+						
+						//check val of write_to_state_reg
+						//some shit would go here from picoblaze maybe idfk
+						//nested FSM of some kind from another file?
 					if (write_to_state_reg)
 						curr_state = main_state;
+				raise_write_record : begin 
+					enableWrite <= 1;
+					curr_state = lower_write_record;
+				end
+				raise_read_record : begin
+					enableWrite <= 0;
+					reqRead <= 1;
+					curr_state <= record_audio;
+				end
+				record_audio : begin
+					reqRead <= 0;
+					if (dataPresent)
+						message_exists <= 1;
+					else
+						curr_state <= raise_write_record;
+				end
+				lower_write_record : begin
+					enableWrite <= 0;
+					are_recording <= 0;
+					curr_state = record_state;
 				end
 				delone_state : begin
 					if (delone_1)
@@ -466,9 +617,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 						curr_state = main_state;
 				end
 				vol_state : begin
-					if (volume_up and (volume_control < 15))
+					if (volume_up && (volume_control < 15))
 						volume_control = volume_control + 1;
-					else if (volume_down and (volume_control > 1))
+					else if (volume_down && (volume_control > 1))
 						volume_control = volume_control - 1;
 					
 					if (write_to_state_reg)
@@ -476,6 +627,4 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				end
 			endcase
 		end
-			
-	
 endmodule
