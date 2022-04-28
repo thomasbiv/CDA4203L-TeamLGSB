@@ -61,6 +61,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
    input  [3:0] SW;
    output [3:0] LED;
 	
+	reg [1:0] volume_control;
+	
 	// Memory Module Wires
 	output 		hw_ram_rasn;
 	output 		hw_ram_casn;
@@ -94,6 +96,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg [15:0] mem_in;
 	reg [15:0] mem_out;
 	reg [15:0] count;
+	wire message_exists;
 
 	// Wires and Register Declarations
 	//
@@ -112,7 +115,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	wire			write_to_uart;
 	wire			uart_buffer_full;
 	wire			uart_data_present;
-	reg				read_from_uart;
+	reg			read_from_uart;
 	wire			uart_reset;
 	// UART Data Lines
 	// TX does not need a wire, as it is fed directly by pb_out_port
@@ -142,6 +145,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg delone_3;
 	reg delone_4;
 	reg delone_5;
+	reg [3:0] volume_control;
+	reg volume_up;
+	reg volume_down;
 	
 	
 	
@@ -164,6 +170,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		delone_3 <= 0;
 		delone_4 <= 0;
 		delone_5 <= 0;
+		volume_control <= 1;
+		volume_up <= 0;
+		volume_down <= 0;
 	end
 	
 
@@ -267,6 +276,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	
 	
 	sockit_top what(
+		.clk(clk),
+			.playback(playback),
+			.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
 		.AUD_ADCDAT(AUD_ADCDAT),
 		.AUD_DACLRCK(AUD_DACLRCK),
@@ -297,6 +309,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	assign write_to_uart = pb_write_strobe & (pb_port_id == 8'h03);
 	assign write_to_state_reg = pb_write_strobe & (pb_port_id == 8'h0b);
 	assign file_selection = pb_write_strobe & (pb_port_id == 8'h0c);
+	assign vol_sel = pb_write_strobe & (pb_port_id == 8'h04);
 	//
 	// Handle PicoBlaze Input Port Logic
 	// Input Ports:
@@ -323,6 +336,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				8'h02: pb_in_port <= uart_rx_data;
 				8'h04: pb_in_port <= {7'b0000000,uart_data_present};
 				8'h05: pb_in_port <= {7'b0000000,uart_buffer_full};
+				8'h0B: pb_in_port <= message_exists;
 				default: pb_in_port <= 8'h00;
 			endcase
 			
@@ -346,18 +360,24 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			end
 			if (file_selection) begin
 				if (play) begin
-					play_1 <= (pb_out_port == 8'h06);
-					play_2 <= (pb_out_port == 8'h07);
-					play_3 <= (pb_out_port == 8'h08);
-					play_4 <= (pb_out_port == 8'h09);
-					play_5 <= (pb_out_port == 8'h0A);
+					play_1 <= (pb_out_port == 8'h00);
+					play_2 <= (pb_out_port == 8'h01);
+					play_3 <= (pb_out_port == 8'h02);
+					play_4 <= (pb_out_port == 8'h03);
+					play_5 <= (pb_out_port == 8'h04);
 				end
 				else if (delone) begin
-					delone_1 <= (pb_out_port == 8'h0B);
-					delone_2 <= (pb_out_port == 8'h0C);
-					delone_3 <= (pb_out_port == 8'h0D);
-					delone_4 <= (pb_out_port == 8'h0E);
-					delone_5 <= (pb_out_port == 8'h0F);
+					delone_1 <= (pb_out_port == 8'h00);
+					delone_2 <= (pb_out_port == 8'h01);
+					delone_3 <= (pb_out_port == 8'h02);
+					delone_4 <= (pb_out_port == 8'h03);
+					delone_5 <= (pb_out_port == 8'h04);
+				end
+			end
+			if (vol_sel) begin
+				if (vol) begin
+					volume_up <= (pb_out_port == 8'h01);
+					volume_down <= (pb_out_port == 8'h02);
 				end
 			end
 		end
@@ -411,11 +431,15 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
 				record_state : begin
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
 				delone_state : begin
 					if (delone_1)
@@ -431,16 +455,24 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
 				delall_state : begin
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
 				vol_state : begin
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
+					if (volume_up and (volume_control < 15))
+						volume_control = volume_control + 1;
+					else if (volume_down and (volume_control > 1))
+						volume_control = volume_control - 1;
+					
+					if (write_to_state_reg)
+						curr_state = main_state;
 				end
 			endcase
 		end

@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module ram_interface_wrapper#
 (
-	parameter DATA_BYTE_WIDTH = 1
+	parameter DATA_BYTE_WIDTH = 2
 )
 (
 	address, data_in, write_enable, read_request, read_ack, data_out, reset, clk, hw_ram_rasn, hw_ram_casn,
