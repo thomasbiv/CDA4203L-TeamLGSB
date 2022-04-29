@@ -20,7 +20,7 @@
 module sockit_top (
 	 input  clk,
 	 input playback,
-	 input	[1:0] volume_control,
+	 input	[3:0] volume_control,
     inout  AUD_ADCLRCK,
     input  AUD_ADCDAT,
 

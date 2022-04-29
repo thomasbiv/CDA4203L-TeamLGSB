@@ -2,6 +2,7 @@ module audio_effects (
     input  clk,
     input  sample_end,
     input  sample_req,
+		input [3:0] volume_control,
     output [15:0] audio_output,
     input  [15:0] audio_input,
     input  [3:0]  control

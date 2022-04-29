@@ -1,6 +1,7 @@
 module audio_codec (
     input  clk,
     input  reset,
+		input [3:0] volume_control,
     output [1:0]  sample_end,
     output [1:0]  sample_req,
     input  [15:0] audio_output,

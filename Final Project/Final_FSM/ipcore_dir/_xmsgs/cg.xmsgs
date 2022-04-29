@@ -5,15 +5,16 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="sim" num="0" delta="new" >Instance name &apos;MIG_Virtex-6_and_Spartan-6&apos; is invalid:
- - The name can only contain the characters &apos;a-z&apos;, &apos;A-Z&apos;,&apos;0-9&apos;, and &apos;_&apos;.
- - The name can only contain the characters &apos;a-z&apos;, &apos;A-Z&apos;,&apos;0-9&apos;, and &apos;_&apos;.
+<msg type="info" file="sim" num="172" delta="new" >Generating IP...
 </msg>
 
-<msg type="error" file="sim" num="918" delta="old" >Could not create instance of component <arg fmt="%s" index="1">MIG Virtex-6 and Spartan-6 v3.91</arg>.
+<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Component clk_wiz_v3_6 does not have a valid model name for Verilog synthesis</arg>
 </msg>
 
-<msg type="error" file="sim" num="621" delta="old" >Unable to create project from file &apos;<arg fmt="%s" index="1">C:/Users/patri/Desktop/CDA 4203L/Final Project/ddr2_mem_test_ise_14.7_v1/ddr2_mem_test_v1/ddr2_mem_test/ipcore_dir/ram_interface.xco</arg>&apos;.
+<msg type="info" file="sim" num="949" delta="new" >Finished generation of ASY schematic symbol.
+</msg>
+
+<msg type="info" file="sim" num="948" delta="new" >Finished FLIST file generation.
 </msg>
 
 </messages>
