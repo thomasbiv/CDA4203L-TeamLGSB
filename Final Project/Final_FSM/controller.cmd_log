@@ -267,3 +267,32 @@ map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off controller_map.ncd controller.ncd controller.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr controller.pcf -ucf main_pin_map.ucf 
 bitgen -intstyle ise -f controller.ut controller.ncd 
+xst -intstyle ise -ifn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.xst" -ofn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc main_pin_map.ucf -p xc6slx45-csg484-3 "controller.ngc" controller.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o controller_map.ncd controller.ngd controller.pcf 
+par -w -intstyle ise -ol high -mt off controller_map.ncd controller.ncd controller.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr controller.pcf -ucf main_pin_map.ucf 
+bitgen -intstyle ise -f controller.ut controller.ncd 
+xst -intstyle ise -ifn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.xst" -ofn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc main_pin_map.ucf -p xc6slx45-csg484-3 "controller.ngc" controller.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o controller_map.ncd controller.ngd controller.pcf 
+par -w -intstyle ise -ol high -mt off controller_map.ncd controller.ncd controller.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr controller.pcf -ucf main_pin_map.ucf 
+bitgen -intstyle ise -f controller.ut controller.ncd 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc main_pin_map.ucf -p xc6slx45-csg484-3 "controller.ngc" controller.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o controller_map.ncd controller.ngd controller.pcf 
+par -w -intstyle ise -ol high -mt off controller_map.ncd controller.ncd controller.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr controller.pcf -ucf main_pin_map.ucf 
+bitgen -intstyle ise -f controller.ut controller.ncd 
+xst -intstyle ise -ifn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.xst" -ofn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc main_pin_map.ucf -p xc6slx45-csg484-3 "controller.ngc" controller.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o controller_map.ncd controller.ngd controller.pcf 
+par -w -intstyle ise -ol high -mt off controller_map.ncd controller.ncd controller.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr controller.pcf -ucf main_pin_map.ucf 
+bitgen -intstyle ise -f controller.ut controller.ncd 
+xst -intstyle ise -ifn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.xst" -ofn "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc main_pin_map.ucf -p xc6slx45-csg484-3 "controller.ngc" controller.ngd  
+map -intstyle ise -p xc6slx45-csg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o controller_map.ncd controller.ngd controller.pcf 
+par -w -intstyle ise -ol high -mt off controller_map.ncd controller.ncd controller.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr controller.pcf -ucf main_pin_map.ucf 
+bitgen -intstyle ise -f controller.ut controller.ncd 

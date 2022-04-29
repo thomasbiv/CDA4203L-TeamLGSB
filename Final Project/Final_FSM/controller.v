@@ -124,8 +124,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	wire	[7:0]	uart_rx_data;
 	
 	// LED wires
-	wire write_to_leds;
-	wire led_reset;
+	// wire write_to_leds;
+	// wire led_reset;
 	
 	//Register the current state.
 	reg [7:0] curr_state;
@@ -204,15 +204,15 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	// LED Driver and control logic
 	//
 	// LED driver expects ACTIVE-HIGH reset
-	assign led_reset = ~reset;
+	//assign led_reset = ~reset;
 	// LED driver instantiation
-	led_driver_wrapper led_driver (
-		.led_value(pb_out_port),
-		.leds(leds),
-		.write_to_leds(write_to_leds),
-		.reset(led_reset),
-		.clk(clk)
-	);
+	//led_driver_wrapper led_driver (
+	//	.led_value(pb_out_port),
+	//	.leds(),
+	//	.write_to_leds(),
+	//	.reset(),
+	//	.clk(clk)
+	//);
 
 	
 	// UART and control logic
@@ -457,7 +457,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		if (~pb_reset) begin
 			curr_state <= main_state;
 		end
-		else begin
+		else if (status) begin
 			case (curr_state)
 				main_state : begin
 					if (play) begin

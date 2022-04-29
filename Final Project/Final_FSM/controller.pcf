@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Apr 29 16:05:08 2022
+// Written by: Map P.20131013 on Fri Apr 29 17:17:13 2022
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -10,14 +10,6 @@ COMP "switches<0>" LOCATE = SITE "V3" LEVEL 1;
 COMP "switches<1>" LOCATE = SITE "P4" LEVEL 1;
 COMP "switches<2>" LOCATE = SITE "R4" LEVEL 1;
 COMP "switches<3>" LOCATE = SITE "P6" LEVEL 1;
-COMP "leds<0>" LOCATE = SITE "W3" LEVEL 1;
-COMP "leds<1>" LOCATE = SITE "Y4" LEVEL 1;
-COMP "leds<2>" LOCATE = SITE "Y1" LEVEL 1;
-COMP "leds<3>" LOCATE = SITE "Y3" LEVEL 1;
-COMP "leds<4>" LOCATE = SITE "AB4" LEVEL 1;
-COMP "leds<5>" LOCATE = SITE "W1" LEVEL 1;
-COMP "leds<6>" LOCATE = SITE "AB3" LEVEL 1;
-COMP "leds<7>" LOCATE = SITE "AA4" LEVEL 1;
 COMP "reset" LOCATE = SITE "V5" LEVEL 1;
 COMP "AUD_ADCDAT" LOCATE = SITE "C6" LEVEL 1;
 COMP "AUD_DACDAT" LOCATE = SITE "A5" LEVEL 1;
