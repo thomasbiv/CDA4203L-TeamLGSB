@@ -1336,6 +1336,85 @@ mem_full_message_record:
 
 		JUMP record_message
 
+;Output a something indicating message location is taken up
+message_location_full:
+		LOAD s0, s0
+		
+		LOAD msg_existing, 01
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_S ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_S ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_A ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_G ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_E ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_SPACE ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_A ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_L ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_R ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_E ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_A ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_D ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_Y ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_SPACE ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_X ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_I ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_S ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_T ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+		LOAD s0, ascii_S ;P
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		JUMP record_message
+
 ;Start the recording
 start_recording:
 		LOAD s0, s0
@@ -1353,9 +1432,13 @@ stop_recording:
 ;Subroutine to start/stop recording
 set_recording:
 		LOAD s0, s0
+		OUTPUT i, file_select
 		INPUT s4, mem_full
+		INPUT s3, msg_exists
 		COMPARE s4, 01
 		JUMP Z, mem_full_message_record
+		COMPARE s3, 01
+		JUMP Z, message_location_full
 		COMPARE record, 01
 		JUMP Z, stop_recording
 		COMPARE record, 00
@@ -1364,6 +1447,7 @@ set_recording:
 record_btn_down:
 		LOAD s0, s0
 		ADD i, 01
+		LOAD msg_existing, 00
 		COMPARE i, ascii_1
 		JUMP NZ, record_message_menu
 		
@@ -1376,6 +1460,7 @@ record_btn_down_roll:
 record_btn_up:
 		LOAD s0, s0
 		SUB i, 01
+		LOAD msg_existing, 00
 		COMPARE i, ascii_1
 		JUMP NZ, record_message_menu
 
@@ -1680,6 +1765,9 @@ record_message_menu:
 		CALL waste_time
 		CALL waste_time
 		CALL waste_time
+
+		LOAD s0, 02
+		OUTPUT s0, write_to_fsm
 
 		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
