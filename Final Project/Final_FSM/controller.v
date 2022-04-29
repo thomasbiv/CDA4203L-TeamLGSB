@@ -187,7 +187,6 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		enableWrite <= 0;
 		are_recording <= 0;
 		address <= 0;
-		max_ram_address <= 0;
 		reqRead <= 0;
 		dataPresent <= 0;
 		mem_out <= 0;
@@ -432,6 +431,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	localparam lower_ack_read = 8'h0A;
 	localparam raise_read_record = 8'h0B;
 	localparam record_audio = 8'h0C;
+	localparam begin_deletion = 8'h0D;
+	localparam delete_loop = 8'h0E;
+	
 	
 		
 		
@@ -504,8 +506,37 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 							max_ram_address <= 26'h4000000;
 							curr_state <= record_state;
 						end
-					else if (delone)
-						curr_state <= delone_state;
+					else if (delone) begin
+						if (delone_1) begin
+							address <= 0;
+							max_ram_address <= 26'hCCCCCD;
+							curr_state <= delone_state;
+							//some stuff with the memory locale of the first file
+						end
+						else if (delone_2) begin
+							address <= 26'hCCCCCE;
+							max_ram_address <= 26'h199999A;
+							curr_state <= delone_state;
+							//some stuff with the memory locale of the second file
+						end
+						else if (delone_3) begin
+							address <= 26'h199999B;
+							max_ram_address <= 26'h2666666;
+							curr_state <= delone_state;
+							//some stuff with the memory locale of the third file
+						end
+						else if (delone_4) begin
+							address <= 26'h2666667;
+							max_ram_address <= 26'h3333333;
+							curr_state <= delone_state;
+							//some stuff with the memory locale of the fourth file
+						end
+						else if (delone_5) begin
+							address <= 26'h3333334;
+							max_ram_address <= 26'h4000000;
+							curr_state <= delone_state;
+						end
+					end
 					else if (delall)
 						curr_state <= delall_state;
 					else if (vol)
@@ -555,7 +586,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				lower_ack_read : begin
 					ackRead <= 0;
 					address <= address + 1;
-					if (address >= max_address)
+					if (address >= max_ram_address)
 						curr_state <= main_state;
 					else
 						curr_state <= play_state;
@@ -593,28 +624,36 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					curr_state = record_state;
 				end
 				delone_state : begin
-					if (delone_1)
-						//some stuff with the memory locale of the first file
-					else if (delone_2)
-						//some stuff with the memory locale of the first file
-					else if (delone_3)
-						//some stuff with the memory locale of the first file
-					else if (delone_4)
-						//some stuff with the memory locale of the first file
-					else if (delone_5)
-						//some stuff with the memory locale of the first file
+					curr_state <= begin_deletion;
+					if (write_to_state_reg)
+						curr_state = main_state;
+				end
+				delall_state : begin
+					address <= 0;
+					max_ram_address <= 26'h4000000;
+					current_state <= begin_deletion;
+					
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
 					if (write_to_state_reg)
 						curr_state = main_state;
 				end
-				delall_state : begin
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
-					if (write_to_state_reg)
-						curr_state = main_state;
+				begin_deletion: begin
+					RAMin <= 0;
+					enableWrite <= 1;
+					curr_state <= delete_loop;
+				end
+				delete_loop : begin
+					enableWrite <= 0;
+					address = address + 1;
+					if (address >= max_ram_address) begin
+						address <= 0;
+						curr_state <= main_state;
+					end
+					else begin
+						curr_state <= begin_deletion;
+					end
 				end
 				vol_state : begin
 					if (volume_up && (volume_control < 15))
