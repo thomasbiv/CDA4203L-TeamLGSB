@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.28 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.30 secs
  
 --> Reading design: controller.prj
 
@@ -876,10 +876,10 @@ WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-Team
 WARNING:HDLCompiler:189 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 321: Size mismatch in connection of port <KEY>. Formal port size is 4-bit while actual signal size is 32-bit.
 WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 325: Assignment to audio_clk ignored, since the identifier is never used
 WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 356: Assignment to main ignored, since the identifier is never used
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 603: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 669: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 681: Result of 5-bit expression is truncated to fit in 4-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 683: Result of 32-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 605: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 674: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 686: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 688: Result of 32-bit expression is truncated to fit in 4-bit target.
 WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 127: Net <write_to_leds> does not have a driver.
 WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 128: Net <led_reset> does not have a driver.
 WARNING:HDLCompiler:552 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 238: Input port RESET is not connected on this instance
@@ -917,14 +917,14 @@ WARNING:Xst:653 - Signal <write_to_leds> is used but never assigned. This source
     Found 1-bit register for signal <delone_3>.
     Found 1-bit register for signal <delone_4>.
     Found 1-bit register for signal <delone_5>.
-    Found 1-bit register for signal <volume_up>.
-    Found 1-bit register for signal <volume_down>.
-    Found 1-bit register for signal <are_recording>.
     Found 1-bit register for signal <record_1>.
     Found 1-bit register for signal <record_2>.
     Found 1-bit register for signal <record_3>.
     Found 1-bit register for signal <record_4>.
     Found 1-bit register for signal <record_5>.
+    Found 1-bit register for signal <volume_up>.
+    Found 1-bit register for signal <volume_down>.
+    Found 1-bit register for signal <are_recording>.
     Found 8-bit register for signal <curr_state>.
     Found 26-bit register for signal <address>.
     Found 26-bit register for signal <maxAddr>.
@@ -951,13 +951,13 @@ WARNING:Xst:653 - Signal <write_to_leds> is used but never assigned. This source
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 26-bit adder for signal <address[25]_GND_1_o_add_107_OUT> created at line 603.
-    Found 4-bit adder for signal <volume_control[3]_GND_1_o_add_120_OUT> created at line 681.
-    Found 4-bit subtractor for signal <GND_1_o_GND_1_o_sub_123_OUT<3:0>> created at line 683.
-    Found 8-bit 14-to-1 multiplexer for signal <_n0424> created at line 364.
-    Found 26-bit comparator greater for signal <n0190> created at line 604
-    Found 4-bit comparator greater for signal <volume_control[3]_PWR_1_o_LessThan_120_o> created at line 680
-    Found 4-bit comparator greater for signal <GND_1_o_volume_control[3]_LessThan_122_o> created at line 682
+    Found 26-bit adder for signal <address[25]_GND_1_o_add_107_OUT> created at line 605.
+    Found 4-bit adder for signal <volume_control[3]_GND_1_o_add_120_OUT> created at line 686.
+    Found 4-bit subtractor for signal <GND_1_o_GND_1_o_sub_123_OUT<3:0>> created at line 688.
+    Found 8-bit 14-to-1 multiplexer for signal <_n0434> created at line 364.
+    Found 26-bit comparator greater for signal <n0200> created at line 606
+    Found 4-bit comparator greater for signal <volume_control[3]_PWR_1_o_LessThan_120_o> created at line 685
+    Found 4-bit comparator greater for signal <GND_1_o_volume_control[3]_LessThan_122_o> created at line 687
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred 126 D-type flip-flop(s).
@@ -3229,10 +3229,10 @@ WARNING:Xst:1293 - FF/Latch <maxAddr_24> has a constant value of 0 in block <con
 WARNING:Xst:1293 - FF/Latch <maxAddr_25> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:1901 - Instance pll/pll_base_inst in unit pll/pll_base_inst of type PLL_BASE has been replaced by PLL_ADV
 INFO:Xst:1901 - Instance U_BUFG_CLK1 in unit infrastructure of type BUFGCE has been replaced by BUFGMUX
-INFO:Xst:2261 - The FF/Latch <maxAddr_4> in Unit <controller> is equivalent to the following 4 FFs/Latches, which will be removed : <maxAddr_8> <maxAddr_12> <maxAddr_16> <maxAddr_20> 
 INFO:Xst:2261 - The FF/Latch <maxAddr_5> in Unit <controller> is equivalent to the following 4 FFs/Latches, which will be removed : <maxAddr_9> <maxAddr_13> <maxAddr_17> <maxAddr_21> 
 INFO:Xst:2261 - The FF/Latch <maxAddr_0> in Unit <controller> is equivalent to the following 5 FFs/Latches, which will be removed : <maxAddr_6> <maxAddr_10> <maxAddr_14> <maxAddr_18> <maxAddr_22> 
 INFO:Xst:2261 - The FF/Latch <maxAddr_3> in Unit <controller> is equivalent to the following 5 FFs/Latches, which will be removed : <maxAddr_7> <maxAddr_11> <maxAddr_15> <maxAddr_19> <maxAddr_23> 
+INFO:Xst:2261 - The FF/Latch <maxAddr_4> in Unit <controller> is equivalent to the following 4 FFs/Latches, which will be removed : <maxAddr_8> <maxAddr_12> <maxAddr_16> <maxAddr_20> 
 INFO:Xst:2261 - The FF/Latch <MCB_UIADDR_2> in Unit <mcb_soft_calibration> is equivalent to the following 2 FFs/Latches, which will be removed : <MCB_UIADDR_3> <MCB_UIADDR_4> 
 WARNING:Xst:1710 - FF/Latch <what/av_config/control/data_23> (without init value) has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <what/av_config/control/data_22> (without init value) has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
@@ -3302,7 +3302,7 @@ WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_interrupt_flop> has a constant 
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_interrupt_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block controller, actual ratio is 5.
+Found area constraint ratio of 100 (+ 5) on block controller, actual ratio is 6.
 INFO:Xst:2260 - The FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> in Unit <controller> is equivalent to the following FF/Latch : <CPU/pblaze_cpu/sync_interrupt_flop> 
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_interrupt_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
@@ -3350,15 +3350,15 @@ Top Level Output File Name         : controller.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1736
+# BELS                             : 1738
 #      GND                         : 1
 #      INV                         : 24
 #      LUT1                        : 70
 #      LUT2                        : 193
 #      LUT3                        : 155
-#      LUT4                        : 199
-#      LUT5                        : 182
-#      LUT6                        : 348
+#      LUT4                        : 202
+#      LUT5                        : 183
+#      LUT6                        : 346
 #      LUT6_2                      : 78
 #      MULT_AND                    : 7
 #      MUXCY                       : 226
@@ -3412,18 +3412,18 @@ Selected Device : 6slx45csg484-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:             755  out of  54576     1%  
- Number of Slice LUTs:                 1289  out of  27288     4%  
-    Number used as Logic:              1249  out of  27288     4%  
+ Number of Slice LUTs:                 1291  out of  27288     4%  
+    Number used as Logic:              1251  out of  27288     4%  
     Number used as Memory:               40  out of   6408     0%  
        Number used as RAM:               24
        Number used as SRL:               16
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1463
-   Number with an unused Flip Flop:     708  out of   1463    48%  
-   Number with an unused LUT:           174  out of   1463    11%  
-   Number of fully used LUT-FF pairs:   581  out of   1463    39%  
-   Number of unique control sets:        87
+ Number of LUT Flip Flop pairs used:   1465
+   Number with an unused Flip Flop:     710  out of   1465    48%  
+   Number with an unused LUT:           174  out of   1465    11%  
+   Number of fully used LUT-FF pairs:   581  out of   1465    39%  
+   Number of unique control sets:        88
 
 IO Utilization: 
  Number of IOs:                          87
@@ -3473,10 +3473,10 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 10.759ns (Maximum Frequency: 92.943MHz)
-   Minimum input arrival time before clock: 5.895ns
+   Minimum period: 10.689ns (Maximum Frequency: 93.553MHz)
+   Minimum input arrival time before clock: 5.913ns
    Maximum output required time after clock: 5.231ns
-   Maximum combinational path delay: 4.784ns
+   Maximum combinational path delay: 4.803ns
 
 Timing Details:
 ---------------
@@ -3484,10 +3484,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 10.759ns (frequency: 92.943MHz)
-  Total number of paths / destination ports: 69953 / 1452
+  Clock period: 10.689ns (frequency: 93.553MHz)
+  Total number of paths / destination ports: 69965 / 1452
 -------------------------------------------------------------------------
-Delay:               7.173ns (Levels of Logic = 4)
+Delay:               7.126ns (Levels of Logic = 4)
   Source:            CPU/pblaze_rom/kcpsm6_rom_lh (RAM)
   Destination:       curr_state_FSM_FFd1 (FF)
   Source Clock:      clk rising
@@ -3500,12 +3500,12 @@ Delay:               7.173ns (Levels of Logic = 4)
      RAMB16BWER:CLKA->DOA3    1   1.850   0.579  CPU/pblaze_rom/kcpsm6_rom_lh (CPU/pblaze_rom/n0015<3>)
      LUT6_2:I0->O5        16   0.568   1.004  CPU/pblaze_rom/s6_4k_mux12_lut (CPU/instruction<12>)
      LUT6_2:I4->O6        11   0.568   0.987  CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut (pb_port_id<5>)
-     LUT4:I2->O           16   0.203   1.109  _n0425<7>1 (_n0425)
-     LUT6:I4->O            1   0.203   0.000  curr_state_FSM_FFd1-In2 (curr_state_FSM_FFd1-In)
+     LUT4:I2->O           14   0.203   1.062  _n0435<7>1 (_n0435)
+     LUT6:I4->O            1   0.203   0.000  curr_state_FSM_FFd1-In4 (curr_state_FSM_FFd1-In)
      FDR:D                     0.102          curr_state_FSM_FFd1
     ----------------------------------------
-    Total                      7.173ns (3.494ns logic, 3.679ns route)
-                                       (48.7% logic, 51.3% route)
+    Total                      7.126ns (3.494ns logic, 3.632ns route)
+                                       (49.0% logic, 51.0% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'what/pll/pll_base_inst/CLKOUT1'
@@ -3533,10 +3533,10 @@ Delay:               6.219ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'what/pll/pll_base_inst/CLKOUT0'
-  Clock period: 5.064ns (frequency: 197.490MHz)
+  Clock period: 4.938ns (frequency: 202.530MHz)
   Total number of paths / destination ports: 483 / 104
 -------------------------------------------------------------------------
-Delay:               5.064ns (Levels of Logic = 4)
+Delay:               4.938ns (Levels of Logic = 4)
   Source:            what/av_config/control/sclk_divider_0 (FF)
   Destination:       what/av_config/control/sclk_divider_5 (FF)
   Source Clock:      what/pll/pll_base_inst/CLKOUT0 rising
@@ -3548,13 +3548,13 @@ Delay:               5.064ns (Levels of Logic = 4)
     ----------------------------------------  ------------
      FDR:C->Q              7   0.447   1.118  what/av_config/control/sclk_divider_0 (what/av_config/control/sclk_divider_0)
      LUT5:I0->O            5   0.203   0.715  what/av_config/control/midlow<6>11 (what/av_config/control/midlow<6>1)
-     LUT3:I2->O            7   0.205   1.002  what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o<6>1 (what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o)
-     LUT6:I3->O            2   0.205   0.864  what/av_config/control/Mcount_sclk_divider_cy<4>11 (what/av_config/control/Mcount_sclk_divider_cy<4>)
+     LUT3:I2->O            7   0.205   0.878  what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o<6>1 (what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o)
+     LUT6:I4->O            2   0.203   0.864  what/av_config/control/Mcount_sclk_divider_cy<4>11 (what/av_config/control/Mcount_sclk_divider_cy<4>)
      LUT4:I0->O            1   0.203   0.000  what/av_config/control/Mcount_sclk_divider_xor<5>11 (what/av_config/control/Mcount_sclk_divider5)
      FDR:D                     0.102          what/av_config/control/sclk_divider_5
     ----------------------------------------
-    Total                      5.064ns (1.365ns logic, 3.699ns route)
-                                       (27.0% logic, 73.0% route)
+    Total                      4.938ns (1.363ns logic, 3.575ns route)
+                                       (27.6% logic, 72.4% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'UART/baud_count<10>'
@@ -3579,9 +3579,9 @@ Delay:               2.729ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 517 / 303
+  Total number of paths / destination ports: 524 / 304
 -------------------------------------------------------------------------
-Offset:              5.895ns (Levels of Logic = 3)
+Offset:              5.913ns (Levels of Logic = 3)
   Source:            reset (PAD)
   Destination:       RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/RST_reg (FF)
   Destination Clock: clk rising 0.8X
@@ -3590,13 +3590,13 @@ Offset:              5.895ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            23   1.222   1.401  reset_IBUF (reset_IBUF)
+     IBUF:I->O            24   1.222   1.420  reset_IBUF (reset_IBUF)
      LUT5:I1->O           81   0.203   1.856  RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/int_sys_rst1 (RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/int_sys_rst)
      LUT2:I0->O            1   0.203   0.579  RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/non_violating_rst1 (RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/non_violating_rst)
      FDP:PRE                   0.430          RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/RST_reg
     ----------------------------------------
-    Total                      5.895ns (2.058ns logic, 3.837ns route)
-                                       (34.9% logic, 65.1% route)
+    Total                      5.913ns (2.058ns logic, 3.855ns route)
+                                       (34.8% logic, 65.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'what/pll/pll_base_inst/CLKOUT0'
@@ -3611,7 +3611,7 @@ Offset:              2.180ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IOBUF:IO->O           3   1.222   0.651  AUD_I2C_SDAT_IOBUF (N140)
+     IOBUF:IO->O           3   1.222   0.651  AUD_I2C_SDAT_IOBUF (N138)
      LUT6:I5->O            1   0.205   0.000  what/av_config/control/stage[4]_acks[2]_select_16_OUT<0>4 (what/av_config/control/stage[4]_acks[2]_select_16_OUT<0>)
      FDSE:D                    0.102          what/av_config/control/acks_0
     ----------------------------------------
@@ -3632,7 +3632,7 @@ Offset:              4.712ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O            20   1.222   1.197  switches_1_IBUF (switches_1_IBUF)
-     LUT5:I3->O            1   0.203   0.684  what/ae/_n0044_SW0 (N23)
+     LUT5:I3->O            1   0.203   0.684  what/ae/_n0044_SW0 (N21)
      LUT6:I4->O            7   0.203   0.773  what/ae/_n0044 (what/ae/_n0044)
      FDRE:R                    0.430          what/ae/index_0
     ----------------------------------------
@@ -3704,7 +3704,7 @@ Offset:              4.547ns (Levels of Logic = 2)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 801 / 706
 -------------------------------------------------------------------------
-Delay:               4.784ns (Levels of Logic = 3)
+Delay:               4.803ns (Levels of Logic = 3)
   Source:            reset (PAD)
   Destination:       RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/gen_zio.IODRP2_ZIO:T (PAD)
 
@@ -3712,13 +3712,13 @@ Delay:               4.784ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            23   1.222   1.401  reset_IBUF (reset_IBUF)
+     IBUF:I->O            24   1.222   1.420  reset_IBUF (reset_IBUF)
      LUT5:I1->O           81   0.203   1.751  RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/int_sys_rst1 (RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/int_sys_rst)
      INV:I->O              0   0.206   0.000  RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/RZQ_ZIO_ODATAIN1_INV_0 (RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/RZQ_ZIO_ODATAIN)
     IODRP2:ODATAIN             0.000          RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/IODRP2_RZQ
     ----------------------------------------
-    Total                      4.784ns (1.631ns logic, 3.153ns route)
-                                       (34.1% logic, 65.9% route)
+    Total                      4.803ns (1.631ns logic, 3.172ns route)
+                                       (34.0% logic, 66.0% route)
 
 =========================================================================
 
@@ -3738,7 +3738,7 @@ Clock to Setup on destination clock clk
                               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
-clk                           |    9.693|         |         |         |
+clk                           |    9.647|         |         |         |
 what/pll/pll_base_inst/CLKOUT1|    1.870|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
@@ -3747,7 +3747,7 @@ Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT0
                               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
-what/pll/pll_base_inst/CLKOUT0|    5.064|         |         |         |
+what/pll/pll_base_inst/CLKOUT0|    4.938|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT1
@@ -3762,12 +3762,12 @@ what/pll/pll_base_inst/CLKOUT1|    6.219|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 19.00 secs
-Total CPU time to Xst completion: 18.30 secs
+Total REAL time to Xst completion: 28.00 secs
+Total CPU time to Xst completion: 28.26 secs
  
 --> 
 
-Total memory usage is 4553988 kilobytes
+Total memory usage is 4553976 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings : 1123 (   0 filtered)

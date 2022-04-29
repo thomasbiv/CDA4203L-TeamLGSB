@@ -407,6 +407,13 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					delone_4 <= (pb_out_port == 8'h03);
 					delone_5 <= (pb_out_port == 8'h04);
 				end
+				else if (record) begin
+					record_1 <= (pb_out_port == 8'h02);
+					record_2 <= (pb_out_port == 8'h03);
+					record_3 <= (pb_out_port == 8'h04);
+					record_4 <= (pb_out_port == 8'h05);  
+					record_5 <= (pb_out_port == 8'h06);
+				end
 			end
 			if (vol_sel) begin
 				if (vol) begin
@@ -417,11 +424,6 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			if (recording) begin
 				if (record) begin
 					are_recording <= (pb_out_port == 8'h01);
-					record_1 <= (pb_out_port == 8'h02);
-					record_2 <= (pb_out_port == 8'h03);
-					record_3 <= (pb_out_port == 8'h04);
-					record_4 <= (pb_out_port == 8'h05);  
-					record_5 <= (pb_out_port == 8'h06);
 				end
 			end
 		end
@@ -631,10 +633,13 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				end
 				record_audio : begin
 					reqRead <= 0;
-					if (dataPresent)
+					if (dataPresent) begin
 						message_exists <= 1;
-					else
+						curr_state <= record_state;
+					end
+					else begin
 						curr_state <= raise_write_record;
+					end
 				end
 				lower_write_record : begin
 					enableWrite <= 0;

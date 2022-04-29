@@ -5,9 +5,9 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="Timing" num="2698" delta="new" >No timing constraints found, doing default enumeration.</msg>
+<msg type="info" file="Timing" num="2698" delta="old" >No timing constraints found, doing default enumeration.</msg>
 
-<msg type="warning" file="Timing" num="3402" delta="new" >The Clock Modifying COMP, <arg fmt="%s" index="1">wiz/dcm_sp_inst</arg>, has the attribute CLK_FEEDBACK set to NONE.  No phase relationship exists between the input and output clocks of this Clock Modifying COMP. Data paths between these clock domains must be constrained using FROM/TO constraints.
+<msg type="warning" file="Timing" num="3402" delta="old" >The Clock Modifying COMP, <arg fmt="%s" index="1">wiz/dcm_sp_inst</arg>, has the attribute CLK_FEEDBACK set to NONE.  No phase relationship exists between the input and output clocks of this Clock Modifying COMP. Data paths between these clock domains must be constrained using FROM/TO constraints.
 </msg>
 
 <msg type="info" file="Timing" num="3412" delta="old" >To improve timing, see the Timing Closure User Guide (UG612).</msg>

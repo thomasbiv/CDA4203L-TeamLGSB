@@ -37,24 +37,24 @@ Setup/Hold to clock clk
             |Max Setup to|  Process   |Max Hold to |  Process   |                                                                           | Clock  |
 Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s)                                                          | Phase  |
 ------------+------------+------------+------------+------------+---------------------------------------------------------------------------+--------+
-AUD_ADCDAT  |    0.694(R)|      FAST  |    1.511(R)|      SLOW  |AUD_XCK_OBUF                                                               |   0.000|
-AUD_I2C_SDAT|   -0.277(R)|      FAST  |    3.506(R)|      SLOW  |what/main_clk                                                              |   0.000|
-back        |    0.137(R)|      FAST  |    1.589(R)|      SLOW  |clk2                                                                       |   0.000|
-hw_rzq_pin  |    0.507(R)|      FAST  |    0.498(R)|      SLOW  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk                               |   0.000|
-hw_zio_pin  |    0.815(R)|      SLOW  |    0.026(R)|      SLOW  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk                               |   0.000|
-pause_play  |   -0.174(R)|      FAST  |    1.901(R)|      SLOW  |clk2                                                                       |   0.000|
-reset       |    6.124(R)|      SLOW  |   -1.365(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk                               |   0.000|
-            |   10.088(R)|      SLOW  |   -5.896(R)|      FAST  |RAMWrapper/u_memory_interface/memc3_infrastructure_inst/mcb_drp_clk_bufg_in|   0.000|
-            |    2.325(R)|      SLOW  |    3.315(R)|      SLOW  |clk2                                                                       |   0.000|
-            |    7.621(R)|      SLOW  |   -0.564(R)|      SLOW  |wizclk                                                                     |   0.000|
-rs232_rx    |   -0.294(R)|      FAST  |    2.381(R)|      SLOW  |clk2                                                                       |   0.000|
-select      |    2.910(R)|      SLOW  |   -1.454(R)|      FAST  |clk2                                                                       |   0.000|
-switches<0> |    3.243(R)|      SLOW  |   -0.902(R)|      SLOW  |AUD_XCK_OBUF                                                               |   0.000|
-            |    0.208(R)|      FAST  |    1.334(R)|      SLOW  |clk2                                                                       |   0.000|
-switches<1> |    3.370(R)|      SLOW  |   -0.322(R)|      SLOW  |AUD_XCK_OBUF                                                               |   0.000|
-            |   -0.801(R)|      FAST  |    3.082(R)|      SLOW  |clk2                                                                       |   0.000|
-switches<2> |   -0.959(R)|      FAST  |    3.298(R)|      SLOW  |clk2                                                                       |   0.000|
-switches<3> |   -0.839(R)|      FAST  |    3.166(R)|      SLOW  |clk2                                                                       |   0.000|
+AUD_ADCDAT  |    1.006(R)|      FAST  |    1.059(R)|      SLOW  |AUD_XCK_OBUF                                                               |   0.000|
+AUD_I2C_SDAT|   -0.976(R)|      FAST  |    4.401(R)|      SLOW  |what/main_clk                                                              |   0.000|
+back        |   -0.215(R)|      FAST  |    2.056(R)|      SLOW  |clk2                                                                       |   0.000|
+hw_rzq_pin  |   -0.741(R)|      FAST  |    2.301(R)|      SLOW  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk                               |   0.000|
+hw_zio_pin  |   -0.359(R)|      FAST  |    1.736(R)|      SLOW  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk                               |   0.000|
+pause_play  |   -0.207(R)|      FAST  |    1.972(R)|      SLOW  |clk2                                                                       |   0.000|
+reset       |    5.642(R)|      SLOW  |    0.201(R)|      SLOW  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk                               |   0.000|
+            |   11.011(R)|      SLOW  |   -6.423(R)|      FAST  |RAMWrapper/u_memory_interface/memc3_infrastructure_inst/mcb_drp_clk_bufg_in|   0.000|
+            |    2.528(R)|      SLOW  |    1.110(R)|      SLOW  |clk2                                                                       |   0.000|
+            |    8.168(R)|      SLOW  |   -0.855(R)|      SLOW  |wizclk                                                                     |   0.000|
+rs232_rx    |    0.003(R)|      FAST  |    1.893(R)|      SLOW  |clk2                                                                       |   0.000|
+select      |    2.233(R)|      SLOW  |   -0.929(R)|      SLOW  |clk2                                                                       |   0.000|
+switches<0> |    3.048(R)|      SLOW  |   -0.849(R)|      SLOW  |AUD_XCK_OBUF                                                               |   0.000|
+            |    0.177(R)|      FAST  |    1.563(R)|      SLOW  |clk2                                                                       |   0.000|
+switches<1> |    2.892(R)|      SLOW  |   -0.074(R)|      SLOW  |AUD_XCK_OBUF                                                               |   0.000|
+            |   -0.407(R)|      FAST  |    2.520(R)|      SLOW  |clk2                                                                       |   0.000|
+switches<2> |   -0.874(R)|      FAST  |    3.133(R)|      SLOW  |clk2                                                                       |   0.000|
+switches<3> |   -0.864(R)|      FAST  |    3.127(R)|      SLOW  |clk2                                                                       |   0.000|
 ------------+------------+------------+------------+------------+---------------------------------------------------------------------------+--------+
 
 Clock clk to Pad
@@ -62,12 +62,12 @@ Clock clk to Pad
              |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                                              | Clock  |
 Destination  |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s)                             | Phase  |
 -------------+-----------------+------------+-----------------+------------+----------------------------------------------+--------+
-AUD_ADCLRCK  |        14.705(R)|      SLOW  |         7.989(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
-AUD_BCLK     |        13.620(R)|      SLOW  |         7.515(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
-AUD_DACDAT   |        13.799(R)|      SLOW  |         7.585(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
-AUD_DACLRCK  |        14.815(R)|      SLOW  |         8.035(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
-AUD_I2C_SCLK |        19.408(R)|      SLOW  |        10.616(R)|      FAST  |what/main_clk                                 |   0.000|
-AUD_I2C_SDAT |        16.495(R)|      SLOW  |         8.876(R)|      FAST  |what/main_clk                                 |   0.000|
+AUD_ADCLRCK  |        14.546(R)|      SLOW  |         7.861(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
+AUD_BCLK     |        13.961(R)|      SLOW  |         7.748(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
+AUD_DACDAT   |        13.553(R)|      SLOW  |         7.432(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
+AUD_DACLRCK  |        14.656(R)|      SLOW  |         7.907(R)|      FAST  |AUD_XCK_OBUF                                  |   0.000|
+AUD_I2C_SCLK |        17.285(R)|      SLOW  |         9.556(R)|      FAST  |what/main_clk                                 |   0.000|
+AUD_I2C_SDAT |        16.193(R)|      SLOW  |         8.913(R)|      FAST  |what/main_clk                                 |   0.000|
 hw_ram_ad<0> |         9.247(R)|      SLOW  |         5.371(R)|      FAST  |RAMWrapper/u_memory_interface/c3_sysclk_2x    |   0.000|
 hw_ram_ad<1> |         9.247(R)|      SLOW  |         5.371(R)|      FAST  |RAMWrapper/u_memory_interface/c3_sysclk_2x    |   0.000|
 hw_ram_ad<2> |         9.238(R)|      SLOW  |         5.362(R)|      FAST  |RAMWrapper/u_memory_interface/c3_sysclk_2x    |   0.000|
@@ -113,10 +113,10 @@ hw_ram_udm   |         9.493(R)|      SLOW  |         5.601(R)|      FAST  |RAMW
 hw_ram_udqs_n|         9.225(R)|      SLOW  |         5.348(R)|      FAST  |RAMWrapper/u_memory_interface/c3_sysclk_2x    |   0.000|
 hw_ram_udqs_p|         9.225(R)|      SLOW  |         5.348(R)|      FAST  |RAMWrapper/u_memory_interface/c3_sysclk_2x    |   0.000|
 hw_ram_wen   |         9.388(R)|      SLOW  |         5.503(R)|      FAST  |RAMWrapper/u_memory_interface/c3_sysclk_2x    |   0.000|
-hw_rzq_pin   |        15.259(R)|      SLOW  |         8.470(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk  |   0.000|
-hw_zio_pin   |        15.420(R)|      SLOW  |         8.470(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk  |   0.000|
-rs232_tx     |        15.659(R)|      SLOW  |         8.794(R)|      FAST  |clk2                                          |   0.000|
-status       |        10.819(R)|      SLOW  |         5.943(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk  |   0.000|
+hw_rzq_pin   |        15.612(R)|      SLOW  |         8.668(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk  |   0.000|
+hw_zio_pin   |        15.939(R)|      SLOW  |         8.867(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk  |   0.000|
+rs232_tx     |        16.072(R)|      SLOW  |         9.037(R)|      FAST  |clk2                                          |   0.000|
+status       |         8.837(R)|      SLOW  |         4.730(R)|      FAST  |RAMWrapper/u_memory_interface/c3_mcb_drp_clk  |   0.000|
 -------------+-----------------+------------+-----------------+------------+----------------------------------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -124,7 +124,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   13.138|    6.241|         |         |
+clk            |   13.027|    7.583|         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
@@ -132,14 +132,14 @@ Pad to Pad
 Source Pad     |Destination Pad|  Delay  |
 ---------------+---------------+---------+
 clk            |AUD_XCK        |   12.273|
-clk            |hw_rzq_pin     |   16.142|
-clk            |hw_zio_pin     |   16.303|
-reset          |hw_rzq_pin     |   16.025|
-reset          |hw_zio_pin     |   16.186|
+clk            |hw_rzq_pin     |   16.594|
+clk            |hw_zio_pin     |   16.921|
+reset          |hw_rzq_pin     |   14.653|
+reset          |hw_zio_pin     |   14.980|
 ---------------+---------------+---------+
 
 
-Analysis completed Fri Apr 29 15:27:49 2022 
+Analysis completed Fri Apr 29 15:58:38 2022 
 --------------------------------------------------------------------------------
 
 Trace Settings:
