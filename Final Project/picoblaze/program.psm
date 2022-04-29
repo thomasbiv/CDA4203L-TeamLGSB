@@ -16,6 +16,7 @@ CONSTANT back		  , 09 	  ; Back port
 CONSTANT play_pause	  , 0A	  ; Pause/Play port
 CONSTANT msg_exists	  , 0B	  ; Signal check if message actually exists in memory
 CONSTANT mem_full	  , 0C	  ; Signal checking if memory is full
+CONSTANT delete_finish	  , 0F	  ; Signal to let PicoBlaze know deleting has finished
 
 ;Output ports
 CONSTANT write_to_fsm	  , 0B	  ; Write strobe for fsm
@@ -182,54 +183,11 @@ CONSTANT ascii_DEL        , 7F    ; ascii code
 		NAMEREG s8, record
 		LOAD i, 00
 		LOAD j, 02
-		JUMP main_menu
+		JUMP welcome_message
 
 ;Function to waste time
 waste_time:
 		ADD waste, 01
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
-		call wait
 		call wait
 		call wait
 		call wait
@@ -764,31 +722,6 @@ waste_time:
 		RETURN Z
 		JUMP waste_time
 
-;Subroutines for handling scrolling in the play message menu
-play_btn_down:
-		LOAD s0, s0
-		ADD i, 01
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-		
-play_btn_down_roll:
-		LOAD s0, s0
-		LOAD i, 00
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-
-play_btn_up:
-		LOAD s0, s0
-		SUB i, 01
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-
-play_btn_up_roll:
-		LOAD s0, s0
-		LOAD i, 04
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-
 ;Pause the recording
 pause:
 		LOAD s0, s0
@@ -1184,6 +1117,100 @@ output_msg_not_exist_play:
 		call wait
 
 		JUMP play_message
+;Outputs a line if the message does not exist
+output_msg_not_exist_delete:
+		LOAD s0, s0
+
+		COMPARE msg_existing, 01
+		JUMP Z, delete_message
+		
+		LOAD msg_existing, 01
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;E
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_A ;A
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_G ;G
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;E
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_D ;D
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_O ;O
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;E
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_N ;N
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SINQUOT ;'
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_T ;N
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;E
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_X ;X
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_I ;I
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_S ;S
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_T ;T
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		JUMP delete_message
 
 ;Check if the message exists
 check_msg_exists:
@@ -1200,6 +1227,33 @@ play_state:
 		LOAD s0, 01
 		OUTPUT s0, write_to_fsm
 		JUMP check_msg_exists
+
+;Subroutines for handling scrolling in the play message menu
+play_btn_down:
+		LOAD s0, s0
+		ADD i, 01
+		LOAD msg_existing, 00
+		COMPARE i, ascii_1
+		JUMP NZ, play_message_menu
+		
+play_btn_down_roll:
+		LOAD s0, s0
+		LOAD i, 00
+		COMPARE i, ascii_1
+		JUMP NZ, play_message_menu
+
+play_btn_up:
+		LOAD s0, s0
+		SUB i, 01
+		LOAD msg_existing, 00
+		COMPARE i, ascii_1
+		JUMP NZ, play_message_menu
+
+play_btn_up_roll:
+		LOAD s0, s0
+		LOAD i, 04
+		COMPARE i, ascii_1
+		JUMP NZ, play_message_menu
 		
 ;Wait for input from user for playing a message
 play_message:
@@ -1216,7 +1270,7 @@ play_message:
 		COMPARE s0, 00
 		CALL NZ, play_btn_down
 		LOAD s0, s0
-		COMPARE i, 04
+		COMPARE i, 05
 		JUMP Z, play_btn_down_roll
 		LOAD s0, s0
 		COMPARE s2, 01
@@ -1225,6 +1279,62 @@ play_message:
 		COMPARE s3, 01
 		JUMP Z, back_to_main_menu
 		JUMP play_message
+
+;Output a message if memory is full
+mem_full_message_record:
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;E
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_O ;O
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_R ;R
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_Y ;Y
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_F ;F
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_U ;U
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_L ;L
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_L ;L
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		JUMP record_message
 
 ;Start the recording
 start_recording:
@@ -1243,6 +1353,9 @@ stop_recording:
 ;Subroutine to start/stop recording
 set_recording:
 		LOAD s0, s0
+		INPUT s4, mem_full
+		COMPARE s4, 01
+		JUMP Z, mem_full_message_record
 		COMPARE record, 01
 		JUMP Z, stop_recording
 		COMPARE record, 00
@@ -1279,6 +1392,7 @@ record_message:
 		INPUT s1, scroll_down
 		INPUT s2, select
 		INPUT s3, back
+		INPUT s4, mem_full
 		COMPARE s1, 00
 		CALL NZ, record_btn_up
 		COMPARE i, FF
@@ -1294,10 +1408,36 @@ record_message:
 		JUMP Z, set_recording
 		JUMP record_message
 
+;Subroutine letting picoblaze know deletion has finished
+del_finish:
+		LOAD s0, s0
+		INPUT s0, delete_finish
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		JUMP del_finish
+
+;Let the fsm know we are deleting a file
+delete:
+		LOAD s0, s0
+		LOAD s0, 03
+		OUTPUT s0, write_to_fsm
+		OUTPUT i, file_select
+		JUMP del_finish
+
+;Check if the message exists
+check_msg_exists_delete:
+		LOAD s0, s0
+		INPUT s0, msg_exists ;Sends '0' if message doesn't exist, '1' if it does exist
+		COMPARE s0, 00
+		JUMP Z, output_msg_not_exist_delete
+		COMPARE s0, 01
+		JUMP Z, delete
+
 ;Subroutines for handling scrolling in delete menu
 del_btn_down:
 		LOAD s0, s0
 		ADD i, 01
+		LOAD msg_existing, 00
 		COMPARE i, ascii_1
 		JUMP NZ, delete_message_menu
 		
@@ -1310,6 +1450,7 @@ del_btn_down_roll:
 del_btn_up:
 		LOAD s0, s0
 		SUB i, 01
+		LOAD msg_existing, 00
 		COMPARE i, ascii_1
 		JUMP NZ, delete_message_menu
 
@@ -1335,6 +1476,8 @@ delete_message:
 		COMPARE i, 04
 		JUMP Z, del_btn_down_roll
 		LOAD s0, s0
+		COMPARE s2, 01
+		JUMP Z, check_msg_exists_delete
 		COMPARE s3, 01
 		JUMP Z, back_to_main_menu
 		JUMP delete_message
@@ -1429,9 +1572,9 @@ play_message_menu:
 		CALL waste_time
 		CALL waste_time	
 
-		;LOAD s0, ascii_FF 
-		;OUTPUT s0, uart_data_tx
-		;call wait
+		LOAD s0, ascii_FF 
+		OUTPUT s0, uart_data_tx
+		call wait
 
 		LOAD s0, ascii_P ;P
 		OUTPUT s0, uart_data_tx
@@ -1942,6 +2085,14 @@ delete_message_menu:
 		CALL Z, out_five
 		call wait
 
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
 		;Call to actual submenu here
 		JUMP delete_message
 
@@ -2224,60 +2375,193 @@ out_fifteen:
 		OUTPUT s0, uart_data_tx
 		RETURN
 
-;Outputs a memory full message
-mem_full_message:
-		
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
+;Wait for input from the user
+welcome_wait:
+		LOAD s0, s0
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s0, select
+		COMPARE s0, 01
+		JUMP Z, main_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		JUMP main_menu
 
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_O ;O
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_R ;R
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_Y ;Y
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_F ;F
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_U ;U
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_L ;L
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_L ;L
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		RETURN
-
-;Outputs the main menu
-main_menu:     LOAD s0, s0  ; (nop)
-
-                ; Code for main menu options
-
+;Welcome message
+welcome_message:
 		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
 		call wait
@@ -2438,129 +2722,183 @@ main_menu:     LOAD s0, s0  ; (nop)
 		OUTPUT s0, uart_data_tx
 		call wait
 
+		JUMP welcome_wait
+
+;Outputs a memory full message
+mem_full_message:
+		
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_E ;E
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_O ;O
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_R ;R
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_Y ;Y
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_F ;F
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_U ;U
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_L ;L
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_L ;L
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		RETURN
+
+;Outputs the main menu
+main_menu:     LOAD s0, s0  ; (nop)
+
+                ; Code for main menu options
+
+		LOAD s0, ascii_FF 
+		OUTPUT s0, uart_data_tx
+		call wait
+		
+		LOAD s0, mem_full
+		COMPARE s0, 01
+		CALL Z, mem_full_message
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_d ;d
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_i ;i
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_p ;p
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_y ;y
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_r ;r
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_V ;V
+		OUTPUT s0, uart_data_tx
+		call wait	
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_r ;r
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_i ;i
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_n ;n
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_4 ;4
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_PERIOD ;.
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_2 ;2
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_0 ;0
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_PERIOD ;.
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_6 ;6
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_9 ;9
+		OUTPUT s0, uart_data_tx
+		call wait
+
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		STORE s0, 13
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		STORE s0, 13
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		STORE s0, 13
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2619,43 +2957,7 @@ main_menu:     LOAD s0, s0  ; (nop)
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2734,58 +3036,8 @@ main_menu:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait	
 
@@ -2872,64 +3124,8 @@ main_menu:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -3016,64 +3212,8 @@ main_menu:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -3172,73 +3312,8 @@ main_menu:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -3317,58 +3392,8 @@ main_menu:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
 		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_BS ;
+
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -3459,7 +3484,14 @@ main_menu:     LOAD s0, s0  ; (nop)
 		COMPARE i, 04
 		CALL Z, out_five
 		call wait
-		
+
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
+		OUTPUT s0, uart_data_tx
+		call wait
 		jump await_input
 
 ;================================================================
