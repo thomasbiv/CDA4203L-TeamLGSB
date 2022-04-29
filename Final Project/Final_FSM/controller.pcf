@@ -1,17 +1,15 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Apr 26 13:06:48 2022
+// Written by: Map P.20131013 on Fri Apr 29 15:27:31 2022
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "clk" LOCATE = SITE "D11" LEVEL 1;
 COMP "pause_play" LOCATE = SITE "P8" LEVEL 1;
 COMP "back" LOCATE = SITE "AB9" LEVEL 1;
-COMP "switches<0>" LOCATE = SITE "U4" LEVEL 1;
-COMP "switches<1>" LOCATE = SITE "V3" LEVEL 1;
-COMP "switches<2>" LOCATE = SITE "P4" LEVEL 1;
-COMP "switches<3>" LOCATE = SITE "R4" LEVEL 1;
-COMP "switches<4>" LOCATE = SITE "P6" LEVEL 1;
-COMP "switches<5>" LOCATE = SITE "P5" LEVEL 1;
+COMP "switches<0>" LOCATE = SITE "V3" LEVEL 1;
+COMP "switches<1>" LOCATE = SITE "P4" LEVEL 1;
+COMP "switches<2>" LOCATE = SITE "R4" LEVEL 1;
+COMP "switches<3>" LOCATE = SITE "P6" LEVEL 1;
 COMP "leds<0>" LOCATE = SITE "W3" LEVEL 1;
 COMP "leds<1>" LOCATE = SITE "Y4" LEVEL 1;
 COMP "leds<2>" LOCATE = SITE "Y1" LEVEL 1;
@@ -21,202 +19,66 @@ COMP "leds<5>" LOCATE = SITE "W1" LEVEL 1;
 COMP "leds<6>" LOCATE = SITE "AB3" LEVEL 1;
 COMP "leds<7>" LOCATE = SITE "AA4" LEVEL 1;
 COMP "reset" LOCATE = SITE "V5" LEVEL 1;
-COMP "scroll_down" LOCATE = SITE "E6" LEVEL 1;
+COMP "AUD_ADCDAT" LOCATE = SITE "C6" LEVEL 1;
+COMP "AUD_DACDAT" LOCATE = SITE "A5" LEVEL 1;
+COMP "hw_ram_ck" LOCATE = SITE "F2" LEVEL 1;
+COMP "hw_ram_ad<10>" LOCATE = SITE "K6" LEVEL 1;
+COMP "hw_ram_ad<11>" LOCATE = SITE "B1" LEVEL 1;
+COMP "hw_ram_ad<12>" LOCATE = SITE "J4" LEVEL 1;
+COMP "scroll_down" LOCATE = SITE "D5" LEVEL 1;
+COMP "hw_ram_dq<10>" LOCATE = SITE "R3" LEVEL 1;
+COMP "hw_ram_dq<11>" LOCATE = SITE "R1" LEVEL 1;
+COMP "hw_ram_dq<12>" LOCATE = SITE "U3" LEVEL 1;
+COMP "hw_ram_dq<13>" LOCATE = SITE "U1" LEVEL 1;
+COMP "hw_ram_dq<14>" LOCATE = SITE "V2" LEVEL 1;
+COMP "hw_ram_dq<15>" LOCATE = SITE "V1" LEVEL 1;
 COMP "rs232_rx" LOCATE = SITE "T19" LEVEL 1;
 COMP "rs232_tx" LOCATE = SITE "T20" LEVEL 1;
-COMP "scroll_up" LOCATE = SITE "D5" LEVEL 1;
+COMP "scroll_up" LOCATE = SITE "E6" LEVEL 1;
+COMP "hw_ram_ldqs_n" LOCATE = SITE "L1" LEVEL 1;
+COMP "hw_ram_ldqs_p" LOCATE = SITE "L3" LEVEL 1;
+COMP "AUD_I2C_SDAT" LOCATE = SITE "C5" LEVEL 1;
+COMP "AUD_I2C_SCLK" LOCATE = SITE "A4" LEVEL 1;
+COMP "hw_ram_udqs_n" LOCATE = SITE "T1" LEVEL 1;
+COMP "hw_ram_udqs_p" LOCATE = SITE "T2" LEVEL 1;
 COMP "select" LOCATE = SITE "A3" LEVEL 1;
-PIN CPU/pblaze_rom/kcpsm6_rom_hh_pins<28> = BEL "CPU/pblaze_rom/kcpsm6_rom_hh"
-        PINNAME CLKA;
-PIN CPU/pblaze_rom/kcpsm6_rom_hl_pins<28> = BEL "CPU/pblaze_rom/kcpsm6_rom_hl"
-        PINNAME CLKA;
-PIN CPU/pblaze_rom/kcpsm6_rom_lh_pins<28> = BEL "CPU/pblaze_rom/kcpsm6_rom_lh"
-        PINNAME CLKA;
-PIN CPU/pblaze_rom/kcpsm6_rom_ll_pins<28> = BEL "CPU/pblaze_rom/kcpsm6_rom_ll"
-        PINNAME CLKA;
-TIMEGRP sys_clk_pin = BEL "read_from_uart" BEL "pb_in_port_0" BEL
-        "pb_in_port_1" BEL "pb_in_port_2" BEL "pb_in_port_3" BEL
-        "pb_in_port_4" BEL "pb_in_port_5" BEL "pb_in_port_6" BEL
-        "pb_in_port_7" BEL "UART/en_16_x_baud" BEL "UART/baud_count_0" BEL
-        "UART/baud_count_1" BEL "UART/baud_count_2" BEL "UART/baud_count_5"
-        BEL "UART/baud_count_3" BEL "UART/baud_count_4" BEL
-        "UART/baud_count_6" BEL "UART/baud_count_7" BEL "UART/baud_count_10"
-        BEL "UART/baud_count_8" BEL "UART/baud_count_9" BEL
-        "UART/baud_count_11" BEL "UART/baud_count_12" BEL
-        "UART/transmitter/data_width_loop[7].storage_srl" BEL
-        "UART/transmitter/data_width_loop[6].storage_srl" BEL
-        "UART/transmitter/data_width_loop[5].storage_srl" BEL
-        "UART/transmitter/data_width_loop[4].storage_srl" BEL
-        "UART/transmitter/data_width_loop[3].storage_srl" BEL
-        "UART/transmitter/data_width_loop[2].storage_srl" BEL
-        "UART/transmitter/data_width_loop[1].storage_srl" BEL
-        "UART/transmitter/data_width_loop[0].storage_srl" BEL
-        "UART/transmitter/read_flop" BEL "UART/transmitter/next_flop" BEL
-        "UART/transmitter/div3_flop" BEL "UART/transmitter/div2_flop" BEL
-        "UART/transmitter/div1_flop" BEL "UART/transmitter/div0_flop" BEL
-        "UART/transmitter/sm3_flop" BEL "UART/transmitter/sm2_flop" BEL
-        "UART/transmitter/sm1_flop" BEL "UART/transmitter/sm0_flop" BEL
-        "UART/transmitter/serial_flop" BEL
-        "UART/transmitter/data_width_loop[7].storage_flop" BEL
-        "UART/transmitter/data_width_loop[6].storage_flop" BEL
-        "UART/transmitter/data_width_loop[5].storage_flop" BEL
-        "UART/transmitter/data_width_loop[4].storage_flop" BEL
-        "UART/transmitter/data_width_loop[3].storage_flop" BEL
-        "UART/transmitter/data_width_loop[2].storage_flop" BEL
-        "UART/transmitter/data_width_loop[1].storage_flop" BEL
-        "UART/transmitter/data_width_loop[0].storage_flop" BEL
-        "UART/transmitter/data_present_flop" BEL
-        "UART/transmitter/pointer0_flop" BEL "UART/transmitter/pointer1_flop"
-        BEL "UART/transmitter/pointer2_flop" BEL
-        "UART/transmitter/pointer3_flop" BEL
-        "UART/receiver/data_width_loop[7].storage_srl" BEL
-        "UART/receiver/data_width_loop[6].storage_srl" BEL
-        "UART/receiver/data_width_loop[5].storage_srl" BEL
-        "UART/receiver/data_width_loop[4].storage_srl" BEL
-        "UART/receiver/data_width_loop[3].storage_srl" BEL
-        "UART/receiver/data_width_loop[2].storage_srl" BEL
-        "UART/receiver/data_width_loop[1].storage_srl" BEL
-        "UART/receiver/data_width_loop[0].storage_srl" BEL
-        "UART/receiver/sample_input_flop" BEL "UART/receiver/div3_flop" BEL
-        "UART/receiver/div2_flop" BEL "UART/receiver/div1_flop" BEL
-        "UART/receiver/div0_flop" BEL "UART/receiver/start_bit_flop" BEL
-        "UART/receiver/run_flop" BEL "UART/receiver/data7_flop" BEL
-        "UART/receiver/data6_flop" BEL "UART/receiver/data5_flop" BEL
-        "UART/receiver/data4_flop" BEL "UART/receiver/data3_flop" BEL
-        "UART/receiver/data2_flop" BEL "UART/receiver/data1_flop" BEL
-        "UART/receiver/data0_flop" BEL "UART/receiver/stop_bit_flop" BEL
-        "UART/receiver/buffer_write_flop" BEL "UART/receiver/sample_dly_flop"
-        BEL "UART/receiver/sample_flop" BEL "UART/receiver/data_present_flop"
-        BEL "UART/receiver/pointer0_flop" BEL "UART/receiver/pointer1_flop"
-        BEL "UART/receiver/pointer2_flop" BEL "UART/receiver/pointer3_flop"
-        BEL "led_driver/leds_7" BEL "led_driver/leds_6" BEL
-        "led_driver/leds_5" BEL "led_driver/leds_4" BEL "led_driver/leds_3"
-        BEL "led_driver/leds_2" BEL "led_driver/leds_1" BEL
-        "led_driver/leds_0" BEL
-        "CPU/pblaze_cpu/data_path_loop[7].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[7].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[7].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[6].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[6].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[6].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[5].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[5].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[5].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[4].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[4].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[4].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[3].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[3].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[3].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[2].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[2].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[2].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[1].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[1].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[1].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[0].small_spm.spm_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[0].low_hwbuild.shift_rotate_flop" BEL
-        "CPU/pblaze_cpu/data_path_loop[0].arith_logical_flop" BEL
-        "CPU/pblaze_cpu/stack_loop[4].upper_stack.pointer_flop" BEL
-        "CPU/pblaze_cpu/stack_loop[3].upper_stack.pointer_flop" BEL
-        "CPU/pblaze_cpu/stack_loop[2].upper_stack.pointer_flop" BEL
-        "CPU/pblaze_cpu/stack_loop[1].upper_stack.pointer_flop" BEL
-        "CPU/pblaze_cpu/stack_loop[0].lsb_stack.pointer_flop" BEL
-        "CPU/pblaze_cpu/stack_bit_flop" BEL "CPU/pblaze_cpu/shadow_bank_flop"
-        BEL "CPU/pblaze_cpu/shadow_zero_flag_flop" BEL
-        "CPU/pblaze_cpu/stack_zero_flop" BEL
-        "CPU/pblaze_cpu/shadow_carry_flag_flop" BEL
-        "CPU/pblaze_cpu/address_loop[11].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[11].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[10].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[10].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[9].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[9].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[8].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[8].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[7].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[7].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[6].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[6].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[5].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[5].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[4].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[4].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[3].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[3].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[2].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[2].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[1].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[1].return_vector_flop" BEL
-        "CPU/pblaze_cpu/address_loop[0].pc_flop" BEL
-        "CPU/pblaze_cpu/address_loop[0].return_vector_flop" BEL
-        "CPU/pblaze_cpu/zero_flag_flop" BEL
-        "CPU/pblaze_cpu/use_zero_flag_flop" BEL
-        "CPU/pblaze_cpu/carry_flag_flop" BEL "CPU/pblaze_cpu/shift_carry_flop"
-        BEL "CPU/pblaze_cpu/arith_carry_flop" BEL
-        "CPU/pblaze_cpu/sx_addr4_flop" BEL "CPU/pblaze_cpu/bank_flop" BEL
-        "CPU/pblaze_cpu/read_strobe_flop" BEL
-        "CPU/pblaze_cpu/write_strobe_flop" BEL
-        "CPU/pblaze_cpu/spm_enable_flop" BEL
-        "CPU/pblaze_cpu/register_enable_flop" BEL
-        "CPU/pblaze_cpu/flag_enable_flop" BEL
-        "CPU/pblaze_cpu/alu_mux_sel1_flop" BEL
-        "CPU/pblaze_cpu/alu_mux_sel0_flop" BEL
-        "CPU/pblaze_cpu/interrupt_enable_flop" BEL
-        "CPU/pblaze_cpu/t_state2_flop" BEL "CPU/pblaze_cpu/t_state1_flop" BEL
-        "CPU/pblaze_cpu/internal_reset_flop" BEL "CPU/pblaze_cpu/run_flop" BEL
-        "CPU/pblaze_rom/s6_a11_flop" BEL "clk_BUFGP/BUFG" PIN
-        "CPU/pblaze_rom/kcpsm6_rom_hh_pins<28>" PIN
-        "CPU/pblaze_rom/kcpsm6_rom_hl_pins<28>" PIN
-        "CPU/pblaze_rom/kcpsm6_rom_lh_pins<28>" PIN
-        "CPU/pblaze_rom/kcpsm6_rom_ll_pins<28>" BEL
-        "CPU/pblaze_cpu/data_path_loop[0].small_spm.small_spm_ram.spm_ram_RAMA"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[0].small_spm.small_spm_ram.spm_ram_RAMB"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[0].small_spm.small_spm_ram.spm_ram_RAMC"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[0].small_spm.small_spm_ram.spm_ram_RAMD"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[4].small_spm.small_spm_ram.spm_ram_RAMA"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[4].small_spm.small_spm_ram.spm_ram_RAMB"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[4].small_spm.small_spm_ram.spm_ram_RAMC"
-        BEL
-        "CPU/pblaze_cpu/data_path_loop[4].small_spm.small_spm_ram.spm_ram_RAMD"
-        BEL "CPU/pblaze_cpu/lower_reg_banks_RAMA_D1" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMA" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMB_D1" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMB" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMC_D1" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMC" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMD_D1" BEL
-        "CPU/pblaze_cpu/lower_reg_banks_RAMD" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMA_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMA" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMB_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMB" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMC_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMC" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMD_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_high_RAMD" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMA_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMA" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMB_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMB" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMC_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMC" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMD_D1" BEL
-        "CPU/pblaze_cpu/stack_ram_low_RAMD" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMA_D1" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMA" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMB_D1" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMB" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMC_D1" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMC" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMD_D1" BEL
-        "CPU/pblaze_cpu/upper_reg_banks_RAMD";
-TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+COMP "hw_ram_ba<0>" LOCATE = SITE "E3" LEVEL 1;
+COMP "hw_ram_ba<1>" LOCATE = SITE "E1" LEVEL 1;
+COMP "hw_ram_ba<2>" LOCATE = SITE "D1" LEVEL 1;
+COMP "hw_ram_ad<0>" LOCATE = SITE "M5" LEVEL 1;
+COMP "hw_ram_ad<1>" LOCATE = SITE "L4" LEVEL 1;
+COMP "hw_ram_ad<2>" LOCATE = SITE "K3" LEVEL 1;
+COMP "hw_ram_ad<3>" LOCATE = SITE "M4" LEVEL 1;
+COMP "hw_ram_ad<4>" LOCATE = SITE "K5" LEVEL 1;
+COMP "hw_ram_ad<5>" LOCATE = SITE "G3" LEVEL 1;
+COMP "hw_ram_ad<6>" LOCATE = SITE "G1" LEVEL 1;
+COMP "hw_ram_ad<7>" LOCATE = SITE "K4" LEVEL 1;
+COMP "hw_ram_ad<8>" LOCATE = SITE "C3" LEVEL 1;
+COMP "hw_ram_ad<9>" LOCATE = SITE "C1" LEVEL 1;
+COMP "hw_ram_dq<0>" LOCATE = SITE "N3" LEVEL 1;
+COMP "hw_ram_dq<1>" LOCATE = SITE "N1" LEVEL 1;
+COMP "hw_ram_dq<2>" LOCATE = SITE "M2" LEVEL 1;
+COMP "hw_ram_dq<3>" LOCATE = SITE "M1" LEVEL 1;
+COMP "hw_ram_dq<4>" LOCATE = SITE "J3" LEVEL 1;
+COMP "hw_ram_dq<5>" LOCATE = SITE "J1" LEVEL 1;
+COMP "hw_ram_dq<6>" LOCATE = SITE "K2" LEVEL 1;
+COMP "hw_ram_dq<7>" LOCATE = SITE "K1" LEVEL 1;
+COMP "hw_ram_dq<8>" LOCATE = SITE "P2" LEVEL 1;
+COMP "hw_ram_dq<9>" LOCATE = SITE "P1" LEVEL 1;
+COMP "AUD_ADCLRCK" LOCATE = SITE "B6" LEVEL 1;
+COMP "AUD_DACLRCK" LOCATE = SITE "D6" LEVEL 1;
+COMP "AUD_BCLK" LOCATE = SITE "B12" LEVEL 1;
+COMP "AUD_MUTE" LOCATE = SITE "A15" LEVEL 1;
+COMP "hw_ram_casn" LOCATE = SITE "P3" LEVEL 1;
+COMP "hw_ram_rasn" LOCATE = SITE "N4" LEVEL 1;
+COMP "AUD_XCK" LOCATE = SITE "A6" LEVEL 1;
+COMP "hw_ram_cke" LOCATE = SITE "J6" LEVEL 1;
+COMP "hw_ram_ckn" LOCATE = SITE "F1" LEVEL 1;
+COMP "hw_ram_ldm" LOCATE = SITE "H1" LEVEL 1;
+COMP "hw_ram_odt" LOCATE = SITE "M3" LEVEL 1;
+COMP "hw_ram_udm" LOCATE = SITE "H2" LEVEL 1;
+COMP "hw_ram_wen" LOCATE = SITE "D2" LEVEL 1;
+PIN wiz/clkout1_buf_pin<1> = BEL "wiz/clkout1_buf" PINNAME O;
+PIN "wiz/clkout1_buf_pin<1>" CLOCK_DEDICATED_ROUTE = FALSE;
 SCHEMATIC END;
 

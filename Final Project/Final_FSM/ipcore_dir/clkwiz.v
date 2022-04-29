@@ -79,9 +79,7 @@ module clkwiz
 
   // Input buffering
   //------------------------------------
-  IBUFG clkin1_buf
-   (.O (clkin1),
-    .I (CLK_IN1));
+  assign clkin1 = CLK_IN1;
 
 
   // Clocking primitive

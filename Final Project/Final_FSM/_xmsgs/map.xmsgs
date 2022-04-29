@@ -5,6 +5,18 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="info" file="LIT" num="243" delta="old" >Logical network <arg fmt="%s" index="1">RAMWrapper/u_memory_interface/memc3_infrastructure_inst/rst0_sync_r&lt;24&gt;</arg> has no load.
+</msg>
+
+<msg type="info" file="LIT" num="395" delta="old" >The above <arg fmt="%s" index="1">info</arg> message is repeated <arg fmt="%d" index="2">13</arg> more times for the following (max. 5 shown):
+<arg fmt="%s" index="3">N232,
+N234,
+KEY&lt;3&gt;,
+KEY&lt;2&gt;,
+KEY&lt;1&gt;</arg>
+To see the details of these <arg fmt="%s" index="4">info</arg> messages, please use the -detail switch.
+</msg>
+
 <msg type="info" file="MapLib" num="562" delta="old" >No environment variables are currently set.
 </msg>
 
@@ -17,10 +29,27 @@
 <msg type="info" file="Pack" num="1720" delta="old" >Initializing voltage to <arg fmt="%0.3f" index="1">1.140</arg> Volts. (default - Range: <arg fmt="%0.3f" index="2">1.140</arg> to <arg fmt="%0.3f" index="3">1.260</arg> Volts)
 </msg>
 
+<msg type="warning" file="Timing" num="3402" delta="old" >The Clock Modifying COMP, <arg fmt="%s" index="1">wiz/dcm_sp_inst</arg>, has the attribute CLK_FEEDBACK set to NONE.  No phase relationship exists between the input and output clocks of this Clock Modifying COMP. Data paths between these clock domains must be constrained using FROM/TO constraints.
+</msg>
+
 <msg type="info" file="Map" num="215" delta="old" >The Interim Design Summary has been generated in the MAP Report (.mrp).
 </msg>
 
-<msg type="info" file="Pack" num="1650" delta="old" >Map created a placed design.
+<msg type="info" file="Place" num="834" delta="old" >Only a subset of IOs are locked. Out of <arg fmt="%d" index="1">78</arg> IOs, <arg fmt="%d" index="2">75</arg> are locked and <arg fmt="%d" index="3">3</arg> are not locked. <arg fmt="%s" index="4">If you would like to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1.</arg> 
+</msg>
+
+<msg type="warning" file="Place" num="1137" delta="new" >This design is not guaranteed to be routable! This design contains a global buffer instance, &lt;<arg fmt="%s" index="1">wiz/clkout1_buf</arg>&gt;, driving the net, &lt;<arg fmt="%s" index="2">clk1</arg>&gt;, that is driving the following (first <arg fmt="%d" index="3">30</arg>) non-clock load pins.
+<arg fmt="%s" index="4">&lt; PIN: what/pll/clkin1_buf.I0; &gt;
+</arg>This is not a recommended design practice in Spartan-6 due to limitations in the global routing that may cause excessive delay, skew or unroutable situations.  It is recommended to only use a BUFG resource to drive clock loads. Please pay extra attention to the timing and routing of this path to ensure the design goals are met. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN &lt;<arg fmt="%s" index="5">wiz/clkout1_buf</arg>.<arg fmt="%s" index="6">O</arg>&gt; allowing your design to continue. This constraint disables all clock placer rules related to the specified COMP.PIN.
+</msg>
+
+<msg type="info" file="Pack" num="1650" delta="new" >Map created a placed design.
+</msg>
+
+<msg type="warning" file="PhysDesignRules" num="781" delta="new" ><arg fmt="%s" index="1">PULLUP</arg> on an active net. <arg fmt="%s" index="2">PULLUP</arg> of comp <arg fmt="%s" index="3">AUD_I2C_SCLK_PULLUP</arg> is set but the tri state is not configured. 
+</msg>
+
+<msg type="info" file="PhysDesignRules" num="1861" delta="new" >To achieve optimal frequency synthesis performance with the CLKFX and CLKFX180 outputs of the DCM comp <arg fmt="%s" index="1">wiz/dcm_sp_inst</arg>, consult the device Data Sheet.
 </msg>
 
 </messages>

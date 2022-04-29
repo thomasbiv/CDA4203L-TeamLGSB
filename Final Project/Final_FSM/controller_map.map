@@ -10,85 +10,112 @@ Target Device  : xc6slx45
 Target Package : csg484
 Target Speed   : -3
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Tue Apr 26 13:06:34 2022
+Mapped Date    : Fri Apr 29 15:27:00 2022
 
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+INFO:Security:54 - 'xc6slx45' is a WebPack part.
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
+----------------------------------------------------------------------
 Mapping design into LUTs...
 Running directed packing...
 Running delay-based LUT packing...
 Updating timing models...
+WARNING:Timing:3402 - The Clock Modifying COMP, wiz/dcm_sp_inst, has the attribute CLK_FEEDBACK set to NONE.  No phase relationship exists
+   between the input and output clocks of this Clock Modifying COMP. Data paths between these clock domains must be constrained using
+   FROM/TO constraints.
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
 Total REAL time at the beginning of Placer: 4 secs 
-Total CPU  time at the beginning of Placer: 3 secs 
+Total CPU  time at the beginning of Placer: 4 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:47fc0d76) REAL time: 4 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:ed2254f8) REAL time: 5 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:47fc0d76) REAL time: 4 secs 
+INFO:Place:834 - Only a subset of IOs are locked. Out of 78 IOs, 75 are locked
+   and 3 are not locked. If you would like to print the names of these IOs,
+   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
+WARNING:Place:1137 - This design is not guaranteed to be routable! This design
+   contains a global buffer instance, <wiz/clkout1_buf>, driving the net,
+   <clk1>, that is driving the following (first 30) non-clock load pins.
+   < PIN: what/pll/clkin1_buf.I0; >
+   This is not a recommended design practice in Spartan-6 due to limitations in
+   the global routing that may cause excessive delay, skew or unroutable
+   situations.  It is recommended to only use a BUFG resource to drive clock
+   loads. Please pay extra attention to the timing and routing of this path to
+   ensure the design goals are met. This is normally an ERROR but the
+   CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN <wiz/clkout1_buf.O>
+   allowing your design to continue. This constraint disables all clock placer
+   rules related to the specified COMP.PIN.
+Phase 2.7  Design Feasibility Check (Checksum:ed2254f8) REAL time: 5 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:47fc0d76) REAL time: 4 secs 
+Phase 3.31  Local Placement Optimization (Checksum:ed2254f8) REAL time: 5 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-
+...
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:62e29099) REAL time: 12 secs 
+(Checksum:86dcf59d) REAL time: 21 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:62e29099) REAL time: 12 secs 
+Phase 5.36  Local Placement Optimization (Checksum:86dcf59d) REAL time: 21 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:62e29099) REAL time: 12 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:86dcf59d) REAL time: 21 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:62e29099) REAL time: 12 secs 
+...
+Phase 7.3  Local Placement Optimization (Checksum:941ce0ae) REAL time: 22 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:62e29099) REAL time: 12 secs 
+Phase 8.5  Local Placement Optimization (Checksum:9532194f) REAL time: 22 secs 
 
 Phase 9.8  Global Placement
-...............
-................
-......................................
-.......
-Phase 9.8  Global Placement (Checksum:358b4528) REAL time: 13 secs 
+...................................
+........................................................................................................................
+.........................................................................
+..................................
+Phase 9.8  Global Placement (Checksum:de5439e9) REAL time: 25 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:358b4528) REAL time: 13 secs 
+Phase 10.5  Local Placement Optimization (Checksum:de5439e9) REAL time: 25 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:bfa57d68) REAL time: 13 secs 
+Phase 11.18  Placement Optimization (Checksum:e9fdc8d4) REAL time: 29 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:bfa57d68) REAL time: 13 secs 
+Phase 12.5  Local Placement Optimization (Checksum:e9fdc8d4) REAL time: 29 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:bfa57d68) REAL time: 14 secs 
+Phase 13.34  Placement Validation (Checksum:59ebd7ff) REAL time: 29 secs 
 
-Total REAL time to Placer completion: 14 secs 
-Total CPU  time to Placer completion: 13 secs 
+Total REAL time to Placer completion: 30 secs 
+Total CPU  time to Placer completion: 30 secs 
 Running post-placement packing...
 Writing output files...
+WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp
+   AUD_I2C_SCLK_PULLUP is set but the tri state is not configured. 
 
 Design Summary
 --------------
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    0
+Number of warnings:    3
 Slice Logic Utilization:
-  Number of Slice Registers:                   157 out of  54,576    1%
-    Number used as Flip Flops:                 157
+  Number of Slice Registers:                   724 out of  54,576    1%
+    Number used as Flip Flops:                 724
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        184 out of  27,288    1%
-    Number used as logic:                      151 out of  27,288    1%
-      Number using O6 output only:              61
-      Number using O5 output only:              11
-      Number using O5 and O6:                   79
+  Number of Slice LUTs:                      1,043 out of  27,288    3%
+    Number used as logic:                      996 out of  27,288    3%
+      Number using O6 output only:             592
+      Number using O5 output only:              64
+      Number using O5 and O6:                  340
       Number used as ROM:                        0
     Number used as Memory:                      32 out of   6,408    1%
       Number used as Dual Port RAM:              8
@@ -103,21 +130,21 @@ Slice Logic Utilization:
         Number using O6 output only:             0
         Number using O5 output only:             0
         Number using O5 and O6:                  8
-    Number used exclusively as route-thrus:      1
-      Number with same-slice register load:      0
-      Number with same-slice carry load:         1
+    Number used exclusively as route-thrus:     15
+      Number with same-slice register load:      8
+      Number with same-slice carry load:         7
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    53 out of   6,822    1%
-  Number of MUXCYs used:                        56 out of  13,644    1%
-  Number of LUT Flip Flop pairs used:          185
-    Number with an unused Flip Flop:            63 out of     185   34%
-    Number with an unused LUT:                   1 out of     185    1%
-    Number of fully used LUT-FF pairs:         121 out of     185   65%
-    Number of unique control sets:              13
+  Number of occupied Slices:                   433 out of   6,822    6%
+  Number of MUXCYs used:                       276 out of  13,644    2%
+  Number of LUT Flip Flop pairs used:        1,137
+    Number with an unused Flip Flop:           519 out of   1,137   45%
+    Number with an unused LUT:                  94 out of   1,137    8%
+    Number of fully used LUT-FF pairs:         524 out of   1,137   46%
+    Number of unique control sets:              86
     Number of slice register sites lost
-      to control set restrictions:              19 out of  54,576    1%
+      to control set restrictions:             292 out of  54,576    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -126,39 +153,48 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        23 out of     320    7%
-    Number of LOCed IOBs:                       23 out of      23  100%
+  Number of bonded IOBs:                        78 out of     320   24%
+    Number of LOCed IOBs:                       75 out of      78   96%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         4 out of     116    3%
   Number of RAMB8BWERs:                          0 out of     232    0%
-  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
+    Number used as BUFIO2s:                      1
+    Number used as BUFIO2_2CLKs:                 0
   Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
-  Number of BUFG/BUFGMUXs:                       1 out of      16    6%
-    Number used as BUFGs:                        1
-    Number used as BUFGMUX:                      0
-  Number of DCM/DCM_CLKGENs:                     0 out of       8    0%
+  Number of BUFG/BUFGMUXs:                       7 out of      16   43%
+    Number used as BUFGs:                        6
+    Number used as BUFGMUX:                      1
+  Number of DCM/DCM_CLKGENs:                     1 out of       8   12%
+    Number used as DCMs:                         1
+    Number used as DCM_CLKGENs:                  0
   Number of ILOGIC2/ISERDES2s:                   0 out of     376    0%
-  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     376    0%
-  Number of OLOGIC2/OSERDES2s:                   0 out of     376    0%
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:        24 out of     376    6%
+    Number used as IODELAY2s:                    0
+    Number used as IODRP2s:                      2
+    Number used as IODRP2_MCBs:                 22
+  Number of OLOGIC2/OSERDES2s:                  45 out of     376   11%
+    Number used as OLOGIC2s:                     0
+    Number used as OSERDES2s:                   45
   Number of BSCANs:                              0 out of       4    0%
   Number of BUFHs:                               0 out of     256    0%
   Number of BUFPLLs:                             0 out of       8    0%
-  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of BUFPLL_MCBs:                         1 out of       4   25%
   Number of DSP48A1s:                            0 out of      58    0%
   Number of ICAPs:                               0 out of       1    0%
-  Number of MCBs:                                0 out of       2    0%
+  Number of MCBs:                                1 out of       2   50%
   Number of PCILOGICSEs:                         0 out of       2    0%
-  Number of PLL_ADVs:                            0 out of       4    0%
+  Number of PLL_ADVs:                            2 out of       4   50%
   Number of PMVs:                                0 out of       1    0%
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                3.16
+Average Fanout of Non-Clock Nets:                3.56
 
-Peak Memory Usage:  4644 MB
-Total REAL time to MAP completion:  14 secs 
-Total CPU time to MAP completion:   14 secs 
+Peak Memory Usage:  4661 MB
+Total REAL time to MAP completion:  31 secs 
+Total CPU time to MAP completion:   31 secs 
 
 Mapping completed.
 See MAP report file "controller_map.mrp" for details.

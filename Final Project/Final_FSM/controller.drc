@@ -1,8 +1,14 @@
 Release 14.7 Drc P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue Apr 26 13:07:13 2022
+Fri Apr 29 15:27:53 2022
 
 drc -z controller.ncd controller.pcf
 
-DRC detected 0 errors and 0 warnings.
+WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp
+   AUD_I2C_SCLK_PULLUP is set but the tri state is not configured. 
+INFO:PhysDesignRules:1861 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM comp wiz/dcm_sp_inst, consult
+   the device Data Sheet.
+DRC detected 0 errors and 1 warnings.  Please see the previously displayed
+individual error or warning messages for more details.

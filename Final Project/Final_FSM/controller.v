@@ -233,7 +233,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.rs232_tx(rs232_tx),
 		.rs232_rx(rs232_rx),
 		.reset(uart_reset),
-		.clk(clk)
+		.clk(clk2)
 	);	
 	clkwiz wiz(
 		.CLK_IN1(wizclk),
@@ -259,7 +259,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.interrupt(pb_interrupt),
 		.interrupt_ack(),
 		.reset(pb_reset),
-		.clk(clk1)
+		.clk(clk2)
 	);	
 	
 	
@@ -277,7 +277,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					.read_ack(ackRead), 
 					.data_out(RAMout), 				// output from ram to wire
 					.reset(reset), 
-					.clk(CLK), 
+					.clk(clk), 
 					.hw_ram_rasn(hw_ram_rasn), 
 					.hw_ram_casn(hw_ram_casn),
 					.hw_ram_wen(hw_ram_wen), 
@@ -297,7 +297,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					.hw_rzq_pin(hw_rzq_pin), 
 					.hw_zio_pin(hw_zio_pin), 
 					.clkout(wizclk), //
-					.sys_clk(clk), 
+					.sys_clk(wizclk), 
 					.rdy(status), 
 					.rd_data_pres(dataPresent),
 					.max_ram_address(max_ram_address)
@@ -305,7 +305,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	
 	
 	sockit_top what(
-		.clk(clk2),
+		.clk(clk1),
 			.playback(playback),
 			.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
@@ -353,7 +353,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	// This process block gets the value of the requested input port device
 	// and passes it to PBs in_port. When PB is not requestng data from
 	// a valid input port, set the input to static 0.
-	always @(posedge clk1 or posedge pb_reset)
+	always @(posedge clk2 or posedge pb_reset)
 	begin
 		if(pb_reset) begin
 			pb_in_port <= 0;
@@ -451,7 +451,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		
 		
 		
-	always @(posedge clk2) begin
+	always @(posedge wizclk) begin
 		if (~pb_reset) begin
 			curr_state <= main_state;
 		end

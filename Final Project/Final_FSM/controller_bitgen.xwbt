@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Xilinx\CDA 4203L\Final_FSM\controller.ncd
-OUTFILE=C:\Xilinx\CDA 4203L\Final_FSM\controller.bit
+INFILE=C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.ncd
+OUTFILE=C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.bit
 FAMILY=Spartan6
 PART=xc6slx45-3csg484
-WORKINGDIR=C:\Xilinx\CDA 4203L\Final_FSM
-LICENSE=WebPack
-USER_INFO=212379019_0_0_777
+WORKINGDIR=C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM
+LICENSE=ISE
+USER_INFO=179783150_1777509441_210720177_424
