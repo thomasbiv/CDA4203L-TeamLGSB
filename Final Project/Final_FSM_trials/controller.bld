@@ -1,0 +1,105 @@
+Release 14.7 ngdbuild P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
+-intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc main_pin_map.ucf -p
+xc6slx45-csg484-3 controller.ngc controller.ngd
+
+Reading NGO file "C:/Xilinx/CDA
+4203L/Final_project_files/Final_FSM_trials/controller.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file "main_pin_map.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+INFO:ConstraintSystem:178 - TNM 'sys_clk_pin', used in period specification
+   'TS_sys_clk_pin', was traced into PLL_ADV instance
+   RAMWrapper/u_memory_interface/memc3_infrastructure_inst/u_pll_adv. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT3: <TIMESPEC
+   TS_RAMWrapper_u_memory_interface_memc3_infrastructure_inst_mcb_drp_clk_bufg_i
+   n = PERIOD
+   "RAMWrapper_u_memory_interface_memc3_infrastructure_inst_mcb_drp_clk_bufg_in"
+   TS_sys_clk_pin * 0.75 ...>
+
+INFO:ConstraintSystem:178 - TNM 'sys_clk_pin', used in period specification
+   'TS_sys_clk_pin', was traced into PLL_ADV instance
+   RAMWrapper/u_memory_interface/memc3_infrastructure_inst/u_pll_adv. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT1: <TIMESPEC
+   TS_RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk_2x_180 =
+   PERIOD "RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk_2x_180"
+   TS_sys_clk_pin * 6 PHASE 0.833333333 ns ...>
+
+INFO:ConstraintSystem:178 - TNM 'sys_clk_pin', used in period specification
+   'TS_sys_clk_pin', was traced into PLL_ADV instance
+   RAMWrapper/u_memory_interface/memc3_infrastructure_inst/u_pll_adv. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT0: <TIMESPEC
+   TS_RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk_2x_0 = PERIOD
+   "RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk_2x_0"
+   TS_sys_clk_pin * 6 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'sys_clk_pin', used in period specification
+   'TS_sys_clk_pin', was traced into PLL_ADV instance
+   RAMWrapper/u_memory_interface/memc3_infrastructure_inst/u_pll_adv. The
+   following new TNM groups and period specifications were generated at the
+   PLL_ADV output(s): 
+   CLKOUT2: <TIMESPEC
+   TS_RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk0_bufg_in =
+   PERIOD "RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk0_bufg_in"
+   TS_sys_clk_pin * 0.375 HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM
+   'RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk0_bufg_in', used
+   in period specification
+   'TS_RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk0_bufg_in',
+   was traced into DCM_SP instance wizard/dcm_sp_inst. The following new TNM
+   groups and period specifications were generated at the DCM_SP output(s): 
+   CLKFX: <TIMESPEC TS_wizard_clkfx = PERIOD "wizard_clkfx"
+   TS_RAMWrapper_u_memory_interface_memc3_infrastructure_inst_clk0_bufg_in *
+   2.666666667 HIGH 50%>
+
+Done...
+
+WARNING:NgdBuild:1212 - User specified non-default attribute value (26.666000)
+   was detected for the CLKIN_PERIOD attribute on DCM "wizard/dcm_sp_inst". 
+   This does not match the PERIOD constraint value (37500 KHz.).  The
+   uncertainty calculation will use the non-default attribute value.  This could
+   result in incorrect uncertainty calculated for DCM output clocks.
+WARNING:NgdBuild:1440 - User specified non-default attribute value (9.999) was
+   detected for the CLKIN1_PERIOD attribute on PLL
+   "RAMWrapper/u_memory_interface/memc3_infrastructure_inst/u_pll_adv".  This
+   does not match the PERIOD constraint value (100000 KHz.).  The uncertainty
+   calculation will use the PERIOD constraint value.  This could result in
+   incorrect uncertainty calculated for PLL output clocks.
+Checking expanded design ...
+WARNING:NgdBuild:443 - SFF primitive 'CPU/pblaze_cpu/k_write_strobe_flop' has
+   unconnected output pin
+WARNING:NgdBuild:440 - FF primitive 'CPU/pblaze_cpu/interrupt_ack_flop' has
+   unconnected output pin
+WARNING:NgdBuild:452 - logical net 'N164' has no driver
+WARNING:NgdBuild:452 - logical net 'N166' has no driver
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   6
+
+Total memory usage is 4413568 kilobytes
+
+Writing NGD file "controller.ngd" ...
+Total REAL time to NGDBUILD completion:  3 sec
+Total CPU time to NGDBUILD completion:   3 sec
+
+Writing NGDBUILD log file "controller.bld"...

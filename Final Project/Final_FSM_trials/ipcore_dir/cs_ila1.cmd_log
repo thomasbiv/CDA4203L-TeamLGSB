@@ -1,0 +1,2 @@
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx45-csg324-3 cs_ila1.ngc cs_ila1.ngd  
+map -intstyle ise -p xc6slx45-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o cs_ila1_map.ncd cs_ila1.ngd cs_ila1.pcf 
