@@ -1,0 +1,613 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3
+-n 3 -fastpaths -xml controller.twx controller.ncd -o controller.twr
+controller.pcf -ucf main_pin_map.ucf
+
+Design file:              controller.ncd
+Physical constraint file: controller.pcf
+Device,package,speed:     xc6slx45,csg484,C,-3 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 
+50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 22994 paths analyzed, 1322 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   8.913ns.
+--------------------------------------------------------------------------------
+
+Paths for end point pb_in_port_1 (SLICE_X4Y39.C4), 140 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     1.087ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
+  Destination:          pb_in_port_1 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.861ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.017ns (0.231 - 0.248)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to pb_in_port_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y20.DOA6    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+                                                       CPU/pblaze_rom/kcpsm6_rom_ll
+    SLICE_X3Y41.B5       net (fanout=1)        1.293   CPU/pblaze_rom/n0013<6>
+    SLICE_X3Y41.BMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux6_lut/LUT5
+    SLICE_X2Y41.C3       net (fanout=7)        0.908   CPU/instruction<6>
+    SLICE_X2Y41.C        Tilo                  0.204   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC_D1
+    SLICE_X3Y40.A5       net (fanout=2)        0.890   CPU/pblaze_cpu/sy<7>
+    SLICE_X3Y40.A        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y39.C3       net (fanout=2)        0.483   pb_port_id<7>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y39.C4       net (fanout=5)        0.779   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y39.CLK      Tas                   0.341   pb_in_port<2>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT21
+                                                       pb_in_port_1
+    -------------------------------------------------  ---------------------------
+    Total                                      8.861ns (3.431ns logic, 5.430ns route)
+                                                       (38.7% logic, 61.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.288ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Destination:          pb_in_port_1 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.652ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.231 - 0.256)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to pb_in_port_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y22.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    SLICE_X3Y41.A5       net (fanout=1)        0.914   CPU/pblaze_rom/n0017<4>
+    SLICE_X3Y41.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y41.A1       net (fanout=7)        1.336   CPU/instruction<4>
+    SLICE_X2Y41.AMUX     Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
+    SLICE_X3Y40.B3       net (fanout=2)        0.496   CPU/pblaze_cpu/sy<4>
+    SLICE_X3Y40.BMUX     Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
+    SLICE_X3Y39.C4       net (fanout=10)       0.508   pb_port_id<4>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y39.C4       net (fanout=5)        0.779   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y39.CLK      Tas                   0.341   pb_in_port<2>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT21
+                                                       pb_in_port_1
+    -------------------------------------------------  ---------------------------
+    Total                                      8.652ns (3.542ns logic, 5.110ns route)
+                                                       (40.9% logic, 59.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.307ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Destination:          pb_in_port_1 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.633ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.231 - 0.256)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to pb_in_port_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y22.DOA7    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    SLICE_X3Y41.B3       net (fanout=1)        0.904   CPU/pblaze_rom/n0017<7>
+    SLICE_X3Y41.B        Tilo                  0.259   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux6_lut/LUT6
+    SLICE_X2Y41.C4       net (fanout=9)        1.123   CPU/instruction<7>
+    SLICE_X2Y41.C        Tilo                  0.204   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC_D1
+    SLICE_X3Y40.A5       net (fanout=2)        0.890   CPU/pblaze_cpu/sy<7>
+    SLICE_X3Y40.A        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y39.C3       net (fanout=2)        0.483   pb_port_id<7>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y39.C4       net (fanout=5)        0.779   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y39.CLK      Tas                   0.341   pb_in_port<2>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT21
+                                                       pb_in_port_1
+    -------------------------------------------------  ---------------------------
+    Total                                      8.633ns (3.377ns logic, 5.256ns route)
+                                                       (39.1% logic, 60.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point pb_in_port_2 (SLICE_X4Y39.D4), 140 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     1.204ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
+  Destination:          pb_in_port_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.744ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.017ns (0.231 - 0.248)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to pb_in_port_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y20.DOA6    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+                                                       CPU/pblaze_rom/kcpsm6_rom_ll
+    SLICE_X3Y41.B5       net (fanout=1)        1.293   CPU/pblaze_rom/n0013<6>
+    SLICE_X3Y41.BMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux6_lut/LUT5
+    SLICE_X2Y41.C3       net (fanout=7)        0.908   CPU/instruction<6>
+    SLICE_X2Y41.C        Tilo                  0.204   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC_D1
+    SLICE_X3Y40.A5       net (fanout=2)        0.890   CPU/pblaze_cpu/sy<7>
+    SLICE_X3Y40.A        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y39.C3       net (fanout=2)        0.483   pb_port_id<7>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y39.D4       net (fanout=5)        0.662   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y39.CLK      Tas                   0.341   pb_in_port<2>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT31
+                                                       pb_in_port_2
+    -------------------------------------------------  ---------------------------
+    Total                                      8.744ns (3.431ns logic, 5.313ns route)
+                                                       (39.2% logic, 60.8% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.405ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Destination:          pb_in_port_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.535ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.231 - 0.256)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to pb_in_port_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y22.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    SLICE_X3Y41.A5       net (fanout=1)        0.914   CPU/pblaze_rom/n0017<4>
+    SLICE_X3Y41.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y41.A1       net (fanout=7)        1.336   CPU/instruction<4>
+    SLICE_X2Y41.AMUX     Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
+    SLICE_X3Y40.B3       net (fanout=2)        0.496   CPU/pblaze_cpu/sy<4>
+    SLICE_X3Y40.BMUX     Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
+    SLICE_X3Y39.C4       net (fanout=10)       0.508   pb_port_id<4>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y39.D4       net (fanout=5)        0.662   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y39.CLK      Tas                   0.341   pb_in_port<2>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT31
+                                                       pb_in_port_2
+    -------------------------------------------------  ---------------------------
+    Total                                      8.535ns (3.542ns logic, 4.993ns route)
+                                                       (41.5% logic, 58.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.424ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Destination:          pb_in_port_2 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.516ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.025ns (0.231 - 0.256)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to pb_in_port_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y22.DOA7    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    SLICE_X3Y41.B3       net (fanout=1)        0.904   CPU/pblaze_rom/n0017<7>
+    SLICE_X3Y41.B        Tilo                  0.259   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux6_lut/LUT6
+    SLICE_X2Y41.C4       net (fanout=9)        1.123   CPU/instruction<7>
+    SLICE_X2Y41.C        Tilo                  0.204   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC_D1
+    SLICE_X3Y40.A5       net (fanout=2)        0.890   CPU/pblaze_cpu/sy<7>
+    SLICE_X3Y40.A        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y39.C3       net (fanout=2)        0.483   pb_port_id<7>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y39.D4       net (fanout=5)        0.662   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y39.CLK      Tas                   0.341   pb_in_port<2>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT31
+                                                       pb_in_port_2
+    -------------------------------------------------  ---------------------------
+    Total                                      8.516ns (3.377ns logic, 5.139ns route)
+                                                       (39.7% logic, 60.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point pb_in_port_5 (SLICE_X4Y33.D1), 140 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     1.416ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_ll (RAM)
+  Destination:          pb_in_port_5 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.544ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.005ns (0.243 - 0.248)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_ll to pb_in_port_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y20.DOA6    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_ll
+                                                       CPU/pblaze_rom/kcpsm6_rom_ll
+    SLICE_X3Y41.B5       net (fanout=1)        1.293   CPU/pblaze_rom/n0013<6>
+    SLICE_X3Y41.BMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux6_lut/LUT5
+    SLICE_X2Y41.C3       net (fanout=7)        0.908   CPU/instruction<6>
+    SLICE_X2Y41.C        Tilo                  0.204   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC_D1
+    SLICE_X3Y40.A5       net (fanout=2)        0.890   CPU/pblaze_cpu/sy<7>
+    SLICE_X3Y40.A        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y39.C3       net (fanout=2)        0.483   pb_port_id<7>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.D1       net (fanout=5)        0.462   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y33.CLK      Tas                   0.341   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT61
+                                                       pb_in_port_5
+    -------------------------------------------------  ---------------------------
+    Total                                      8.544ns (3.431ns logic, 5.113ns route)
+                                                       (40.2% logic, 59.8% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.617ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Destination:          pb_in_port_5 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.335ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.013ns (0.243 - 0.256)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to pb_in_port_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y22.DOA4    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    SLICE_X3Y41.A5       net (fanout=1)        0.914   CPU/pblaze_rom/n0017<4>
+    SLICE_X3Y41.AMUX     Tilo                  0.313   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux4_lut/LUT5
+    SLICE_X2Y41.A1       net (fanout=7)        1.336   CPU/instruction<4>
+    SLICE_X2Y41.AMUX     Tilo                  0.261   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMA
+    SLICE_X3Y40.B3       net (fanout=2)        0.496   CPU/pblaze_cpu/sy<4>
+    SLICE_X3Y40.BMUX     Tilo                  0.313   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut/LUT5
+    SLICE_X3Y39.C4       net (fanout=10)       0.508   pb_port_id<4>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.D1       net (fanout=5)        0.462   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y33.CLK      Tas                   0.341   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT61
+                                                       pb_in_port_5
+    -------------------------------------------------  ---------------------------
+    Total                                      8.335ns (3.542ns logic, 4.793ns route)
+                                                       (42.5% logic, 57.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     1.636ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Destination:          pb_in_port_5 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      8.316ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.013ns (0.243 - 0.256)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: CPU/pblaze_rom/kcpsm6_rom_hl to pb_in_port_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y22.DOA7    Trcko_DOA             1.850   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    SLICE_X3Y41.B3       net (fanout=1)        0.904   CPU/pblaze_rom/n0017<7>
+    SLICE_X3Y41.B        Tilo                  0.259   CPU/pblaze_rom/pipe_a11
+                                                       CPU/pblaze_rom/s6_4k_mux6_lut/LUT6
+    SLICE_X2Y41.C4       net (fanout=9)        1.123   CPU/instruction<7>
+    SLICE_X2Y41.C        Tilo                  0.204   CPU/pblaze_cpu/KCPSM6_REG1
+                                                       CPU/pblaze_cpu/upper_reg_banks_RAMC_D1
+    SLICE_X3Y40.A5       net (fanout=2)        0.890   CPU/pblaze_cpu/sy<7>
+    SLICE_X3Y40.A        Tilo                  0.259   CPU/pblaze_cpu/KCPSM6_PORT_ID
+                                                       CPU/pblaze_cpu/data_path_loop[6].output_data.sy_kk_mux_lut/LUT6
+    SLICE_X3Y39.C3       net (fanout=2)        0.483   pb_port_id<7>
+    SLICE_X3Y39.C        Tilo                  0.259   read_from_uart
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT7111
+    SLICE_X4Y33.B4       net (fanout=6)        1.077   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.B        Tilo                  0.205   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT711
+    SLICE_X4Y33.D1       net (fanout=5)        0.462   Mmux_pb_port_id[7]_GND_1_o_select_12_OUT71
+    SLICE_X4Y33.CLK      Tas                   0.341   pb_in_port<5>
+                                                       Mmux_pb_port_id[7]_GND_1_o_select_12_OUT61
+                                                       pb_in_port_5
+    -------------------------------------------------  ---------------------------
+    Total                                      8.316ns (3.377ns logic, 4.939ns route)
+                                                       (40.6% logic, 59.4% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point UART/receiver/data_width_loop[1].storage_srl (SLICE_X6Y33.DI), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.246ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               UART/receiver/data1_flop (FF)
+  Destination:          UART/receiver/data_width_loop[1].storage_srl (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.248ns (Levels of Logic = 0)
+  Clock Path Skew:      0.002ns (0.044 - 0.042)
+  Source Clock:         clk_BUFGP rising at 10.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: UART/receiver/data1_flop to UART/receiver/data_width_loop[1].storage_srl
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X7Y33.DQ       Tcko                  0.198   UART/receiver/UART_RX6_2
+                                                       UART/receiver/data1_flop
+    SLICE_X6Y33.DI       net (fanout=2)        0.017   UART/receiver/data<1>
+    SLICE_X6Y33.CLK      Tdh         (-Th)    -0.033   UART/receiver/UART_RX6_5
+                                                       UART/receiver/data_width_loop[1].storage_srl
+    -------------------------------------------------  ---------------------------
+    Total                                      0.248ns (0.231ns logic, 0.017ns route)
+                                                       (93.1% logic, 6.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point UART/receiver/data_width_loop[7].storage_srl (SLICE_X6Y33.AI), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.249ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               UART/receiver/data7_flop (FF)
+  Destination:          UART/receiver/data_width_loop[7].storage_srl (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.251ns (Levels of Logic = 0)
+  Clock Path Skew:      0.002ns (0.044 - 0.042)
+  Source Clock:         clk_BUFGP rising at 10.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: UART/receiver/data7_flop to UART/receiver/data_width_loop[7].storage_srl
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X7Y33.AQ       Tcko                  0.198   UART/receiver/UART_RX6_2
+                                                       UART/receiver/data7_flop
+    SLICE_X6Y33.AI       net (fanout=2)        0.023   UART/receiver/data<7>
+    SLICE_X6Y33.CLK      Tdh         (-Th)    -0.030   UART/receiver/UART_RX6_5
+                                                       UART/receiver/data_width_loop[7].storage_srl
+    -------------------------------------------------  ---------------------------
+    Total                                      0.251ns (0.228ns logic, 0.023ns route)
+                                                       (90.8% logic, 9.2% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point CPU/pblaze_rom/kcpsm6_rom_hl (RAMB16_X0Y22.ADDRA13), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.310ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               CPU/pblaze_cpu/address_loop[10].pc_flop (FF)
+  Destination:          CPU/pblaze_rom/kcpsm6_rom_hl (RAM)
+  Requirement:          0.000ns
+  Data Path Delay:      0.314ns (Levels of Logic = 0)
+  Clock Path Skew:      0.004ns (0.076 - 0.072)
+  Source Clock:         clk_BUFGP rising at 10.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: CPU/pblaze_cpu/address_loop[10].pc_flop to CPU/pblaze_rom/kcpsm6_rom_hl
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X2Y44.CQ       Tcko                  0.234   CPU/pblaze_cpu/KCPSM6_PC2
+                                                       CPU/pblaze_cpu/address_loop[10].pc_flop
+    RAMB16_X0Y22.ADDRA13 net (fanout=6)        0.146   CPU/address<10>
+    RAMB16_X0Y22.CLKA    Trckc_ADDRA (-Th)     0.066   CPU/pblaze_rom/kcpsm6_rom_hl
+                                                       CPU/pblaze_rom/kcpsm6_rom_hl
+    -------------------------------------------------  ---------------------------
+    Total                                      0.314ns (0.168ns logic, 0.146ns route)
+                                                       (53.5% logic, 46.5% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 6.876ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 3.124ns (320.102MHz) (Trper_CLKA(Fmax))
+  Physical resource: CPU/pblaze_rom/kcpsm6_rom_hh/CLKA
+  Logical resource: CPU/pblaze_rom/kcpsm6_rom_hh/CLKA
+  Location pin: RAMB16_X0Y18.CLKA
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 6.876ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 3.124ns (320.102MHz) (Trper_CLKA(Fmax))
+  Physical resource: CPU/pblaze_rom/kcpsm6_rom_hl/CLKA
+  Logical resource: CPU/pblaze_rom/kcpsm6_rom_hl/CLKA
+  Location pin: RAMB16_X0Y22.CLKA
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 6.876ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 3.124ns (320.102MHz) (Trper_CLKA(Fmax))
+  Physical resource: CPU/pblaze_rom/kcpsm6_rom_lh/CLKA
+  Logical resource: CPU/pblaze_rom/kcpsm6_rom_lh/CLKA
+  Location pin: RAMB16_X0Y24.CLKA
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    8.913|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 22994 paths, 0 nets, and 1047 connections
+
+Design statistics:
+   Minimum period:   8.913ns{1}   (Maximum frequency: 112.196MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Fri Apr 29 14:29:58 2022 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 4629 MB
+
+
+

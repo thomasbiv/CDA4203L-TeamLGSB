@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/Users/challa1/Documents/Talkboy_original_old_board/Talkboy/ipcore_dir/ram_interface.xst" -ofn "C:/Users/challa1/Documents/Talkboy_original_old_board/Talkboy/ipcore_dir/ram_interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc ram_interface/user_design/par/ram_interface.ucf -p xc6slx45-csg324-3 ram_interface.ngc ram_interface.ngd  
+map -intstyle ise -p xc6slx45-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o ram_interface_map.ncd ram_interface.ngd ram_interface.pcf 
+xst -intstyle ise -ifn "C:/Users/challa1/Documents/Talkboy_original_old_board/Talkboy/ipcore_dir/ram_interface.xst" -ofn "C:/Users/challa1/Documents/Talkboy_original_old_board/Talkboy/ipcore_dir/ram_interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc ram_interface/user_design/par/ram_interface.ucf -p xc6slx45-csg324-3 ram_interface.ngc ram_interface.ngd  
+map -intstyle ise -p xc6slx45-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o ram_interface_map.ncd ram_interface.ngd ram_interface.pcf 

@@ -1,0 +1,9 @@
+ERROR:sim - Instance name 'MIG_Virtex-6_and_Spartan-6' is invalid:
+    - The name can only contain the characters 'a-z', 'A-Z','0-9', and '_'.
+    - The name can only contain the characters 'a-z', 'A-Z','0-9', and '_'.
+ERROR:sim:918 - Could not create instance of component MIG Virtex-6 and
+   Spartan-6 v3.91.
+ERROR:sim:621 - Unable to create project from file 'C:/Users/patri/Desktop/CDA
+   4203L/Final
+   Project/ddr2_mem_test_ise_14.7_v1/ddr2_mem_test_v1/ddr2_mem_test/ipcore_dir/r
+   am_interface.xco'.

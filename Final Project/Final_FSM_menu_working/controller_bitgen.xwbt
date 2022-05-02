@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Xilinx\CDA 4203L\Final_FSM\controller.ncd
+OUTFILE=C:\Xilinx\CDA 4203L\Final_FSM\controller.bit
+FAMILY=Spartan6
+PART=xc6slx45-3csg484
+WORKINGDIR=C:\Xilinx\CDA 4203L\Final_FSM
+LICENSE=WebPack
+USER_INFO=212379019_0_0_777
