@@ -1334,7 +1334,7 @@ mem_full_message_record:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		JUMP record_message
+		JUMP stop_recording
 
 ;Output a something indicating message location is taken up
 message_location_full:
@@ -1413,13 +1413,19 @@ message_location_full:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		JUMP record_message
+		JUMP stop_recording
 
 ;Start the recording
 start_recording:
 		LOAD s0, s0
 		LOAD s0, 01
 		OUTPUT s0, recording
+		INPUT s4, mem_full
+		INPUT s3, msg_exists
+		COMPARE s4, 01
+		JUMP Z, mem_full_message_record
+		COMPARE s3, 01
+		JUMP Z, message_location_full
 		JUMP record_message
 
 ;Stop the recording
@@ -1432,13 +1438,10 @@ stop_recording:
 ;Subroutine to start/stop recording
 set_recording:
 		LOAD s0, s0
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
 		OUTPUT i, file_select
-		INPUT s4, mem_full
-		INPUT s3, msg_exists
-		COMPARE s4, 01
-		JUMP Z, mem_full_message_record
-		COMPARE s3, 01
-		JUMP Z, message_location_full
 		COMPARE record, 01
 		JUMP Z, stop_recording
 		COMPARE record, 00
