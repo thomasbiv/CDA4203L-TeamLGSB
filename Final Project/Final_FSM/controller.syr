@@ -896,7 +896,6 @@ WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-Team
 Elaborating module <audio_codec>.
 
 Elaborating module <audio_effects>.
-WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 322: Assignment to PLL_LOCKED ignored, since the identifier is never used
 WARNING:HDLCompiler:189 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 323: Size mismatch in connection of port <KEY>. Formal port size is 4-bit while actual signal size is 32-bit.
 WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 327: Assignment to audio_clk ignored, since the identifier is never used
 WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 358: Assignment to main ignored, since the identifier is never used
@@ -917,7 +916,6 @@ WARNING:Xst:647 - Input <KEY> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <SW> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 254: Output port <interrupt_ack> of the instance <CPU> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 274: Output port <ledRAM> of the instance <RAMWrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 309: Output port <PLL_LOCKED> of the instance <what> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 309: Output port <audio_clk> of the instance <what> is unconnected or connected to loadless signal.
     Found 8-bit register for signal <pb_in_port>.
     Found 1-bit register for signal <read_from_uart>.
@@ -3381,12 +3379,12 @@ Primitive and Black Box Usage:
 # Clock Buffers                    : 6
 #      BUFG                        : 5
 #      BUFGMUX                     : 1
-# IO Buffers                       : 67
+# IO Buffers                       : 68
 #      IBUF                        : 12
 #      IBUFG                       : 1
 #      IOBUF                       : 19
 #      IOBUFDS                     : 2
-#      OBUF                        : 9
+#      OBUF                        : 10
 #      OBUFT                       : 23
 #      OBUFTDS                     : 1
 # DCMs                             : 1
@@ -3424,7 +3422,7 @@ Slice Logic Distribution:
 
 IO Utilization: 
  Number of IOs:                          87
- Number of bonded IOBs:                  70  out of    320    21%  
+ Number of bonded IOBs:                  71  out of    320    22%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:                4  out of    116     3%  
@@ -3757,14 +3755,14 @@ what/pll/pll_base_inst/CLKOUT1|    6.219|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 19.00 secs
-Total CPU time to Xst completion: 19.11 secs
+Total REAL time to Xst completion: 22.00 secs
+Total CPU time to Xst completion: 21.41 secs
  
 --> 
 
-Total memory usage is 4555004 kilobytes
+Total memory usage is 4554016 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings : 1107 (   0 filtered)
-Number of infos    :  187 (   0 filtered)
+Number of warnings : 1106 (   0 filtered)
+Number of infos    :  186 (   0 filtered)
 

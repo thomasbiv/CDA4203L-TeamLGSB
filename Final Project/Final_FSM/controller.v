@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module controller( pause_play, scroll_up, scroll_down, select, back, switches, leds, rs232_tx, rs232_rx, reset, clk, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
-						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKE, KEY, SW, hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
+						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, KEY, SW, hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
 						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, status);
 
 	// Top-level Inputs and Outputs
@@ -56,7 +56,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 
    output AUD_MUTE;
 	reg playback;
-	output PLL_LOCKE;
+	output PLL_LOCKED;
 	 
    input  [3:0] KEY; 
    input  [3:0] SW;
