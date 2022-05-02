@@ -1,0 +1,38 @@
+Release 14.7 - ngc2edif P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design controller.ngc ...
+WARNING:NetListWriters:298 - No output is written to controller.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus _n0888<15 : 1> on block controller is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus what/av_config/i2c_data<12 : 0> on block
+   controller is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus what/av_config/control/data<18 : 0> on
+   block controller is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/_n2095<8 : 1> on block controller is not reconstructed, because there are
+   some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/IODRPCTRLR_MEMCELL_ADDR<7 : 0> on block controller is not reconstructed,
+   because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/iodrp_controller/memcell_addr_reg<7 : 0> on block controller is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/iodrp_mcb_controller/memcell_addr_reg<7 : 0> on block controller is not
+   reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file controller.edif ...
+ngc2edif: Total memory usage is 81556 kilobytes
+

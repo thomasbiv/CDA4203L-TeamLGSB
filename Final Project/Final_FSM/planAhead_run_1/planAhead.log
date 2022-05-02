@@ -1,0 +1,109 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7
+# Build 321239 by xbuild on Fri Sep 27 19:31:35 MDT 2013
+# Start of session at: Mon May 02 10:36:45 2022
+# Process ID: 6896
+# Log file: C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/planAhead_run_1/planAhead.log
+# Journal file: C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Common 17-86] Your PlanAhead license expires in -428 day(s)
+INFO: [Device 21-36] Loading parts and site information from C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+INFO: [Common 17-81] Feature available: PartialReconfiguration
+source {C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/pa.fromNetlist.tcl}
+# create_project -name Final_FSM -dir "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/planAhead_run_2" -part xc6slx45csg484-3
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/controller.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM} {ipcore_dir} }
+# add_files [list {ipcore_dir/cs_control.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/cs_ila1.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/ram_interface.ncf}] -fileset [get_property constrset [current_run]]
+# set_property target_constrs_file "main_pin_map.ucf" [current_fileset -constrset]
+Adding file 'C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/main_pin_map.ucf' to fileset 'constrs_1'
+# add_files [list {main_pin_map.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc6slx45csg484-3
+Release 14.7 - ngc2edif P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Release 14.7 - ngc2edif P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design controller.ngc ...
+WARNING:NetListWriters:298 - No output is written to controller.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus _n0888<15 : 1> on block controller is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus what/av_config/i2c_data<12 : 0> on block
+   controller is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus what/av_config/control/data<18 : 0> on
+   block controller is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/_n2095<8 : 1> on block controller is not reconstructed, because there are
+   some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/IODRPCTRLR_MEMCELL_ADDR<7 : 0> on block controller is not reconstructed,
+   because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/iodrp_controller/memcell_addr_reg<7 : 0> on block controller is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrap
+   per_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_in
+   st/iodrp_mcb_controller/memcell_addr_reg<7 : 0> on block controller is not
+   reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file controller.edif ...
+ngc2edif: Total memory usage is 81556 kilobytes
+
+Parsing EDIF File [./planAhead_run_2/Final_FSM.data/cache/controller_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_2/Final_FSM.data/cache/controller_ngc_zx.edif]
+INFO: [Netlist 29-17] Analyzing 105 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-43] Netlist 'controller' is not ideal for floorplanning, since the cellview 'controller' defined in file 'controller.ngc' contains large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+Loading clock regions from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/spartan6lx/xc6slx45/ClockRegion.xml
+Loading clock buffers from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/spartan6lx/xc6slx45/ClockBuffers.xml
+Loading package pin functions from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/PinFunctions.xml...
+Loading package from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/spartan6lx/xc6slx45/csg484/Package.xml
+Loading io standards from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan6/IOStandards.xml
+Loading device configuration modes from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/spartan6/ConfigModes.xml
+Loading list of drcs for the architecture : C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/spartan6/drc.xml
+Parsing UCF File [C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/main_pin_map.ucf]
+CRITICAL WARNING: [Constraints 18-11] Could not find pin 'wiz/clkout1_buf.O' [C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/main_pin_map.ucf:105]
+CRITICAL WARNING: [Constraints 18-10] Could not create constraint 'CLOCK_DEDICATED_ROUTE' [C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/main_pin_map.ucf:105]
+Finished Parsing UCF File [C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/main_pin_map.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 105 instances were transformed.
+  IOBUF => IOBUF (OBUFT, IBUF): 19 instances
+  IOBUFDS => IOBUFDS (IBUFDS, OBUFTDS): 2 instances
+  LUT6_2 => LUT6_2 (LUT6, LUT5): 78 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 4 instances
+  RAM64M => RAM64M (RAMD64E, RAMD64E, RAMD64E, RAMD64E): 2 instances
+
+Phase 0 | Netlist Checksum: 7bd89a28
+link_design: Time (s): elapsed = 00:00:08 . Memory (MB): peak = 481.801 ; gain = 93.781
+exit
+ERROR: [PlanAhead 12-106] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+ (See C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM\planAhead_pid6896.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Mon May 02 10:38:09 2022...
+INFO: [Common 17-83] Releasing license: PlanAhead

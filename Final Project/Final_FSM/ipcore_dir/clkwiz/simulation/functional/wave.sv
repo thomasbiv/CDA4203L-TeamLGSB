@@ -99,14 +99,6 @@ group clear 0 end
 group insert \
     {clkwiz_tb.dut.counter[1]} \
     {clkwiz_tb.dut.counter[2]} 
-group using {Status/control}
-group set -overlay 0
-group set -comment {}
-group clear 0 end
-
-group insert \
-   {nc::clkwiz_tb.RESET}    {nc::clkwiz_tb.LOCKED}
-
 
 set id [waveform add -signals [list {nc::clkwiz_tb.COUNT} ]]
 

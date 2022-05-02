@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.7
-# Date: Fri Apr 29 19:15:53 2022
+# Date: Mon May 02 14:33:30 2022
 #
 ##############################################################
 #
@@ -68,11 +68,11 @@ CSET clkin1_jitter_ps=266.66
 CSET clkin1_ui_jitter=0.010
 CSET clkin2_jitter_ps=100.0
 CSET clkin2_ui_jitter=0.010
-CSET clkout1_drives=BUFG
+CSET clkout1_drives=No_buffer
 CSET clkout1_requested_duty_cycle=50.000
 CSET clkout1_requested_out_freq=100.000
 CSET clkout1_requested_phase=0.000
-CSET clkout2_drives=BUFG
+CSET clkout2_drives=No_buffer
 CSET clkout2_requested_duty_cycle=50.000
 CSET clkout2_requested_out_freq=100.000
 CSET clkout2_requested_phase=0.000
@@ -140,7 +140,7 @@ CSET din_port=DIN
 CSET dout_port=DOUT
 CSET drdy_port=DRDY
 CSET dwe_port=DWE
-CSET feedback_source=FDBK_AUTO
+CSET feedback_source=FDBK_ONCHIP
 CSET in_freq_units=Units_MHz
 CSET in_jitter_units=Units_UI
 CSET input_clk_stopped_port=INPUT_CLK_STOPPED
@@ -251,13 +251,13 @@ CSET use_freeze=false
 CSET use_freq_synth=true
 CSET use_inclk_stopped=false
 CSET use_inclk_switchover=false
-CSET use_locked=true
+CSET use_locked=false
 CSET use_max_i_jitter=false
 CSET use_min_o_jitter=false
 CSET use_min_power=false
 CSET use_phase_alignment=false
 CSET use_power_down=false
-CSET use_reset=true
+CSET use_reset=false
 CSET use_spread_spectrum=false
 CSET use_spread_spectrum_1=false
 CSET use_status=false
@@ -266,4 +266,4 @@ CSET use_status=false
 MISC pkg_timestamp=2012-05-10T12:44:55Z
 # END Extra information
 GENERATE
-# CRC: 1ad83c0c
+# CRC: 7496c0ae

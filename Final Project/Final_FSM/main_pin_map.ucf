@@ -102,4 +102,4 @@ NET "hw_ram_ba[1]" LOC = E1;
 NET "hw_ram_ba[2]" LOC = D1;
 NET "hw_ram_ba[*]" IOSTANDARD = SSTL2_II;
 
-PIN "wiz/clkout1_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
+#PIN "wiz/clkout1_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;

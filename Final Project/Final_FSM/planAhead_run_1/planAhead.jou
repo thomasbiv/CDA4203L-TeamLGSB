@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7
+# Build 321239 by xbuild on Fri Sep 27 19:31:35 MDT 2013
+# Start of session at: Mon May 02 10:36:45 2022
+# Process ID: 6896
+# Log file: C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/planAhead_run_1/planAhead.log
+# Journal file: C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source {C:/Users/thomasbivins/Desktop/Projects/CDA4203L-TeamLGSB/Final Project/Final_FSM/pa.fromNetlist.tcl}

@@ -198,6 +198,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		delete_finish <= 0;
 		playback <= 0;
 		curr_state <= 8'h00;
+		count <= 0;
 	end
 	
 
@@ -259,7 +260,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.interrupt(pb_interrupt),
 		.interrupt_ack(),
 		.reset(pb_reset),
-		.clk(clk2)
+		.clk(clk1)
 	);	
 	
 	
@@ -269,6 +270,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	//hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, clkout, sys_clk, rdy, rd_data_pres,
 	//max_ram_address, ledRAM
 	
+	
 	ram_interface_wrapper RAMWrapper (
 					.address(address),				// input 
 					.data_in(RAMin), 					// input
@@ -276,7 +278,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					.read_request(reqRead), 		//	input
 					.read_ack(ackRead), 
 					.data_out(RAMout), 				// output from ram to wire
-					.reset(reset), 
+					.reset(0), 
 					.clk(clk), 
 					.hw_ram_rasn(hw_ram_rasn), 
 					.hw_ram_casn(hw_ram_casn),
@@ -305,7 +307,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	
 	
 	sockit_top what(
-		.clk(clk1),
+		.clk(clk2),
 			.playback(playback),
 			.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
@@ -363,6 +365,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			// Set pb input port to appropriate value
 			case(pb_port_id)
 				8'h00: pb_in_port <= switches;
+				8'h06: pb_in_port <= scroll_up;
+				8'h07: pb_in_port <= scroll_down;
 				8'h08: pb_in_port <= select;
 				8'h09: pb_in_port <= back;
 				8'h0A: pb_in_port <= pause_play;
@@ -408,11 +412,11 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 					delone_5 <= (pb_out_port == 8'h04);
 				end
 				else if (record) begin
-					record_1 <= (pb_out_port == 8'h02);
-					record_2 <= (pb_out_port == 8'h03);
-					record_3 <= (pb_out_port == 8'h04);
-					record_4 <= (pb_out_port == 8'h05);  
-					record_5 <= (pb_out_port == 8'h06);
+					record_1 <= (pb_out_port == 8'h00);
+					record_2 <= (pb_out_port == 8'h01);
+					record_3 <= (pb_out_port == 8'h02);
+					record_4 <= (pb_out_port == 8'h03);  
+					record_5 <= (pb_out_port == 8'h04);
 				end
 			end
 			if (vol_sel) begin
@@ -430,7 +434,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	end
 		
 		
-		
+	
 	
 	// Initialize state
 	localparam main_state = 8'h00;
@@ -460,6 +464,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		else if (status) begin
 			case (curr_state)
 				main_state : begin
+					count <= 0;
 					if (play) begin
 						if (play_1) begin
 							address <= 0;

@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Apr 29 17:17:13 2022
+// Written by: Map P.20131013 on Mon May 02 11:25:28 2022
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -70,7 +70,5 @@ COMP "hw_ram_ldm" LOCATE = SITE "H1" LEVEL 1;
 COMP "hw_ram_odt" LOCATE = SITE "M3" LEVEL 1;
 COMP "hw_ram_udm" LOCATE = SITE "H2" LEVEL 1;
 COMP "hw_ram_wen" LOCATE = SITE "D2" LEVEL 1;
-PIN wiz/clkout1_buf_pin<1> = BEL "wiz/clkout1_buf" PINNAME O;
-PIN "wiz/clkout1_buf_pin<1>" CLOCK_DEDICATED_ROUTE = FALSE;
 SCHEMATIC END;
 

@@ -5,19 +5,19 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 238: Port <arg fmt="%s" index="1">RESET</arg> is not connected to this instance
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 272: Port <arg fmt="%s" index="1">ledRAM</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 274: Port <arg fmt="%s" index="1">ledRAM</arg> is not connected to this instance
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\rs232_uart.v" Line 72: Result of <arg fmt="%d" index="1">14</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">13</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 114: Assignment to <arg fmt="%s" index="1">clk0</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 111: Assignment to <arg fmt="%s" index="1">clk0</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 130: Assignment to <arg fmt="%s" index="1">status_int</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 126: Assignment to <arg fmt="%s" index="1">locked_int</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 127: Assignment to <arg fmt="%s" index="1">status_int</arg> ignored, since the identifier is never used
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="872" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_raw_wrapper.v" Line 688: Using initial value of <arg fmt="%s" index="1">allzero</arg> since it is never assigned
@@ -1217,19 +1217,7 @@
 <msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 203: Assignment to <arg fmt="%s" index="1">c3_p0_rd_error</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 77: Net &lt;<arg fmt="%s" index="1">wr_data_in[31]</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 79: Net &lt;<arg fmt="%s" index="1">write_mask[3]</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 80: Net &lt;<arg fmt="%s" index="1">ram_cmd_byte_addr[25]</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 274: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">data_in</arg>&gt;. Formal port size is <arg fmt="%d" index="2">128</arg>-bit while actual signal size is <arg fmt="%d" index="1">16</arg>-bit.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 278: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">data_out</arg>&gt;. Formal port size is <arg fmt="%d" index="2">128</arg>-bit while actual signal size is <arg fmt="%d" index="1">16</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 281: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">reset</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 92: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">status</arg>&gt;. Formal port size is <arg fmt="%d" index="2">4</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
@@ -1238,34 +1226,34 @@
 <msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 92: Assignment to <arg fmt="%s" index="1">LED</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 320: Assignment to <arg fmt="%s" index="1">PLL_LOCKED</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 322: Assignment to <arg fmt="%s" index="1">PLL_LOCKED</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 321: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">KEY</arg>&gt;. Formal port size is <arg fmt="%d" index="2">4</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 323: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">KEY</arg>&gt;. Formal port size is <arg fmt="%d" index="2">4</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 325: Assignment to <arg fmt="%s" index="1">audio_clk</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 327: Assignment to <arg fmt="%s" index="1">audio_clk</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 356: Assignment to <arg fmt="%s" index="1">main</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 358: Assignment to <arg fmt="%s" index="1">main</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 605: Result of <arg fmt="%d" index="1">27</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">26</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 610: Result of <arg fmt="%d" index="1">27</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">26</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 674: Result of <arg fmt="%d" index="1">27</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">26</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 679: Result of <arg fmt="%d" index="1">27</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">26</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 686: Result of <arg fmt="%d" index="1">5</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 691: Result of <arg fmt="%d" index="1">5</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 688: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 693: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 460: Assignment to <arg fmt="%s" index="1">count</arg> ignored, since the identifier is never used
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="634" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 121: Net &lt;<arg fmt="%s" index="1">uart_reset</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="552" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 238: Input port <arg fmt="%s" index="1">RESET</arg> is not connected on this instance
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">KEY</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -1274,25 +1262,16 @@
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">SW</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">scroll_up</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">254</arg>: Output port &lt;<arg fmt="%s" index="3">interrupt_ack</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">CPU</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">scroll_down</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">274</arg>: Output port &lt;<arg fmt="%s" index="3">ledRAM</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">RAMWrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">238</arg>: Output port &lt;<arg fmt="%s" index="3">LOCKED</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wiz</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">309</arg>: Output port &lt;<arg fmt="%s" index="3">PLL_LOCKED</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">what</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">253</arg>: Output port &lt;<arg fmt="%s" index="3">interrupt_ack</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">CPU</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">272</arg>: Output port &lt;<arg fmt="%s" index="3">ledRAM</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">RAMWrapper</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">307</arg>: Output port &lt;<arg fmt="%s" index="3">PLL_LOCKED</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">what</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">307</arg>: Output port &lt;<arg fmt="%s" index="3">audio_clk</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">what</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v</arg>&quot; line <arg fmt="%s" index="2">309</arg>: Output port &lt;<arg fmt="%s" index="3">audio_clk</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">what</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\rs232_uart.v</arg>&quot; line <arg fmt="%s" index="2">79</arg>: Output port &lt;<arg fmt="%s" index="3">buffer_data_present</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">transmitter</arg>&gt; is unconnected or connected to loadless signal.
@@ -1310,13 +1289,10 @@
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\picoblaze.v</arg>&quot; line <arg fmt="%s" index="2">68</arg>: Output port &lt;<arg fmt="%s" index="3">k_write_strobe</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">pblaze_cpu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">data_in</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">address&lt;25:25&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v</arg>&quot; line <arg fmt="%s" index="2">129</arg>: Output port &lt;<arg fmt="%s" index="3">c3_p0_wr_count</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u_memory_interface</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v</arg>&quot; line <arg fmt="%s" index="2">129</arg>: Output port &lt;<arg fmt="%s" index="3">c3_p0_rd_data</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u_memory_interface</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v</arg>&quot; line <arg fmt="%s" index="2">129</arg>: Output port &lt;<arg fmt="%s" index="3">c3_rst0</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u_memory_interface</arg>&gt; is unconnected or connected to loadless signal.
@@ -1352,19 +1328,7 @@
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v</arg>&quot; line <arg fmt="%s" index="2">129</arg>: Output port &lt;<arg fmt="%s" index="3">c3_p0_rd_error</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">u_memory_interface</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">max_ram_address</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">data_out</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">wr_data_in</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">write_mask</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
-</msg>
-
-<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">ram_cmd_byte_addr</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">ledRAM</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v</arg>&quot; line <arg fmt="%s" index="2">519</arg>: Output port &lt;<arg fmt="%s" index="3">p1_wr_count</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">memc3_wrapper_inst</arg>&gt; is unconnected or connected to loadless signal.
@@ -3533,106 +3497,58 @@
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">IODRPCTRLR_MEMCELL_ADDR_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mcb_soft_calibration_inst</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">3 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;IODRPCTRLR_MEMCELL_ADDR_4&gt; &lt;IODRPCTRLR_MEMCELL_ADDR_5&gt; &lt;IODRPCTRLR_MEMCELL_ADDR_6&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">DQS_DELAY_INITIAL_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">IODRPCTRLR_MEMCELL_ADDR_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">DQS_DELAY_INITIAL_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_4</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_5</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_6</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_8</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_12</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_13</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_14</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_15</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">SELFREFRESH_REQ_R1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">SELFREFRESH_MCB_REQ</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">WarmEnough</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UICMD</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UIDQCOUNT_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">MCB_UICMD</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">WarmEnough</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">SELFREFRESH_MCB_REQ</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">SELFREFRESH_REQ_R1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">SELFREFRESH_REQ_R2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mcb_soft_calibration_inst</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -3680,9 +3596,6 @@
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">DRP_BKST</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">mem_out_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">controller</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">15 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mem_out_1&gt; &lt;mem_out_2&gt; &lt;mem_out_3&gt; &lt;mem_out_4&gt; &lt;mem_out_5&gt; &lt;mem_out_6&gt; &lt;mem_out_7&gt; &lt;mem_out_8&gt; &lt;mem_out_9&gt; &lt;mem_out_10&gt; &lt;mem_out_11&gt; &lt;mem_out_12&gt; &lt;mem_out_13&gt; &lt;mem_out_14&gt; &lt;mem_out_15&gt; </arg>
-</msg>
-
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">iodrp_controller</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">3 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;memcell_addr_reg_4&gt; &lt;memcell_addr_reg_5&gt; &lt;memcell_addr_reg_6&gt; </arg>
 </msg>
 
@@ -3726,57 +3639,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">memcell_addr_reg_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iodrp_mcb_controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_out_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">RAMin_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">controller</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="2146" delta="old" >In block &lt;<arg fmt="%s" index="1">audio_codec</arg>&gt;, <arg fmt="%s" index="2">Counter</arg> &lt;<arg fmt="%s" index="3">lrck_divider</arg>&gt; </msg>
@@ -3923,6 +3785,9 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">UART/baud_count_12</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">RAMWrapper/u_memory_interface/memc3_infrastructure_inst/rst0_sync_r_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">CPU/pblaze_cpu/sync_sleep_flop</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">controller</arg>&gt;. This FF/Latch will be trimmed during the optimization process.

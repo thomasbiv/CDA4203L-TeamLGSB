@@ -66,10 +66,7 @@ module clkwiz_exdes
   input         COUNTER_RESET,
   output [2:1]  CLK_OUT,
   // High bits of counters driven by clocks
-  output [2:1]  COUNT,
-  // Status and control signals
-  input         RESET,
-  output        LOCKED
+  output [2:1]  COUNT
  );
 
   // Parameters for the counters
@@ -78,8 +75,8 @@ module clkwiz_exdes
   localparam    C_W       = 16;
   localparam    NUM_C     = 2;
   genvar        count_gen;
-  // When the clock goes out of lock, reset the counters
-  wire          reset_int = !LOCKED || RESET || COUNTER_RESET;
+  // Create reset for the counters
+  wire          reset_int = COUNTER_RESET;
 
    reg [NUM_C:1] rst_sync;
    reg [NUM_C:1] rst_sync_int;
@@ -106,10 +103,7 @@ module clkwiz_exdes
     .CLK_IN1            (clk_in1_buf),
     // Clock out ports
     .CLK_OUT1           (clk_int[1]),
-    .CLK_OUT2           (clk_int[2]),
-    // Status and control signals
-    .RESET              (RESET),
-    .LOCKED             (LOCKED));
+    .CLK_OUT2           (clk_int[2]));
 
 genvar clk_out_pins;
 
@@ -132,8 +126,12 @@ endgenerate
 
   // Connect the output clocks to the design
   //-----------------------------------------
-  assign clk[1] = clk_int[1];
-  assign clk[2] = clk_int[2];
+  BUFG clkout1_buf
+   (.O (clk[1]),
+    .I (clk_int[1]));
+  BUFG clkout2_buf
+   (.O (clk[2]),
+    .I (clk_int[2]));
 
 
   // Reset synchronizer

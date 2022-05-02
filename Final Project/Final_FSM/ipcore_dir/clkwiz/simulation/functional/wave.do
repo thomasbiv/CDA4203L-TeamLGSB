@@ -52,9 +52,6 @@ add wave -noupdate -divider {Input clocks}
 add wave -noupdate -format Logic /clkwiz_tb/CLK_IN1
 add wave -noupdate -divider {Output clocks}
 add wave -noupdate -format Literal -expand /clkwiz_tb/dut/clk
-add wave -noupdate -divider Status/control
-add wave -noupdate -format Logic /clkwiz_tb/RESET
-add wave -noupdate -format Logic /clkwiz_tb/LOCKED
 add wave -noupdate -divider Counters
 add wave -noupdate -format Literal -radix hexadecimal /clkwiz_tb/COUNT
 add wave -noupdate -format Literal -radix hexadecimal -expand /clkwiz_tb/dut/counter
