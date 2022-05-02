@@ -444,7 +444,6 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	localparam delall_state = 8'h04;
 	localparam vol_state = 8'h05;
 	localparam raise_write_record = 8'h06;
-	localparam lower_write_record = 8'h07;
 	localparam raise_read_play = 8'h08;
 	localparam play_audio = 8'h09;
 	localparam lower_ack_read = 8'h0A;
@@ -568,22 +567,27 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				play_state : begin
 					if (play_1) begin
 						curr_state <= raise_read_play;
+						playback <= 1;
 						//some stuff with the memory locale of the first file
 					end
 					else if (play_2) begin
 						curr_state <= raise_read_play;
+						playback <= 1;
 						//some stuff with the memory locale of the second file
 					end
 					else if (play_3) begin
 						curr_state <= raise_read_play;
+						playback <= 1;
 						//some stuff with the memory locale of the third file
 					end
 					else if (play_4) begin
 						curr_state <= raise_read_play;
+						playback <= 1;
 						//some stuff with the memory locale of the fourth file
 					end
 					else if (play_5) begin
 						curr_state <= raise_read_play;
+						playback <= 1;
 					//check val of write_to_state_reg
 					//some shit would go here from picoblaze maybe idfk
 					//nested FSM of some kind from another file?
@@ -592,10 +596,14 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 						curr_state <= main_state;
 				end
 				raise_read_play : begin
-					playback <= 1;
-					enableWrite <= 0;
-					reqRead <= 1;
-					curr_state <= play_audio;
+					if (count < 350) begin
+						count <= count + 1;
+						curr_state <= raise_read_play;
+					end
+					else
+						enableWrite <= 0;
+						reqRead <= 1;
+						curr_state <= play_audio;
 				end
 				play_audio : begin
 					reqRead <= 0;
@@ -604,10 +612,15 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 						ackRead <= 1;
 						curr_state <= lower_ack_read;
 					end
+					else begin
+						reqRead <= 1;
+						curr_state <= play_audio;
+					end
 				end
 				lower_ack_read : begin
 					ackRead <= 0;
 					address <= address + 1;
+					count <= 0;
 					if (address >= maxAddr)
 						curr_state <= main_state;
 					else
@@ -626,29 +639,47 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 						curr_state <= main_state;
 				end
 				raise_write_record : begin 
-					RAMin <= audio_out;
-					enableWrite <= 1;
-					curr_state <= lower_write_record;
+					count <= 0;
+					enableWrite <= 0;
+					address <= address + 1;
+					if (address >= maxAddr) begin
+						curr_state <= main_state;
+					end
+					else begin
+						curr_state <= raise_read_record;
+					end
 				end
 				raise_read_record : begin
 					playback <= 0;
-					enableWrite <= 0;
-					reqRead <= 1;
-					curr_state <= record_audio;
-				end
-				record_audio : begin
-					reqRead <= 0;
-					if (dataPresent) begin
-						message_exists <= 1;
-						curr_state <= record_state;
+					if (count < 350) begin
+						count <= count + 1;
+						curr_state <= raise_read_record;
+					end
+					else if (record) begin
+						RAMin <= audio_out;
+						curr_state <= record_audio;
 					end
 					else begin
-						curr_state <= raise_write_record;
+						count <= 0;
+						address <= 0;
+						curr_state <= main_state;
 					end
 				end
-				lower_write_record : begin
-					enableWrite <= 0;
-					curr_state <= record_state;
+				record_audio : begin
+					enableWrite <= 1;
+					curr_state <= raise_write_record;
+					
+					
+					
+					
+					//reqRead <= 0;
+					//if (dataPresent) begin
+						//message_exists <= 1;
+						//curr_state <= record_state;
+					//end
+					//else begin
+						//curr_state <= raise_write_record;
+					//end
 				end
 				delone_state : begin
 				playback <= 0;
