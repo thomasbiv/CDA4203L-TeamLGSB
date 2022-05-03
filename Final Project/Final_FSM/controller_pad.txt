@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue May 03 10:41:41 2022
+Tue May 03 12:40:11 2022
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -311,9 +311,9 @@ Pinout by Pin Number:
 |M3        |hw_ram_odt   |IOB      |IO_L45N_M3ODT_3              |TRISTATE |LVCMOS25*    |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |M4        |hw_ram_ad<3> |IOB      |IO_L45P_M3A3_3               |TRISTATE |SSTL2_II     |3             |          |         |           |         |         |LOCATED   |NO         |NONE            |
 |M5        |hw_ram_ad<0> |IOB      |IO_L47P_M3A0_3               |TRISTATE |SSTL2_II     |3             |          |         |           |         |         |LOCATED   |NO         |NONE            |
-|M6        |PLL_LOCKED   |IOB      |IO_L31P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
-|M7        |s_req        |IOB      |IO_L25N_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
-|M8        |status       |IOB      |IO_L25P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
+|M6        |s_req        |IOB      |IO_L31P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
+|M7        |status       |IOB      |IO_L25N_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
+|M8        |PLL_LOCKED   |IOB      |IO_L25P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
 |M9        |             |         |VCCINT                       |         |             |              |          |         |           |         |1.2      |          |           |                |
 |M10       |             |         |GND                          |         |             |              |          |         |           |         |         |          |           |                |
 |M11       |             |         |VCCINT                       |         |             |              |          |         |           |         |1.2      |          |           |                |
@@ -462,7 +462,7 @@ Pinout by Pin Number:
 |V22       |             |IOBS     |IO_L52N_M1DQ15_1             |UNUSED   |             |1             |          |         |           |         |         |          |           |                |
 |W1        |             |IOBS     |IO_L9N_3                     |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
 |W2        |             |         |VCCO_3                       |         |             |3             |          |         |           |         |2.50     |          |           |                |
-|W3        |             |IOBM     |IO_L9P_3                     |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
+|W3        |LED          |IOB      |IO_L9P_3                     |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |W4        |             |IOBM     |IO_L7P_3                     |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
 |W5        |             |         |VCCO_3                       |         |             |3             |          |         |           |         |2.50     |          |           |                |
 |W6        |             |IOBM     |IO_L62P_D5_2                 |UNUSED   |             |2             |          |         |           |         |         |          |           |                |

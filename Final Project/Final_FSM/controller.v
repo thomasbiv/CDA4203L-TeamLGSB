@@ -19,9 +19,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module controller( pause_play, scroll_up, scroll_down, select, back, switches, leds, rs232_tx, rs232_rx, reset, clk, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, audioCLK, s_end, 
+module controller( pause_play, scroll_up, scroll_down, select, back, switches, rs232_tx, rs232_rx, reset, clk, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, audioCLK, s_end, 
 						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, KEY, hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, s_req,
-						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, status, OSC_100MHz);
+						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, status, OSC_100MHz, LED);
 
 	// Top-level Inputs and Outputs
 	// These connect directly to FPGA pins via the pin map
@@ -36,7 +36,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	input select;
 	input back;
 	input pause_play;
-	output [7:0]	leds;
+	output reg LED;
 	
 	// RS232 Lines
 	input			rs232_rx;
@@ -360,7 +360,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	// This process block gets the value of the requested input port device
 	// and passes it to PBs in_port. When PB is not requestng data from
 	// a valid input port, set the input to static 0.
-	always @(posedge clk2 or posedge pb_reset)
+	always @(posedge clk1 or posedge pb_reset)
 	begin
 		if(pb_reset) begin
 			pb_in_port <= 0;
@@ -404,6 +404,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			if (file_selection) begin
 				if (play) begin
 					play_1 <= (pb_out_port == 8'h00);
+					LED <= (pb_out_port == 8'h00);
 					play_2 <= (pb_out_port == 8'h01);
 					play_3 <= (pb_out_port == 8'h02);
 					play_4 <= (pb_out_port == 8'h03);

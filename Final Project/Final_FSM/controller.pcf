@@ -1,8 +1,9 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue May 03 10:41:29 2022
+// Written by: Map P.20131013 on Tue May 03 12:39:59 2022
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "LED" LOCATE = SITE "W3" LEVEL 1;
 COMP "clk" LOCATE = SITE "D11" LEVEL 1;
 COMP "pause_play" LOCATE = SITE "P8" LEVEL 1;
 COMP "back" LOCATE = SITE "AB9" LEVEL 1;
