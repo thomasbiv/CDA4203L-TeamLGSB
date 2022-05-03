@@ -19,9 +19,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module controller(OSC_100MHz, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
+module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
 						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, 
-						KEY, SW, LED, max_ram_address, ledRAM, data_in, write_enable, rdy, 
+						KEY, LED, max_ram_address, ledRAM, data_in, write_enable, rdy, 
 						rd_data_pres, read_ack, reset, clk, sys_clk, clkout, 
 						hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
 						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, 
@@ -29,6 +29,7 @@ module controller(OSC_100MHz, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	
 	//Interfacing variables
 	reg read;
+	reg clk;
 	reg write;
 	wire wizclkl;
 	wire clk1;
@@ -46,6 +47,20 @@ module controller(OSC_100MHz, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	reg [15:0] audio_out;
 	wire [15:0] RAMout;
 	reg enableWrite;
+	reg [15:0] RAMin;
+	inout AUD_ADCLRCK;
+	inout AUD_DACLRCK;
+	input  AUD_ADCDAT;
+   inout  AUD_DACLRCK;
+	
+	output AUD_DACDAT;
+   output AUD_XCK;
+   inout  AUD_BCLK;
+   output AUD_I2C_SCLK;
+   inout  AUD_I2C_SDAT;
+   output AUD_MUTE;
+	output PLL_LOCKED;
+   input  [3:0] KEY;
 	
 	
 	
@@ -65,7 +80,7 @@ module controller(OSC_100MHz, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		.AUD_I2C_SCLK(AUD_I2C_SCLK),
 		.AUD_I2C_SDAT(AUD_I2C_SDAT),
 		.AUD_MUTE(AUD_MUTE),
-		.PLL_LOCKED(PLL_LOCKED)
+		.PLL_LOCKED(PLL_LOCKED),
 		.KEY(KEY),
 		.SW(SW),
 		.LED(LED),
@@ -74,14 +89,14 @@ module controller(OSC_100MHz, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		.audioCLK(audioCLK),
 		.s_end(s_end),
 		.s_req(s_req)
-	)
+	);
 	
 	
 	ram_interface_wrapper RAMWrapper (
 		.address(address),
 		.max_ram_address(max_ram_address),
 		.ledRAM(ledRAM),
-		.data_in(data_in),
+		.data_in(RAMin),
 		.write_enable(write_enable),
 		.rdy(rdy),
 		.rd_data_pres(dataPresent),
@@ -110,7 +125,7 @@ module controller(OSC_100MHz, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		.hw_ram_dq(hw_ram_dq),
 		.hw_rzq_pin(hw_rzq_pin),
 		.hw_zio_pin(hw_zio_pin)
-	)
+	);
 	
 	
 	initial begin
