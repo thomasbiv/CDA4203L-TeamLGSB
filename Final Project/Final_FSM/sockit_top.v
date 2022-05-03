@@ -34,11 +34,13 @@ module sockit_top (
 
     output AUD_MUTE,
 	 output PLL_LOCKED,
-	 //input [6:0] volumeControl;
+	 
     input  [3:0] KEY,
-    input [15:0] audio_out,
+    input  [3:0] SW,
+    output [3:0] LED,
+	 input [15:0] audio_out,
 	 output [15:0] audio_in,
-	 output audioCLK,
+	 output [15:0] audioCLK,
 	 output s_end,
 	 output s_req
 );
@@ -101,7 +103,6 @@ audio_codec ac (
 // (1) Sine wave mode (tone)  SW7 UP
 // (2) Playback mode (feedback from LINE IN to LINE OUT) SW6 UP
 
-/*
 audio_effects ae (
 	  .clk (audio_clk),
     .sample_end (sample_end[1]),
@@ -110,6 +111,5 @@ audio_effects ae (
     .audio_input  (audio_input),
     .control (SW)
 );
-*/
 
 endmodule
