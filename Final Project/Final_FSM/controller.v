@@ -21,15 +21,15 @@
 
 module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
 						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, 
-						KEY, LED, ledRAM, data_in, write_enable, rdy, 
-						rd_data_pres, read_ack, reset, clk, sys_clk, clkout, 
+						KEY, LED, ledRAM, rdy, 
+						reset, clk,
 						hw_ram_rasn, hw_ram_casn, hw_ram_wen, SW, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
 						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, 
 						hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, s_req, s_end);
 	
 	//Interfacing variables
 	reg read;
-	reg clk;
+	input clk;
 	reg write;
 	wire wizclkl;
 	wire clk1;
@@ -61,8 +61,30 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	output PLL_LOCKED;
    input  [3:0] KEY;
 	input [3:0] SW;
-	output reg LED;
+	output LED;
 	wire [25:0] max_ram_address;
+	output ledRAM; 
+	output rdy;
+	input reset;
+	output hw_ram_rasn;
+	output hw_ram_casn;
+	output hw_ram_wen;
+	output hw_ram_ldqs_p;
+	output hw_ram_cke;
+	output [2:0] hw_ram_ba;
+	output hw_ram_ldqs_n;
+	output hw_ram_odt;
+	inout hw_ram_udqs_p;
+	output hw_ram_udm;
+	output [12:0]hw_ram_ad;
+	inout hw_ram_udqs_n;
+	output hw_ram_ldm;
+	inout [15:0]hw_ram_dq;
+	output hw_ram_ck;
+	inout hw_rzq_pin;
+	output hw_ram_ckn;
+	inout hw_zio_pin;
+	
 	
 	
 	
@@ -99,11 +121,11 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		.max_ram_address(max_ram_address),
 		.ledRAM(ledRAM),
 		.data_in(RAMin),
-		.write_enable(write_enable),
+		.write_enable(enableWrite),
 		.rdy(rdy),
 		.rd_data_pres(dataPresent),
 		.read_request(readReq),
-		.read_ack(read_ack),
+		.read_ack(ackRead),
 		.data_out(RAMout),
 		.reset(reset),
 		.clk(clk),

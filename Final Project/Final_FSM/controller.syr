@@ -142,20 +142,585 @@ Analyzing Verilog file "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB
 Parsing module <ram_interface_wrapper>.
 Analyzing Verilog file "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" into library work
 Parsing module <controller>.
-ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: <max_ram_address> is not a port.
-ERROR:HDLCompiler:69 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: <data_in> is not declared.
-ERROR:HDLCompiler:69 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 25: <rd_data_pres> is not declared.
-ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 25: <read_ack> is not a port.
-ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 26: <hw_ram_rasn> is not a port.
-ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 27: <hw_ram_ldqs_p> is not a port.
-ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 28: <hw_ram_cke> is not a port.
-ERROR:HDLCompiler:598 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 22: Module <controller> ignored due to previous errors.
-Verilog file C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v ignored due to errors
+Parsing VHDL file "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clk_wiz_v3_6.vhd" into library work
+Parsing entity <clk_wiz_v3_6>.
+Parsing architecture <xilinx> of entity <clk_wiz_v3_6>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+WARNING:HDLCompiler:1016 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 98: Port AUD_DACLRCK is not connected to this instance
+
+Elaborating module <controller>.
+WARNING:HDLCompiler:872 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 155: Using initial value of read since it is never assigned
+
+Elaborating module <clkwiz>.
+
+Elaborating module <DCM_SP(CLKDV_DIVIDE=2.0,CLKFX_DIVIDE=3,CLKFX_MULTIPLY=8,CLKIN_DIVIDE_BY_2="FALSE",CLKIN_PERIOD=26.666,CLKOUT_PHASE_SHIFT="NONE",CLK_FEEDBACK="NONE",DESKEW_ADJUST="SYSTEM_SYNCHRONOUS",PHASE_SHIFT=0,STARTUP_WAIT="FALSE")>.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 111: Assignment to clk0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 126: Assignment to locked_int ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\clkwiz.v" Line 127: Assignment to status_int ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 93: Assignment to clk1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1016 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 86: Port volume_control is not connected to this instance
+WARNING:HDLCompiler:1016 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 106: Port volume_control is not connected to this instance
+
+Elaborating module <sockit_top>.
+Going to vhdl side to elaborate module clk_wiz_v3_6
+
+Elaborating entity <clk_wiz_v3_6> (architecture <xilinx>) from library <work>.
+Back to verilog to continue elaboration
+
+Elaborating module <i2c_av_config>.
+
+Elaborating module <i2c_controller>.
+
+Elaborating module <audio_codec>.
+
+Elaborating module <audio_effects>.
+ERROR:HDLCompiler:636 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 106: Net <audio_output[15]> is already driven by input port <audio_out[15]>.
+INFO - You can change the severity of this error message to warning using switch -change_error_to_warning "HDLCompiler:636"
+Driver 0: ae/audio_output[15] driven by output signal dat[15] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[14] driven by output signal dat[14] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[13] driven by output signal dat[13] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[12] driven by output signal dat[12] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[11] driven by output signal dat[11] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[10] driven by output signal dat[10] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[9] driven by output signal dat[9] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[8] driven by output signal dat[8] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[7] driven by output signal dat[7] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[6] driven by output signal dat[6] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[5] driven by output signal dat[5] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[4] driven by output signal dat[4] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[3] driven by output signal dat[3] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[2] driven by output signal dat[2] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[1] driven by output signal dat[1] of instance Flip-flop (ae).
+Driver 0: ae/audio_output[0] driven by output signal dat[0] of instance Flip-flop (ae).
+WARNING:HDLCompiler:552 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 86: Input port volume_control[3] is not connected on this instance
+WARNING:HDLCompiler:552 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 106: Input port volume_control[3] is not connected on this instance
+Module sockit_top remains a blackbox, due to errors in its contents
+WARNING:HDLCompiler:1499 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 20: Empty module <sockit_top> remains a black box.
+WARNING:HDLCompiler:189 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 110: Size mismatch in connection of port <LED>. Formal port size is 4-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 112: Size mismatch in connection of port <audio_in>. Formal port size is 16-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 113: Size mismatch in connection of port <audioCLK>. Formal port size is 16-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 113: Assignment to audioCLK ignored, since the identifier is never used
+
+Elaborating module <ram_interface_wrapper>.
+
+Elaborating module <ram_interface(C3_P0_MASK_SIZE=4,C3_P0_DATA_PORT_SIZE=32,C3_P1_MASK_SIZE=4,C3_P1_DATA_PORT_SIZE=32,DEBUG_EN=0,C3_MEMCLK_PERIOD=3333,C3_CALIB_SOFT_IP="TRUE",C3_SIMULATION="FALSE",C3_RST_ACT_LOW=0,C3_INPUT_CLK_TYPE="SINGLE_ENDED",C3_MEM_ADDR_ORDER="ROW_BANK_COLUMN",C3_NUM_DQ_PINS=16,C3_MEM_ADDR_WIDTH=13,C3_MEM_BANKADDR_WIDTH=3)>.
+
+Elaborating module <infrastructure(C_INCLK_PERIOD=32'sb010011100001111,C_RST_ACT_LOW=0,C_INPUT_CLK_TYPE="SINGLE_ENDED",C_CLKOUT0_DIVIDE=1,C_CLKOUT1_DIVIDE=1,C_CLKOUT2_DIVIDE=16,C_CLKOUT3_DIVIDE=8,C_CLKFBOUT_MULT=6,C_DIVCLK_DIVIDE=1)>.
+
+Elaborating module <IBUFG>.
+
+Elaborating module <PLL_ADV(BANDWIDTH="OPTIMIZED",CLKIN1_PERIOD=9.999,CLKIN2_PERIOD=9.999,CLKOUT0_DIVIDE=1,CLKOUT1_DIVIDE=1,CLKOUT2_DIVIDE=16,CLKOUT3_DIVIDE=8,CLKOUT4_DIVIDE=1,CLKOUT5_DIVIDE=1,CLKOUT0_PHASE=0.0,CLKOUT1_PHASE=180.0,CLKOUT2_PHASE=0.0,CLKOUT3_PHASE=0.0,CLKOUT4_PHASE=0.0,CLKOUT5_PHASE=0.0,CLKOUT0_DUTY_CYCLE=0.5,CLKOUT1_DUTY_CYCLE=0.5,CLKOUT2_DUTY_CYCLE=0.5,CLKOUT3_DUTY_CYCLE=0.5,CLKOUT4_DUTY_CYCLE=0.5,CLKOUT5_DUTY_CYCLE=0.5,SIM_DEVICE="SPARTAN6",COMPENSATION="INTERNAL",DIVCLK_DIVIDE=1,CLKFBOUT_MULT=6,CLKFBOUT_PHASE=0.0,REF_JITTER=0.005)>.
+
+Elaborating module <BUFG>.
+
+Elaborating module <BUFGCE>.
+
+Elaborating module <BUFPLL_MCB>.
+
+Elaborating module
+<memc_wrapper(C_MEMCLK_PERIOD=3333,C_CALIB_SOFT_IP="TRUE",C_ARB_NUM_TIME_SLOTS=12,C_ARB_TIME_SLOT_0=18'b0,C_ARB_TIME_SLOT_1=18'b0,C_ARB_TIME_SLOT_2=18'b0,C_ARB_TIME_SLOT_3=18'b0,C_ARB_TIME_SLOT_4=18'b0,C_ARB_TIME_SLOT_5=18'b0,C_ARB_TIME_SLOT_6=18'b0,C_ARB_TIME_SLOT_7=18'b0,C_ARB_TIME_SLOT_8=18'b0,C_ARB_TIME_SLOT_9=18'b0,C_ARB_TIME_SLOT_10=18'b0,C_ARB_TIME_SLOT_11=18'b0,C_ARB_ALGORITHM=0,C_PORT_ENABLE=6'b01,C_PORT_CONFIG="B32_B32_R32_R32_R32_R32",C_MEM_TRAS=45000,C_MEM_TRCD=12500,C_MEM_TREFI=7800000,C_MEM_TRFC=127500,C_MEM_TRP=12500,C_MEM_TWR=15000,C_MEM_TRTP=7500,C_MEM_TWTR=7500,C_MEM_ADDR_ORDER="ROW_BANK_COLUMN",C_NUM_DQ_PINS=16,C_MEM_TYPE="DDR2",C_MEM_DENSITY="1Gb",C_MEM_BURST_LEN=4,C_MEM_CAS_LATENCY=5,C_MEM_ADDR_WIDTH=13,C_MEM_BANKADDR_WIDTH=3,C_MEM_NUM_COL_BITS=10,C_MEM_DDR1_2_ODS="FULL",C_MEM_DDR2_RTT="50OHMS",C_MEM_DDR2_DIFF_DQS_EN="YES",C_MEM_DDR2_3_PA_SR="FULL",C_MEM_DDR2_3_HIGH_TEMP_SR="NORMAL",C_MEM_DDR3_CAS_LATENCY=6,C_MEM_DDR3_ODS="DIV6",C_MEM_DDR3_RTT="DIV2",C_MEM_DDR3_CAS_WR_LATENCY=5,C_MEM_DDR3
+_AUTO_SR="ENABLED",C_MEM_MOBILE_PA_SR="FULL",C_MEM_MDDR_ODS="FULL",C_MC_CALIB_BYPASS="NO",C_MC_CALIBRATION_MODE="CALIBRATION",C_MC_CALIBRATION_DELAY="HALF",C_SKIP_IN_TERM_CAL=0,C_SKIP_DYNAMIC_CAL=0,LDQSP_TAP_DELAY_VAL=0,UDQSP_TAP_DELAY_VAL=0,LDQSN_TAP_DELAY_VAL=0,UDQSN_TAP_DELAY_VAL=0,DQ0_TAP_DELAY_VAL=0,DQ1_TAP_DELAY_VAL=0,DQ2_TAP_DELAY_VAL=0,DQ3_TAP_DELAY_VAL=0,DQ4_TAP_DELAY_VAL=0,DQ5_TAP_DELAY_VAL=0,DQ6_TAP_DELAY_VAL=0,DQ7_TAP_DELAY_VAL=0,DQ8_TAP_DELAY_VAL=0,DQ9_TAP_DELAY_VAL=0,DQ10_TAP_DELAY_VAL=0,DQ11_TAP_DELAY_VAL=0,DQ12_TAP_DELAY_VAL=0,DQ13_TAP_DELAY_VAL=0,DQ14_TAP_DELAY_VAL=0,DQ15_TAP_DELAY_VAL=0,C_P0_MASK_SIZE=4,C_P0_DATA_PORT_SIZE=32,C_P1_MASK_SIZE=4,C_P1_DATA_PORT_SIZE=32)>.
+
+Elaborating module
+<mcb_ui_top(C_MEMCLK_PERIOD=3333,C_PORT_ENABLE=6'b01,C_MEM_ADDR_ORDER="ROW_BANK_COLUMN",C_ARB_ALGORITHM=0,C_ARB_NUM_TIME_SLOTS=12,C_ARB_TIME_SLOT_0=18'b0,C_ARB_TIME_SLOT_1=18'b0,C_ARB_TIME_SLOT_2=18'b0,C_ARB_TIME_SLOT_3=18'b0,C_ARB_TIME_SLOT_4=18'b0,C_ARB_TIME_SLOT_5=18'b0,C_ARB_TIME_SLOT_6=18'b0,C_ARB_TIME_SLOT_7=18'b0,C_ARB_TIME_SLOT_8=18'b0,C_ARB_TIME_SLOT_9=18'b0,C_ARB_TIME_SLOT_10=18'b0,C_ARB_TIME_SLOT_11=18'b0,C_PORT_CONFIG="B32_B32_R32_R32_R32_R32",C_MEM_TRAS=45000,C_MEM_TRCD=12500,C_MEM_TREFI=7800000,C_MEM_TRFC=127500,C_MEM_TRP=12500,C_MEM_TWR=15000,C_MEM_TRTP=7500,C_MEM_TWTR=7500,C_NUM_DQ_PINS=16,C_MEM_TYPE="DDR2",C_MEM_DENSITY="1Gb",C_MEM_BURST_LEN=4,C_MEM_CAS_LATENCY=5,C_MEM_ADDR_WIDTH=13,C_MEM_BANKADDR_WIDTH=3,C_MEM_NUM_COL_BITS=10,C_MEM_DDR3_CAS_LATENCY=6,C_MEM_MOBILE_PA_SR="FULL",C_MEM_DDR1_2_ODS="FULL",C_MEM_DDR3_ODS="DIV6",C_MEM_DDR2_RTT="50OHMS",C_MEM_DDR3_RTT="DIV2",C_MEM_MDDR_ODS="FULL",C_MEM_DDR2_DIFF_DQS_EN="YES",C_MEM_DDR2_3_PA_SR="FULL",C_MEM_DDR3_CAS_WR_LATENCY=5,C_MEM_DDR3_AUTO_SR="EN
+ABLED",C_MEM_DDR2_3_HIGH_TEMP_SR="NORMAL",C_MEM_DDR3_DYN_WRT_ODT="OFF",C_MEM_TZQINIT_MAXCNT=10'b1000010000,C_MC_CALIB_BYPASS="NO",C_MC_CALIBRATION_RA=16'b0,C_MC_CALIBRATION_BA=3'b0,C_MC_CALIBRATION_CA=12'b0,C_CALIB_SOFT_IP="TRUE",C_SKIP_IN_TERM_CAL=0,C_SKIP_DYNAMIC_CAL=0,C_SKIP_DYN_IN_TERM=1'b1,LDQSP_TAP_DELAY_VAL=0,UDQSP_TAP_DELAY_VAL=0,LDQSN_TAP_DELAY_VAL=0,UDQSN_TAP_DELAY_VAL=0,DQ0_TAP_DELAY_VAL=0,DQ1_TAP_DELAY_VAL=0,DQ2_TAP_DELAY_VAL=0,DQ3_TAP_DELAY_VAL=0,DQ4_TAP_DELAY_VAL=0,DQ5_TAP_DELAY_VAL=0,DQ6_TAP_DELAY_VAL=0,DQ7_TAP_DELAY_VAL=0,DQ8_TAP_DELAY_VAL=0,DQ9_TAP_DELAY_VAL=0,DQ10_TAP_DELAY_VAL=0,DQ11_TAP_DELAY_VAL=0,DQ12_TAP_DELAY_VAL=0,DQ13_TAP_DELAY_VAL=0,DQ14_TAP_DELAY_VAL=0,DQ15_TAP_DELAY_VAL=0,C_MC_CALIBRATION_CLK_DIV=1,C_MC_CALIBRATION_MODE="CALIBRATION",C_MC_CALIBRATION_DELAY="HALF",C_SIMULATION="FALSE",C_P0_MASK_SIZE=4,C_P0_DATA_PORT_SIZE=32,C_P1_MASK_SIZE=4,C_P1_DATA_PORT_SIZE=32,C_MCB_USE_EXTERNAL_BUFPLL=1)>.
+
+Elaborating module
+<mcb_raw_wrapper(C_MEMCLK_PERIOD=3333,C_PORT_ENABLE=6'b01,C_MEM_ADDR_ORDER="ROW_BANK_COLUMN",C_USR_INTERFACE_MODE="NATIVE",C_ARB_NUM_TIME_SLOTS=32'sb01100,C_ARB_TIME_SLOT_0=18'b111111111111111000,C_ARB_TIME_SLOT_1=18'b111111111111111000,C_ARB_TIME_SLOT_2=18'b111111111111111000,C_ARB_TIME_SLOT_3=18'b111111111111111000,C_ARB_TIME_SLOT_4=18'b111111111111111000,C_ARB_TIME_SLOT_5=18'b111111111111111000,C_ARB_TIME_SLOT_6=18'b111111111111111000,C_ARB_TIME_SLOT_7=18'b111111111111111000,C_ARB_TIME_SLOT_8=18'b111111111111111000,C_ARB_TIME_SLOT_9=18'b111111111111111000,C_ARB_TIME_SLOT_10=18'b111111111111111000,C_ARB_TIME_SLOT_11=18'b111111111111111000,C_PORT_CONFIG="B32_B32_R32_R32_R32_R32",C_MEM_TRAS=45000,C_MEM_TRCD=12500,C_MEM_TREFI=7800000,C_MEM_TRFC=127500,C_MEM_TRP=12500,C_MEM_TWR=15000,C_MEM_TRTP=7500,C_MEM_TWTR=7500,C_NUM_DQ_PINS=16,C_MEM_TYPE="DDR2",C_MEM_DENSITY="1Gb",C_MEM_BURST_LEN=4,C_MEM_CAS_LATENCY=5,C_MEM_ADDR_WIDTH=13,C_MEM_BANKADDR_WIDTH=3,C_MEM_NUM_COL_BITS=10,C_MEM_DDR3_CAS_LATENCY=6,C_MEM_MOBILE_PA_
+SR="FULL",C_MEM_DDR1_2_ODS="FULL",C_MEM_DDR3_ODS="DIV6",C_MEM_DDR2_RTT="50OHMS",C_MEM_DDR3_RTT="DIV2",C_MEM_MDDR_ODS="FULL",C_MEM_DDR2_DIFF_DQS_EN="YES",C_MEM_DDR2_3_PA_SR="FULL",C_MEM_DDR3_CAS_WR_LATENCY=5,C_MEM_DDR3_AUTO_SR="ENABLED",C_MEM_DDR2_3_HIGH_TEMP_SR="NORMAL",C_MEM_DDR3_DYN_WRT_ODT="OFF",C_MEM_TZQINIT_MAXCNT=32'b01000000000,C_MC_CALIB_BYPASS="NO",C_MC_CALIBRATION_RA=16'b0,C_MC_CALIBRATION_BA=3'b0,C_CALIB_SOFT_IP="TRUE",C_SKIP_IN_TERM_CAL=0,C_SKIP_DYNAMIC_CAL=0,C_SKIP_DYN_IN_TERM=1'b1,LDQSP_TAP_DELAY_VAL=0,UDQSP_TAP_DELAY_VAL=0,LDQSN_TAP_DELAY_VAL=0,UDQSN_TAP_DELAY_VAL=0,DQ0_TAP_DELAY_VAL=0,DQ1_TAP_DELAY_VAL=0,DQ2_TAP_DELAY_VAL=0,DQ3_TAP_DELAY_VAL=0,DQ4_TAP_DELAY_VAL=0,DQ5_TAP_DELAY_VAL=0,DQ6_TAP_DELAY_VAL=0,DQ7_TAP_DELAY_VAL=0,DQ8_TAP_DELAY_VAL=0,DQ9_TAP_DELAY_VAL=0,DQ10_TAP_DELAY_VAL=0,DQ11_TAP_DELAY_VAL=0,DQ12_TAP_DELAY_VAL=0,DQ13_TAP_DELAY_VAL=0,DQ14_TAP_DELAY_VAL=0,DQ15_TAP_DELAY_VAL=0,C_MC_CALIBRATION_CA=12'b0,C_MC_CALIBRATION_CLK_DIV=1,C_MC_CALIBRATION_MODE="CALIBRATION",C_MC_CALIBRATION_DELA
+Y="HALF",C_P0_MASK_SIZE=4,C_P0_DATA_PORT_SIZE=32,C_P1_MASK_SIZE=4,C_P1_DATA_PORT_SIZE=32)>.
+WARNING:HDLCompiler:872 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_raw_wrapper.v" Line 688: Using initial value of allzero since it is never assigned
+
+Elaborating module
+<MCB(PORT_CONFIG="B32_B32_R32_R32_R32_R32",MEM_WIDTH=16,MEM_TYPE="DDR2",MEM_BURST_LEN=4,MEM_ADDR_ORDER="ROW_BANK_COLUMN",MEM_CAS_LATENCY=5,MEM_DDR3_CAS_LATENCY=6,MEM_DDR2_WRT_RECOVERY=32'sb0101,MEM_DDR3_WRT_RECOVERY=5,MEM_MOBILE_PA_SR="FULL",MEM_DDR1_2_ODS="FULL",MEM_DDR3_ODS="DIV6",MEM_DDR2_RTT="50OHMS",MEM_DDR3_RTT="DIV2",MEM_DDR3_ADD_LATENCY="OFF",MEM_DDR2_ADD_LATENCY=0,MEM_MOBILE_TC_SR=0,MEM_MDDR_ODS="FULL",MEM_DDR2_DIFF_DQS_EN="YES",MEM_DDR2_3_PA_SR="FULL",MEM_DDR3_CAS_WR_LATENCY=5,MEM_DDR3_AUTO_SR="ENABLED",MEM_DDR2_3_HIGH_TEMP_SR="NORMAL",MEM_DDR3_DYN_WRT_ODT="OFF",MEM_RA_SIZE=13,MEM_BA_SIZE=3,MEM_CA_SIZE=10,MEM_RAS_VAL=32'sb01110,MEM_RCD_VAL=32'sb0100,MEM_REFI_VAL=32'sb0100100001100,MEM_RFC_VAL=32'sb0100111,MEM_RP_VAL=32'sb0100,MEM_WR_VAL=32'sb0101,MEM_RTP_VAL=32'sb011,MEM_WTR_VAL=32'sb011,CAL_BYPASS="NO",CAL_RA=16'b0,CAL_BA=3'b0,CAL_CA=12'b0,CAL_CLK_DIV=1,CAL_DELAY="HALF",ARB_NUM_TIME_SLOTS=32'sb01100,ARB_TIME_SLOT_0=18'b111111111111111000,ARB_TIME_SLOT_1=18'b111111111111111000,ARB_TIME_SLOT_2=18'b11
+1111111111111000,ARB_TIME_SLOT_3=18'b111111111111111000,ARB_TIME_SLOT_4=18'b111111111111111000,ARB_TIME_SLOT_5=18'b111111111111111000,ARB_TIME_SLOT_6=18'b111111111111111000,ARB_TIME_SLOT_7=18'b111111111111111000,ARB_TIME_SLOT_8=18'b111111111111111000,ARB_TIME_SLOT_9=18'b111111111111111000,ARB_TIME_SLOT_10=18'b111111111111111000,ARB_TIME_SLOT_11=18'b111111111111111000)>.
+
+Elaborating module <mcb_soft_calibration_top(C_MEM_TZQINIT_MAXCNT=32'b01000000000,C_MC_CALIBRATION_MODE="CALIBRATION",SKIP_IN_TERM_CAL=0,SKIP_DYNAMIC_CAL=0,SKIP_DYN_IN_TERM=1'b1,C_SIMULATION="FALSE",C_MEM_TYPE="DDR2")>.
+
+Elaborating module <mcb_soft_calibration(C_MEM_TZQINIT_MAXCNT=32'b01000000000,C_MC_CALIBRATION_MODE="CALIBRATION",SKIP_IN_TERM_CAL=0,SKIP_DYNAMIC_CAL=0,SKIP_DYN_IN_TERM=1'b1,C_SIMULATION="FALSE",C_MEM_TYPE="DDR2")>.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 407: Assignment to Half_MV_DU ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 409: Assignment to Half_MV_DD ignored, since the identifier is never used
+
+Elaborating module <iodrp_controller>.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\iodrp_controller.v" Line 186: Result of 4-bit expression is truncated to fit in 3-bit target.
+
+Elaborating module <iodrp_mcb_controller>.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\iodrp_mcb_controller.v" Line 301: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\iodrp_mcb_controller.v" Line 312: Result of 9-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 442: Assignment to MCB_READ_DATA ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 726: Assignment to State_Start_DynCal_R1 ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 752: Result of 9-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 783: Assignment to MCB_UODATAVALID_U ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 942: Result of 7-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 946: Result of 8-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 992: Result of 8-bit expression is truncated to fit in 7-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 996: Result of 8-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 997: Result of 8-bit expression is truncated to fit in 7-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 998: Result of 8-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 999: Result of 8-bit expression is truncated to fit in 7-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 1000: Result of 8-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 1001: Result of 8-bit expression is truncated to fit in 7-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration.v" Line 829: Assignment to IODRPCTRLR_USE_BKST ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\mcb_controller\mcb_soft_calibration_top.v" Line 219: Assignment to Max_Value ignored, since the identifier is never used
+
+Elaborating module <IOBUF>.
+
+Elaborating module <IODRP2>.
+
+Elaborating module <OSERDES2(BYPASS_GCLK_FF="TRUE",DATA_RATE_OQ="SDR",DATA_RATE_OT="SDR",OUTPUT_MODE="SINGLE_ENDED",SERDES_MODE="MASTER",DATA_WIDTH=2)>.
+
+Elaborating module <OSERDES2(BYPASS_GCLK_FF="TRUE",DATA_RATE_OQ="SDR",DATA_RATE_OT="SDR",OUTPUT_MODE="SINGLE_ENDED",SERDES_MODE="MASTER",DATA_WIDTH=2,TRAIN_PATTERN=15)>.
+
+Elaborating module <OSERDES2(BYPASS_GCLK_FF="TRUE",DATA_RATE_OQ="SDR",DATA_RATE_OT="SDR",OUTPUT_MODE="SINGLE_ENDED",SERDES_MODE="MASTER",DATA_WIDTH=2,TRAIN_PATTERN=5)>.
+
+Elaborating module <OSERDES2(BYPASS_GCLK_FF="TRUE",DATA_RATE_OQ="SDR",DATA_RATE_OT="SDR",OUTPUT_MODE="SINGLE_ENDED",SERDES_MODE="SLAVE",DATA_WIDTH=2)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=7,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=7,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=6,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=6,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=14,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=14,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=5,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=5,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=4,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=4,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=0,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=0,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=1,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=1,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=15,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=15,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=3,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=3,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=2,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=2,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=8,ODELAY_VALUE=0,SERDES_MODE="MASTER",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <IODRP2_MCB(DATA_RATE="SDR",IDELAY_VALUE=0,MCB_ADDRESS=8,ODELAY_VALUE=0,SERDES_MODE="SLAVE",SIM_TAPDELAY_VALUE=10)>.
+
+Elaborating module <OBUFT>.
+
+Elaborating module <OBUFTDS>.
+
+Elaborating module <IOBUFDS>.
+
+Elaborating module <PULLDOWN>.
+
+Elaborating module <PULLUP>.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 789: Assignment to sysclk_2x_bufpll_o ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 790: Assignment to sysclk_2x_180_bufpll_o ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 791: Assignment to pll_ce_0_bufpll_o ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 792: Assignment to pll_ce_90_bufpll_o ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 793: Assignment to pll_lock_bufpll_o ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 986: Assignment to uo_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 987: Assignment to uo_data_valid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 989: Assignment to uo_cmd_ready_in ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 990: Assignment to uo_refrsh_flag ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 991: Assignment to uo_cal_start ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 992: Assignment to uo_sdo ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 993: Assignment to status ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1010: Assignment to s0_axi_awready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1015: Assignment to s0_axi_wready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1016: Assignment to s0_axi_bid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1017: Assignment to s0_axi_bresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1018: Assignment to s0_axi_bvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1030: Assignment to s0_axi_arready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1031: Assignment to s0_axi_rid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1032: Assignment to s0_axi_rdata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1033: Assignment to s0_axi_rresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1034: Assignment to s0_axi_rlast ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1035: Assignment to s0_axi_rvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1050: Assignment to s1_axi_awready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1055: Assignment to s1_axi_wready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1056: Assignment to s1_axi_bid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1057: Assignment to s1_axi_bresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1058: Assignment to s1_axi_bvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1070: Assignment to s1_axi_arready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1071: Assignment to s1_axi_rid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1072: Assignment to s1_axi_rdata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1073: Assignment to s1_axi_rresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1074: Assignment to s1_axi_rlast ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1075: Assignment to s1_axi_rvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1090: Assignment to s2_axi_awready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1095: Assignment to s2_axi_wready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1096: Assignment to s2_axi_bid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1097: Assignment to s2_axi_bresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1098: Assignment to s2_axi_bvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1110: Assignment to s2_axi_arready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1111: Assignment to s2_axi_rid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1112: Assignment to s2_axi_rdata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1113: Assignment to s2_axi_rresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1114: Assignment to s2_axi_rlast ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1115: Assignment to s2_axi_rvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1130: Assignment to s3_axi_awready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1135: Assignment to s3_axi_wready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1136: Assignment to s3_axi_bid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1137: Assignment to s3_axi_bresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1138: Assignment to s3_axi_bvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1150: Assignment to s3_axi_arready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1151: Assignment to s3_axi_rid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1152: Assignment to s3_axi_rdata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1153: Assignment to s3_axi_rresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1154: Assignment to s3_axi_rlast ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1155: Assignment to s3_axi_rvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1170: Assignment to s4_axi_awready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1175: Assignment to s4_axi_wready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1176: Assignment to s4_axi_bid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1177: Assignment to s4_axi_bresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1178: Assignment to s4_axi_bvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1190: Assignment to s4_axi_arready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1191: Assignment to s4_axi_rid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1192: Assignment to s4_axi_rdata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1193: Assignment to s4_axi_rresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1194: Assignment to s4_axi_rlast ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1195: Assignment to s4_axi_rvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1210: Assignment to s5_axi_awready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1215: Assignment to s5_axi_wready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1216: Assignment to s5_axi_bid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1217: Assignment to s5_axi_bresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1218: Assignment to s5_axi_bvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1230: Assignment to s5_axi_arready ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1231: Assignment to s5_axi_rid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1232: Assignment to s5_axi_rdata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1233: Assignment to s5_axi_rresp ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1234: Assignment to s5_axi_rlast ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 1235: Assignment to s5_axi_rvalid ignored, since the identifier is never used
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 437: Net <s0_axi_aclk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 438: Net <s0_axi_aresetn> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 439: Net <s0_axi_awid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 440: Net <s0_axi_awaddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 441: Net <s0_axi_awlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 442: Net <s0_axi_awsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 443: Net <s0_axi_awburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 444: Net <s0_axi_awlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 445: Net <s0_axi_awcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 446: Net <s0_axi_awprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 447: Net <s0_axi_awqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 448: Net <s0_axi_awvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 450: Net <s0_axi_wdata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 451: Net <s0_axi_wstrb[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 452: Net <s0_axi_wlast> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 453: Net <s0_axi_wvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 458: Net <s0_axi_bready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 459: Net <s0_axi_arid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 460: Net <s0_axi_araddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 461: Net <s0_axi_arlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 462: Net <s0_axi_arsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 463: Net <s0_axi_arburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 464: Net <s0_axi_arlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 465: Net <s0_axi_arcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 466: Net <s0_axi_arprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 467: Net <s0_axi_arqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 468: Net <s0_axi_arvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 475: Net <s0_axi_rready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 477: Net <s1_axi_aclk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 478: Net <s1_axi_aresetn> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 479: Net <s1_axi_awid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 480: Net <s1_axi_awaddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 481: Net <s1_axi_awlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 482: Net <s1_axi_awsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 483: Net <s1_axi_awburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 484: Net <s1_axi_awlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 485: Net <s1_axi_awcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 486: Net <s1_axi_awprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 487: Net <s1_axi_awqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 488: Net <s1_axi_awvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 490: Net <s1_axi_wdata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 491: Net <s1_axi_wstrb[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 492: Net <s1_axi_wlast> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 493: Net <s1_axi_wvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 498: Net <s1_axi_bready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 499: Net <s1_axi_arid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 500: Net <s1_axi_araddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 501: Net <s1_axi_arlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 502: Net <s1_axi_arsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 503: Net <s1_axi_arburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 504: Net <s1_axi_arlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 505: Net <s1_axi_arcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 506: Net <s1_axi_arprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 507: Net <s1_axi_arqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 508: Net <s1_axi_arvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 515: Net <s1_axi_rready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 517: Net <s2_axi_aclk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 518: Net <s2_axi_aresetn> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 519: Net <s2_axi_awid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 520: Net <s2_axi_awaddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 521: Net <s2_axi_awlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 522: Net <s2_axi_awsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 523: Net <s2_axi_awburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 524: Net <s2_axi_awlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 525: Net <s2_axi_awcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 526: Net <s2_axi_awprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 527: Net <s2_axi_awqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 528: Net <s2_axi_awvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 530: Net <s2_axi_wdata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 531: Net <s2_axi_wstrb[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 532: Net <s2_axi_wlast> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 533: Net <s2_axi_wvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 538: Net <s2_axi_bready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 539: Net <s2_axi_arid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 540: Net <s2_axi_araddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 541: Net <s2_axi_arlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 542: Net <s2_axi_arsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 543: Net <s2_axi_arburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 544: Net <s2_axi_arlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 545: Net <s2_axi_arcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 546: Net <s2_axi_arprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 547: Net <s2_axi_arqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 548: Net <s2_axi_arvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 555: Net <s2_axi_rready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 557: Net <s3_axi_aclk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 558: Net <s3_axi_aresetn> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 559: Net <s3_axi_awid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 560: Net <s3_axi_awaddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 561: Net <s3_axi_awlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 562: Net <s3_axi_awsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 563: Net <s3_axi_awburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 564: Net <s3_axi_awlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 565: Net <s3_axi_awcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 566: Net <s3_axi_awprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 567: Net <s3_axi_awqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 568: Net <s3_axi_awvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 570: Net <s3_axi_wdata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 571: Net <s3_axi_wstrb[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 572: Net <s3_axi_wlast> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 573: Net <s3_axi_wvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 578: Net <s3_axi_bready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 579: Net <s3_axi_arid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 580: Net <s3_axi_araddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 581: Net <s3_axi_arlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 582: Net <s3_axi_arsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 583: Net <s3_axi_arburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 584: Net <s3_axi_arlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 585: Net <s3_axi_arcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 586: Net <s3_axi_arprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 587: Net <s3_axi_arqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 588: Net <s3_axi_arvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 595: Net <s3_axi_rready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 597: Net <s4_axi_aclk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 598: Net <s4_axi_aresetn> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 599: Net <s4_axi_awid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 600: Net <s4_axi_awaddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 601: Net <s4_axi_awlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 602: Net <s4_axi_awsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 603: Net <s4_axi_awburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 604: Net <s4_axi_awlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 605: Net <s4_axi_awcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 606: Net <s4_axi_awprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 607: Net <s4_axi_awqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 608: Net <s4_axi_awvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 610: Net <s4_axi_wdata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 611: Net <s4_axi_wstrb[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 612: Net <s4_axi_wlast> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 613: Net <s4_axi_wvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 618: Net <s4_axi_bready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 619: Net <s4_axi_arid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 620: Net <s4_axi_araddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 621: Net <s4_axi_arlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 622: Net <s4_axi_arsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 623: Net <s4_axi_arburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 624: Net <s4_axi_arlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 625: Net <s4_axi_arcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 626: Net <s4_axi_arprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 627: Net <s4_axi_arqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 628: Net <s4_axi_arvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 635: Net <s4_axi_rready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 637: Net <s5_axi_aclk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 638: Net <s5_axi_aresetn> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 639: Net <s5_axi_awid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 640: Net <s5_axi_awaddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 641: Net <s5_axi_awlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 642: Net <s5_axi_awsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 643: Net <s5_axi_awburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 644: Net <s5_axi_awlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 645: Net <s5_axi_awcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 646: Net <s5_axi_awprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 647: Net <s5_axi_awqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 648: Net <s5_axi_awvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 650: Net <s5_axi_wdata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 651: Net <s5_axi_wstrb[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 652: Net <s5_axi_wlast> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 653: Net <s5_axi_wvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 658: Net <s5_axi_bready> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 659: Net <s5_axi_arid[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 660: Net <s5_axi_araddr[63]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 661: Net <s5_axi_arlen[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 662: Net <s5_axi_arsize[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 663: Net <s5_axi_arburst[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 664: Net <s5_axi_arlock[0]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 665: Net <s5_axi_arcache[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 666: Net <s5_axi_arprot[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 667: Net <s5_axi_arqos[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 668: Net <s5_axi_arvalid> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\memc_wrapper.v" Line 675: Net <s5_axi_rready> does not have a driver.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 600: Assignment to c3_p1_cmd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 601: Assignment to c3_p1_cmd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 608: Assignment to c3_p1_wr_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 609: Assignment to c3_p1_wr_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 610: Assignment to c3_p1_wr_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 611: Assignment to c3_p1_wr_underrun ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 612: Assignment to c3_p1_wr_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 617: Assignment to c3_p1_rd_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 618: Assignment to c3_p1_rd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 619: Assignment to c3_p1_rd_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 620: Assignment to c3_p1_rd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 621: Assignment to c3_p1_rd_overflow ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 622: Assignment to c3_p1_rd_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 631: Assignment to c3_p2_cmd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 632: Assignment to c3_p2_cmd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 639: Assignment to c3_p2_wr_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 640: Assignment to c3_p2_wr_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 641: Assignment to c3_p2_wr_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 642: Assignment to c3_p2_wr_underrun ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 643: Assignment to c3_p2_wr_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 648: Assignment to c3_p2_rd_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 649: Assignment to c3_p2_rd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 650: Assignment to c3_p2_rd_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 651: Assignment to c3_p2_rd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 652: Assignment to c3_p2_rd_overflow ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 653: Assignment to c3_p2_rd_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 662: Assignment to c3_p3_cmd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 663: Assignment to c3_p3_cmd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 670: Assignment to c3_p3_wr_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 671: Assignment to c3_p3_wr_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 672: Assignment to c3_p3_wr_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 673: Assignment to c3_p3_wr_underrun ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 674: Assignment to c3_p3_wr_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 679: Assignment to c3_p3_rd_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 680: Assignment to c3_p3_rd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 681: Assignment to c3_p3_rd_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 682: Assignment to c3_p3_rd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 683: Assignment to c3_p3_rd_overflow ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 684: Assignment to c3_p3_rd_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 693: Assignment to c3_p4_cmd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 694: Assignment to c3_p4_cmd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 701: Assignment to c3_p4_wr_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 702: Assignment to c3_p4_wr_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 703: Assignment to c3_p4_wr_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 704: Assignment to c3_p4_wr_underrun ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 705: Assignment to c3_p4_wr_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 710: Assignment to c3_p4_rd_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 711: Assignment to c3_p4_rd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 712: Assignment to c3_p4_rd_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 713: Assignment to c3_p4_rd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 714: Assignment to c3_p4_rd_overflow ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 715: Assignment to c3_p4_rd_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 724: Assignment to c3_p5_cmd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 725: Assignment to c3_p5_cmd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 732: Assignment to c3_p5_wr_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 733: Assignment to c3_p5_wr_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 734: Assignment to c3_p5_wr_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 735: Assignment to c3_p5_wr_underrun ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 736: Assignment to c3_p5_wr_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 741: Assignment to c3_p5_rd_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 742: Assignment to c3_p5_rd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 743: Assignment to c3_p5_rd_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 744: Assignment to c3_p5_rd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 745: Assignment to c3_p5_rd_overflow ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 746: Assignment to c3_p5_rd_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 749: Assignment to c3_selfrefresh_mode ignored, since the identifier is never used
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 268: Net <c3_p1_cmd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 269: Net <c3_p1_cmd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 270: Net <c3_p1_cmd_instr[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 271: Net <c3_p1_cmd_bl[5]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 272: Net <c3_p1_cmd_byte_addr[29]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 275: Net <c3_p1_wr_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 276: Net <c3_p1_wr_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 277: Net <c3_p1_wr_mask[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 278: Net <c3_p1_wr_data[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 284: Net <c3_p1_rd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 285: Net <c3_p1_rd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 292: Net <c3_p2_cmd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 293: Net <c3_p2_cmd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 294: Net <c3_p2_cmd_instr[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 295: Net <c3_p2_cmd_bl[5]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 296: Net <c3_p2_cmd_byte_addr[29]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 299: Net <c3_p2_wr_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 300: Net <c3_p2_wr_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 301: Net <c3_p2_wr_mask[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 302: Net <c3_p2_wr_data[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 308: Net <c3_p2_rd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 309: Net <c3_p2_rd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 316: Net <c3_p3_cmd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 317: Net <c3_p3_cmd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 318: Net <c3_p3_cmd_instr[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 319: Net <c3_p3_cmd_bl[5]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 320: Net <c3_p3_cmd_byte_addr[29]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 323: Net <c3_p3_wr_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 324: Net <c3_p3_wr_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 325: Net <c3_p3_wr_mask[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 326: Net <c3_p3_wr_data[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 332: Net <c3_p3_rd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 333: Net <c3_p3_rd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 340: Net <c3_p4_cmd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 341: Net <c3_p4_cmd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 342: Net <c3_p4_cmd_instr[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 343: Net <c3_p4_cmd_bl[5]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 344: Net <c3_p4_cmd_byte_addr[29]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 347: Net <c3_p4_wr_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 348: Net <c3_p4_wr_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 349: Net <c3_p4_wr_mask[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 350: Net <c3_p4_wr_data[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 356: Net <c3_p4_rd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 357: Net <c3_p4_rd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 364: Net <c3_p5_cmd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 365: Net <c3_p5_cmd_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 366: Net <c3_p5_cmd_instr[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 367: Net <c3_p5_cmd_bl[5]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 368: Net <c3_p5_cmd_byte_addr[29]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 371: Net <c3_p5_wr_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 372: Net <c3_p5_wr_en> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 373: Net <c3_p5_wr_mask[3]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 374: Net <c3_p5_wr_data[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 380: Net <c3_p5_rd_clk> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ipcore_dir\ram_interface\user_design\rtl\ram_interface.v" Line 381: Net <c3_p5_rd_en> does not have a driver.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 160: Assignment to c3_p0_cmd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 161: Assignment to c3_p0_cmd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 169: Assignment to c3_p0_wr_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 170: Assignment to c3_p0_wr_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 171: Assignment to c3_p0_wr_count ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 172: Assignment to c3_p0_wr_underrun ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 173: Assignment to c3_p0_wr_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 179: Assignment to c3_p0_rd_full ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 180: Assignment to c3_p0_rd_empty ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 182: Assignment to c3_p0_rd_overflow ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\ram_interface_wrapper.v" Line 183: Assignment to c3_p0_rd_error ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 121: Assignment to max_ram_address ignored, since the identifier is never used
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 37: Net <address[25]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 40: Net <ackRead> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 47: Net <audio_out[15]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 49: Net <enableWrite> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 50: Net <RAMin[15]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 127: Net <readReq> does not have a driver.
 --> 
 
-Total memory usage is 4449908 kilobytes
+Total memory usage is 4499668 kilobytes
 
-Number of errors   :    8 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
+Number of warnings :  421 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
