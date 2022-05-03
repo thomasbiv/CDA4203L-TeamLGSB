@@ -18,12 +18,10 @@
 //  SW0 - Active Low Reset
 
 module sockit_top (
-	 input  clk,
-	 input playback,
-	 input	[3:0] volume_control,
+	 input  OSC_100MHz,
+
     inout  AUD_ADCLRCK,
     input  AUD_ADCDAT,
-
 
     inout  AUD_DACLRCK,
     output AUD_DACDAT,
@@ -36,47 +34,34 @@ module sockit_top (
 
     output AUD_MUTE,
 	 output PLL_LOCKED,
-	 
+	 //input [6:0] volumeControl;
     input  [3:0] KEY,
-    input  [3:0] SW,
-    //output [3:0] LED,
-	 
-	 output [15:0] audio_out,
-	 input  [15:0] audio_in,
-	 
-	 output audio_clk
-	 //output [1:0]sample_end,
-	 //output [1:0]sample_req
+    input [15:0] audio_out,
+	 output [15:0] audio_in,
+	 output audioCLK,
+	 output s_end,
+	 output s_req
 );
 
-//wire [15:0] audio_out;
-reg [15:0] audio_selection;
 wire [15:0] audio_output;
 wire [15:0] audio_input;
 
-assign audio_out = audio_output;
-
-always @(posedge audio_clk) begin
-	if(playback) begin
-		audio_selection <= audio_in * volume_control;
-	end
-	else begin
-		audio_selection <= audio_output * volume_control;
-	end
-end
-
 wire reset = !KEY[0];
 wire main_clk;
-//wire audio_clk;
+wire audio_clk;
 
-wire [1:0] sample_end; // write to internal register
-wire [1:0] sample_req; // take the audio input
-
+wire [1:0] sample_end;
+wire [1:0] sample_req;
+assign s_end = sample_end[1];
+assign s_req = sample_req[1];
+assign audioCLK = audio_clk;
+assign audio_in = audio_input;
+assign audio_output = audio_out;
 
 // Clock PLL that synthesizes two frequencies: 50 MHz and 11.2896 MHz
 // Input 100 MHz 
 clk_wiz_v3_6 pll (
-	 .CLK_IN1 (clk),
+	 .CLK_IN1 (OSC_100MHz),
 	 .CLK_OUT1 (main_clk),   // 50 MHz
     .CLK_OUT2 (audio_clk),  // 11.2896 MHz
 	 .RESET (reset),
@@ -99,12 +84,12 @@ assign AUD_MUTE = 1'b1;  // active low, so set to 1 and disable mute
 audio_codec ac (
     .clk (audio_clk),
     .reset (reset),
-	 .volume_control(volume_control),
     .sample_end (sample_end),
     .sample_req (sample_req),
-    .audio_output (audio_selection),
+    .audio_output (audio_output),
     .audio_input (audio_input),
     .channel_sel (2'b10),
+
     .AUD_ADCLRCK (AUD_ADCLRCK),
     .AUD_ADCDAT (AUD_ADCDAT),
     .AUD_DACLRCK (AUD_DACLRCK),
@@ -116,14 +101,15 @@ audio_codec ac (
 // (1) Sine wave mode (tone)  SW7 UP
 // (2) Playback mode (feedback from LINE IN to LINE OUT) SW6 UP
 
+/*
 audio_effects ae (
 	  .clk (audio_clk),
     .sample_end (sample_end[1]),
     .sample_req (sample_req[1]),
-	 .volume_control(volume_control),
     .audio_output (audio_output),
     .audio_input  (audio_input),
     .control (SW)
 );
+*/
 
 endmodule

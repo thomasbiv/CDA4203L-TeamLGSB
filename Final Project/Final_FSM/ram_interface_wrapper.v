@@ -80,10 +80,10 @@ module ram_interface_wrapper#
 	wire [25:0] ram_cmd_byte_addr;
 	wire [6:0] c3_p0_wr_count, c3_p0_rd_count;
 	
-	//always @(posedge sys_clk)begin
-		//if (write_enable && address == 1)
-			//ledRAM = 1'b1;
-	//end
+	always @(posedge sys_clk)begin
+		if (write_enable && address == 1)
+			ledRAM = 1'b1;
+	end
 	
 	generate
 		if( DATA_BYTE_WIDTH == 1 ) begin

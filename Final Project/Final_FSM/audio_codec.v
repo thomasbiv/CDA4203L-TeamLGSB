@@ -42,7 +42,7 @@ end
 
 assign sample_end[1] = (lrck_divider == 8'h40);
 assign sample_end[0] = (lrck_divider == 8'hc0);
-assign audio_input = shift_in;
+assign audio_input = shift_in * volume_control;
 assign sample_req[1] = (lrck_divider == 8'hfe);
 assign sample_req[0] = (lrck_divider == 8'h7e);
 

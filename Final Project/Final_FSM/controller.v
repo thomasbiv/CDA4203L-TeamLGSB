@@ -27,63 +27,63 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	// These connect directly to FPGA pins via the pin map
 	//
 	// Control - clk, rst, etc
-	input			reset;			// Remember: ACTIVE LOW!!!
-	input			clk;			// 100 MHz
+	input	reset;			// Remember: ACTIVE LOW!!!
+	input	clk;			// 100 MHz
+	
 	// GPIO
 	input scroll_up;
 	input scroll_down;
 	input select;
 	input back;
 	input pause_play;
-	output	[7:0]	leds;
+	output [7:0]	leds;
+	
 	// RS232 Lines
 	input			rs232_rx;
-	output			rs232_tx;
+	output		rs232_tx;
 	
 	//Sockit Top
-
-   inout  AUD_ADCLRCK;
-   input  AUD_ADCDAT;
-
-   inout  AUD_DACLRCK;
-   output AUD_DACDAT;
-
-   output AUD_XCK;
-   inout  AUD_BCLK;
-
-   output AUD_I2C_SCLK;
-   inout  AUD_I2C_SDAT;
-
-   output AUD_MUTE;
-	reg playback;
-	output PLL_LOCKED;
-	 
-   input  [3:0] KEY; 
-   input  [3:0] SW;
-	
+	 input  OSC_100MHz;
+    inout  AUD_ADCLRCK;
+    input  AUD_ADCDAT;
+    inout  AUD_DACLRCK;
+    output AUD_DACDAT;
+    output AUD_XCK;
+    inout  AUD_BCLK;
+    output AUD_I2C_SCLK;
+    inout  AUD_I2C_SDAT;
+    output AUD_MUTE;
+	 output PLL_LOCKED;
+    input  [3:0] KEY;
+    input [15:0] audio_out;
+	 output [15:0] audio_in;
+	 output audioCLK;
+	 output s_end;
+	 output s_req;
+		
 	// Memory Module Wires
-	output 		hw_ram_rasn;
-	output 		hw_ram_casn;
-	output 		hw_ram_wen;
+	output hw_ram_rasn;
+	output hw_ram_casn;
+	output hw_ram_wen;
 	output[2:0] hw_ram_ba;
-	inout 		hw_ram_udqs_p;
-	inout 		hw_ram_udqs_n;
-	inout 		hw_ram_ldqs_p;
-	inout 		hw_ram_ldqs_n;
-	output 		hw_ram_udm;
-	output 		hw_ram_ldm;
-	output 		hw_ram_ck;
-	output 		hw_ram_ckn;
-	output 		hw_ram_cke;
-	output 		hw_ram_odt;
-	output[12:0]hw_ram_ad;
+	inout hw_ram_udqs_p;
+	inout hw_ram_udqs_n;
+	inout hw_ram_ldqs_p;
+	inout hw_ram_ldqs_n;
+	output hw_ram_udm;
+	output hw_ram_ldm;
+	output hw_ram_ck;
+	output hw_ram_ckn;
+	output hw_ram_cke;
+	output hw_ram_odt;
+	output [12:0]hw_ram_ad;
 	inout [15:0]hw_ram_dq;
-	inout 		hw_rzq_pin;
-	inout 		hw_zio_pin;
+	inout hw_rzq_pin;
+	inout hw_zio_pin;
 	input [3:0]	switches; 		// address
-	output 		status;
+	output status;
 	reg [15:0] RAMin;
-	wire 	[15:0]	RAMout;
+	wire [15:0] RAMout;
 	reg [25:0] address;
 	reg enableWrite;
 	reg reqRead;
@@ -157,6 +157,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	wire [15:0] audio_out;
 	reg volume_up;
 	reg volume_down;
+	reg write;
+	reg read;
 	
 	
 	
@@ -199,6 +201,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		playback <= 0;
 		curr_state <= 8'h00;
 		count <= 0;
+		write <= 0;
+		read <= 0;
+		read_state <= 0;
 	end
 	
 
@@ -264,52 +269,43 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	);	
 	
 	
-	//WORKING ON INSTANTIATION HERE
-	//address, data_in, write_enable, read_request, read_ack, data_out, reset, clk, hw_ram_rasn, hw_ram_casn,
-	//hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt,
-	//hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, clkout, sys_clk, rdy, rd_data_pres,
-	//max_ram_address, ledRAM
-	
-	
 	ram_interface_wrapper RAMWrapper (
-					.address(address),				// input 
-					.data_in(RAMin), 					// input
-					.write_enable(enableWrite), 	//	input
-					.read_request(reqRead), 		//	input
-					.read_ack(ackRead), 
-					.data_out(RAMout), 				// output from ram to wire
-					.reset(0), 
-					.clk(clk), 
-					.hw_ram_rasn(hw_ram_rasn), 
-					.hw_ram_casn(hw_ram_casn),
-					.hw_ram_wen(hw_ram_wen), 
-					.hw_ram_ba(hw_ram_ba), 
-					.hw_ram_udqs_p(hw_ram_udqs_p), 
-					.hw_ram_udqs_n(hw_ram_udqs_n), 
-					.hw_ram_ldqs_p(hw_ram_ldqs_p), 
-					.hw_ram_ldqs_n(hw_ram_ldqs_n), 
-					.hw_ram_udm(hw_ram_udm), 
-					.hw_ram_ldm(hw_ram_ldm), 
-					.hw_ram_ck(hw_ram_ck), 
-					.hw_ram_ckn(hw_ram_ckn), 
-					.hw_ram_cke(hw_ram_cke), 
-					.hw_ram_odt(hw_ram_odt),
-					.hw_ram_ad(hw_ram_ad), 
-					.hw_ram_dq(hw_ram_dq), 
-					.hw_rzq_pin(hw_rzq_pin), 
-					.hw_zio_pin(hw_zio_pin), 
-					.clkout(wizclk), //
-					.sys_clk(wizclk), 
-					.rdy(status), 
-					.rd_data_pres(dataPresent),
-					.max_ram_address(max_ram_address)
+		.address(address),				// input 
+		.data_in(RAMin), 					// input
+		.write_enable(enableWrite), 	//	input
+		.read_request(reqRead), 		//	input
+		.read_ack(ackRead), 
+		.data_out(RAMout), 				// output from ram to wire
+		.reset(0), 
+		.clk(clk), 
+		.hw_ram_rasn(hw_ram_rasn), 
+		.hw_ram_casn(hw_ram_casn),
+		.hw_ram_wen(hw_ram_wen), 
+		.hw_ram_ba(hw_ram_ba), 
+		.hw_ram_udqs_p(hw_ram_udqs_p), 
+		.hw_ram_udqs_n(hw_ram_udqs_n), 
+		.hw_ram_ldqs_p(hw_ram_ldqs_p), 
+		.hw_ram_ldqs_n(hw_ram_ldqs_n), 
+		.hw_ram_udm(hw_ram_udm), 
+		.hw_ram_ldm(hw_ram_ldm), 
+		.hw_ram_ck(hw_ram_ck), 
+		.hw_ram_ckn(hw_ram_ckn), 
+		.hw_ram_cke(hw_ram_cke), 
+		.hw_ram_odt(hw_ram_odt),
+		.hw_ram_ad(hw_ram_ad), 
+		.hw_ram_dq(hw_ram_dq), 
+		.hw_rzq_pin(hw_rzq_pin), 
+		.hw_zio_pin(hw_zio_pin), 
+		.clkout(wizclk), //
+		.sys_clk(wizclk), 
+		.rdy(status), 
+		.rd_data_pres(dataPresent),
+		.max_ram_address(max_ram_address) 
 	);
 	
-	
 	sockit_top what(
-		.clk(clk2),
-			.playback(playback),
-			.volume_control(volume_control),
+		.OSC_100CMHz(clk2),
+		//.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
 		.AUD_ADCDAT(AUD_ADCDAT),
 		.AUD_DACLRCK(AUD_DACLRCK),
@@ -320,11 +316,11 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.AUD_I2C_SDAT(AUD_I2C_SDAT),
 		.AUD_MUTE(AUD_MUTE),
 		.PLL_LOCKED(PLL_LOCKED),
-		.KEY(1),
-		.SW(switches),
-			.audio_in(mem_out),
-			.audio_out(audio_out),
-			.audio_clk(audio_clk)
+		.KEY(KEY),
+		.audio_out(audio_out),
+		audioCLK(audioCLK),
+		s_end(s_end),
+		s_req(s_req),
 	);
 	
 	// PB I/O selection/routing
@@ -443,7 +439,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	localparam delone_state = 8'h03;
 	localparam delall_state = 8'h04;
 	localparam vol_state = 8'h05;
-	localparam raise_write_record = 8'h06;
+	localparam write_record = 8'h06;
 	localparam raise_read_play = 8'h08;
 	localparam play_audio = 8'h09;
 	localparam lower_ack_read = 8'h0A;
@@ -461,271 +457,76 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 			curr_state <= main_state;
 		end
 		else if (status) begin
-			case (curr_state)
-				main_state : begin
-					count <= 0;
-					if (play) begin
-						if (play_1) begin
-							address <= 0;
-							maxAddr <= 26'h333332;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the first file
-						end
-						else if (play_2) begin
-							address <= 26'h333333;
-							maxAddr <= 26'h666665;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the second file
-						end
-						else if (play_3) begin
-							address <= 26'h666666;
-							maxAddr <= 26'h999998;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the third file
-						end
-						else if (play_4) begin
-							address <= 26'h999999;
-							maxAddr <= 26'hCCCCCB;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the fourth file
-						end
-						else if (play_5) begin
-							address <= 26'hCCCCCC;
-							maxAddr <= max_ram_address;
-							curr_state <= play_state;
+			if (play) begin
+				if (play_1) begin
+					/*
+					if (address <= 26'h333332) begin
+						if () begin
 						end
 					end
-					else if (record) begin
-						if (record_1) begin
-							address <= 0;
-							maxAddr <= 26'h333332;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the first file
-						end
-						else if (record_2) begin
-							address <= 26'h333333;
-							maxAddr <= 26'h666665;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the second file
-						end
-						else if (record_3) begin
-							address <= 26'h666666;
-							maxAddr <= 26'h999998;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the third file
-						end
-						else if (record_4) begin
-							address <= 26'h999999;
-							maxAddr <= 26'hCCCCCB;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the fourth file
-						end
-						else if (record_5) begin
-							address <= 26'hCCCCCC;
-							maxAddr <= max_ram_address;
-							curr_state <= record_state;
-						end
-					end
-					else if (delone) begin
-						if (delone_1) begin
-							address <= 0;
-							maxAddr <= 26'h333332;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the first file
-						end
-						else if (delone_2) begin
-							address <= 26'h333333;
-							maxAddr <= 26'h666665;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the second file
-						end
-						else if (delone_3) begin
-							address <= 26'h666666;
-							maxAddr <= 26'h999998;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the third file
-						end
-						else if (delone_4) begin
-							address <= 26'h999999;
-							maxAddr <= 26'hCCCCCB;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the fourth file
-						end
-						else if (delone_5) begin
-							address <= 26'hCCCCCC;
-							maxAddr <= max_ram_address;
-							curr_state <= delone_state;
-						end
-					end
-					else if (delall)
-						curr_state <= delall_state;
-					else if (vol)
-						curr_state <= vol_state;
-					//check val of write_to_state_reg
-					//Main menu state
+					*/
 				end
-				play_state : begin
-					if (play_1) begin
-						curr_state <= raise_read_play;
-						playback <= 1;
-						//some stuff with the memory locale of the first file
-					end
-					else if (play_2) begin
-						curr_state <= raise_read_play;
-						playback <= 1;
-						//some stuff with the memory locale of the second file
-					end
-					else if (play_3) begin
-						curr_state <= raise_read_play;
-						playback <= 1;
-						//some stuff with the memory locale of the third file
-					end
-					else if (play_4) begin
-						curr_state <= raise_read_play;
-						playback <= 1;
-						//some stuff with the memory locale of the fourth file
-					end
-					else if (play_5) begin
-						curr_state <= raise_read_play;
-						playback <= 1;
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
-					end
-					if (write_to_state_reg)
-						curr_state <= main_state;
+				else if (play_2) begin
+				
 				end
-				raise_read_play : begin
-					if (count < 350) begin
-						count <= count + 1;
-						curr_state <= raise_read_play;
-					end
-					else
-						enableWrite <= 0;
-						reqRead <= 1;
-						curr_state <= play_audio;
+				else if (play_3) begin
+				
 				end
-				play_audio : begin
-					reqRead <= 0;
-					if (dataPresent) begin
-						mem_out <= RAMout;
-						ackRead <= 1;
-						curr_state <= lower_ack_read;
-					end
-					else begin
-						reqRead <= 1;
-						curr_state <= play_audio;
-					end
+				else if (play_4) begin
+				
 				end
-				lower_ack_read : begin
-					ackRead <= 0;
-					address <= address + 1;
-					count <= 0;
-					if (address >= maxAddr)
-						curr_state <= main_state;
-					else
-						curr_state <= play_state;
+				else if (play_5) begin
+				
 				end
-				record_state : begin
-					if (are_recording)
-						curr_state <= raise_read_record;
-						//AMin <= audio_out; 
-						//curr_state = raise_write_record;
-						
-						//check val of write_to_state_reg
-						//some shit would go here from picoblaze maybe idfk
-						//nested FSM of some kind from another file?
-					if (write_to_state_reg)
-						curr_state <= main_state;
+			end
+			
+			else if (record) begin
+				if (record_1) begin
+				
 				end
-				raise_write_record : begin 
-					count <= 0;
-					enableWrite <= 0;
-					address <= address + 1;
-					if (address >= maxAddr) begin
-						curr_state <= main_state;
-					end
-					else begin
-						curr_state <= raise_read_record;
-					end
+				else if (record_2) begin
+				
 				end
-				raise_read_record : begin
-					playback <= 0;
-					if (count < 350) begin
-						count <= count + 1;
-						curr_state <= raise_read_record;
-					end
-					else if (record) begin
-						RAMin <= audio_out;
-						curr_state <= record_audio;
-					end
-					else begin
-						count <= 0;
-						address <= 0;
-						curr_state <= main_state;
-					end
+				else if (record_3) begin
+				
 				end
-				record_audio : begin
-					enableWrite <= 1;
-					curr_state <= raise_write_record;
-					
-					
-					
-					
-					//reqRead <= 0;
-					//if (dataPresent) begin
-						//message_exists <= 1;
-						//curr_state <= record_state;
-					//end
-					//else begin
-						//curr_state <= raise_write_record;
-					//end
+				else if (record_4) begin
+				
 				end
-				delone_state : begin
-				playback <= 0;
-					curr_state <= begin_deletion;
-					if (write_to_state_reg)
-						curr_state <= main_state;
+				else if (record_5) begin
+				
 				end
-				delall_state : begin
-					address <= 0;
-					playback <= 0;
-					maxAddr <= max_ram_address;
-					curr_state <= begin_deletion;
-					
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
-					if (write_to_state_reg)
-						curr_state <= main_state;
+			end
+			
+			else if (delall) begin
+				
+			end
+			
+			else if (delone) begin
+				if (delone_1) begin
+				
 				end
-				begin_deletion: begin
-					delete_finish <= 0;
-					RAMin <= 0;
-					enableWrite <= 1;
-					curr_state <= delete_loop;
+				else if (delone_2) begin
+				
 				end
-				delete_loop : begin
-					enableWrite <= 0;
-					address <= address + 1;
-					if (address >= maxAddr) begin
-						address <= 0;
-						delete_finish <= 1;
-						curr_state <= main_state;
-					end
-					else begin
-						curr_state <= begin_deletion;
-					end
+				else if (delone_3) begin
+				
 				end
-				vol_state : begin
-					if (volume_up && (volume_control < 15))
+				else if (delone_4) begin
+				
+				end
+				else if (delone_5) begin
+				
+				end
+			end
+			else if (vol) begin
+				if (volume_up && (volume_control < 15))
 						volume_control = volume_control + 1;
 					else if (volume_down && (volume_control > 1))
 						volume_control = volume_control - 1;
 					if (write_to_state_reg)
 						curr_state <= main_state;
-				end
-			endcase
+			end
 		end
 	end
 endmodule
