@@ -142,9 +142,7 @@ Analyzing Verilog file "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB
 Parsing module <ram_interface_wrapper>.
 Analyzing Verilog file "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" into library work
 Parsing module <controller>.
-ERROR:HDLCompiler:711 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 54: Found more than one declaration of port <AUD_DACLRCK>.
-INFO - You can change the severity of this error message to warning using switch -change_error_to_warning "HDLCompiler:711"
-ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: <LED> is not a port.
+ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: <max_ram_address> is not a port.
 ERROR:HDLCompiler:69 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: <data_in> is not declared.
 ERROR:HDLCompiler:69 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 25: <rd_data_pres> is not declared.
 ERROR:HDLCompiler:53 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 25: <read_ack> is not a port.
@@ -157,7 +155,7 @@ Verilog file C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Proj
 
 Total memory usage is 4449908 kilobytes
 
-Number of errors   :    9 (   0 filtered)
+Number of errors   :    8 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

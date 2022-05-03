@@ -21,9 +21,9 @@
 
 module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
 						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, 
-						KEY, LED, max_ram_address, ledRAM, data_in, write_enable, rdy, 
+						KEY, LED, ledRAM, data_in, write_enable, rdy, 
 						rd_data_pres, read_ack, reset, clk, sys_clk, clkout, 
-						hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
+						hw_ram_rasn, hw_ram_casn, hw_ram_wen, SW, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
 						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, 
 						hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, s_req, s_end);
 	
@@ -51,7 +51,6 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	inout AUD_ADCLRCK;
 	inout AUD_DACLRCK;
 	input  AUD_ADCDAT;
-   inout  AUD_DACLRCK;
 	
 	output AUD_DACDAT;
    output AUD_XCK;
@@ -61,6 +60,9 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
    output AUD_MUTE;
 	output PLL_LOCKED;
    input  [3:0] KEY;
+	input [3:0] SW;
+	output reg LED;
+	wire [25:0] max_ram_address;
 	
 	
 	

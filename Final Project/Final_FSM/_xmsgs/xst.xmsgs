@@ -5,10 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLCompiler" num="711" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 54: Found more than one declaration of port &lt;<arg fmt="%s" index="1">AUD_DACLRCK</arg>&gt;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="53" delta="new" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: &lt;<arg fmt="%s" index="1">LED</arg>&gt; is not a port.
+<msg type="error" file="HDLCompiler" num="53" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: &lt;<arg fmt="%s" index="1">max_ram_address</arg>&gt; is not a port.
 </msg>
 
 <msg type="error" file="HDLCompiler" num="69" delta="old" >"C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 24: &lt;<arg fmt="%s" index="1">data_in</arg>&gt; is not declared.
