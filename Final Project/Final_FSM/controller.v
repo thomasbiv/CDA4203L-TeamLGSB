@@ -463,7 +463,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 		
 		
 	always @(posedge wizclk) begin
-		if (~pb_reset) begin
+		if (pb_reset) begin
 			tmpData <= 0;
 			s_req_check <= 0;
 			s_end_check <= 0;
