@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon May 02 19:57:55 2022
+Tue May 03 10:41:41 2022
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -203,7 +203,7 @@ Pinout by Pin Number:
 |G5        |             |         |GND                          |         |             |              |          |         |           |         |         |          |           |                |
 |G6        |             |IOBM     |IO_L74P_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
 |G7        |             |IOBS     |IO_L73N_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
-|G8        |             |IOBM     |IO_L73P_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
+|G8        |audioCLK     |IOB      |IO_L73P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
 |G9        |             |         |NC                           |         |             |              |          |         |           |         |         |          |           |                |
 |G10       |             |         |VCCO_0                       |         |             |0             |          |         |           |         |3.30     |          |           |                |
 |G11       |             |         |NC                           |         |             |              |          |         |           |         |         |          |           |                |
@@ -312,8 +312,8 @@ Pinout by Pin Number:
 |M4        |hw_ram_ad<3> |IOB      |IO_L45P_M3A3_3               |TRISTATE |SSTL2_II     |3             |          |         |           |         |         |LOCATED   |NO         |NONE            |
 |M5        |hw_ram_ad<0> |IOB      |IO_L47P_M3A0_3               |TRISTATE |SSTL2_II     |3             |          |         |           |         |         |LOCATED   |NO         |NONE            |
 |M6        |PLL_LOCKED   |IOB      |IO_L31P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
-|M7        |             |IOBS     |IO_L25N_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
-|M8        |hw_zio_pin   |IOB      |IO_L25P_3                    |BIDIR    |LVCMOS25*    |3             |12        |SLOW     |           |NONE     |         |UNLOCATED |NO         |NONE            |
+|M7        |s_req        |IOB      |IO_L25N_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
+|M8        |status       |IOB      |IO_L25P_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
 |M9        |             |         |VCCINT                       |         |             |              |          |         |           |         |1.2      |          |           |                |
 |M10       |             |         |GND                          |         |             |              |          |         |           |         |         |          |           |                |
 |M11       |             |         |VCCINT                       |         |             |              |          |         |           |         |1.2      |          |           |                |
@@ -333,8 +333,8 @@ Pinout by Pin Number:
 |N3        |hw_ram_dq<0> |IOB      |IO_L37P_M3DQ0_3              |BIDIR    |SSTL2_II     |3             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |N4        |hw_ram_rasn  |IOB      |IO_L43P_GCLK23_M3RASN_3      |TRISTATE |LVCMOS25*    |3             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |N5        |             |         |VCCO_3                       |         |             |3             |          |         |           |         |2.50     |          |           |                |
-|N6        |             |IOBS     |IO_L24N_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
-|N7        |             |IOBM     |IO_L24P_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |
+|N6        |hw_zio_pin   |IOB      |IO_L24N_3                    |BIDIR    |LVCMOS25*    |3             |12        |SLOW     |           |NONE     |         |UNLOCATED |NO         |NONE            |
+|N7        |hw_rzq_pin   |IOB      |IO_L24P_3                    |BIDIR    |LVCMOS25*    |3             |12        |SLOW     |           |NONE     |         |UNLOCATED |NO         |NONE            |
 |N8        |             |         |VCCAUX                       |         |             |              |          |         |           |         |2.5      |          |           |                |
 |N9        |             |         |GND                          |         |             |              |          |         |           |         |         |          |           |                |
 |N10       |             |         |VCCINT                       |         |             |              |          |         |           |         |1.2      |          |           |                |
@@ -396,8 +396,8 @@ Pinout by Pin Number:
 |R22       |             |IOBS     |IO_L49N_M1DQ11_1             |UNUSED   |             |1             |          |         |           |         |         |          |           |                |
 |T1        |hw_ram_udqs_n|IOB      |IO_L34N_M3UDQSN_3            |TRISTATE |DIFF_SSTL2_II|3             |          |         |PULLUP     |         |         |LOCATED   |NO         |NONE            |
 |T2        |hw_ram_udqs_p|IOB      |IO_L34P_M3UDQS_3             |BIDIR    |DIFF_SSTL2_II|3             |          |         |PULLDOWN   |NONE     |         |LOCATED   |NO         |NONE            |
-|T3        |status       |IOB      |IO_L26N_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
-|T4        |hw_rzq_pin   |IOB      |IO_L26P_3                    |BIDIR    |LVCMOS25*    |3             |12        |SLOW     |           |NONE     |         |UNLOCATED |NO         |NONE            |
+|T3        |s_end        |IOB      |IO_L26N_3                    |OUTPUT   |LVCMOS25*    |3             |12        |SLOW     |           |         |         |UNLOCATED |NO         |NONE            |
+|T4        |KEY<0>       |IOB      |IO_L26P_3                    |INPUT    |LVCMOS25*    |3             |          |         |           |NONE     |         |UNLOCATED |NO         |NONE            |
 |T5        |             |         |NC                           |         |             |              |          |         |           |         |         |          |           |                |
 |T6        |             |         |NC                           |         |             |              |          |         |           |         |         |          |           |                |
 |T7        |             |IOBS     |IO_L10N_3                    |UNUSED   |             |3             |          |         |           |         |         |          |           |                |

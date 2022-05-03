@@ -19,9 +19,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module controller( pause_play, scroll_up, scroll_down, select, back, switches, leds, rs232_tx, rs232_rx, reset, clk, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
-						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, KEY, SW, hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
-						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, status);
+module controller( pause_play, scroll_up, scroll_down, select, back, switches, leds, rs232_tx, rs232_rx, reset, clk, AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, audioCLK, s_end, 
+						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, KEY, hw_ram_rasn, hw_ram_casn, hw_ram_wen, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, s_req,
+						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, status, OSC_100MHz);
 
 	// Top-level Inputs and Outputs
 	// These connect directly to FPGA pins via the pin map
@@ -55,11 +55,11 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
     output AUD_MUTE;
 	 output PLL_LOCKED;
     input  [3:0] KEY;
-    input [15:0] audio_out;
-	 output [15:0] audio_in;
 	 output audioCLK;
 	 output s_end;
 	 output s_req;
+	 
+	 
 		
 	// Memory Module Wires
 	output hw_ram_rasn;
@@ -154,11 +154,16 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg delone_4;
 	reg delone_5;
 	reg [3:0] volume_control;
-	wire [15:0] audio_out;
 	reg volume_up;
 	reg volume_down;
 	reg write;
 	reg read;
+	reg read_state;
+	reg tmpData;
+	reg s_req_check;
+	reg s_end_check;
+	reg [15:0] audio_out;
+	wire [15:0] audio_in;
 	
 	
 	
@@ -198,12 +203,14 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		maxAddr <= 0;
 		message_exists <= 0;
 		delete_finish <= 0;
-		playback <= 0;
 		curr_state <= 8'h00;
 		count <= 0;
 		write <= 0;
 		read <= 0;
 		read_state <= 0;
+		tmpData <= 0;
+		s_req_check <= 0;
+		s_end_check <= 0;
 	end
 	
 
@@ -303,8 +310,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.max_ram_address(max_ram_address) 
 	);
 	
+	
 	sockit_top what(
-		.OSC_100CMHz(clk2),
+		.OSC_100MHz(clk2),
 		//.volume_control(volume_control),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
 		.AUD_ADCDAT(AUD_ADCDAT),
@@ -318,9 +326,10 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		.PLL_LOCKED(PLL_LOCKED),
 		.KEY(KEY),
 		.audio_out(audio_out),
-		audioCLK(audioCLK),
-		s_end(s_end),
-		s_req(s_req),
+		.audio_in(audio_in),
+		.audioCLK(audioCLK),
+		.s_end(s_end),
+		.s_req(s_req)
 	);
 	
 	// PB I/O selection/routing
@@ -454,69 +463,297 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 		
 	always @(posedge wizclk) begin
 		if (~pb_reset) begin
-			curr_state <= main_state;
+			tmpData <= 0;
+			s_req_check <= 0;
+			s_end_check <= 0;
 		end
 		else if (status) begin
 			if (play) begin
 				if (play_1) begin
-					/*
 					if (address <= 26'h333332) begin
-						if () begin
+						if (read_state == 0) begin
+							reqRead <= 1;
+							address = address + 1;
+							read_state <= 1;
+							ackRead = 0;
+						end
+						else if (read_state == 1) begin
+							if (dataPresent) begin
+								ackRead = 1;
+								tmpData <= RAMout;
+								reqRead <= 0;
+							end
+							if (s_req == 0) begin
+								s_req_check <= 1;
+							end
+							if (s_req && s_req_check) begin
+								s_req_check <= 0;
+								audio_out <= tmpData;
+								read_state <= 0;
+							end
 						end
 					end
-					*/
 				end
 				else if (play_2) begin
-				
+					if (address <= 26'h666665) begin
+						if (read_state == 0) begin
+							reqRead <= 1;
+							address = address + 1;
+							read_state <= 1;
+							ackRead = 0;
+						end
+						else if (read_state == 1) begin
+							if (dataPresent) begin
+								ackRead = 1;
+								tmpData <= RAMout;
+								reqRead <= 0;
+							end
+							if (s_req == 0) begin
+								s_req_check <= 1;
+							end
+							if (s_req && s_req_check) begin
+								s_req_check <= 0;
+								audio_out <= tmpData;
+								read_state <= 0;
+							end
+						end
+					end
 				end
 				else if (play_3) begin
-				
+					if (address <= 26'h999998) begin
+						if (read_state == 0) begin
+							reqRead <= 1;
+							address = address + 1;
+							read_state <= 1;
+							ackRead = 0;
+						end
+						else if (read_state == 1) begin
+							if (dataPresent) begin
+								ackRead = 1;
+								tmpData <= RAMout;
+								reqRead <= 0;
+							end
+							if (s_req == 0) begin
+								s_req_check <= 1;
+							end
+							if (s_req && s_req_check) begin
+								s_req_check <= 0;
+								audio_out <= tmpData;
+								read_state <= 0;
+							end
+						end
+					end
 				end
 				else if (play_4) begin
-				
+					if (address <= 26'hCCCCCB) begin
+						if (read_state == 0) begin
+							reqRead <= 1;
+							address = address + 1;
+							read_state <= 1;
+							ackRead = 0;
+						end
+						else if (read_state == 1) begin
+							if (dataPresent) begin
+								ackRead = 1;
+								tmpData <= RAMout;
+								reqRead <= 0;
+							end
+							if (s_req == 0) begin
+								s_req_check <= 1;
+							end
+							if (s_req && s_req_check) begin
+								s_req_check <= 0;
+								audio_out <= tmpData;
+								read_state <= 0;
+							end
+						end
+					end
 				end
 				else if (play_5) begin
-				
+					if (address <= max_ram_address) begin
+						if (read_state == 0) begin
+							reqRead <= 1;
+							address = address + 1;
+							read_state <= 1;
+							ackRead = 0;
+						end
+						else if (read_state == 1) begin
+							if (dataPresent) begin
+								ackRead = 1;
+								tmpData <= RAMout;
+								reqRead <= 0;
+							end
+							if (s_req == 0) begin
+								s_req_check <= 1;
+							end
+							if (s_req && s_req_check) begin
+								s_req_check <= 0;
+								audio_out <= tmpData;
+								read_state <= 0;
+							end
+						end
+					end
 				end
 			end
 			
 			else if (record) begin
 				if (record_1) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'h333332)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= audio_in;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (record_2) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'h666665)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= audio_in;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (record_3) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'h999998)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= audio_in;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (record_4) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'hCCCCCB)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= audio_in;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (record_5) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= max_ram_address)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= audio_in;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 			end
 			
 			else if (delall) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= max_ram_address)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= audio_in;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 			end
 			
 			else if (delone) begin
 				if (delone_1) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'h333332)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= 0;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (delone_2) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'h666665)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= 0;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (delone_3) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'h999998)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= 0;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (delone_4) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= 26'hCCCCCB)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= 0;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 				else if (delone_5) begin
-				
+					if (s_end == 0) begin
+						s_end_check <= 1;
+					end
+					if ((s_end && s_end_check) && (address <= max_ram_address)) begin
+						address = address + 1;
+						enableWrite <= 1;
+						RAMin <= 0;
+						s_end_check <= 0;
+					end
+					else begin
+						enableWrite <= 0;
+					end
 				end
 			end
 			else if (vol) begin
