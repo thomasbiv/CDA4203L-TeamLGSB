@@ -403,6 +403,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 				delone <= (pb_out_port == 8'h03);
 				delall <= (pb_out_port == 8'h04);
 				vol <= (pb_out_port == 8'h05);
+				are_recording <= 0;
 			end
 			if (file_selection) begin
 				if (play) begin
@@ -481,8 +482,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 				ledreg[5] <= 0;
 			end
 			else if (play) begin
-				ledreg[1] <= 1;
 				ledreg[0] <= 0;
+				ledreg[1] <= 1;
 				if (play_1) begin
 					if (address <= 26'h333332) begin
 						if (read_state == 0) begin
@@ -632,7 +633,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 				else if (record_2) begin
 					if (are_recording) begin
 						if (s_end == 0) begin
-							s_end_check <= 1;
+						s_end_check <= 1;
 						end
 						if ((s_end && s_end_check) && (address <= 26'h666665)) begin
 							address = address + 1;
