@@ -9,7 +9,7 @@
 </msg>
 
 <msg type="info" file="LIT" num="395" delta="old" >The above <arg fmt="%s" index="1">info</arg> message is repeated <arg fmt="%d" index="2">11</arg> more times for the following (max. 5 shown):
-<arg fmt="%s" index="3">N420,
+<arg fmt="%s" index="3">N418,
 KEY&lt;3&gt;,
 KEY&lt;2&gt;,
 KEY&lt;1&gt;,

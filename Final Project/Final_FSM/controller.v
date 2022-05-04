@@ -190,7 +190,7 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 					if (s_req == 0) begin
 						s_req_check <= 1;
 					end
-					if (s_req && s_req_check) begin
+					if (s_req_check) begin
 						s_req_check <= 0;
 						audio_out <= tmpData;
 						read_state <= 0;
@@ -202,7 +202,7 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 				if (s_end == 0) begin
 					s_end_check <= 1;
 				end
-				if (s_end && s_end_check) begin
+				if (s_end_check) begin
 					address <= address + 1;
 					enableWrite <= 1;
 					RAMin <= audio_in;

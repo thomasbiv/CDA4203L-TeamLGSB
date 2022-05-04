@@ -16,7 +16,7 @@ Checking Constraint Associations...
 Done...
 
 Checking expanded design ...
-WARNING:NgdBuild:452 - logical net 'N420' has no driver
+WARNING:NgdBuild:452 - logical net 'N418' has no driver
 WARNING:NgdBuild:470 - bidirect pad net 'AUD_DACLRCK' has no legal driver
 
 Partition Implementation Status
@@ -30,7 +30,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   2
 
-Total memory usage is 4414308 kilobytes
+Total memory usage is 4414344 kilobytes
 
 Writing NGD file "controller.ngd" ...
 Total REAL time to NGDBUILD completion:  2 sec
