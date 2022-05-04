@@ -827,9 +827,9 @@
                              COMPARE s0, 01
                              JUMP Z, play_recording
                              COMPARE playing, 01
-                             JUMP NZ, play_recording_msg
-                             COMPARE s0, 00
-                             JUMP Z, pause
+                             JUMP Z, play_recording_msg
+                             ;COMPARE s0, 00
+                             ;JUMP Z, pause
                              COMPARE s1, 01
                              JUMP Z, stop_playing
                              JUMP play_recording_wait
