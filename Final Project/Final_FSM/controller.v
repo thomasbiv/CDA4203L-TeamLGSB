@@ -153,7 +153,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 	reg delone_3;
 	reg delone_4;
 	reg delone_5;
-	reg [3:0] volume_control;
+	reg [11:0] volume_control;
 	wire [15:0] audio_out;
 	reg volume_up;
 	reg volume_down;
@@ -395,29 +395,30 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				delone <= (pb_out_port == 8'h03);
 				delall <= (pb_out_port == 8'h04);
 				vol <= (pb_out_port == 8'h05);
+				
+				//new picoblaze:
+				//pause <= (pb_out_port == 8'06);
 			end
-			if (file_selection) begin
-				if (play) begin
-					play_1 <= (pb_out_port == 8'h00);
-					play_2 <= (pb_out_port == 8'h01);
-					play_3 <= (pb_out_port == 8'h02);
-					play_4 <= (pb_out_port == 8'h03);
-					play_5 <= (pb_out_port == 8'h04);
-				end
-				else if (delone) begin
-					delone_1 <= (pb_out_port == 8'h00);
-					delone_2 <= (pb_out_port == 8'h01);
-					delone_3 <= (pb_out_port == 8'h02);
-					delone_4 <= (pb_out_port == 8'h03);
-					delone_5 <= (pb_out_port == 8'h04);
-				end
-				else if (record) begin
-					record_1 <= (pb_out_port == 8'h00);
-					record_2 <= (pb_out_port == 8'h01);
-					record_3 <= (pb_out_port == 8'h02);
-					record_4 <= (pb_out_port == 8'h03);  
-					record_5 <= (pb_out_port == 8'h04);
-				end
+			if (play) begin
+				play_1 <= (pb_out_port == 8'h00);
+				play_2 <= (pb_out_port == 8'h01);
+				play_3 <= (pb_out_port == 8'h02);
+				play_4 <= (pb_out_port == 8'h03);
+				play_5 <= (pb_out_port == 8'h04);
+			end
+			else if (delone) begin
+				delone_1 <= (pb_out_port == 8'h00);
+				delone_2 <= (pb_out_port == 8'h01);
+				delone_3 <= (pb_out_port == 8'h02);
+				delone_4 <= (pb_out_port == 8'h03);
+				delone_5 <= (pb_out_port == 8'h04);
+			end
+			else if (record) begin
+				record_1 <= (pb_out_port == 8'h00);
+				record_2 <= (pb_out_port == 8'h01);
+				record_3 <= (pb_out_port == 8'h02);
+				record_4 <= (pb_out_port == 8'h03);  
+				record_5 <= (pb_out_port == 8'h04);
 			end
 			if (vol_sel) begin
 				if (vol) begin
@@ -431,268 +432,190 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, l
 				end
 			end
 		end
-	end
-		
+	end		
 		
 	
 	
 	// Initialize state
-	localparam main_state = 8'h00;
-	localparam play_state = 8'h01;
-	localparam record_state = 8'h02;
-	localparam delone_state = 8'h03;
-	localparam delall_state = 8'h04;
-	localparam vol_state = 8'h05;
-	localparam raise_write_record = 8'h06;
-	localparam lower_write_record = 8'h07;
-	localparam raise_read_play = 8'h08;
-	localparam play_audio = 8'h09;
-	localparam lower_ack_read = 8'h0A;
-	localparam raise_read_record = 8'h0B;
-	localparam record_audio = 8'h0C;
-	localparam begin_deletion = 8'h0D;
-	localparam delete_loop = 8'h0E;
+	localparam main_1 = 8'h00;
+	localparam record_one = 8'h11;
+	localparam record_two = 8'h01;
+	localparam record_three = 8'h12;
+	localparam record_four = 8'h02;
+	localparam playback_one = 8'h03;
+	localparam playback_two = 8'h14;
+	localparam playback_three = 8'h24;
+	localparam playback_four = 8'h04;
+	localparam playback_five = 8'h05;
+	
+	localparam delete_all = 8'h17;
+	localparam delete_all_one = 8'h07;
+	localparam delete_all_two = 8'h18;
+	localparam delete_all_three = 8'h08;
 	
 	
 		
 		
 		
 	always @(posedge wizclk) begin
-		if (~pb_reset) begin
+		if (~reset) begin
 			curr_state <= main_state;
 		end
 		else if (status) begin
 			case (curr_state)
 				main_state : begin
+					if (main_1) begin
+						curr_state <= record_one;
+					end
+					else if (play && (address < max_ram_address)) begin
+						address <= 0;
+						curr_state <= playback_one;
+					end
+					else if (delete) begin
+						curr_state <= main_1;
+					end
+					else if (delete_all) begin
+						address <= 0;
+						curr_state <= delete_all;
+					end
+					else begin
+						curr_state <= main_one;
+					end
 					count <= 0;
-					if (play) begin
-						if (play_1) begin
-							address <= 0;
-							maxAddr <= 26'h333332;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the first file
-						end
-						else if (play_2) begin
-							address <= 26'h333333;
-							maxAddr <= 26'h666665;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the second file
-						end
-						else if (play_3) begin
-							address <= 26'h666666;
-							maxAddr <= 26'h999998;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the third file
-						end
-						else if (play_4) begin
-							address <= 26'h999999;
-							maxAddr <= 26'hCCCCCB;
-							curr_state <= play_state;
-							//some stuff with the memory locale of the fourth file
-						end
-						else if (play_5) begin
-							address <= 26'hCCCCCC;
-							maxAddr <= max_ram_address;
-							curr_state <= play_state;
-						end
+					playback <= 0;
+				end
+				record_one: begin
+					address <= 0;
+					curr_state <= record_two;
+				end
+				
+				record_two: begin
+					playback <= 0;
+					LEDRAM <= 1'b0;
+					if (count < 350) begin
+						count <= count + 1;
+						curr_state <= record_two;
 					end
 					else if (record) begin
-						if (record_1) begin
-							address <= 0;
-							maxAddr <= 26'h333332;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the first file
-						end
-						else if (record_2) begin
-							address <= 26'h333333;
-							maxAddr <= 26'h666665;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the second file
-						end
-						else if (record_3) begin
-							address <= 26'h666666;
-							maxAddr <= 26'h999998;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the third file
-						end
-						else if (record_4) begin
-							address <= 26'h999999;
-							maxAddr <= 26'hCCCCCB;
-							curr_state <= record_state;
-							//some stuff with the memory locale of the fourth file
-						end
-						else if (record_5) begin
-							address <= 26'hCCCCCC;
-							maxAddr <= max_ram_address;
-							curr_state <= record_state;
-						end
-					end
-					else if (delone) begin
-						if (delone_1) begin
-							address <= 0;
-							maxAddr <= 26'h333332;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the first file
-						end
-						else if (delone_2) begin
-							address <= 26'h333333;
-							maxAddr <= 26'h666665;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the second file
-						end
-						else if (delone_3) begin
-							address <= 26'h666666;
-							maxAddr <= 26'h999998;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the third file
-						end
-						else if (delone_4) begin
-							address <= 26'h999999;
-							maxAddr <= 26'hCCCCCB;
-							curr_state <= delone_state;
-							//some stuff with the memory locale of the fourth file
-						end
-						else if (delone_5) begin
-							address <= 26'hCCCCCC;
-							maxAddr <= max_ram_address;
-							curr_state <= delone_state;
-						end
-					end
-					else if (delall)
-						curr_state <= delall_state;
-					else if (vol)
-						curr_state <= vol_state;
-					//check val of write_to_state_reg
-					//Main menu state
-				end
-				play_state : begin
-					if (play_1) begin
-						curr_state <= raise_read_play;
-						//some stuff with the memory locale of the first file
-					end
-					else if (play_2) begin
-						curr_state <= raise_read_play;
-						//some stuff with the memory locale of the second file
-					end
-					else if (play_3) begin
-						curr_state <= raise_read_play;
-						//some stuff with the memory locale of the third file
-					end
-					else if (play_4) begin
-						curr_state <= raise_read_play;
-						//some stuff with the memory locale of the fourth file
-					end
-					else if (play_5) begin
-						curr_state <= raise_read_play;
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
-					end
-					if (write_to_state_reg)
-						curr_state <= main_state;
-				end
-				raise_read_play : begin
-					playback <= 1;
-					enableWrite <= 0;
-					reqRead <= 1;
-					curr_state <= play_audio;
-				end
-				play_audio : begin
-					reqRead <= 0;
-					if (dataPresent) begin
-						mem_out <= RAMout;
-						ackRead <= 1;
-						curr_state <= lower_ack_read;
-					end
-				end
-				lower_ack_read : begin
-					ackRead <= 0;
-					address <= address + 1;
-					if (address >= maxAddr)
-						curr_state <= main_state;
-					else
-						curr_state <= play_state;
-				end
-				record_state : begin
-					if (are_recording)
-						curr_state <= raise_read_record;
-						//AMin <= audio_out; 
-						//curr_state = raise_write_record;
-						
-						//check val of write_to_state_reg
-						//some shit would go here from picoblaze maybe idfk
-						//nested FSM of some kind from another file?
-					if (write_to_state_reg)
-						curr_state <= main_state;
-				end
-				raise_write_record : begin 
-					RAMin <= audio_out;
-					enableWrite <= 1;
-					curr_state <= lower_write_record;
-				end
-				raise_read_record : begin
-					playback <= 0;
-					enableWrite <= 0;
-					reqRead <= 1;
-					curr_state <= record_audio;
-				end
-				record_audio : begin
-					reqRead <= 0;
-					if (dataPresent) begin
-						message_exists <= 1;
-						curr_state <= record_state;
+						RAMin <= audio_output;
+						curr_state <= record_three;
 					end
 					else begin
-						curr_state <= raise_write_record;
-					end
-				end
-				lower_write_record : begin
-					enableWrite <= 0;
-					curr_state <= record_state;
-				end
-				delone_state : begin
-				playback <= 0;
-					curr_state <= begin_deletion;
-					if (write_to_state_reg)
-						curr_state <= main_state;
-				end
-				delall_state : begin
-					address <= 0;
-					playback <= 0;
-					maxAddr <= max_ram_address;
-					curr_state <= begin_deletion;
-					
-					//check val of write_to_state_reg
-					//some shit would go here from picoblaze maybe idfk
-					//nested FSM of some kind from another file?
-					if (write_to_state_reg)
-						curr_state <= main_state;
-				end
-				begin_deletion: begin
-					delete_finish <= 0;
-					RAMin <= 0;
-					enableWrite <= 1;
-					curr_state <= delete_loop;
-				end
-				delete_loop : begin
-					enableWrite <= 0;
-					address <= address + 1;
-					if (address >= maxAddr) begin
+						curr_state <= main_1;
+						count <= 0;
 						address <= 0;
-						delete_finish <= 1;
-						curr_state <= main_state;
-					end
-					else begin
-						curr_state <= begin_deletion;
 					end
 				end
-				vol_state : begin
-					if (volume_up && (volume_control < 15))
-						volume_control = volume_control + 1;
-					else if (volume_down && (volume_control > 1))
-						volume_control = volume_control - 1;
-					if (write_to_state_reg)
-						curr_state <= main_state;
+				
+				record_three: begin
+					enableWrite <= 1'b1;
+					curr_state <= record_four;
+				end
+				
+				record_four: begin
+					count <= 0;
+					enableWrite <= 1'b0;
+					address <= address + 1;
+					if (address >= max_ram_address) begin
+						LEDRAM <= 1'b1;
+						curr_state <= main_1;
+					end
+					else begin
+						curr_state <= record_two;
+						STATLED2 <= 1;
+					end
+				end
+				
+				// PLAYBACK STATE
+				playback_one: begin
+					playback <= 1;
+					if (play) begin
+						curr_state <= playback_two;
+					end
+					else begin
+						curr_state <= main_1;
+					end
+				end
+				
+				playback_two: begin
+					if (count < 350) begin
+						count <= count + 1;
+						curr_state <= playback_two;
+					end
+					else begin
+						curr_state <= playback_three;
+					end
+				end
+				
+				playback_three: begin
+					enableWrite <= 1'b0;
+					reqRead <= 1'b1;
+					curr_state <= playback_four;
+				end
+				
+				playback_four: begin
+					readReq <= 1'b0;
+					if(dataPresent) begin
+						mem_out <= RAMout;
+						ackRead <= 1'b1;
+						curr_state <= playback_five;
+					end
+			
+					else begin
+						reqRead <= 1'b1;
+						state <= playback_four;
+					end
+				end
+				
+				playback_five: begin
+					ackRead <= 1'b0;
+					address <= address + 1;
+					count <= 0;
+					if (address >= max_ram_address) begin
+						curr_state <= main_1;
+					end
+					else begin
+						curr_state <= playback_one;
+					end
+				end
+				
+				
+				// DELETE_ALL
+				delete_all: begin
+					address <= 0;
+					curr_state <= delete_all_one;
+				end
+				
+				delete_all_one: begin
+					playback <= 0;
+					if(delete_all) begin
+						RAMin <= 0;
+						curr_state <= delete_all_two;
+					end
+					else begin
+						address <= 0;
+						curr_state <= main_1;
+					end
+				end
+				
+				delete_all_two: begin
+					enableWrite <= 1'b1;
+					curr_state <= delete_all_three;
+				end
+				
+				delete_all_three: begin
+					enableWrite <= 1'b0;
+					address <= address + 1;
+					if(address >= max_ram_address) begin
+						LEDRAM <= 1'b0;
+						deletedall <= 1;
+						address <= 0;
+						curr_state <= main_1;
+					end
+					else	begin
+						deletedall <= 0;
+						curr_state <= delete_all_one;
+					end
 				end
 			endcase
 		end

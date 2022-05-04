@@ -969,16 +969,15 @@ INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final 
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
     Found 26-bit adder for signal <address[25]_GND_1_o_add_109_OUT> created at line 610.
-    Found 4-bit adder for signal <volume_control[3]_GND_1_o_add_122_OUT> created at line 691.
-    Found 4-bit subtractor for signal <GND_1_o_GND_1_o_sub_125_OUT<3:0>> created at line 693.
-    Found 8-bit 15-to-1 multiplexer for signal <_n0458> created at line 366.
+    Found 4-bit adder for signal <volume_control[3]_PWR_1_o_add_121_OUT> created at line 691.
+    Found 4-bit subtractor for signal <GND_1_o_GND_1_o_sub_124_OUT<3:0>> created at line 693.
+    Found 8-bit 15-to-1 multiplexer for signal <_n0456> created at line 366.
     Found 26-bit comparator greater for signal <n0201> created at line 611
-    Found 4-bit comparator greater for signal <volume_control[3]_PWR_1_o_LessThan_122_o> created at line 690
-    Found 4-bit comparator greater for signal <GND_1_o_volume_control[3]_LessThan_124_o> created at line 692
+    Found 4-bit comparator greater for signal <PWR_1_o_volume_control[3]_LessThan_123_o> created at line 692
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred 126 D-type flip-flop(s).
-	inferred   3 Comparator(s).
+	inferred   2 Comparator(s).
 	inferred  35 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <controller> synthesized.
@@ -2612,12 +2611,12 @@ INFO:Xst:1799 - State 111010 is never reached in FSM <STATE>.
     Found 8-bit adder for signal <counter_inc[7]_GND_92_o_add_211_OUT> created at line 1470.
     Found 8-bit adder for signal <DQS_DELAY[7]_GND_92_o_add_214_OUT> created at line 1475.
     Found 8-bit adder for signal <counter_dec[7]_GND_92_o_add_225_OUT> created at line 1495.
-    Found 15-bit adder for signal <_n0867> created at line 471.
+    Found 15-bit adder for signal <_n0868> created at line 471.
     Found 15-bit adder for signal <n0476> created at line 471.
     Found 13-bit adder for signal <_n0875> created at line 471.
-    Found 13-bit adder for signal <n0466> created at line 471.
-    Found 13-bit adder for signal <_n0877> created at line 471.
     Found 13-bit adder for signal <n0484> created at line 471.
+    Found 13-bit adder for signal <_n0877> created at line 471.
+    Found 13-bit adder for signal <n0466> created at line 471.
     Found 1-bit 3-to-1 multiplexer for signal <IODRP_SDO> created at line 795.
     Found 10-bit comparator greater for signal <RstCounter[9]_PWR_91_o_LessThan_17_o> created at line 566
     Found 8-bit comparator greater for signal <Dec_Flag> created at line 763
@@ -2805,7 +2804,6 @@ Synthesizing Unit <audio_effects>.
     Related source file is "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\audio_effects.v".
         SINE = 0
         FEEDBACK = 1
-WARNING:Xst:647 - Input <volume_control> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <control<3:2>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:2999 - Signal 'romdata', unconnected in block 'audio_effects', is tied to its initial value.
 WARNING:Xst:3035 - Index value(s) does not match array range for signal <romdata>, simulation mismatch.
@@ -2813,9 +2811,11 @@ WARNING:Xst:3035 - Index value(s) does not match array range for signal <romdata
     Found 16-bit register for signal <dat>.
     Found 7-bit register for signal <index>.
     Found 16-bit register for signal <last_sample>.
-    Found 7-bit adder for signal <index[6]_GND_143_o_add_5_OUT> created at line 137.
+    Found 7-bit adder for signal <index[6]_GND_143_o_add_6_OUT> created at line 137.
+    Found 16x4-bit multiplier for signal <n0024> created at line 131.
     Summary:
 	inferred   1 RAM(s).
+	inferred   1 Multiplier(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred  39 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
@@ -2828,8 +2828,8 @@ Macro Statistics
 # RAMs                                                 : 2
  100x16-bit single-port Read Only RAM                  : 1
  16x24-bit single-port Read Only RAM                   : 1
-# Multipliers                                          : 2
- 16x4-bit multiplier                                   : 2
+# Multipliers                                          : 3
+ 16x4-bit multiplier                                   : 3
 # Adders/Subtractors                                   : 44
  10-bit adder                                          : 5
  11-bit adder                                          : 3
@@ -2866,10 +2866,10 @@ Macro Statistics
  6-bit register                                        : 5
  7-bit register                                        : 6
  8-bit register                                        : 20
-# Comparators                                          : 18
+# Comparators                                          : 17
  10-bit comparator greater                             : 1
  26-bit comparator greater                             : 1
- 4-bit comparator greater                              : 2
+ 4-bit comparator greater                              : 1
  6-bit comparator equal                                : 1
  6-bit comparator greater                              : 1
  7-bit comparator equal                                : 1
@@ -2941,7 +2941,7 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_romdata> will be implemented on LUTs
 Unit <audio_effects> synthesized (advanced).
 
 Synthesizing (advanced) Unit <controller>.
-The following registers are absorbed into counter <volume_control>: 1 register on signal <volume_control>.
+The following registers are absorbed into accumulator <volume_control>: 1 register on signal <volume_control>.
 Unit <controller> synthesized (advanced).
 
 Synthesizing (advanced) Unit <i2c_av_config>.
@@ -2981,7 +2981,7 @@ The following registers are absorbed into counter <DQS_DELAY>: 1 register on sig
 The following registers are absorbed into counter <counter_inc>: 1 register on signal <counter_inc>.
 The following registers are absorbed into counter <counter_dec>: 1 register on signal <counter_dec>.
 	The following adders/subtractors are grouped into adder tree <Madd_n0466_Madd1> :
- 	<Madd_n0708[10:0]_Madd> in block <mcb_soft_calibration>, 	<Madd_n0711[11:0]_Madd> in block <mcb_soft_calibration>, 	<Madd__n0875_Madd> in block <mcb_soft_calibration>.
+ 	<Madd_n0708[10:0]_Madd> in block <mcb_soft_calibration>, 	<Madd_n0711[11:0]_Madd> in block <mcb_soft_calibration>, 	<Madd__n0877_Madd> in block <mcb_soft_calibration>.
 	The following adders/subtractors are grouped into adder tree <Madd_n0737[9:0]1> :
  	<Madd_n0731[7:0]> in block <mcb_soft_calibration>, 	<Madd_n0734[8:0]> in block <mcb_soft_calibration>, 	<Madd_n0737[9:0]> in block <mcb_soft_calibration>.
 Unit <mcb_soft_calibration> synthesized (advanced).
@@ -2997,8 +2997,8 @@ Macro Statistics
 # RAMs                                                 : 2
  100x16-bit single-port distributed Read Only RAM      : 1
  16x24-bit single-port distributed Read Only RAM       : 1
-# Multipliers                                          : 2
- 16x4-bit multiplier                                   : 2
+# Multipliers                                          : 3
+ 16x4-bit multiplier                                   : 3
 # Adders/Subtractors                                   : 20
  10-bit adder                                          : 7
  11-bit adder                                          : 1
@@ -3012,25 +3012,26 @@ Macro Statistics
 # Adder Trees                                          : 2
  10-bit / 4-inputs adder tree                          : 1
  8-bit / 5-inputs adder tree                           : 1
-# Counters                                             : 17
+# Counters                                             : 16
  10-bit up counter                                     : 1
  13-bit up counter                                     : 1
  16-bit up counter                                     : 1
  2-bit up counter                                      : 1
  3-bit up counter                                      : 2
  4-bit up counter                                      : 1
- 4-bit updown counter                                  : 1
  5-bit up counter                                      : 1
  6-bit up counter                                      : 1
  7-bit up counter                                      : 2
  8-bit up counter                                      : 4
  8-bit updown counter                                  : 1
+# Accumulators                                         : 1
+ 4-bit updown accumulator                              : 1
 # Registers                                            : 656
  Flip-Flops                                            : 656
-# Comparators                                          : 18
+# Comparators                                          : 17
  10-bit comparator greater                             : 1
  26-bit comparator greater                             : 1
- 4-bit comparator greater                              : 2
+ 4-bit comparator greater                              : 1
  6-bit comparator equal                                : 1
  6-bit comparator greater                              : 1
  7-bit comparator equal                                : 1
@@ -3250,6 +3251,7 @@ Optimizing unit <kcpsm6> ...
 Optimizing unit <program> ...
 
 Optimizing unit <controller> ...
+WARNING:Xst:1293 - FF/Latch <volume_control_0> has a constant value of 1 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <audio_codec> ...
 
@@ -3297,7 +3299,7 @@ WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_interrupt_flop> has a constant 
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_interrupt_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block controller, actual ratio is 5.
+Found area constraint ratio of 100 (+ 5) on block controller, actual ratio is 6.
 INFO:Xst:2260 - The FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> in Unit <controller> is equivalent to the following FF/Latch : <CPU/pblaze_cpu/sync_interrupt_flop> 
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_interrupt_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
@@ -3317,8 +3319,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 752
- Flip-Flops                                            : 752
+# Registers                                            : 751
+ Flip-Flops                                            : 751
 
 =========================================================================
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
@@ -3345,26 +3347,26 @@ Top Level Output File Name         : controller.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1739
+# BELS                             : 1853
 #      GND                         : 1
 #      INV                         : 24
 #      LUT1                        : 70
-#      LUT2                        : 205
-#      LUT3                        : 158
-#      LUT4                        : 197
-#      LUT5                        : 171
-#      LUT6                        : 348
+#      LUT2                        : 213
+#      LUT3                        : 160
+#      LUT4                        : 223
+#      LUT5                        : 165
+#      LUT6                        : 351
 #      LUT6_2                      : 78
 #      MULT_AND                    : 7
-#      MUXCY                       : 226
+#      MUXCY                       : 265
 #      MUXF7                       : 23
 #      VCC                         : 1
-#      XORCY                       : 230
-# FlipFlops/Latches                : 752
+#      XORCY                       : 272
+# FlipFlops/Latches                : 751
 #      FD                          : 133
 #      FDC                         : 19
 #      FDCE                        : 26
-#      FDE                         : 178
+#      FDE                         : 177
 #      FDP                         : 1
 #      FDR                         : 166
 #      FDRE                        : 210
@@ -3406,18 +3408,18 @@ Selected Device : 6slx45csg484-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             752  out of  54576     1%  
- Number of Slice LUTs:                 1291  out of  27288     4%  
-    Number used as Logic:              1251  out of  27288     4%  
+ Number of Slice Registers:             751  out of  54576     1%  
+ Number of Slice LUTs:                 1324  out of  27288     4%  
+    Number used as Logic:              1284  out of  27288     4%  
     Number used as Memory:               40  out of   6408     0%  
        Number used as RAM:               24
        Number used as SRL:               16
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1468
-   Number with an unused Flip Flop:     716  out of   1468    48%  
-   Number with an unused LUT:           177  out of   1468    12%  
-   Number of fully used LUT-FF pairs:   575  out of   1468    39%  
+ Number of LUT Flip Flop pairs used:   1500
+   Number with an unused Flip Flop:     749  out of   1500    49%  
+   Number with an unused LUT:           176  out of   1500    11%  
+   Number of fully used LUT-FF pairs:   575  out of   1500    38%  
    Number of unique control sets:        85
 
 IO Utilization: 
@@ -3451,8 +3453,8 @@ Clock Information:
 ----------------------------------------------------------------------+-----------------------------------+-------+
 Clock Signal                                                          | Clock buffer(FF name)             | Load  |
 ----------------------------------------------------------------------+-----------------------------------+-------+
-clk                                                                   | PLL_ADV:CLKOUT2                   | 102   |
 clk                                                                   | PLL_ADV:CLKOUT2+DCM_SP:CLKFX      | 200   |
+clk                                                                   | PLL_ADV:CLKOUT2                   | 101   |
 what/pll/pll_base_inst/CLKOUT1                                        | NONE(what/audio_selection_15)     | 111   |
 what/pll/pll_base_inst/CLKOUT0                                        | BUFG                              | 48    |
 clk                                                                   | PLL_ADV:CLKOUT3                   | 317   |
@@ -3480,7 +3482,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 12.126ns (frequency: 82.471MHz)
-  Total number of paths / destination ports: 69986 / 1431
+  Total number of paths / destination ports: 69952 / 1429
 -------------------------------------------------------------------------
 Delay:               8.084ns (Levels of Logic = 5)
   Source:            CPU/pblaze_rom/kcpsm6_rom_lh (RAM)
@@ -3495,7 +3497,7 @@ Delay:               8.084ns (Levels of Logic = 5)
      RAMB16BWER:CLKA->DOA3    1   1.850   0.579  CPU/pblaze_rom/kcpsm6_rom_lh (CPU/pblaze_rom/n0015<3>)
      LUT6_2:I0->O5        16   0.568   1.004  CPU/pblaze_rom/s6_4k_mux12_lut (CPU/instruction<12>)
      LUT6_2:I4->O6        11   0.568   0.987  CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut (pb_port_id<5>)
-     LUT4:I2->O           16   0.203   1.005  _n0459<7>1 (_n0459)
+     LUT4:I2->O           16   0.203   1.005  _n0457<7>1 (_n0457)
      LUT6:I5->O            1   0.205   0.808  curr_state_FSM_FFd8-In3 (curr_state_FSM_FFd8-In5)
      LUT5:I2->O            1   0.205   0.000  curr_state_FSM_FFd8-In8 (curr_state_FSM_FFd8-In)
      FDR:D                     0.102          curr_state_FSM_FFd8
@@ -3506,7 +3508,7 @@ Delay:               8.084ns (Levels of Logic = 5)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'what/pll/pll_base_inst/CLKOUT1'
   Clock period: 6.219ns (frequency: 160.808MHz)
-  Total number of paths / destination ports: 5919 / 221
+  Total number of paths / destination ports: 10085 / 221
 -------------------------------------------------------------------------
 Delay:               6.219ns (Levels of Logic = 3)
   Source:            what/ac/lrck_divider_1 (FF)
@@ -3521,7 +3523,7 @@ Delay:               6.219ns (Levels of Logic = 3)
      FDS:C->Q              6   0.447   1.109  what/ac/lrck_divider_1 (what/ac/lrck_divider_1)
      LUT6:I0->O           54   0.203   1.574  what/ac/sample_req<0><7>11 (what/ac/sample_req<0><7>1)
      LUT3:I2->O           17   0.205   1.275  what/ac/sample_req<1><7>1 (what/sample_req<1>)
-     LUT6:I2->O            7   0.203   0.773  what/ae/_n0044 (what/ae/_n0044)
+     LUT6:I2->O            7   0.203   0.773  what/ae/_n0046 (what/ae/_n0046)
      FDRE:R                    0.430          what/ae/index_0
     ----------------------------------------
     Total                      6.219ns (1.488ns logic, 4.731ns route)
@@ -3529,28 +3531,27 @@ Delay:               6.219ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'what/pll/pll_base_inst/CLKOUT0'
-  Clock period: 4.938ns (frequency: 202.530MHz)
-  Total number of paths / destination ports: 483 / 104
+  Clock period: 4.813ns (frequency: 207.788MHz)
+  Total number of paths / destination ports: 406 / 104
 -------------------------------------------------------------------------
-Delay:               4.938ns (Levels of Logic = 4)
-  Source:            what/av_config/control/sclk_divider_0 (FF)
-  Destination:       what/av_config/control/sclk_divider_5 (FF)
+Delay:               4.813ns (Levels of Logic = 3)
+  Source:            what/av_config/control/stage_4 (FF)
+  Destination:       what/av_config/lut_index_3 (FF)
   Source Clock:      what/pll/pll_base_inst/CLKOUT0 rising
   Destination Clock: what/pll/pll_base_inst/CLKOUT0 rising
 
-  Data Path: what/av_config/control/sclk_divider_0 to what/av_config/control/sclk_divider_5
+  Data Path: what/av_config/control/stage_4 to what/av_config/lut_index_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              7   0.447   1.118  what/av_config/control/sclk_divider_0 (what/av_config/control/sclk_divider_0)
-     LUT5:I0->O            5   0.203   0.715  what/av_config/control/midlow<6>11 (what/av_config/control/midlow<6>1)
-     LUT3:I2->O            7   0.205   0.878  what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o<6>1 (what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o)
-     LUT6:I4->O            2   0.203   0.864  what/av_config/control/Mcount_sclk_divider_cy<4>11 (what/av_config/control/Mcount_sclk_divider_cy<4>)
-     LUT4:I0->O            1   0.203   0.000  what/av_config/control/Mcount_sclk_divider_xor<5>11 (what/av_config/control/Mcount_sclk_divider5)
-     FDR:D                     0.102          what/av_config/control/sclk_divider_5
+     FDRE:C->Q            10   0.447   1.085  what/av_config/control/stage_4 (what/av_config/control/stage_4)
+     LUT3:I0->O            1   0.205   0.684  what/av_config/_n0068_inv3_SW0 (N30)
+     LUT6:I4->O            2   0.203   0.981  what/av_config/_n0068_inv3 (what/av_config/_n0068_inv_bdd3)
+     LUT6:I0->O            4   0.203   0.683  what/av_config/_n0068_inv1 (what/av_config/_n0068_inv)
+     FDRE:CE                   0.322          what/av_config/lut_index_0
     ----------------------------------------
-    Total                      4.938ns (1.363ns logic, 3.575ns route)
-                                       (27.6% logic, 72.4% route)
+    Total                      4.813ns (1.380ns logic, 3.433ns route)
+                                       (28.7% logic, 71.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'RAMWrapper/u_memory_interface/memc3_infrastructure_inst/rst0_sync_r<0>'
@@ -3575,7 +3576,7 @@ Delay:               2.729ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 546 / 274
+  Total number of paths / destination ports: 545 / 273
 -------------------------------------------------------------------------
 Offset:              6.472ns (Levels of Logic = 4)
   Source:            reset (PAD)
@@ -3587,9 +3588,9 @@ Offset:              6.472ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O            18   1.222   1.050  reset_IBUF (reset_IBUF)
-     LUT4:I3->O            1   0.205   0.924  _n0960_inv_SW0 (N17)
-     LUT6:I1->O            7   0.203   1.138  _n0960_inv (_n0960_inv)
-     LUT6:I0->O           26   0.203   1.206  _n0890_inv1 (_n0890_inv)
+     LUT4:I3->O            1   0.205   0.924  _n0958_inv_SW0 (N26)
+     LUT6:I1->O            7   0.203   1.138  _n0958_inv (_n0958_inv)
+     LUT6:I0->O           26   0.203   1.206  _n0888_inv1 (_n0888_inv)
      FDE:CE                    0.322          address_0
     ----------------------------------------
     Total                      6.472ns (2.155ns logic, 4.317ns route)
@@ -3608,9 +3609,9 @@ Offset:              2.180ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IOBUF:IO->O           3   1.222   0.651  AUD_I2C_SDAT_IOBUF (N144)
-     LUT6:I5->O            1   0.205   0.000  what/av_config/control/stage[4]_acks[2]_select_16_OUT<0>4 (what/av_config/control/stage[4]_acks[2]_select_16_OUT<0>)
-     FDSE:D                    0.102          what/av_config/control/acks_0
+     IOBUF:IO->O           3   1.222   0.651  AUD_I2C_SDAT_IOBUF (N153)
+     LUT6:I5->O            1   0.205   0.000  what/av_config/control/stage[4]_acks[2]_select_16_OUT<2>1 (what/av_config/control/stage[4]_acks[2]_select_16_OUT<2>)
+     FDSE:D                    0.102          what/av_config/control/acks_2
     ----------------------------------------
     Total                      2.180ns (1.529ns logic, 0.651ns route)
                                        (70.1% logic, 29.9% route)
@@ -3629,8 +3630,8 @@ Offset:              4.712ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O            20   1.222   1.197  switches_1_IBUF (switches_1_IBUF)
-     LUT5:I3->O            1   0.203   0.684  what/ae/_n0044_SW0 (N27)
-     LUT6:I4->O            7   0.203   0.773  what/ae/_n0044 (what/ae/_n0044)
+     LUT5:I3->O            1   0.203   0.684  what/ae/_n0046_SW0 (N36)
+     LUT6:I4->O            7   0.203   0.773  what/ae/_n0046 (what/ae/_n0046)
      FDRE:R                    0.430          what/ae/index_0
     ----------------------------------------
     Total                      4.712ns (2.058ns logic, 2.654ns route)
@@ -3679,7 +3680,7 @@ Offset:              5.231ns (Levels of Logic = 2)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'what/pll/pll_base_inst/CLKOUT0'
   Total number of paths / destination ports: 3 / 2
 -------------------------------------------------------------------------
-Offset:              4.547ns (Levels of Logic = 2)
+Offset:              4.619ns (Levels of Logic = 2)
   Source:            what/av_config/control/sclk_divider_6 (FF)
   Destination:       AUD_I2C_SCLK (PAD)
   Source Clock:      what/pll/pll_base_inst/CLKOUT0 rising
@@ -3688,12 +3689,12 @@ Offset:              4.547ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              6   0.447   0.745  what/av_config/control/sclk_divider_6 (what/av_config/control/sclk_divider_6)
-     LUT2:I1->O            1   0.205   0.579  what/av_config/control/i2c_sclk1 (AUD_I2C_SCLK_OBUF)
+     FDR:C->Q              5   0.447   0.819  what/av_config/control/sclk_divider_6 (what/av_config/control/sclk_divider_6)
+     LUT2:I0->O            1   0.203   0.579  what/av_config/control/i2c_sclk1 (AUD_I2C_SCLK_OBUF)
      OBUF:I->O                 2.571          AUD_I2C_SCLK_OBUF (AUD_I2C_SCLK)
     ----------------------------------------
-    Total                      4.547ns (3.223ns logic, 1.324ns route)
-                                       (70.9% logic, 29.1% route)
+    Total                      4.619ns (3.221ns logic, 1.398ns route)
+                                       (69.7% logic, 30.3% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -3732,7 +3733,7 @@ Clock to Setup on destination clock clk
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
 clk                           |    9.693|         |         |         |
-what/pll/pll_base_inst/CLKOUT1|    1.528|         |         |         |
+what/pll/pll_base_inst/CLKOUT1|    1.499|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT0
@@ -3740,7 +3741,7 @@ Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT0
                               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
-what/pll/pll_base_inst/CLKOUT0|    4.938|         |         |         |
+what/pll/pll_base_inst/CLKOUT0|    4.813|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT1
@@ -3748,19 +3749,19 @@ Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT1
                               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
-clk                           |    5.302|         |         |         |
+clk                           |    5.487|         |         |         |
 what/pll/pll_base_inst/CLKOUT1|    6.219|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 22.00 secs
-Total CPU time to Xst completion: 21.41 secs
+Total REAL time to Xst completion: 27.00 secs
+Total CPU time to Xst completion: 27.05 secs
  
 --> 
 
-Total memory usage is 4554016 kilobytes
+Total memory usage is 4555000 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings : 1106 (   0 filtered)

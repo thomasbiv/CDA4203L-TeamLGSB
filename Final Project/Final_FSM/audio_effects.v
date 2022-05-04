@@ -128,7 +128,7 @@ always @(posedge clk) begin
 
     if (sample_req) begin
         if (control[FEEDBACK])
-            dat <= last_sample;
+            dat <= last_sample * volume_control;
         else if (control[SINE]) begin
             dat <= romdata[index];
             if (index == 7'd99)
