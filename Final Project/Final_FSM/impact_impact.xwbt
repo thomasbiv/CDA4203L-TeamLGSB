@@ -1,8 +1,8 @@
 INTSTYLE=impact
 INFILE=C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\impact.xsl
 OUTFILE=C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\impact.xsl
-FAMILY=Single
-PART=Single
+FAMILY=None
+PART=None
 WORKINGDIR=C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM
 LICENSE=iMPACT
 USER_INFO=iMPACT

@@ -129,7 +129,7 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		.write_enable(enableWrite),
 		.rdy(rdy),
 		.rd_data_pres(dataPresent),
-		.read_request(readReq),
+		.read_request(reqRead),
 		.read_ack(ackRead),
 		.data_out(RAMout),
 		.reset(reset),
@@ -173,7 +173,7 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	
 	always @(posedge wizclk) begin
 		if (rdy) begin
-			if (readwrite[0] == 1 && readwrite[1] == 0) begin
+			if (readwrite[0] == 1 && readwrite[1] == 0) begin //readwrite[0] -> reading, readwrite[1] -> writing (READING STATE)
 				ledreg[0] <= 1;
 				if (read_state == 0) begin
 					reqRead <= 1;
@@ -197,7 +197,7 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 					end
 				end
 			end
-			else if (readwrite[0] == 0 && readwrite[1] == 1) begin
+			else if (readwrite[0] == 0 && readwrite[1] == 1) begin //readwrite[0] -> reading, readwrite[1] -> writing (WRITING STATE)
 				ledreg[1] <= 1;
 				if (s_end == 0) begin
 					s_end_check <= 1;

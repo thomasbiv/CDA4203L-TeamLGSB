@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.08 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: controller.prj
 
@@ -688,8 +688,7 @@ WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-Team
 WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 180: Result of 27-bit expression is truncated to fit in 26-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 187: Result of 16-bit expression is truncated to fit in 1-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 206: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 174: Assignment to reqRead ignored, since the identifier is never used
-WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 132: Net <readReq> does not have a driver.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 174: Assignment to read ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -702,7 +701,7 @@ INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final 
 INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 102: Output port <LED> of the instance <audio_interface> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 102: Output port <audioCLK> of the instance <audio_interface> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" line 124: Output port <max_ram_address> of the instance <RAMWrapper> is unconnected or connected to loadless signal.
-WARNING:Xst:653 - Signal <readReq> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 1-bit register for signal <reqRead>.
     Found 26-bit register for signal <address>.
     Found 1-bit register for signal <read_state>.
     Found 1-bit register for signal <ackRead>.
@@ -720,7 +719,7 @@ WARNING:Xst:653 - Signal <readReq> is used but never assigned. This sourceless s
     | Inputs             | 3                                              |
     | Outputs            | 2                                              |
     | Clock              | wizclk (rising_edge)                           |
-    | Reset              | _n0140 (positive)                              |
+    | Reset              | _n0211 (positive)                              |
     | Reset type         | synchronous                                    |
     | Reset State        | 00                                             |
     | Power Up State     | 00                                             |
@@ -730,7 +729,7 @@ WARNING:Xst:653 - Signal <readReq> is used but never assigned. This sourceless s
     Found 26-bit adder for signal <address[25]_GND_1_o_add_15_OUT> created at line 206.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  64 D-type flip-flop(s).
+	inferred  65 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <controller> synthesized.
@@ -2212,8 +2211,8 @@ Macro Statistics
  8-bit addsub                                          : 1
  8-bit subtractor                                      : 3
  9-bit adder                                           : 1
-# Registers                                            : 112
- 1-bit register                                        : 63
+# Registers                                            : 113
+ 1-bit register                                        : 64
  10-bit register                                       : 1
  16-bit register                                       : 6
  2-bit register                                        : 2
@@ -2390,8 +2389,8 @@ Macro Statistics
  7-bit up counter                                      : 1
  8-bit up counter                                      : 4
  8-bit updown counter                                  : 1
-# Registers                                            : 364
- Flip-Flops                                            : 364
+# Registers                                            : 365
+ Flip-Flops                                            : 365
 # Comparators                                          : 15
  10-bit comparator greater                             : 1
  6-bit comparator equal                                : 1
@@ -2658,8 +2657,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 459
- Flip-Flops                                            : 459
+# Registers                                            : 460
+ Flip-Flops                                            : 460
 
 =========================================================================
 
@@ -2682,22 +2681,22 @@ Top Level Output File Name         : controller.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 986
+# BELS                             : 988
 #      GND                         : 1
 #      INV                         : 17
 #      LUT1                        : 60
-#      LUT2                        : 116
+#      LUT2                        : 117
 #      LUT3                        : 88
 #      LUT4                        : 124
 #      LUT5                        : 78
-#      LUT6                        : 282
+#      LUT6                        : 283
 #      MULT_AND                    : 7
 #      MUXCY                       : 97
 #      MUXF7                       : 7
 #      VCC                         : 1
 #      XORCY                       : 108
-# FlipFlops/Latches                : 459
-#      FD                          : 35
+# FlipFlops/Latches                : 460
+#      FD                          : 36
 #      FDC                         : 10
 #      FDCE                        : 28
 #      FDE                         : 49
@@ -2736,15 +2735,15 @@ Selected Device : 6slx45csg484-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             459  out of  54576     0%  
- Number of Slice LUTs:                  765  out of  27288     2%  
-    Number used as Logic:               765  out of  27288     2%  
+ Number of Slice Registers:             460  out of  54576     0%  
+ Number of Slice LUTs:                  767  out of  27288     2%  
+    Number used as Logic:               767  out of  27288     2%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    856
-   Number with an unused Flip Flop:     397  out of    856    46%  
-   Number with an unused LUT:            91  out of    856    10%  
-   Number of fully used LUT-FF pairs:   368  out of    856    42%  
+ Number of LUT Flip Flop pairs used:    858
+   Number with an unused Flip Flop:     398  out of    858    46%  
+   Number with an unused LUT:            91  out of    858    10%  
+   Number of fully used LUT-FF pairs:   369  out of    858    43%  
    Number of unique control sets:        40
 
 IO Utilization: 
@@ -2776,7 +2775,7 @@ Clock Information:
 -----------------------------------------+----------------------------------------+-------+
 Clock Signal                             | Clock buffer(FF name)                  | Load  |
 -----------------------------------------+----------------------------------------+-------+
-clk                                      | PLL_ADV:CLKOUT2                        | 60    |
+clk                                      | PLL_ADV:CLKOUT2                        | 61    |
 audio_interface/pll/pll_base_inst/CLKOUT0| BUFG                                   | 48    |
 audio_interface/pll/pll_base_inst/CLKOUT1| NONE(audio_interface/ac/lrck_divider_7)| 25    |
 clk                                      | PLL_ADV:CLKOUT3                        | 326   |
@@ -2803,7 +2802,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 4.674ns (frequency: 213.939MHz)
-  Total number of paths / destination ports: 28631 / 863
+  Total number of paths / destination ports: 28634 / 864
 -------------------------------------------------------------------------
 Delay:               6.232ns (Levels of Logic = 6)
   Source:            RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/N_Term_4 (FF)
@@ -2876,7 +2875,7 @@ Delay:               3.586ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 346 / 193
+  Total number of paths / destination ports: 355 / 194
 -------------------------------------------------------------------------
 Offset:              5.438ns (Levels of Logic = 3)
   Source:            reset (PAD)
@@ -2918,7 +2917,7 @@ Offset:              3.067ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 203 / 104
+  Total number of paths / destination ports: 205 / 105
 -------------------------------------------------------------------------
 Offset:              3.634ns (Levels of Logic = 1)
   Source:            ledreg_FSM_FFd1 (FF)
@@ -3030,14 +3029,14 @@ clk                                      |    6.232|         |         |        
 =========================================================================
 
 
-Total REAL time to Xst completion: 17.00 secs
-Total CPU time to Xst completion: 17.54 secs
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 18.09 secs
  
 --> 
 
-Total memory usage is 4536592 kilobytes
+Total memory usage is 4536608 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings : 1132 (   0 filtered)
+Number of warnings : 1130 (   0 filtered)
 Number of infos    :  175 (   0 filtered)
 
