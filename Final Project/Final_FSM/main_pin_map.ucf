@@ -7,14 +7,14 @@ NET "switches[3]" LOC=P6;
 #NET "switches[4]" LOC=P5;
 NET "pause_play" LOC=P8;
 
-NET "LED" LOC=W3;
-//NET "leds[1]" LOC=Y4;
-//NET "leds[2]" LOC=Y1;
-//NET "leds[3]" LOC=Y3;
-//NET "leds[4]" LOC=AB4;
-//NET "leds[5]" LOC=W1;
-//NET "leds[6]" LOC=AB3;
-//NET "leds[7]" LOC=AA4;
+NET "LED[0]" LOC=W3;
+NET "LED[1]" LOC=Y4;
+NET "LED[2]" LOC=Y1;
+NET "LED[3]" LOC=Y3;
+NET "LED[4]" LOC=AB4;
+NET "LED[5]" LOC=W1;
+NET "LED[6]" LOC=AB3;
+NET "LED[7]" LOC=AA4;
 
 NET "scroll_up"	LOC = E6;
 NET "scroll_down"	LOC = D5;

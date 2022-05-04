@@ -1,9 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue May 03 18:43:28 2022
+// Written by: Map P.20131013 on Tue May 03 21:22:46 2022
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "LED" LOCATE = SITE "W3" LEVEL 1;
 COMP "clk" LOCATE = SITE "D11" LEVEL 1;
 COMP "pause_play" LOCATE = SITE "P8" LEVEL 1;
 COMP "back" LOCATE = SITE "AB9" LEVEL 1;
@@ -14,6 +13,14 @@ COMP "switches<3>" LOCATE = SITE "P6" LEVEL 1;
 COMP "reset" LOCATE = SITE "V5" LEVEL 1;
 COMP "AUD_ADCDAT" LOCATE = SITE "C6" LEVEL 1;
 COMP "AUD_DACDAT" LOCATE = SITE "A5" LEVEL 1;
+COMP "LED<0>" LOCATE = SITE "W3" LEVEL 1;
+COMP "LED<1>" LOCATE = SITE "Y4" LEVEL 1;
+COMP "LED<2>" LOCATE = SITE "Y1" LEVEL 1;
+COMP "LED<3>" LOCATE = SITE "Y3" LEVEL 1;
+COMP "LED<4>" LOCATE = SITE "AB4" LEVEL 1;
+COMP "LED<5>" LOCATE = SITE "W1" LEVEL 1;
+COMP "LED<6>" LOCATE = SITE "AB3" LEVEL 1;
+COMP "LED<7>" LOCATE = SITE "AA4" LEVEL 1;
 COMP "hw_ram_ck" LOCATE = SITE "F2" LEVEL 1;
 COMP "hw_ram_ad<10>" LOCATE = SITE "K6" LEVEL 1;
 COMP "hw_ram_ad<11>" LOCATE = SITE "B1" LEVEL 1;

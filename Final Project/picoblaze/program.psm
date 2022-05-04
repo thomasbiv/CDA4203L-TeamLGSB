@@ -1278,6 +1278,8 @@ play_message:
 		LOAD s0, s0
 		COMPARE s3, 01
 		JUMP Z, back_to_main_menu
+		LOAD s0, 01
+		OUTPUT s0, write_to_fsm
 		JUMP play_message
 
 ;Output a message if memory is full
@@ -1568,6 +1570,8 @@ delete_message:
 		JUMP Z, check_msg_exists_delete
 		COMPARE s3, 01
 		JUMP Z, back_to_main_menu
+		LOAD s0, 03
+		OUTPUT s0, write_to_fsm
 		JUMP delete_message
 
 ;Finally deleting all messages
@@ -1588,6 +1592,8 @@ delete_all_messages:
 		CALL Z, delete_all
 		LOAD s0, s0
 		COMPARE s2, 01
+		LOAD s0, 04
+		OUTPUT s0, write_to_fsm
 		JUMP Z, back_to_main_menu
 		JUMP delete_all_messages
 
@@ -1639,6 +1645,8 @@ volume_control:
 		JUMP Z, back_to_main_menu
 		LOAD s7, 00
 		OUTPUT s7, vol_sel
+		LOAD s0, 05
+		OUTPUT s0, write_to_fsm
 		JUMP volume_control
 		
 ;Play message menu

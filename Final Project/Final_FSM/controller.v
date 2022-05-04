@@ -36,7 +36,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 	input select;
 	input back;
 	input pause_play;
-	output reg LED;
+	reg[7:0] ledreg;
+	output[7:0] LED;
+	assign LED = ledreg;
 	
 	// RS232 Lines
 	input			rs232_rx;
@@ -211,6 +213,7 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 		tmpData <= 0;
 		s_req_check <= 0;
 		s_end_check <= 0;
+		ledreg[7:0] <= 0;
 	end
 	
 
@@ -404,7 +407,6 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			if (file_selection) begin
 				if (play) begin
 					play_1 <= (pb_out_port == 8'h00);
-					LED <= (pb_out_port == 8'h00);
 					play_2 <= (pb_out_port == 8'h01);
 					play_3 <= (pb_out_port == 8'h02);
 					play_4 <= (pb_out_port == 8'h03);
@@ -469,7 +471,17 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			s_end_check <= 0;
 		end
 		else if (status) begin
-			if (play) begin
+			if (main) begin
+				ledreg[0] <= 1;
+				ledreg[1] <= 0;
+				ledreg[2] <= 0;
+				ledreg[3] <= 0;
+				ledreg[4] <= 0;
+				ledreg[5] <= 0;
+			end
+			else if (play) begin
+				ledreg[1] <= 1;
+				ledreg[0] <= 0;
 				if (play_1) begin
 					if (address <= 26'h333332) begin
 						if (read_state == 0) begin
@@ -598,7 +610,9 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			end
 			
 			else if (record) begin
+				ledreg[0] <= 0;
 				if (record_1) begin
+					ledreg[2] <= 1;
 					if (s_end == 0) begin
 						s_end_check <= 1;
 					end
@@ -671,6 +685,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			end
 			
 			else if (delall) begin
+				ledreg[3] <= 1;
+				ledreg[0] <= 0;
 					if (s_end == 0) begin
 						s_end_check <= 1;
 					end
@@ -686,6 +702,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			end
 			
 			else if (delone) begin
+				ledreg[4] <= 1;
+				ledreg[0] <= 0;
 				if (delone_1) begin
 					if (s_end == 0) begin
 						s_end_check <= 1;
@@ -758,12 +776,17 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 				end
 			end
 			else if (vol) begin
-				if (volume_up && (volume_control < 15))
-						volume_control = volume_control + 1;
-					else if (volume_down && (volume_control > 1))
-						volume_control = volume_control - 1;
-					if (write_to_state_reg)
-						curr_state <= main_state;
+				ledreg[5] <= 1;
+				ledreg[0] <= 0;
+				if (volume_up && (volume_control < 15)) begin
+					volume_control = volume_control + 1;
+				end
+				else if (volume_down && (volume_control > 1)) begin
+					volume_control = volume_control - 1;
+				end
+				if (write_to_state_reg) begin
+					curr_state <= main_state;
+				end
 			end
 		end
 	end
