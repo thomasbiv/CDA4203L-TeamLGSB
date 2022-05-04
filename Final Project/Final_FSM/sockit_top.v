@@ -103,13 +103,13 @@ audio_codec ac (
 // (1) Sine wave mode (tone)  SW7 UP
 // (2) Playback mode (feedback from LINE IN to LINE OUT) SW6 UP
 
-audio_effects ae (
-	  .clk (audio_clk),
-    .sample_end (sample_end[1]),
-    .sample_req (sample_req[1]),
-    .audio_output (audio_output),
-    .audio_input  (audio_input),
-    .control (SW)
-);
+//audio_effects ae (
+//	  .clk (audio_clk),
+//    .sample_end (sample_end[1]),
+//    .sample_req (sample_req[1]),
+//    .audio_output (audio_output),
+//    .audio_input  (audio_input),
+//    .control (SW)
+//);
 
 endmodule

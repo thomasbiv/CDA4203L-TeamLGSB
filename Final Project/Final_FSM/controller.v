@@ -21,8 +21,8 @@
 
 module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT, 
 						AUD_XCK, AUD_BCLK, AUD_I2C_SCLK, AUD_I2C_SDAT, AUD_MUTE, PLL_LOCKED, 
-						KEY, LED, ledRAM, rdy, 
-						reset, clk,
+						KEY, LED, ledRAM, 
+						reset, clk, readwrite,
 						hw_ram_rasn, hw_ram_casn, hw_ram_wen, SW, hw_ram_ba, hw_ram_udqs_p, hw_ram_udqs_n, 
 						hw_ram_ldqs_p, hw_ram_ldqs_n, hw_ram_udm, hw_ram_ldm, hw_ram_ck, hw_ram_ckn, 
 						hw_ram_cke, hw_ram_odt, hw_ram_ad, hw_ram_dq, hw_rzq_pin, hw_zio_pin, s_req, s_end);
@@ -61,10 +61,12 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	output PLL_LOCKED;
    input  [3:0] KEY;
 	input [3:0] SW;
-	output LED;
+	reg[1:0] ledreg;
+	output[1:0] LED;
+	assign LED = ledreg;
 	wire [25:0] max_ram_address;
 	output ledRAM; 
-	output rdy;
+	wire rdy;
 	input reset;
 	output hw_ram_rasn;
 	output hw_ram_casn;
@@ -84,6 +86,8 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 	inout hw_rzq_pin;
 	output hw_ram_ckn;
 	inout hw_zio_pin;
+	input [1:0] readwrite; //readwrite[0] -> reading, readwrite[1] -> writing
+	wire killme;
 	
 	
 	
@@ -99,15 +103,16 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		.OSC_100MHz(clk2),
 		.AUD_ADCLRCK(AUD_ADCLRCK),
 		.AUD_ADCDAT(AUD_ADCDAT),
+		.AUD_DACDAT(AUD_DACDAT),
 		.AUD_XCK(AUD_XCK),
 		.AUD_BCLK(AUD_BCLK),
 		.AUD_I2C_SCLK(AUD_I2C_SCLK),
 		.AUD_I2C_SDAT(AUD_I2C_SDAT),
 		.AUD_MUTE(AUD_MUTE),
 		.PLL_LOCKED(PLL_LOCKED),
-		.KEY(KEY),
+		.KEY(1),
 		.SW(SW),
-		.LED(LED),
+		.LED(killme),
 		.audio_out(audio_out),
 		.audio_in(audio_in),
 		.audioCLK(audioCLK),
@@ -163,20 +168,22 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 		s_req_check <= 0;
 		s_end_check <= 0;
 		enableWrite <= 0;
+		ledreg[1:0] <= 0;
 	end
 	
 	always @(posedge wizclk) begin
 		if (rdy) begin
-			if (read) begin
+			if (readwrite[0] == 1 && readwrite[1] == 0) begin
+				ledreg[0] <= 1;
 				if (read_state == 0) begin
 					reqRead <= 1;
-					address = address + 1;
+					address <= address + 1;
 					read_state <= 1;
-					ackRead = 0;
+					ackRead <= 0;
 				end
 				else if (read_state == 1) begin
 					if (dataPresent) begin
-						ackRead = 1;
+						ackRead <= 1;
 						tmpData <= RAMout;
 						reqRead <= 0;
 					end
@@ -190,12 +197,13 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 					end
 				end
 			end
-			if (write) begin
+			else if (readwrite[0] == 0 && readwrite[1] == 1) begin
+				ledreg[1] <= 1;
 				if (s_end == 0) begin
 					s_end_check <= 1;
 				end
 				if (s_end && s_end_check) begin
-					address = address + 1;
+					address <= address + 1;
 					enableWrite <= 1;
 					RAMin <= audio_in;
 					s_end_check <= 0;
@@ -203,6 +211,19 @@ module controller(AUD_ADCLRCK, AUD_ADCDAT, AUD_DACLRCK, AUD_DACDAT,
 				else begin
 					enableWrite <= 0;
 				end
+			end
+			else if (readwrite[0] == 0 && readwrite[1] == 0) begin
+				read <= 0;
+				write <= 0;
+				address <= 0;
+				reqRead <= 0;
+				read_state <= 0;
+				ackRead <= 0;
+				tmpData <= 0;
+				s_req_check <= 0;
+				s_end_check <= 0;
+				enableWrite <= 0;
+				ledreg[1:0] <= 0;
 			end
 		end
 	end

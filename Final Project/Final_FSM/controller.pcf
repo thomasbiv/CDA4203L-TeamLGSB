@@ -1,40 +1,32 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue May 03 12:39:59 2022
+// Written by: Map P.20131013 on Wed May 04 10:16:25 2022
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "LED" LOCATE = SITE "W3" LEVEL 1;
 COMP "clk" LOCATE = SITE "D11" LEVEL 1;
-COMP "pause_play" LOCATE = SITE "P8" LEVEL 1;
-COMP "back" LOCATE = SITE "AB9" LEVEL 1;
-COMP "switches<0>" LOCATE = SITE "V3" LEVEL 1;
-COMP "switches<1>" LOCATE = SITE "P4" LEVEL 1;
-COMP "switches<2>" LOCATE = SITE "R4" LEVEL 1;
-COMP "switches<3>" LOCATE = SITE "P6" LEVEL 1;
+COMP "readwrite<0>" LOCATE = SITE "V3" LEVEL 1;
+COMP "readwrite<1>" LOCATE = SITE "P4" LEVEL 1;
 COMP "reset" LOCATE = SITE "V5" LEVEL 1;
 COMP "AUD_ADCDAT" LOCATE = SITE "C6" LEVEL 1;
 COMP "AUD_DACDAT" LOCATE = SITE "A5" LEVEL 1;
+COMP "LED<0>" LOCATE = SITE "W3" LEVEL 1;
+COMP "LED<1>" LOCATE = SITE "Y4" LEVEL 1;
 COMP "hw_ram_ck" LOCATE = SITE "F2" LEVEL 1;
 COMP "hw_ram_ad<10>" LOCATE = SITE "K6" LEVEL 1;
 COMP "hw_ram_ad<11>" LOCATE = SITE "B1" LEVEL 1;
 COMP "hw_ram_ad<12>" LOCATE = SITE "J4" LEVEL 1;
-COMP "scroll_down" LOCATE = SITE "D5" LEVEL 1;
 COMP "hw_ram_dq<10>" LOCATE = SITE "R3" LEVEL 1;
 COMP "hw_ram_dq<11>" LOCATE = SITE "R1" LEVEL 1;
 COMP "hw_ram_dq<12>" LOCATE = SITE "U3" LEVEL 1;
 COMP "hw_ram_dq<13>" LOCATE = SITE "U1" LEVEL 1;
 COMP "hw_ram_dq<14>" LOCATE = SITE "V2" LEVEL 1;
 COMP "hw_ram_dq<15>" LOCATE = SITE "V1" LEVEL 1;
-COMP "rs232_rx" LOCATE = SITE "T19" LEVEL 1;
-COMP "rs232_tx" LOCATE = SITE "T20" LEVEL 1;
-COMP "scroll_up" LOCATE = SITE "E6" LEVEL 1;
 COMP "hw_ram_ldqs_n" LOCATE = SITE "L1" LEVEL 1;
 COMP "hw_ram_ldqs_p" LOCATE = SITE "L3" LEVEL 1;
 COMP "AUD_I2C_SDAT" LOCATE = SITE "C5" LEVEL 1;
 COMP "AUD_I2C_SCLK" LOCATE = SITE "A4" LEVEL 1;
 COMP "hw_ram_udqs_n" LOCATE = SITE "T1" LEVEL 1;
 COMP "hw_ram_udqs_p" LOCATE = SITE "T2" LEVEL 1;
-COMP "select" LOCATE = SITE "A3" LEVEL 1;
 COMP "hw_ram_ba<0>" LOCATE = SITE "E3" LEVEL 1;
 COMP "hw_ram_ba<1>" LOCATE = SITE "E1" LEVEL 1;
 COMP "hw_ram_ba<2>" LOCATE = SITE "D1" LEVEL 1;
