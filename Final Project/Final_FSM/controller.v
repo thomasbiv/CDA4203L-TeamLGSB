@@ -435,7 +435,8 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			end
 			if (recording) begin
 				if (record) begin
-					are_recording <= (pb_out_port == 8'h01);
+					if (record_1 || record_2 || record_3 || record_4 || record_5)
+						are_recording <= (pb_out_port == 8'h01);
 				end
 			end
 		end
@@ -612,74 +613,84 @@ module controller( pause_play, scroll_up, scroll_down, select, back, switches, r
 			else if (record) begin
 				ledreg[0] <= 0;
 				if (record_1) begin
-					ledreg[2] <= 1;
-					if (s_end == 0) begin
-						s_end_check <= 1;
-					end
-					if ((s_end && s_end_check) && (address <= 26'h333332)) begin
-						address = address + 1;
-						enableWrite <= 1;
-						RAMin <= audio_in;
-						s_end_check <= 0;
-					end
-					else begin
-						enableWrite <= 0;
+					if (are_recording) begin
+						ledreg[2] <= 1;
+						if (s_end == 0) begin
+							s_end_check <= 1;
+						end
+						if ((s_end && s_end_check) && (address <= 26'h333332)) begin
+							address = address + 1;
+							enableWrite <= 1;
+							RAMin <= audio_in;
+							s_end_check <= 0;
+						end
+						else begin
+							enableWrite <= 0;
+						end
 					end
 				end
 				else if (record_2) begin
-					if (s_end == 0) begin
-						s_end_check <= 1;
-					end
-					if ((s_end && s_end_check) && (address <= 26'h666665)) begin
-						address = address + 1;
-						enableWrite <= 1;
-						RAMin <= audio_in;
-						s_end_check <= 0;
-					end
-					else begin
-						enableWrite <= 0;
+					if (are_recording) begin
+						if (s_end == 0) begin
+							s_end_check <= 1;
+						end
+						if ((s_end && s_end_check) && (address <= 26'h666665)) begin
+							address = address + 1;
+							enableWrite <= 1;
+							RAMin <= audio_in;
+							s_end_check <= 0;
+						end
+						else begin
+							enableWrite <= 0;
+						end
 					end
 				end
 				else if (record_3) begin
-					if (s_end == 0) begin
-						s_end_check <= 1;
-					end
-					if ((s_end && s_end_check) && (address <= 26'h999998)) begin
-						address = address + 1;
-						enableWrite <= 1;
-						RAMin <= audio_in;
-						s_end_check <= 0;
-					end
-					else begin
-						enableWrite <= 0;
+					if (are_recording) begin
+						if (s_end == 0) begin
+							s_end_check <= 1;
+						end
+						if ((s_end && s_end_check) && (address <= 26'h999998)) begin
+							address = address + 1;
+							enableWrite <= 1;
+							RAMin <= audio_in;
+							s_end_check <= 0;
+						end
+						else begin
+							enableWrite <= 0;
+						end
 					end
 				end
 				else if (record_4) begin
-					if (s_end == 0) begin
-						s_end_check <= 1;
-					end
-					if ((s_end && s_end_check) && (address <= 26'hCCCCCB)) begin
-						address = address + 1;
-						enableWrite <= 1;
-						RAMin <= audio_in;
-						s_end_check <= 0;
-					end
-					else begin
-						enableWrite <= 0;
+					if (are_recording) begin
+						if (s_end == 0) begin
+							s_end_check <= 1;
+						end
+						if ((s_end && s_end_check) && (address <= 26'hCCCCCB)) begin
+							address = address + 1;
+							enableWrite <= 1;
+							RAMin <= audio_in;
+							s_end_check <= 0;
+						end
+						else begin
+							enableWrite <= 0;
+						end
 					end
 				end
 				else if (record_5) begin
-					if (s_end == 0) begin
-						s_end_check <= 1;
-					end
-					if ((s_end && s_end_check) && (address <= max_ram_address)) begin
-						address = address + 1;
-						enableWrite <= 1;
-						RAMin <= audio_in;
-						s_end_check <= 0;
-					end
-					else begin
-						enableWrite <= 0;
+					if (are_recording) begin
+						if (s_end == 0) begin
+							s_end_check <= 1;
+						end
+						if ((s_end && s_end_check) && (address <= max_ram_address)) begin
+							address = address + 1;
+							enableWrite <= 1;
+							RAMin <= audio_in;
+							s_end_check <= 0;
+						end
+						else begin
+							enableWrite <= 0;
+						end
 					end
 				end
 			end

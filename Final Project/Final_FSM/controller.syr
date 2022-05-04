@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.08 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: controller.prj
 
@@ -895,31 +895,30 @@ WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-Team
 
 Elaborating module <audio_codec>.
 WARNING:HDLCompiler:552 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\sockit_top.v" Line 84: Input port volume_control[3] is not connected on this instance
-WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 366: Assignment to are_recording ignored, since the identifier is never used
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 489: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 496: Result of 16-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 514: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 521: Result of 16-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 539: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 546: Result of 16-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 564: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 571: Result of 16-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 589: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 596: Result of 16-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 620: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 634: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 648: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 662: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 676: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 694: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 712: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 726: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 740: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 754: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 768: Result of 27-bit expression is truncated to fit in 26-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 782: Result of 5-bit expression is truncated to fit in 4-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 785: Result of 32-bit expression is truncated to fit in 4-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 467: Assignment to curr_state ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 490: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 497: Result of 16-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 515: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 522: Result of 16-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 540: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 547: Result of 16-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 565: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 572: Result of 16-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 590: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 597: Result of 16-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 622: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 638: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 654: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 670: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 686: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 705: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 723: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 737: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 751: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 765: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 779: Result of 27-bit expression is truncated to fit in 26-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 793: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 796: Result of 32-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 468: Assignment to curr_state ignored, since the identifier is never used
 WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 39: Net <ledreg[7]> does not have a driver.
 WARNING:HDLCompiler:634 - "C:\Users\thomasbivins\Desktop\Projects\CDA4203L-TeamLGSB\Final Project\Final_FSM\controller.v" Line 123: Net <uart_reset> does not have a driver.
 
@@ -956,6 +955,7 @@ WARNING:Xst:2935 - Signal 'ledreg<7:6>', unconnected in block 'controller', is t
     Found 1-bit register for signal <record_3>.
     Found 1-bit register for signal <record_4>.
     Found 1-bit register for signal <record_5>.
+    Found 1-bit register for signal <are_recording>.
     Found 1-bit register for signal <tmpData>.
     Found 1-bit register for signal <s_req_check>.
     Found 1-bit register for signal <s_end_check>.
@@ -972,16 +972,16 @@ WARNING:Xst:2935 - Signal 'ledreg<7:6>', unconnected in block 'controller', is t
     Found 16-bit register for signal <audio_out>.
     Found 1-bit register for signal <enableWrite>.
     Found 16-bit register for signal <RAMin>.
-    Found 26-bit adder for signal <address[25]_GND_1_o_add_173_OUT> created at line 768.
-    Found 8-bit 13-to-1 multiplexer for signal <_n0542> created at line 374.
-    Found 26-bit comparator greater for signal <n0125> created at line 486
-    Found 26-bit comparator greater for signal <n0134> created at line 511
-    Found 26-bit comparator greater for signal <n0143> created at line 536
-    Found 26-bit comparator greater for signal <n0152> created at line 561
-    Found 26-bit comparator greater for signal <n0161> created at line 586
+    Found 26-bit adder for signal <address[25]_GND_1_o_add_183_OUT> created at line 779.
+    Found 8-bit 13-to-1 multiplexer for signal <_n0584> created at line 374.
+    Found 26-bit comparator greater for signal <n0135> created at line 487
+    Found 26-bit comparator greater for signal <n0144> created at line 512
+    Found 26-bit comparator greater for signal <n0153> created at line 537
+    Found 26-bit comparator greater for signal <n0162> created at line 562
+    Found 26-bit comparator greater for signal <n0171> created at line 587
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred 101 D-type flip-flop(s).
+	inferred 102 D-type flip-flop(s).
 	inferred   5 Comparator(s).
 	inferred  40 Multiplexer(s).
 Unit <controller> synthesized.
@@ -2826,8 +2826,8 @@ Macro Statistics
  8-bit addsub                                          : 1
  8-bit subtractor                                      : 3
  9-bit adder                                           : 1
-# Registers                                            : 143
- 1-bit register                                        : 92
+# Registers                                            : 144
+ 1-bit register                                        : 93
  10-bit register                                       : 1
  13-bit register                                       : 1
  16-bit register                                       : 6
@@ -2997,8 +2997,8 @@ Macro Statistics
  7-bit up counter                                      : 1
  8-bit up counter                                      : 4
  8-bit updown counter                                  : 1
-# Registers                                            : 547
- Flip-Flops                                            : 547
+# Registers                                            : 548
+ Flip-Flops                                            : 548
 # Comparators                                          : 20
  10-bit comparator greater                             : 1
  26-bit comparator greater                             : 5
@@ -3307,8 +3307,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 625
- Flip-Flops                                            : 625
+# Registers                                            : 626
+ Flip-Flops                                            : 626
 
 =========================================================================
 WARNING:Xst:1293 - FF/Latch <CPU/pblaze_cpu/sync_sleep_flop> has a constant value of 0 in block <controller>. This FF/Latch will be trimmed during the optimization process.
@@ -3335,26 +3335,26 @@ Top Level Output File Name         : controller.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1302
+# BELS                             : 1305
 #      GND                         : 1
 #      INV                         : 26
 #      LUT1                        : 69
-#      LUT2                        : 130
-#      LUT3                        : 148
-#      LUT4                        : 105
-#      LUT5                        : 145
-#      LUT6                        : 287
+#      LUT2                        : 129
+#      LUT3                        : 150
+#      LUT4                        : 102
+#      LUT5                        : 148
+#      LUT6                        : 289
 #      LUT6_2                      : 78
 #      MULT_AND                    : 7
 #      MUXCY                       : 155
 #      MUXF7                       : 5
 #      VCC                         : 1
 #      XORCY                       : 145
-# FlipFlops/Latches                : 625
+# FlipFlops/Latches                : 626
 #      FD                          : 132
 #      FDC                         : 19
 #      FDCE                        : 26
-#      FDE                         : 97
+#      FDE                         : 98
 #      FDP                         : 1
 #      FDR                         : 165
 #      FDRE                        : 166
@@ -3396,19 +3396,19 @@ Selected Device : 6slx45csg484-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             625  out of  54576     1%  
- Number of Slice LUTs:                 1028  out of  27288     3%  
-    Number used as Logic:               988  out of  27288     3%  
+ Number of Slice Registers:             626  out of  54576     1%  
+ Number of Slice LUTs:                 1031  out of  27288     3%  
+    Number used as Logic:               991  out of  27288     3%  
     Number used as Memory:               40  out of   6408     0%  
        Number used as RAM:               24
        Number used as SRL:               16
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1178
-   Number with an unused Flip Flop:     553  out of   1178    46%  
-   Number with an unused LUT:           150  out of   1178    12%  
-   Number of fully used LUT-FF pairs:   475  out of   1178    40%  
-   Number of unique control sets:        59
+ Number of LUT Flip Flop pairs used:   1182
+   Number with an unused Flip Flop:     556  out of   1182    47%  
+   Number with an unused LUT:           151  out of   1182    12%  
+   Number of fully used LUT-FF pairs:   475  out of   1182    40%  
+   Number of unique control sets:        60
 
 IO Utilization: 
  Number of IOs:                          87
@@ -3441,7 +3441,7 @@ Clock Information:
 ----------------------------------------------------------------------+-----------------------------------+-------+
 Clock Signal                                                          | Clock buffer(FF name)             | Load  |
 ----------------------------------------------------------------------+-----------------------------------+-------+
-clk                                                                   | PLL_ADV:CLKOUT2+DCM_SP:CLKFX      | 198   |
+clk                                                                   | PLL_ADV:CLKOUT2+DCM_SP:CLKFX      | 199   |
 clk                                                                   | PLL_ADV:CLKOUT2                   | 63    |
 what/pll/pll_base_inst/CLKOUT0                                        | BUFG                              | 48    |
 what/pll/pll_base_inst/CLKOUT1                                        | NONE(what/ac/lrck_divider_7)      | 25    |
@@ -3458,7 +3458,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 9.571ns (Maximum Frequency: 104.481MHz)
+   Minimum period: 9.596ns (Maximum Frequency: 104.213MHz)
    Minimum input arrival time before clock: 4.977ns
    Maximum output required time after clock: 6.160ns
    Maximum combinational path delay: 3.150ns
@@ -3469,10 +3469,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 9.571ns (frequency: 104.481MHz)
-  Total number of paths / destination ports: 79243 / 1331
+  Clock period: 9.596ns (frequency: 104.213MHz)
+  Total number of paths / destination ports: 79502 / 1333
 -------------------------------------------------------------------------
-Delay:               9.571ns (Levels of Logic = 6)
+Delay:               9.596ns (Levels of Logic = 6)
   Source:            CPU/pblaze_rom/kcpsm6_rom_lh (RAM)
   Destination:       UART/transmitter/pointer0_flop (FF)
   Source Clock:      clk rising
@@ -3485,21 +3485,21 @@ Delay:               9.571ns (Levels of Logic = 6)
      RAMB16BWER:CLKA->DOA3    1   1.850   0.579  CPU/pblaze_rom/kcpsm6_rom_lh (CPU/pblaze_rom/n0015<3>)
      LUT6_2:I0->O5        16   0.568   1.004  CPU/pblaze_rom/s6_4k_mux12_lut (CPU/instruction<12>)
      LUT6_2:I4->O6        10   0.568   0.961  CPU/pblaze_cpu/data_path_loop[4].output_data.sy_kk_mux_lut (pb_port_id<5>)
-     LUT4:I2->O           12   0.203   0.909  _n0543<7>1 (_n0543)
+     LUT4:I2->O           13   0.203   0.933  _n0585<7>1 (_n0585)
      LUT6:I5->O           12   0.205   0.908  write_to_uart1 (write_to_uart)
      LUT6_2:I2->O5         1   0.568   0.579  UART/transmitter/data_present_lut (UART/transmitter/en_pointer)
      LUT6_2:I2->O6         1   0.568   0.000  UART/transmitter/pointer01_lut (UART/transmitter/pointer_value<1>)
      FDR:D                     0.102          UART/transmitter/pointer1_flop
     ----------------------------------------
-    Total                      9.571ns (4.632ns logic, 4.939ns route)
-                                       (48.4% logic, 51.6% route)
+    Total                      9.596ns (4.632ns logic, 4.964ns route)
+                                       (48.3% logic, 51.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'what/pll/pll_base_inst/CLKOUT0'
-  Clock period: 5.081ns (frequency: 196.829MHz)
+  Clock period: 5.198ns (frequency: 192.398MHz)
   Total number of paths / destination ports: 485 / 102
 -------------------------------------------------------------------------
-Delay:               5.081ns (Levels of Logic = 4)
+Delay:               5.198ns (Levels of Logic = 4)
   Source:            what/av_config/control/sclk_divider_0 (FF)
   Destination:       what/av_config/control/sclk_divider_5 (FF)
   Source Clock:      what/pll/pll_base_inst/CLKOUT0 rising
@@ -3511,13 +3511,13 @@ Delay:               5.081ns (Levels of Logic = 4)
     ----------------------------------------  ------------
      FDR:C->Q              7   0.447   1.118  what/av_config/control/sclk_divider_0 (what/av_config/control/sclk_divider_0)
      LUT5:I0->O            5   0.203   0.715  what/av_config/control/midlow<6>11 (what/av_config/control/midlow<6>1)
-     LUT3:I2->O            7   0.205   1.021  what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o<6>1 (what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o)
-     LUT6:I2->O            2   0.203   0.864  what/av_config/control/Mcount_sclk_divider_cy<4>11 (what/av_config/control/Mcount_sclk_divider_cy<4>)
+     LUT3:I2->O            7   0.205   1.138  what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o<6>1 (what/av_config/control/sclk_divider[6]_PWR_138_o_equal_5_o)
+     LUT6:I0->O            2   0.203   0.864  what/av_config/control/Mcount_sclk_divider_cy<4>11 (what/av_config/control/Mcount_sclk_divider_cy<4>)
      LUT4:I0->O            1   0.203   0.000  what/av_config/control/Mcount_sclk_divider_xor<5>11 (what/av_config/control/Mcount_sclk_divider5)
      FDR:D                     0.102          what/av_config/control/sclk_divider_5
     ----------------------------------------
-    Total                      5.081ns (1.363ns logic, 3.718ns route)
-                                       (26.8% logic, 73.2% route)
+    Total                      5.198ns (1.363ns logic, 3.835ns route)
+                                       (26.2% logic, 73.8% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'what/pll/pll_base_inst/CLKOUT1'
@@ -3535,7 +3535,7 @@ Delay:               4.698ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDS:C->Q              4   0.447   0.788  what/ac/lrck_divider_3 (what/ac/lrck_divider_3)
-     LUT2:I0->O            2   0.203   0.617  what/ac/_n0086_inv_SW0 (N22)
+     LUT2:I0->O            2   0.203   0.617  what/ac/_n0086_inv_SW0 (N24)
      LUT6:I5->O           16   0.205   1.349  what/ac/Mmux_shift_out[15]_shift_temp[15]_mux_26_OUT101 (what/ac/Mmux_shift_out[15]_shift_temp[15]_mux_26_OUT101)
      LUT6:I1->O            1   0.203   0.580  what/ac/Mmux_shift_temp[15]_audio_output[15]_mux_17_OUT11 (what/ac/shift_temp[15]_audio_output[15]_mux_17_OUT<0>)
      LUT3:I2->O            1   0.205   0.000  what/ac/shift_temp_0_rstpot (what/ac/shift_temp_0_rstpot)
@@ -3567,7 +3567,7 @@ Delay:               2.729ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 260 / 219
+  Total number of paths / destination ports: 261 / 220
 -------------------------------------------------------------------------
 Offset:              4.977ns (Levels of Logic = 4)
   Source:            reset (PAD)
@@ -3579,7 +3579,7 @@ Offset:              4.977ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O            19   1.222   1.436  reset_IBUF (reset_IBUF)
-     LUT6:I0->O            1   0.203   0.924  _n1675_inv1 (_n1675_inv)
+     LUT6:I0->O            1   0.203   0.924  _n1797_inv1 (_n1797_inv)
      LUT5:I0->O            1   0.203   0.684  ledreg_0_glue_set (ledreg_0_glue_set)
      LUT2:I0->O            1   0.203   0.000  ledreg_0_rstpot (ledreg_0_rstpot)
      FD:D                      0.102          ledreg_0
@@ -3634,7 +3634,7 @@ Offset:              4.633ns (Levels of Logic = 4)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
   Total number of paths / destination ports: 165 / 111
 -------------------------------------------------------------------------
-Offset:              3.950ns (Levels of Logic = 1)
+Offset:              3.926ns (Levels of Logic = 1)
   Source:            RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL (FF)
   Destination:       status (PAD)
   Source Clock:      clk rising 0.8X
@@ -3643,11 +3643,11 @@ Offset:              3.950ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              13   0.447   0.932  RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL (RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL)
+     FD:C->Q              12   0.447   0.908  RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL (RAMWrapper/u_memory_interface/memc3_wrapper_inst/mcb_ui_top_inst/mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL)
      OBUF:I->O                 2.571          status_OBUF (status)
     ----------------------------------------
-    Total                      3.950ns (3.018ns logic, 0.932ns route)
-                                       (76.4% logic, 23.6% route)
+    Total                      3.926ns (3.018ns logic, 0.908ns route)
+                                       (76.9% logic, 23.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'what/pll/pll_base_inst/CLKOUT1'
@@ -3726,8 +3726,8 @@ Clock to Setup on destination clock clk
                               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
-clk                           |    9.571|         |         |         |
-what/pll/pll_base_inst/CLKOUT1|    8.613|         |         |         |
+clk                           |    9.596|         |         |         |
+what/pll/pll_base_inst/CLKOUT1|    8.479|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT0
@@ -3735,7 +3735,7 @@ Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT0
                               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------------+---------+---------+---------+---------+
-what/pll/pll_base_inst/CLKOUT0|    5.081|         |         |         |
+what/pll/pll_base_inst/CLKOUT0|    5.198|         |         |         |
 ------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock what/pll/pll_base_inst/CLKOUT1
@@ -3751,13 +3751,13 @@ what/pll/pll_base_inst/CLKOUT1|    4.698|         |         |         |
 
 
 Total REAL time to Xst completion: 28.00 secs
-Total CPU time to Xst completion: 28.33 secs
+Total CPU time to Xst completion: 28.18 secs
  
 --> 
 
-Total memory usage is 4555076 kilobytes
+Total memory usage is 4538872 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings : 1185 (   0 filtered)
+Number of warnings : 1184 (   0 filtered)
 Number of infos    :  180 (   0 filtered)
 
