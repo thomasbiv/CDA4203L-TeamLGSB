@@ -1215,10 +1215,10 @@ output_msg_not_exist_delete:
 ;Check if the message exists
 check_msg_exists:
 		LOAD s0, s0
-		INPUT s0, msg_exists ;Sends '0' if message doesn't exist, '1' if it does exist
-		COMPARE s0, 00
-		JUMP Z, output_msg_not_exist_play
-		COMPARE s0, 01
+		;INPUT s0, msg_exists ;Sends '0' if message doesn't exist, '1' if it does exist
+		;COMPARE s0, 00
+		;JUMP Z, output_msg_not_exist_play
+		;COMPARE s0, 01
 		JUMP Z, play_recording_wait
 
 ;Change state in fsm
@@ -2875,7 +2875,8 @@ mem_full_message:
 ;Outputs the main menu
 main_menu:     LOAD s0, s0  ; (nop)
 
-                ; Code for main menu options
+		LOAD s0, 00
+		OUTPUT s0, write_to_fsm
 
 		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
