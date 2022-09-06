@@ -1,28 +1,24 @@
- ;================================================================
+;================================================================
 ; Port address definitions...
 ;================================================================
 
-;Input ports
 CONSTANT switches         , 00    ; Switch read port
 CONSTANT leds	          , 01    ; LED write port
 CONSTANT uart_data_rx     , 02    ; UART receive read port
 CONSTANT uart_data_tx     , 03    ; UART transmit write port
 CONSTANT data_present     , 04    ; UART stat read port, lsb
 CONSTANT buffer_full      , 05    ; UART stat read port, lsb
-CONSTANT scroll_up	  , 06	  ; Scroll up port
-CONSTANT scroll_down	  , 07	  ; Scroll down port
-CONSTANT select		  , 08	  ; Select port
-CONSTANT back		  , 09 	  ; Back port
-CONSTANT play_pause	  , 0A	  ; Pause/Play port
-CONSTANT msg_exists	  , 0B	  ; Signal check if message actually exists in memory
-CONSTANT mem_full	  , 0C	  ; Signal checking if memory is full
-CONSTANT delete_finish	  , 0F	  ; Signal to let PicoBlaze know deleting has finished
-
-;Output ports
-CONSTANT write_to_fsm	  , 0B	  ; Write strobe for fsm
-CONSTANT file_select	  , 0C	  ; Write strobe for specific file
-CONSTANT vol_sel	  , 04	  ; Write strobe for vol control
-CONSTANT recording	  , 05	  ; Write strobe for recording
+CONSTANT scroll_up	  , 06	  ; up
+CONSTANT scroll_down	  , 07	  ; down
+CONSTANT select		  , 08	  ; select
+CONSTANT back    	  , 09	  ; back
+CONSTANT menu_sig	  , 0A    ; menu sig
+CONSTANT sub_sig          , 0B    ; sub_sig
+CONSTANT play_pause 	  , 0C    ; play_pause	
+CONSTANT vol_control	  , 0D    ; vol_control
+CONSTANT mem_full         , 2F    ; mem_full
+CONSTANT b2m		  , 3D    ; back_to_main
+CONSTANT rding	  	  , 4D    ; recording
 
 ;================================================================
 ; Useful constant declarations...
@@ -75,6 +71,7 @@ CONSTANT ascii_AMP        , 26    ; ascii code
 CONSTANT ascii_SINQUOT    , 27    ; ascii code
 CONSTANT ascii_LPAREN     , 28    ; ascii code
 CONSTANT ascii_RPAREN     , 29    ; ascii code
+
 CONSTANT ascii_ASTERISK   , 2A    ; ascii code
 CONSTANT ascii_PLUS       , 2B    ; ascii code
 CONSTANT ascii_COMMA      , 2C    ; ascii code
@@ -168,22 +165,32 @@ CONSTANT ascii_TILDE      , 7E    ; ascii code
 CONSTANT ascii_DEL        , 7F    ; ascii code
 
 ;================================================================
+; Actual assembly program goes here...
+;
 ; NOTE: size limit is 4096 lines of actual assembly code
 ;       Old documentation says it is 1024. This is now incorrect.
 ;================================================================
 
-;Make sure to clear the menu after each submenu is finished doing its thing.
 
-		NAMEREG s9, i
-		NAMEREG sA, j
-		NAMEREG sB, waste
-		NAMEREG sC, select_file
-		NAMEREG s5, playing
-		NAMEREG s6, msg_existing
-		NAMEREG s8, record
-		LOAD i, 00
-		LOAD j, 02
-		JUMP welcome_message
+		NAMEREG s8, scroll_pos
+		NAMEREG s9, vol_count
+		NAMEREG s7, waste
+		NAMEREG sA, play_sel
+		NAMEREG sB, del_sel
+		LOAD vol_count, 01
+		LOAD scroll_pos, 01
+		LOAD play_sel, 01
+		LOAD del_sel, 01
+		LOAD waste, 00
+		JUMP welcome
+
+		
+wait:
+		INPUT s3, buffer_full
+		COMPARE s3, 01
+		JUMP Z, wait
+		RETURN
+
 
 ;Function to waste time
 waste_time:
@@ -721,2019 +728,1086 @@ waste_time:
 		COMPARE waste, FF
 		RETURN Z
 		JUMP waste_time
-
-;Pause the recording
-pause:
-		LOAD s0, s0
-		COMPARE playing, 00
-		JUMP Z, play_recording_wait
-
-		LOAD playing, 00
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time	
-
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_P ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_y ;y
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_g ;g
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_COLON ;:
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		COMPARE i, 00
-		CALL Z, out_one
-		COMPARE i, 01
-		CALL Z, out_two
-		COMPARE i, 02
-		CALL Z, out_three
-		COMPARE i, 03
-		CALL Z, out_four
-		COMPARE i, 04
-		CALL Z, out_five
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_P ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_A ;A
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_U ;U
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP play_recording_wait
 		
-;Play the recording
-play_recording:
-		LOAD s0, s0
-		OUTPUT i, file_select
-		JUMP play_recording_wait
 
-;Stop the recording
-stop_playing:
-		LOAD s0, s0
-		LOAD playing, 00
-		JUMP play_message_menu
+increment_scroll_up:
 
-;Wait for user input to play selected recording
-play_recording_wait:
-		LOAD s0, s0
-		INPUT s0, play_pause
-		INPUT s1, back
-		COMPARE s0, 01
-		JUMP Z, play_recording
-		COMPARE playing, 01
-		JUMP Z, play_recording_msg
-		;COMPARE s0, 00
-		;JUMP Z, pause
-		COMPARE s1, 01
-		JUMP Z, stop_playing
-		JUMP play_recording_wait
+		LOAD s0,s0
+		ADD scroll_pos, 01
+		JUMP start_menu
 
-;Output playing message
-play_recording_msg:
-		LOAD s0, s0
-		COMPARE playing, 01
-		JUMP Z, play_recording_wait
-
-		LOAD playing, 01
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time	
-
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_P ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_y ;y
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_g ;g
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_COLON ;:
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		COMPARE i, 00
-		CALL Z, out_one
-		COMPARE i, 01
-		CALL Z, out_two
-		COMPARE i, 02
-		CALL Z, out_three
-		COMPARE i, 03
-		CALL Z, out_four
-		COMPARE i, 04
-		CALL Z, out_five
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_P ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_L ;L
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_A ;A
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_Y ;Y
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_I ;I
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_N ;N
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_G ;G
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP play_recording_wait
-
-;Outputs a line if the message does not exist
-output_msg_not_exist_play:
-		LOAD s0, s0
-
-		COMPARE msg_existing, 01
-		JUMP Z, play_message
-		
-		LOAD msg_existing, 01
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_A ;A
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_G ;G
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_D ;D
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_O ;O
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_N ;N
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SINQUOT ;'
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;N
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_X ;X
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_I ;I
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;T
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP play_message
-;Outputs a line if the message does not exist
-output_msg_not_exist_delete:
-		LOAD s0, s0
-
-		COMPARE msg_existing, 01
-		JUMP Z, delete_message
-		
-		LOAD msg_existing, 01
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_A ;A
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_G ;G
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_D ;D
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_O ;O
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_N ;N
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SINQUOT ;'
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;N
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_X ;X
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_I ;I
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;T
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP delete_message
-
-;Check if the message exists
-check_msg_exists:
-		LOAD s0, s0
-		;INPUT s0, msg_exists ;Sends '0' if message doesn't exist, '1' if it does exist
-		;COMPARE s0, 00
-		;JUMP Z, output_msg_not_exist_play
-		;COMPARE s0, 01
-		JUMP Z, play_recording_wait
-
-;Change state in fsm
-play_state:
-		LOAD s0, s0
-		LOAD s0, 01
-		OUTPUT s0, write_to_fsm
-		JUMP check_msg_exists
-
-;Subroutines for handling scrolling in the play message menu
-play_btn_down:
-		LOAD s0, s0
-		ADD i, 01
-		LOAD msg_existing, 00
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-		
-play_btn_down_roll:
-		LOAD s0, s0
-		LOAD i, 00
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-
-play_btn_up:
-		LOAD s0, s0
-		SUB i, 01
-		LOAD msg_existing, 00
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-
-play_btn_up_roll:
-		LOAD s0, s0
-		LOAD i, 04
-		COMPARE i, ascii_1
-		JUMP NZ, play_message_menu
-		
-;Wait for input from user for playing a message
-play_message:
-		LOAD s0, s0
-		INPUT s0, scroll_up
-		INPUT s1, scroll_down
-		INPUT s2, select
-		INPUT s3, back
-		COMPARE s1, 00
-		CALL NZ, play_btn_up
-		COMPARE i, FF
-		JUMP Z, play_btn_up_roll
-		LOAD s0, s0
-		COMPARE s0, 00
-		CALL NZ, play_btn_down
-		LOAD s0, s0
-		COMPARE i, 05
-		JUMP Z, play_btn_down_roll
-		LOAD s0, s0
-		COMPARE s2, 01
-		JUMP Z, play_state
-		LOAD s0, s0
-		COMPARE s3, 01
-		JUMP Z, back_to_main_menu
-		LOAD s0, 01
-		OUTPUT s0, write_to_fsm
-		JUMP play_message
-
-;Output a message if memory is full
-mem_full_message_record:
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_O ;O
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_R ;R
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_Y ;Y
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_F ;F
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_U ;U
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_L ;L
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_L ;L
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP stop_recording
-
-;Output a something indicating message location is taken up
-message_location_full:
-		LOAD s0, s0
-		
-		LOAD msg_existing, 01
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_A ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_G ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_E ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_SPACE ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_A ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_L ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_R ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_E ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_A ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_D ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_Y ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_SPACE ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_X ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_I ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_S ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_T ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, ascii_S ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP stop_recording
-
-;Start the recording
-start_recording:
-		LOAD s0, s0
-		LOAD s0, 01
-		OUTPUT s0, recording
-		INPUT s4, mem_full
-		INPUT s3, msg_exists
-		COMPARE s4, 01
-		JUMP Z, mem_full_message_record
-		COMPARE s3, 01
-		JUMP Z, message_location_full
-		JUMP record_message
-
-;Stop the recording
-stop_recording:
-		LOAD s0, s0
-		LOAD s0, 00
-		OUTPUT s0, recording
-		JUMP record_message
-
-;Subroutine to start/stop recording
-set_recording:
-		LOAD s0, s0
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		OUTPUT i, file_select
-		COMPARE record, 01
-		JUMP Z, stop_recording
-		COMPARE record, 00
-		JUMP Z, start_recording
-
-record_btn_down:
-		LOAD s0, s0
-		ADD i, 01
-		LOAD msg_existing, 00
-		COMPARE i, ascii_1
-		JUMP NZ, record_message_menu
-		
-record_btn_down_roll:
-		LOAD s0, s0
-		LOAD i, 00
-		COMPARE i, ascii_1
-		JUMP NZ, record_message_menu
-
-record_btn_up:
-		LOAD s0, s0
-		SUB i, 01
-		LOAD msg_existing, 00
-		COMPARE i, ascii_1
-		JUMP NZ, record_message_menu
-
-record_btn_up_roll:
-		LOAD s0, s0
-		LOAD i, 04
-		COMPARE i, ascii_1
-		JUMP NZ, record_message_menu
-
-;Wait for input from user for recording messages
-record_message:
-		LOAD s0, s0
-		INPUT s0, scroll_up
-		INPUT s1, scroll_down
-		INPUT s2, select
-		INPUT s3, back
-		INPUT s4, mem_full
-		COMPARE s1, 00
-		CALL NZ, record_btn_up
-		COMPARE i, FF
-		JUMP Z, record_btn_up_roll
-		COMPARE s0, 00
-		CALL NZ, record_btn_down
-		COMPARE i, 04
-		JUMP Z, record_btn_down_roll
-		LOAD s0, s0
-		COMPARE s3, 01
-		JUMP Z, back_to_main_menu
-		COMPARE s2, 01
-		JUMP Z, set_recording
-		JUMP record_message
-
-;Subroutine letting picoblaze know deletion has finished
-del_finish:
-		LOAD s0, s0
-		INPUT s0, delete_finish
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		JUMP del_finish
-
-;Let the fsm know we are deleting a file
-delete:
-		LOAD s0, s0
-		LOAD s0, 03
-		OUTPUT s0, write_to_fsm
-		OUTPUT i, file_select
-		JUMP del_finish
-
-;Check if the message exists
-check_msg_exists_delete:
-		LOAD s0, s0
-		INPUT s0, msg_exists ;Sends '0' if message doesn't exist, '1' if it does exist
-		COMPARE s0, 00
-		JUMP Z, output_msg_not_exist_delete
-		COMPARE s0, 01
-		JUMP Z, delete
-
-;Subroutines for handling scrolling in delete menu
-del_btn_down:
-		LOAD s0, s0
-		ADD i, 01
-		LOAD msg_existing, 00
-		COMPARE i, ascii_1
-		JUMP NZ, delete_message_menu
-		
-del_btn_down_roll:
-		LOAD s0, s0
-		LOAD i, 00
-		COMPARE i, ascii_1
-		JUMP NZ, delete_message_menu
-
-del_btn_up:
-		LOAD s0, s0
-		SUB i, 01
-		LOAD msg_existing, 00
-		COMPARE i, ascii_1
-		JUMP NZ, delete_message_menu
-
-del_btn_up_roll:
-		LOAD s0, s0
-		LOAD i, 04
-		COMPARE i, ascii_1
-		JUMP NZ, delete_message_menu
-
-;Wait for input from user for deleting messages
-delete_message:
-		LOAD s0, s0
-		INPUT s0, scroll_up
-		INPUT s1, scroll_down
-		INPUT s2, select
-		INPUT s3, back
-		COMPARE s1, 00
-		CALL NZ, del_btn_up
-		COMPARE i, FF
-		JUMP Z, del_btn_up_roll
-		COMPARE s0, 00
-		CALL NZ, del_btn_down
-		COMPARE i, 04
-		JUMP Z, del_btn_down_roll
-		LOAD s0, s0
-		COMPARE s2, 01
-		JUMP Z, check_msg_exists_delete
-		COMPARE s3, 01
-		JUMP Z, back_to_main_menu
-		LOAD s0, 03
-		OUTPUT s0, write_to_fsm
-		JUMP delete_message
-
-;Finally deleting all messages
-delete_all:
-		LOAD s0, 04
-		OUTPUT s0, write_to_fsm
-		JUMP main_menu
-		
-;Confirmation for deleting all messages
-delete_all_messages:
-		LOAD s0, s0
-		INPUT s0, scroll_up
-		INPUT s1, scroll_down
-		INPUT s2, back
-		COMPARE s1, 01
-		JUMP Z, back_to_main_menu
-		COMPARE s0, 01
-		CALL Z, delete_all
-		LOAD s0, s0
-		COMPARE s2, 01
-		LOAD s0, 04
-		OUTPUT s0, write_to_fsm
-		JUMP Z, back_to_main_menu
-		JUMP delete_all_messages
-
-vol_down:
-		LOAD s0, s0
-		LOAD sF, 02
-		SUB j, 01
-		OUTPUT sF, vol_sel
-		COMPARE i, ascii_1
-		JUMP NZ, volume_control_menu
-
-vol_up:
-		LOAD s0, s0
-		LOAD sF, 01
-		ADD j, 01
-		OUTPUT sF, vol_sel
-		COMPARE i, ascii_1
-		JUMP NZ, volume_control_menu
-
-vol_down_stay:
-		LOAD s0, s0
-		LOAD j, 00
-		COMPARE i, ascii_1
-		JUMP NZ, volume_control_menu
-
-vol_up_stay:
-		LOAD s0, s0
-		LOAD j, 14
-		COMPARE i, ascii_1
-		JUMP NZ, volume_control_menu
-
-;Subroutine for volume control
-volume_control:
+increment_scroll_down:
 		
 		LOAD s0, s0
-		INPUT s0, scroll_up
-		INPUT s1, scroll_down
-		INPUT s2, back
-		COMPARE s1, 00
-		CALL NZ, vol_up
-		COMPARE j, FF
-		JUMP Z, vol_up_stay
-		COMPARE s0, 00
-		CALL NZ, vol_down
-		COMPARE j, 15
-		JUMP Z, vol_down_stay
-		LOAD s0, s0
-		COMPARE s2, 01
-		JUMP Z, back_to_main_menu
-		LOAD s7, 00
-		OUTPUT s7, vol_sel
-		LOAD s0, 05
-		OUTPUT s0, write_to_fsm
-		JUMP volume_control
+		SUB scroll_pos, 01
+		JUMP start_menu
+
+increment_vol_up:
 		
-;Play message menu
-play_message_menu:
-
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time	
-
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_P ;P
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_y ;y
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_g ;g
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_COLON ;:
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		COMPARE i, 00
-		CALL Z, out_one
-		COMPARE i, 01
-		CALL Z, out_two
-		COMPARE i, 02
-		CALL Z, out_three
-		COMPARE i, 03
-		CALL Z, out_four
-		COMPARE i, 04
-		CALL Z, out_five
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP play_message
-
-;Record message menu
-record_message_menu:
-
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-
-		LOAD s0, 02
-		OUTPUT s0, write_to_fsm
-
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_R ;R
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_c ;c
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_o ;o
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_r ;r
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_d ;d
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_g ;g
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_QUESTION ;?
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_S ;S
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_L ;L
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_E ;E
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_C ;C
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;T
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_B ;B
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;T
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_N ;N
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_T ;T
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_o ;o
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_R ;R
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_c ;c
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_o ;o
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_r ;r
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_d ;d
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_F ;F
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_i ;i
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_COLON ;:
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		COMPARE i, 00
-		CALL Z, out_one
-		COMPARE i, 01
-		CALL Z, out_two
-		COMPARE i, 02
-		CALL Z, out_three
-		COMPARE i, 03
-		CALL Z, out_four
-		COMPARE i, 04
-		CALL Z, out_five
-		call wait
-
-		;Call to actual submenu here
-		JUMP record_message
-
-;Delete all message confirmation
-delete_all_messages_confirm:
-
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_D ;D
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_t ;t
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_A ;A
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_QUESTION ;?
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		;Call to actual submenu here
-		JUMP delete_all_messages
-
-;Delete message menu
-delete_message_menu:
-
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time	
-
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_D ;D
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_t ;t
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_s ;s
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_g ;g
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_QUESTION ;?
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_F ;F
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_i ;i
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_COLON ;:
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		COMPARE i, 00
-		CALL Z, out_one
-		COMPARE i, 01
-		CALL Z, out_two
-		COMPARE i, 02
-		CALL Z, out_three
-		COMPARE i, 03
-		CALL Z, out_four
-		COMPARE i, 04
-		CALL Z, out_five
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		;Call to actual submenu here
-		JUMP delete_message
-
-;Volume control menu
-volume_control_menu:
+		LOAD s0, s0
+		ADD vol_count, 01
+		LOAD s3, 01
+		OUTPUT s3, vol_control
+		JUMP volume
+
+increment_vol_down:
 		
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time	
+		LOAD s0, s0
+		SUB vol_count, 01
+		LOAD s3, 02
+		OUTPUT s3, vol_control
+		JUMP volume
 
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_V ;V
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_o ;o
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_u ;u
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_m ;m
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_COLON ;:
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		COMPARE j, 00
-		CALL Z, out_one
-		COMPARE j, 01
-		CALL Z, out_two
-		COMPARE j, 02
-		CALL Z, out_three
-		COMPARE j, 03
-		CALL Z, out_four
-		COMPARE j, 04
-		CALL Z, out_five
-		COMPARE j, 05
-		CALL Z, out_six
-		COMPARE j, 06
-		CALL Z, out_seven
-		COMPARE j, 07
-		CALL Z, out_eight
-		COMPARE j, 08
-		CALL Z, out_nine
-		COMPARE j, 09
-		CALL Z, out_ten
-		COMPARE j, 0A
-		CALL Z, out_eleven
-		COMPARE j, 0B
-		CALL Z, out_twelve
-		COMPARE j, 0C
-		CALL Z, out_thirteen
-		COMPARE j, 0D
-		CALL Z, out_fourteen
-		COMPARE j, 0E
-		CALL Z, out_fifteen
-		call wait
-
-		LOAD s0, ascii_LF ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_CR ;
-		OUTPUT s0, uart_data_tx
-		call wait
+increment_play_up:
 		
-		;Call to actual submenu here
-		LOAD waste, 00
-		JUMP volume_control
-
-;Subroutine for sending fsm back to main state
-back_to_main_menu:
-		LOAD s0, 00
-		OUTPUT s0, write_to_fsm
-		JUMP main_menu
-
-;Once the user presses the select button, picoblaze should transition here.
-selection_comparison:
 		LOAD s0, s0
-		LOAD s0, ascii_FF 
-		OUTPUT s0, uart_data_tx
-		call wait
-		LOAD s0, i
-		LOAD i, 00
-		COMPARE s0, 00
-		JUMP Z, play_message_menu
-		COMPARE s0, 01
-		JUMP Z, record_message_menu
-		COMPARE s0, 02
-		JUMP Z, delete_message_menu
-		COMPARE s0, 03
-		JUMP Z, delete_all_messages_confirm
-		COMPARE s0, 04
-		JUMP Z, volume_control_menu
+		ADD play_sel, 01
+		JUMP play_msg
 
-
-;Subroutines for handling scrolling in the main menu
-btn_down:
-		LOAD s0, s0
-		ADD i, 01
-		COMPARE i, ascii_1
-		JUMP NZ, main_menu
+increment_play_down:
 		
-btn_down_roll:
 		LOAD s0, s0
-		LOAD i, 00
-		COMPARE i, ascii_1
-		JUMP NZ, main_menu
+		SUB play_sel, 01
+		JUMP play_msg
+		
+increment_del_up:
+		
+		LOAD s0, s0
+		ADD del_sel, 01
+		JUMP delete_msg
 
-btn_up:
+increment_del_down:
+		
 		LOAD s0, s0
-		SUB i, 01
-		COMPARE i, ascii_1
-		JUMP NZ, main_menu
+		SUB del_sel, 01
+		JUMP delete_msg
 
-btn_up_roll:
+one_out: 
 		LOAD s0, s0
-		LOAD i, 04
-		COMPARE i, ascii_1
-		JUMP NZ, main_menu
-
-;Wait for input from the user.
-await_input:
-		LOAD s0, s0
-		INPUT s0, scroll_up
-		INPUT s1, scroll_down
-		INPUT s2, select
-		COMPARE s1, 00
-		CALL NZ, btn_up
-		LOAD s0, s0
-		COMPARE i, 05
-		JUMP Z, btn_up_roll
-		LOAD s0, s0
-		COMPARE s0, 00
-		CALL NZ, btn_down
-		LOAD s0, s0
-		COMPARE i, FF
-		JUMP Z, btn_down_roll
-		LOAD s0, s0
-		COMPARE s2, 01
-		JUMP Z, selection_comparison
-		JUMP await_input	
-
-;Wait for uart buffer to empty
-wait:		
-		LOAD s0, s0
-		INPUT s3, buffer_full
-		COMPARE s3, 01
-		JUMP Z, wait
-		RETURN
-
-;Subroutines for outputting specific numbers
-out_one:
 		LOAD s0, ascii_1
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_two:
+two_out: 
+		LOAD s0, s0
 		LOAD s0, ascii_2
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_three:
+three_out: 
+		LOAD s0, s0
 		LOAD s0, ascii_3
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_four:
+four_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_4
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_five:
+five_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_5
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_six:
+six_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_6
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_seven:
+seven_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_7
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_eight:
+eight_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_8
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
 
-out_nine:
+nine_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_9
 		OUTPUT s0, uart_data_tx
+		CALL wait
 		RETURN
-out_ten:
+
+ten_out: 
+
+		LOAD s0, s0
 		LOAD s0, ascii_1
 		OUTPUT s0, uart_data_tx
 		CALL wait
-
 		LOAD s0, ascii_0
 		OUTPUT s0, uart_data_tx
-		RETURN
-
-out_eleven:
-		LOAD s0, ascii_1
-		OUTPUT s0, uart_data_tx
 		CALL wait
-
-		LOAD s0, ascii_1
-		OUTPUT s0, uart_data_tx
 		RETURN
-
-out_twelve:
-		LOAD s0, ascii_1
-		OUTPUT s0, uart_data_tx
-		CALL wait
-
-		LOAD s0, ascii_2
-		OUTPUT s0, uart_data_tx
-		RETURN
-
-out_thirteen:
-		LOAD s0, ascii_1
-		OUTPUT s0, uart_data_tx
-		CALL wait
-
-		LOAD s0, ascii_3
-		OUTPUT s0, uart_data_tx
-		RETURN
-
-out_fourteen:
-		LOAD s0, ascii_1
-		OUTPUT s0, uart_data_tx
-		CALL wait
-
-		LOAD s0, ascii_4
-		OUTPUT s0, uart_data_tx
-		RETURN
-
-out_fifteen:
-		LOAD s0, ascii_1
-		OUTPUT s0, uart_data_tx
-		CALL wait
-
-		LOAD s0, ascii_5
-		OUTPUT s0, uart_data_tx
-		RETURN
-
-;Wait for input from the user
-welcome_wait:
+		
+		
+roll_to_one:
 		LOAD s0, s0
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		INPUT s0, select
-		COMPARE s0, 01
-		JUMP Z, main_menu
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		CALL waste_time
-		JUMP main_menu
+		LOAD scroll_pos, 01
+		JUMP start_menu
 
-;Welcome message
-welcome_message:
+roll_to_five:
+		LOAD s0, s0
+		LOAD scroll_pos, 05
+		JUMP start_menu
+
+roll_to_one_play:
+		
+		LOAD s0, s0
+		LOAD play_sel, 01
+		JUMP play_msg
+
+roll_to_five_play:
+		
+		LOAD s0, s0
+		LOAD play_sel, 05
+		JUMP play_msg
+
+roll_to_one_del:
+
+		LOAD s0, s0
+		LOAD del_sel, 01
+		JUMP delete_msg
+
+roll_to_five_del:
+		
+		LOAD s0, s0
+		LOAD del_sel, 05
+		JUMP delete_msg
+
+roll_to_one_vol:
+
+		LOAD s0, s0
+		LOAD vol_count, 01
+		JUMP volume
+
+roll_to_ten_vol:
+
+		LOAD s0, s0
+		LOAD vol_count, 0A
+		JUMP volume
+
+waitping1:
+		INPUT s2, back
+		INPUT s3, play_pause
+		INPUT s4, b2m
+
+		LOAD sD, 01
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s2, 01
+		JUMP Z, play_1
+		COMPARE s4, 01
+		JUMP Z, start_menu
+		COMPARE s3, 01
+		JUMP Z, waitping1
+		
+		JUMP play_1
+
+playing1:
+		
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+	
+		LOAD s0, ascii_P
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_n
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitping1
+
+waitP1:
+		INPUT s1, back
+		INPUT sE, play_pause
+
+
+		LOAD sD, 01
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		LOAD sD, 01
+		OUTPUT sD, sub_sig	
+		COMPARE s1, 01
+		JUMP Z, play_msg
+		COMPARE sE, 01
+		JUMP Z, playing1
+		JUMP waitP1
+	
+play_1:
+		LOAD s0, s0
+
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_S
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_w
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_h
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_p
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitP1
+
+waitping2:
+		INPUT s2, back
+		INPUT s3, play_pause
+		INPUT s4, b2m
+
+		LOAD sD, 02
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s2, 01
+		JUMP Z, play_2
+		COMPARE s4, 01
+		JUMP Z, start_menu
+		COMPARE s3, 01
+		JUMP Z, waitping2
+		
+		JUMP play_2
+
+playing2:
+		
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+	
+		LOAD s0, ascii_P
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_n
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitping2
+
+waitP2:
+		INPUT s1, back
+		INPUT sE, play_pause
+
+		LOAD sD, 02
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s1, 01
+		JUMP Z, play_msg
+		COMPARE sE, 01
+		JUMP Z, playing2
+		JUMP waitP2	
+
+play_2:
+		LOAD s0, s0
+
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_S
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_w
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_h
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_p
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitP2
+
+waitping3:
+		INPUT s2, back
+		INPUT s3, play_pause
+		INPUT s4, b2m
+
+		LOAD sD, 03
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s2, 01
+		JUMP Z, play_3
+		COMPARE s4, 01
+		JUMP Z, start_menu
+		COMPARE s3, 01
+		JUMP Z, waitping3
+		
+		JUMP play_3
+
+playing3:
+		
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+	
+		LOAD s0, ascii_P
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_n
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitping3
+
+waitP3:
+		INPUT s1, back
+		INPUT sE, play_pause
+
+		LOAD sD, 03
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s1, 01
+		JUMP Z, play_msg
+		COMPARE sE, 01
+		JUMP Z, playing3
+		JUMP waitP3
+
+play_3:
+		LOAD s0, s0
+
+
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_S
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_w
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_h
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_p
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		JUMP waitP3
+
+waitping4:
+		INPUT s2, back
+		INPUT s3, play_pause
+		INPUT s4, b2m
+
+		LOAD sD, 04
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s2, 01
+		JUMP Z, play_4
+		COMPARE s4, 01
+		JUMP Z, start_menu
+		COMPARE s3, 01
+		JUMP Z, waitping4
+		
+		JUMP play_4
+
+playing4:
+		
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+	
+		LOAD s0, ascii_P
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_n
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitping4
+
+waitP4:
+		INPUT s1, back
+		INPUT sE, play_pause
+
+		LOAD sD, 04
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+	
+		COMPARE s1, 01
+		JUMP Z, play_msg
+		COMPARE sE, 01
+		JUMP Z, playing4
+	
+		JUMP waitP4
+
+play_4:
+		LOAD s0, s0
+
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_S
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_w
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_h
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_p
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitP4
+
+waitping5:
+		INPUT s2, back
+		INPUT s3, play_pause
+		INPUT s4, b2m
+		OUTPUT sD, sub_sig
+		LOAD sC, 05
+		
+		LOAD sD, 05
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s2, 01
+		JUMP Z, play_5
+		COMPARE s4, 01
+		JUMP Z, start_menu
+		COMPARE s3, 01
+		JUMP Z, waitping5
+		
+		JUMP play_5
+
+playing5:
+		
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+	
+		LOAD s0, ascii_P
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_n
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP waitping5
+
+waitP5:
+		INPUT s1, back
+		INPUT sE, play_pause
+		
+		LOAD sD, 05
+		OUTPUT sD, sub_sig
+		LOAD sC, 01
+		OUTPUT sC, menu_sig	
+		
+		COMPARE s1, 01
+		JUMP Z, play_msg
+		COMPARE sE, 01
+		JUMP Z, playing5
+		JUMP waitP5
+
+play_5:
+		LOAD s0, s0
+
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_S
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_w
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_h
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_p
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		JUMP waitP5
+
+find_play:
+		LOAD s0, s0
+		COMPARE play_sel, 01
+		JUMP Z, play_1
+		COMPARE play_sel, 02
+		JUMP Z, play_2
+		COMPARE play_sel, 03
+		JUMP Z, play_3
+		COMPARE play_sel, 04
+		JUMP Z, play_4
+		COMPARE play_sel, 05
+		JUMP Z, play_5
+
+
+wait_in_play_msg:
+
+		LOAD s0, s0
+		INPUT s3, select
+		INPUT s5, back
+		INPUT s2, scroll_up
+		INPUT s1, scroll_down
+		
+		LOAD sC, 01
+		OUTPUT sC, menu_sig
+
+		COMPARE s5, 01
+		JUMP Z, start_menu
+		COMPARE s2, 01
+		JUMP Z, increment_play_up
+		COMPARE s1, 01
+		JUMP Z, increment_play_down
+		COMPARE s3, 01
+		JUMP Z, find_play
+
+		JUMP wait_in_play_msg
+		
+play_msg:
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time	
 		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
 		call wait
-		
-		LOAD s0, mem_full
-		COMPARE s0, 01
-		CALL Z, mem_full_message
 
-		LOAD s0, ascii_W ;W
-		OUTPUT s0, uart_data_tx
-		call wait
-		
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_l ;l
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_c ;c
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_o ;o
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_m ;m
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_t ;t
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_o ;o
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_SPACE ;
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_M ;M
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_e ;e
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_d ;d
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_i ;i
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_a ;a
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_p ;p
+		LOAD s0, ascii_P ;P
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2749,11 +1823,11 @@ welcome_message:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_e ;e
+		LOAD s0, ascii_SPACE ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_r ;r
+		LOAD s0, ascii_a ;a
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2761,15 +1835,11 @@ welcome_message:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_V ;V
-		OUTPUT s0, uart_data_tx
-		call wait	
-
-		LOAD s0, ascii_e ;e
+		LOAD s0, ascii_M ;M
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_r ;r
+		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2777,15 +1847,23 @@ welcome_message:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_i ;i
+		LOAD s0, ascii_s ;s
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_o ;o
+		LOAD s0, ascii_a ;a
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_n ;n
+		LOAD s0, ascii_g ;g
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_COLON ;:
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2793,64 +1871,520 @@ welcome_message:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_4 ;4
-		OUTPUT s0, uart_data_tx
-		call wait
+		COMPARE play_sel, 00
+		CALL Z, roll_to_five_play
 
-		LOAD s0, ascii_PERIOD ;.
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_2 ;2
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_0 ;0
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_PERIOD ;.
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_6 ;6
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		LOAD s0, ascii_9 ;9
-		OUTPUT s0, uart_data_tx
-		call wait
-
-		JUMP welcome_wait
-
-;Outputs a memory full message
-mem_full_message:
+		COMPARE play_sel, 01
+		CALL Z, one_out
 		
-		LOAD s0, ascii_M ;M
+		COMPARE play_sel, 02
+		CALL Z, two_out
+		
+		COMPARE play_sel, 03
+		CALL Z, three_out
+		
+		COMPARE play_sel, 04
+		CALL Z, four_out
+		
+		COMPARE play_sel, 05
+		CALL Z, five_out
+
+		COMPARE play_sel, 06
+		CALL Z, roll_to_one_play
+	
+		LOAD waste, 00
+		JUMP wait_in_play_msg
+
+wait_back_full:
+
+		INPUT s3, back
+		COMPARE s3, 01
+		JUMP Z, record_msg
+		JUMP wait_back_full
+
+		LOAD sC, 02
+		OUTPUT sC, menu_sig
+
+full:
+			
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_M
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_r
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_y
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_f
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_u
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+			
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		JUMP wait_back_full
+
+
+wait_back_record:
+		
+		LOAD s0, s0
+		INPUT s3, back
+		INPUT s4, b2m
+		
+		LOAD s5, 01
+		OUTPUT s5, rding
+
+		LOAD sC, 02
+		OUTPUT sC, menu_sig		
+
+		COMPARE s3, 01
+		JUMP Z, record_msg
+		COMPARE s4, 01
+		JUMP Z, start_menu
+		JUMP wait_back_record
+
+recording:
+		
+		INPUT s3, mem_full
+		COMPARE s3, 01
+		JUMP Z, full
+	
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_R
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_r
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_d
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_i
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_n
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_PERIOD
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_PERIOD
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD s0, ascii_PERIOD
+		OUTPUT s0, uart_data_tx
+		CALL wait
+		
+		LOAD sC, 02
+		OUTPUT sC, menu_sig
+
+		INPUT sF, mem_full
+		COMPARE sF, 01
+		JUMP Z, full	
+	
+		JUMP wait_back_record
+
+wait_record:
+		LOAD s0, s0
+		INPUT s3, select
+		INPUT s5, back
+
+		LOAD sF, 00
+		OUTPUT sF, rding
+	
+		LOAD sC, 02
+		OUTPUT sC, menu_sig
+
+		COMPARE s5, 01
+		JUMP Z, start_menu
+
+		COMPARE s3, 01
+		JUMP Z, recording
+
+		JUMP wait_record
+record_msg:
+
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_P
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_r
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_r
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_c
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_r
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_d
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_PERIOD
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_PERIOD
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_PERIOD
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD waste, 00
+		JUMP wait_record
+
+del_1:
+		LOAD s0, s0
+		LOAD sD, 01
+		OUTPUT sD, sub_sig
+		LOAD sC, 03
+		OUTPUT sC, menu_sig
+
+		JUMP delete_msg	
+
+del_2:
+		LOAD s0, s0
+		LOAD sD, 02
+		OUTPUT sD, sub_sig
+		LOAD sC, 03
+		OUTPUT sC, menu_sig
+		JUMP delete_msg
+
+del_3:
+		LOAD s0, s0
+		LOAD sD, 03
+		OUTPUT sD, sub_sig
+		LOAD sC, 03
+		OUTPUT sC, menu_sig
+		JUMP delete_msg
+
+del_4:
+		LOAD s0, s0
+		LOAD sD, 04
+		OUTPUT sD, sub_sig
+		LOAD sC, 03
+		OUTPUT sC, menu_sig
+		JUMP delete_msg
+
+del_5:
+		LOAD s0, s0
+		LOAD sD, 05
+		OUTPUT sD, sub_sig
+		LOAD sC, 03
+		OUTPUT sC, menu_sig
+		JUMP delete_msg
+
+find_del:
+		LOAD s0, s0
+		COMPARE del_sel, 01
+		JUMP Z, del_1
+		COMPARE del_sel, 02
+		JUMP Z, del_2
+		COMPARE del_sel, 03
+		JUMP Z, del_3
+		COMPARE del_sel, 04
+		JUMP Z, del_4
+		COMPARE del_sel, 05
+		JUMP Z, del_5
+
+wait_delete:
+
+		LOAD s0, s0
+		INPUT s3, select
+		INPUT s5, back
+		INPUT s2, scroll_up
+		INPUT s1, scroll_down
+
+		LOAD sC, 03
+		OUTPUT sC, menu_sig
+
+		COMPARE s5, 01
+		JUMP Z, start_menu
+		COMPARE s2, 01
+		JUMP Z, increment_del_up
+		COMPARE s1, 01
+		JUMP Z, increment_del_down
+		COMPARE s3, 01
+		JUMP Z, find_del
+
+		JUMP wait_delete
+
+delete_msg:
+
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time	
+
+		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_E ;E
+		LOAD s0, ascii_D ;D
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_M ;M
+		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_O ;O
+		LOAD s0, ascii_l ;l
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_R ;R
+		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_Y ;Y
+		LOAD s0, ascii_t ;t
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		call wait
 
 		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_g ;g
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_QUESTION ;?
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_LF ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
 
@@ -2858,33 +2392,306 @@ mem_full_message:
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_U ;U
+		LOAD s0, ascii_i ;i
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_L ;L
+		LOAD s0, ascii_l ;l
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		LOAD s0, ascii_L ;L
+		LOAD s0, ascii_e ;e
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		RETURN
+		LOAD s0, ascii_COLON ;:
+		OUTPUT s0, uart_data_tx
+		call wait
 
-;Outputs the main menu
-main_menu:     LOAD s0, s0  ; (nop)
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
 
-		LOAD s0, 00
-		OUTPUT s0, write_to_fsm
+		COMPARE del_sel, 00
+		CALL Z, roll_to_five_del
+
+		COMPARE del_sel, 01
+		CALL Z, one_out
+		
+		COMPARE del_sel, 02
+		CALL Z, two_out
+		
+		COMPARE del_sel, 03
+		CALL Z, three_out
+		
+		COMPARE del_sel, 04
+		CALL Z, four_out
+		
+		COMPARE del_sel, 05
+		CALL Z, five_out
+
+		COMPARE del_sel, 06
+		CALL Z, roll_to_one_del
+
+		LOAD waste, 00
+		JUMP wait_delete
+
+wait_all:
+		LOAD s0, s0
+		INPUT s3, select
+		INPUT s5, back
+		
+		LOAD sC, 04
+		OUTPUT sC, menu_sig
+
+		COMPARE s5, 01
+		JUMP Z, start_menu
+
+		JUMP wait_all
+
+delete_all:
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_D
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_t
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_a
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_g
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_s
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_QUESTION
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+
+		JUMP wait_all
+
+wait_vol:
+		LOAD s0, s0
+		INPUT s3, scroll_up
+		INPUT s4, scroll_down
+		INPUT s5, back
+		
+		LOAD sC, 05
+		OUTPUT sC, menu_sig
+
+		COMPARE s3, 01
+		JUMP Z, increment_vol_up
+		COMPARE s4, 01
+		JUMP Z, increment_vol_down
+		COMPARE s5, 01
+		JUMP Z, start_menu
+
+		JUMP wait_vol
+volume:
+
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		
+		LOAD s0, ascii_FF
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_V
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_o
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_l
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_u
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_m
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_e
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_COLON
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		LOAD s0, ascii_SPACE
+		OUTPUT s0, uart_data_tx
+		CALL wait
+
+		COMPARE vol_count, 01
+		CALL Z, one_out
+
+		COMPARE vol_count, 02
+		CALL Z, two_out
+
+		COMPARE vol_count, 03
+		CALL Z, three_out
+
+		COMPARE vol_count, 04
+		CALL Z, four_out
+
+		COMPARE vol_count, 05
+		CALL Z, five_out
+
+		COMPARE vol_count, 06
+		CALL Z, six_out
+
+		COMPARE vol_count, 07
+		CALL Z, seven_out
+
+		COMPARE vol_count, 08
+		CALL Z, eight_out
+
+		COMPARE vol_count, 09
+		CALL Z, nine_out
+
+		COMPARE vol_count, 0A
+		CALL Z, ten_out
+	
+		COMPARE vol_count, 0B
+		CALL Z, roll_to_one_vol
+
+		COMPARE vol_count, 00
+		CALL Z, roll_to_ten_vol
+
+		LOAD waste, 00
+		LOAD sE, 00
+		OUTPUT sE, vol_control
+		JUMP wait_vol
+
+
+get_selection: 
+		COMPARE scroll_pos, 01
+		JUMP Z, play_msg
+		COMPARE scroll_pos, 02
+		JUMP Z, record_msg
+		COMPARE scroll_pos, 03
+		JUMP Z, delete_msg
+		COMPARE scroll_pos, 04
+		JUMP Z, delete_all
+		COMPARE scroll_pos, 05
+		JUMP Z, volume 
+			
+wait_in:
+		LOAD s0, s0 
+		INPUT s0, scroll_up
+		INPUT s1, scroll_down
+		INPUT s2, select
+
+		LOAD s3, 00
+		OUTPUT s3, menu_sig
+		
+		COMPARE s0, 01
+		JUMP Z, increment_scroll_up
+		COMPARE s1, 01
+		JUMP Z, increment_scroll_down
+		COMPARE s2, 01
+		JUMP Z, get_selection
+		
+
+		JUMP wait_in
+
+
+start_menu:     LOAD     s0, s0            ; (nop)
+		
+               ; Code for main menu options
 
 		LOAD s0, ascii_FF 
 		OUTPUT s0, uart_data_tx
 		call wait
-		
-		LOAD s0, mem_full
-		COMPARE s0, 01
-		CALL Z, mem_full_message
 
 		LOAD s0, ascii_M ;M
 		OUTPUT s0, uart_data_tx
@@ -3573,17 +3380,26 @@ main_menu:     LOAD s0, s0  ; (nop)
 		OUTPUT s0, uart_data_tx
 		call wait
 
-		COMPARE i, 00
-		CALL Z, out_one
-		COMPARE i, 01
-		CALL Z, out_two
-		COMPARE i, 02
-		CALL Z, out_three
-		COMPARE i, 03
-		CALL Z, out_four
-		COMPARE i, 04
-		CALL Z, out_five
-		call wait
+		COMPARE scroll_pos, 00
+		CALL Z, roll_to_five
+
+		COMPARE scroll_pos, 01
+		CALL Z, one_out
+		
+		COMPARE scroll_pos, 02
+		CALL Z, two_out
+		
+		COMPARE scroll_pos, 03
+		CALL Z, three_out
+		
+		COMPARE scroll_pos, 04
+		CALL Z, four_out
+		
+		COMPARE scroll_pos, 05
+		CALL Z, five_out
+
+		COMPARE scroll_pos, 06
+		CALL Z, roll_to_one
 
 		LOAD s0, ascii_LF ;
 		OUTPUT s0, uart_data_tx
@@ -3592,7 +3408,917 @@ main_menu:     LOAD s0, s0  ; (nop)
 		LOAD s0, ascii_CR ;
 		OUTPUT s0, uart_data_tx
 		call wait
-		jump await_input
+
+		LOAD waste, 00
+		JUMP wait_in
+
+waitwelcome:
+		
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		CALL waste_time
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		CALL waste_time
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		CALL waste_time
+		INPUT s2, select 
+		COMPARE s2, 01
+		JUMP Z, start_menu
+
+		JUMP start_menu
+		
+welcome: 
+		LOAD s0, ascii_FF 
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_W ;W
+		OUTPUT s0, uart_data_tx
+		call wait
+		
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_c ;c
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_m ;m
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_t ;t
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_M ;M
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_d ;d
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_i ;i
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_p ;p
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_l ;l
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_a ;a
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_y ;y
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_r ;r
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_V ;V
+		OUTPUT s0, uart_data_tx
+		call wait	
+
+		LOAD s0, ascii_e ;e
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_r ;r
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_s ;s
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_i ;i
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_o ;o
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_n ;n
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_SPACE ;
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_4 ;4
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_PERIOD ;.
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_2 ;2
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_0 ;0
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_PERIOD ;.
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_6 ;6
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		LOAD s0, ascii_9 ;9
+		OUTPUT s0, uart_data_tx
+		call wait
+
+		JUMP waitwelcome
+
+		
 
 ;================================================================
 ;
